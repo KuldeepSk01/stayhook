@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_margin="@dimen/_5sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvQuestionHC"
+            style="@style/headingTextSizeStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:text="@string/what_methods_of_payment_does_homeline_accept_text"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivItemHCQBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_show_question"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvQAnswerHC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:visibility="gone"
+            android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_ut_aliquam_purus_sit_amet_luctus_venenatis_lectus_magna_fringilla_urna_porttitor_text"
+            app:layout_constraintEnd_toStartOf="@+id/tvQuestionHC"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_below="@+id/tvQuestionHC" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/gray6"
+            android:layout_below="@+id/tvQAnswerHC"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            />
+
+    </RelativeLayout>
+</layout>

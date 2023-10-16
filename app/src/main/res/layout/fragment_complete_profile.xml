@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screen.dashboard.account.completeprofile.CompleteProfileFragment">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/svRegister"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollIndicators="none"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/rlToolbarCompleteProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <include
+                        android:id="@+id/toolbarCompleteProfile"
+                        layout="@layout/custom_toolbar_layout" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rlToolbarCompleteProfile">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFullNameCP"
+                        style="@style/headingTextSizeStyle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:text="@string/full_name" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etFullNameCP"
+                        style="@style/defaultEditTextStyle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvFullNameCP"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:hint="@string/full_name" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDOBCP"
+                        style="@style/headingTextSizeStyle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etFullNameCP"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/date_of_birth_text" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etDOBCP"
+                        style="@style/defaultEditTextStyle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvDOBCP"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:hint="@string/_18_02_2009_text" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvPANNumberCP"
+                        style="@style/headingTextSizeStyle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etDOBCP"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/pan_number_text" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etPANNumberCP"
+                        style="@style/defaultEditTextStyle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvPANNumberCP"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:hint="@string/gdgpq2573c_text" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvAadhaarNumberCP"
+                        style="@style/headingTextSizeStyle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etPANNumberCP"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/aadhaar_number_text" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etAadhaarNumberCP"
+                        style="@style/defaultEditTextStyle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvAadhaarNumberCP"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:hint="@string/_782556375212_text" />
+
+                    <RelativeLayout
+                        android:id="@+id/rlrUploadAadhaarLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/etAadhaarNumberCP"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:background="@drawable/select_bed_filter_bg"
+                        android:padding="@dimen/_5sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvUploadAadhaar1CP"
+                            style="@style/headingTextSizeStyle1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/clearsans_medium"
+                            android:gravity="center"
+                            android:text="@string/upload_back_of_aadhaar_card_text" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvUploadAadhaar2CP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvUploadAadhaar1CP"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/clearsans_medium"
+                            android:gravity="center"
+                            android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivUploadAadhaarBtnCP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:src="@drawable/ic_upload_btn" />
+
+                        <RelativeLayout
+                            android:id="@+id/rlAadhaarLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvUploadAadhaar2CP">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivAadhaarImgCP"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_180sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="@drawable/aadhaar" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvAadhaarDeleteBtn"
+                                style="@style/defaultBtnStyle1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ivAadhaarImgCP"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:background="@drawable/light_red_bg"
+                                android:gravity="center"
+                                android:text="@string/title_delete"
+                                android:textColor="@color/red_color"
+
+                                />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlUploadFrontAadhaarLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rlrUploadAadhaarLayout"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:background="@drawable/select_bed_filter_bg"
+                        android:padding="@dimen/_5sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvtUploadFrontAadhaar1CP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/clearsans_medium"
+                            android:gravity="center"
+                            style="@style/headingTextSizeStyle1"
+                            android:text="Upload front of Aadhaar Card" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvUploadFrontAadhaar2CP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/clearsans_medium"
+                            android:gravity="center"
+                            android:layout_below="@+id/tvtUploadFrontAadhaar1CP"
+                            android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivUploadBanImgCP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:src="@drawable/ic_upload_btn" />
+
+                        <RelativeLayout
+                            android:id="@+id/rlBankImgLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivUploadBanImgCP"
+                            android:visibility="gone"
+
+                            >
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivUploadedImgCP"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_180sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="@drawable/aadhaar" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/defaultBtnStyle1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ivUploadedImgCP"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:background="@drawable/light_red_bg"
+                                android:gravity="center"
+                                android:text="@string/title_delete"
+                                android:textColor="@color/red_color"
+
+                                />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlUploadPanLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rlUploadFrontAadhaarLayout"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:background="@drawable/select_bed_filter_bg"
+                        android:padding="@dimen/_5sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvtUploadPan1CP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/clearsans_medium"
+                            android:gravity="center"
+                            style="@style/headingTextSizeStyle1"
+                            android:text="@string/upload_pan_card_text" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvUploadPan2CP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/clearsans_medium"
+                            android:gravity="center"
+                            android:layout_below="@+id/tvtUploadPan1CP"
+                            android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivUploadPanImgCP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:src="@drawable/ic_upload_btn" />
+
+                        <RelativeLayout
+                            android:id="@+id/rlPanImgLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivUploadPanImgCP"
+                            android:visibility="gone"
+
+                            >
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivUploadedPanImgCP"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_180sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="@drawable/aadhaar" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/defaultBtnStyle1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ivUploadedPanImgCP"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:background="@drawable/light_red_bg"
+                                android:gravity="center"
+                                android:text="@string/title_delete"
+                                android:textColor="@color/red_color"
+
+                                />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlUploadWorkIdLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rlUploadPanLayout"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:background="@drawable/select_bed_filter_bg"
+                        android:layout_marginBottom="@dimen/_100sdp"
+                        android:padding="@dimen/_5sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvtUploadWorkId1CP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/clearsans_medium"
+                            android:gravity="center"
+                            style="@style/headingTextSizeStyle1"
+                            android:text="@string/upload_work_id_text" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvUploadWorkId2CP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/clearsans_medium"
+                            android:gravity="center"
+                            android:layout_below="@+id/tvtUploadWorkId1CP"
+                            android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivUploadWorkIdImgCP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:src="@drawable/ic_upload_btn" />
+
+                        <RelativeLayout
+                            android:id="@+id/rlWorkIdImgLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivUploadWorkIdImgCP"
+                            android:visibility="gone"
+                            >
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivUploadedWorkIdImgCP"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_180sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="@drawable/aadhaar"
+                                />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/defaultBtnStyle1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ivUploadedWorkIdImgCP"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:background="@drawable/light_red_bg"
+                                android:gravity="center"
+                                android:text="@string/title_delete"
+                                android:textColor="@color/red_color"
+                                />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+
+
+
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/app_box_background"
+            android:padding="@dimen/_15sdp"
+            app:cardElevation="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnSaveProfile"
+                style="@style/defaultBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:gravity="center"
+                android:text="@string/save"
+
+                />
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

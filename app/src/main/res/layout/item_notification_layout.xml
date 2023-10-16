@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clItemNotification"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rlItemNotification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivItemNotification"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_notify_1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvItemNotificationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/ivItemNotification"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@string/there_are_good_deal_text"
+                style="@style/headingTextSizeStyle1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvItemNotificationSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/ivItemNotification"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_below="@+id/tvItemNotificationTitle"
+                android:fontFamily="@font/clearsans_bold"
+                android:text="@string/lots_of_great_deals_around_new_york_that_you_should_check_out_text"
+                style="@style/defaultTextSizeStyle" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_below="@+id/tvItemNotificationSubTitle"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/gray4" />
+
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

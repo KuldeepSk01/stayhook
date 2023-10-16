@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/svSelectBed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollIndicators="none"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            tools:context=".screen.dashboard.search.SearchFragment">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fSearchLayoutCL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/map"
+                >
+
+                <!-- <FrameLayout
+                     android:id="@+id/searchMapFL"
+                     android:layout_width="match_parent"
+                     android:layout_height="0dp"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@id/rlSearchLayout"
+                     app:layout_constraintTop_toTopOf="parent">
+                     <fragment
+                         android:id="@+id/searchMapFragment"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         />
+                 </FrameLayout>-->
+
+
+                <RelativeLayout
+                    android:id="@+id/rlSearchLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/otp_box_background"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvLocationSearch"
+                        style="@style/headingTextSizeStyle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:drawableEnd="@drawable/ic_down_arrow"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:text="@string/noida_india_text" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvLocationSearch"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/otp_box_background"
+
+                        >
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etSearchS"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:drawableStart="@drawable/ic_search"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:gravity="center_vertical"
+                            android:hint="@string/search_text"
+                            android:inputType="text"
+                            android:padding="@dimen/_10sdp"
+                            android:singleLine="true" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivSearchFilterBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/_10sdp"
+                            android:src="@drawable/ic_filter_search" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_150sdp"
+                    android:background="@drawable/top_corner_rounded"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rlSearchLayout">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvSearchFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:clipToPadding="true"
+                        android:paddingBottom="@dimen/_100sdp"
+                        tools:listitem="@layout/item_search_fragment_layout" />
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/searchFilterCL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--this layout for if search place is not found-->
+                <RelativeLayout
+                    android:id="@+id/rlPlaceDoesNotExist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivSadImojiSearchNotFound"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="@dimen/_150sdp"
+                        android:layout_centerHorizontal="true"
+                        android:paddingStart="@dimen/_15sdp"
+                        android:paddingTop="@dimen/_15sdp"
+                        android:paddingBottom="@dimen/_15sdp"
+                        android:src="@drawable/ic_sad_imoji_illustration" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvPlaceDoesNotExist"
+                        style="@style/headingTextSizeStyle2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ivSadImojiSearchNotFound"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:text="@string/the_place_doesn_t_exist_text" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvPlaceDoesNotExist"
+                        android:gravity="center"
+                        android:text="@string/please_enable_your_location_services_for_more_optimal_result_text"
+                        android:textColor="@color/gray1" />
+                </RelativeLayout>
+
+                <!--this layout for applying filter-->
+                <RelativeLayout
+                    android:id="@+id/rlSearchFilterLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    >
+
+                    <include
+                        android:id="@+id/filterSearchLayout"
+                        layout="@layout/search_filter_layout" />
+
+                </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

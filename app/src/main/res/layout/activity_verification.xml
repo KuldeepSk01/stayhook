@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vActivity"
+            type="com.stayhook.screen.verification.VerificationActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".screen.verification.VerificationActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollIndicators="none"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/verifyOTPCL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_50sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include
+                    android:id="@+id/toolbarAV"
+                    layout="@layout/custom_toolbar_layout" />
+
+                <!--                <androidx.appcompat.widget.AppCompatImageView-->
+                <!--                    android:id="@+id/ivBackVerification"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="@dimen/_20sdp"-->
+                <!--                    android:layout_marginTop="@dimen/_30sdp"-->
+                <!--                    android:src="@drawable/back_arrow"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvVerificationTXT"
+                    style="@style/headingTextSizeStyle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/verification_code"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_20sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toolbarAV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/createAccText"
+                    style="@style/defaultTextSizeStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:text="@string/verify_detail"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvVerificationTXT" />
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+
+                    android:id="@+id/pinViewLLC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/createAccText">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etOne"
+                        style="@style/otpEditTextStyle"
+                        android:layout_width="@dimen/_50sdp"
+                        android:focusable="true"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:onClick="setOnOtpETClick" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etTwo"
+                        style="@style/otpEditTextStyle"
+                        android:focusable="true"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:onClick="setOnOtpETClick" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etThree"
+                        style="@style/otpEditTextStyle"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:focusable="true"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:onClick="setOnOtpETClick" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etFour"
+                        style="@style/otpEditTextStyle"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:focusable="true"
+                        android:maxLength="1"
+                        android:onClick="setOnOtpETClick" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCodeTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pinViewLLC"
+                    android:text="Expire in 59Sec"
+                    android:gravity="end"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/verifyLLC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCodeTime">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/defaultTextSizeStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/pin_view"
+                        android:gravity="end"
+                        android:textColor="#8997A8"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvResend"
+                        style="@style/defaultTextSizeStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:text="@string/resend_btn"
+                        android:textColor="@color/primary_color"
+                        android:textSize="@dimen/_12sdp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/btnVerifyOTP"
+                    style="@style/defaultBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:text="@string/verify"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/clearsans_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/verifyLLC"
+
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

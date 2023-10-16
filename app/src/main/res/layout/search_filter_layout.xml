@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <RelativeLayout
+            android:id="@+id/rlToolbarSearchFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/toolbarFilterSearch"
+                layout="@layout/custom_toolbar_layout" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            app:layout_constraintTop_toBottomOf="@+id/rlToolbarSearchFilter">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSearchFilterTypeTXT"
+                style="@style/headingTextSizeStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type_cap_text" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/filterTypeLLC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSearchFilterTypeTXT">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvHouseHome"
+                    style="@style/findCardViewStyle"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_house" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:text="@string/house"
+                            android:textColor="@color/heading_text_color"
+                            android:textStyle="bold" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPrivateRoomHome"
+                    style="@style/findCardViewStyle"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_private_room" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:text="@string/private_room"
+                            android:textColor="@color/heading_text_color"
+                            android:textStyle="bold" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvSharedRoomHome"
+                    style="@style/findCardViewStyle"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_shared_room" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:text="@string/shared_room"
+                            android:textColor="@color/heading_text_color"
+                            android:textStyle="bold" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/filterTypeLLC"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp">
+
+                <androidx.appcompat.widget.AppCompatCheckedTextView
+                    android:id="@+id/tvPriceFilter"
+                    style="@style/headingTextSizeStyle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/price" />
+
+                <androidx.appcompat.widget.AppCompatCheckedTextView
+                    style="@style/headingTextSizeStyle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/_320_1002_text"
+                    android:textColor="@color/primary_color" />
+
+               <!-- <com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar
+                    android:id="@+id/rangeSeekbar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primary_color"
+
+                    />-->
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnFilterApply"
+            style="@style/defaultBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="@string/apply_filter_text" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

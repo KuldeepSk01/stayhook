@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_margin="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/rlItemBookList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/otp_box_background"
+            android:padding="@dimen/_10sdp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCostItemBookList"
+                    style="@style/headingTextSizeStyle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/cost_1600_text"
+                    android:textColor="@color/primary_color" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvItemBookPerMonth"
+                    style="@style/defaultTextSizeStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/tvCostItemBookList"
+                    android:text="@string/month_text" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRoomItemBookList"
+                style="@style/headingTextSizeStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/clearsans_bold"
+                android:text="@string/room_1_text" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv104Sqft2ItemBookList"
+                style="@style/defaultTextSizeStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvRoomItemBookList"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/clearsans_bold"
+                android:text="@string/_104_sqft_text"
+                android:textColor="@color/heading_text_color" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv1XAttached3"
+                style="@style/defaultTextSizeStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv104Sqft2ItemBookList"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/clearsans_bold"
+                android:text="@string/_1_x_attached_bathroom_common_kitchen_text"
+                android:textColor="@color/heading_text_color" />
+
+        </RelativeLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

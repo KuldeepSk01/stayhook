@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp">
+
+        <RelativeLayout
+            android:id="@+id/rlBedLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/otp_box_background"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMonthsSb"
+                style="@style/headingTextSizeStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bed" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBedAreaSB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/heading_text_color"
+                android:layout_below="@+id/tvMonthsSb"
+                android:text="@string/_104_sqft_text" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAttachedBathroomSB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/heading_text_color"
+                android:layout_below="@+id/tvBedAreaSB"
+                android:text="@string/_1_x_attached_bathroom_text" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSoldOrNotSB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textColor="@color/red_color"
+                android:fontFamily="@font/clearsans_bold"
+                android:layout_below="@+id/tvAttachedBathroomSB"
+                android:text="@string/sold_out_text" />
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:gravity="center_vertical"
+
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCostSB"
+                    style="@style/headingTextSizeStyle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/cost_1600_text"
+                    android:textColor="@color/primary_color" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPerMonthSB"
+                    style="@style/defaultTextSizeStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/tvCostSB"
+                    android:text="@string/month_text" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

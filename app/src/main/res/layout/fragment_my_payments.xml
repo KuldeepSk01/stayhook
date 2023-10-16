@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screen.dashboard.account.mypayment.MyPaymentsFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/svMyPayment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollIndicators="none"
+            android:scrollbars="none">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/rlToolbarMyPayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <include
+                        android:id="@+id/toolbarMyPayment"
+                        layout="@layout/custom_toolbar_layout" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlMyPayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/rlToolbarMyPayment">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llMyPayment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:background="@drawable/otp_box_background"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_5sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvPendingPaymentMP"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/clearsans_bold"
+                            android:gravity="center"
+                            android:padding="@dimen/_10sdp"
+                            android:text="@string/pending_payment_text" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvLastPaymentMP"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/clearsans_bold"
+                            android:gravity="center"
+                            android:padding="@dimen/_10sdp"
+                            android:text="@string/last_payment_text" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/rlMyPayment">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvMyPayment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="true"
+                        android:paddingBottom="@dimen/_100sdp"
+                        tools:listitem="@layout/item_my_payment_layout" />
+
+                </RelativeLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

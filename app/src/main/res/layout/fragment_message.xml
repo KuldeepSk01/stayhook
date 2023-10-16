@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/svWriteAreview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollIndicators="none"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            tools:context=".screen.dashboard.message.MessageFragment">
+
+            <RelativeLayout
+                android:id="@+id/rlToolBarMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include
+                    android:id="@+id/toolBarMessage"
+                    layout="@layout/custom_toolbar_layout" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rlToolBarMessage"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etSearchMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/defaultEditTextStyle1"
+                    android:drawableStart="@drawable/ic_search"
+                    android:hint="@string/search_text"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:textColor="@color/heading_text_color"
+
+
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:clipToPadding="true"
+                    android:paddingBottom="@dimen/_100sdp"
+                    android:layout_below="@+id/etSearchMessage"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    tools:listitem="@layout/item_message_layout"
+                    />
+
+            </RelativeLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

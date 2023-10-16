@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screen.dashboard.account.mybooking.moveout.MovedOutFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/svMoveOut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollIndicators="none"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rlToolbarMovedOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <include
+                        android:id="@+id/toolbarMovedOut"
+                        layout="@layout/custom_toolbar_layout" />
+                </RelativeLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlToolbarMovedOut"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvMoveout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:cardElevation="@dimen/_4sdp"
+                        app:cardUseCompatPadding="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/moveCL"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/flatOneIV"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_120sdp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/app_back_ground_img"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/houseTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:fontFamily="@font/clearsans_medium"
+                                android:gravity="center"
+                                android:text="@string/house"
+                                android:textColor="@color/primary_color"
+                                android:textSize="@dimen/_9sdp"
+                                android:visibility="gone"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/flatOneIV" />
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/apartoneTV"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:fontFamily="@font/clearsans_medium"
+                                android:text="@string/big_hall"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_11sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/flatOneIV" />
+
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/locIV"
+                                android:layout_width="@dimen/_8sdp"
+                                android:layout_height="@dimen/_8sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:src="@drawable/ic_map_pin_gray"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/apartoneTV" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/locationTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_3sdp"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:fontFamily="@font/clearsans_regular"
+                                android:gravity="center"
+                                android:text="@string/address_detail"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/_8sdp"
+                                app:layout_constraintStart_toEndOf="@id/locIV"
+                                app:layout_constraintTop_toBottomOf="@id/apartoneTV" />
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/movedInTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:fontFamily="@font/clearsans_medium"
+
+                                android:gravity="center"
+                                android:text="@string/moved_in_text"
+                                android:textColor="#06D80A"
+                                android:textSize="@dimen/_8sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/locationTV" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/movedInDateTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+
+                                android:fontFamily="@font/clearsans_medium"
+                                android:gravity="center"
+                                android:text="@string/nov_21_2023_text"
+                                android:textColor="#06D80A"
+                                android:textSize="@dimen/_8sdp"
+                                app:layout_constraintStart_toEndOf="@id/movedInTV"
+                                app:layout_constraintTop_toBottomOf="@id/locationTV" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/amountTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:fontFamily="@font/clearsans_bold"
+                                android:gravity="center"
+                                android:text="@string/amount"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_10sdp"
+                                app:layout_constraintEnd_toStartOf="@id/monthTV"
+                                app:layout_constraintTop_toBottomOf="@id/locationTV" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/monthTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:fontFamily="@font/clearsans_regular"
+                                android:gravity="center"
+                                android:text="@string/month"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_7sdp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/locationTV" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/notSaveIV"
+                                android:layout_width="@dimen/_10sdp"
+                                android:layout_height="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/locationTV" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mOutDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:fontFamily="@font/clearsans_medium"
+                        android:gravity="center"
+                        android:text="@string/select_move_out_date"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cvMoveout" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/calendarCV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:backgroundTint="#EAF4FB"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:cardElevation="@dimen/_4sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/mOutDate">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <CalendarView
+                                android:id="@+id/calenderView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/movedOutCl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/gray_box_outline_drawable"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/calendarCV">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/moveIn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/clearsans_regular"
+                            android:gravity="center"
+                            android:text="@string/move_out_date"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/_11sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/moveInTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:fontFamily="@font/clearsans_regular"
+                            android:gravity="center"
+                            android:text="@string/april_23_2023_text"
+                            android:textColor="@color/primary_color"
+                            android:textSize="@dimen/_11sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/ceckCB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:text="@string/i_hereby_confirm_i_am_moving_out_from_the_property_you_agree_to_our"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/movedOutCl" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/terms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:text="@string/i_hereby_confirm_i_am_moving_out_from_the_property_you_agree_to_our"
+                        android:textSize="@dimen/_9sdp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ceckCB"
+                        app:layout_constraintTop_toBottomOf="@id/movedOutCl" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:text="@string/terms_and_conditions"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/terms"
+                        app:layout_constraintTop_toBottomOf="@id/movedOutCl" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/moveOutBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@drawable/light_red_bg"
+                        android:backgroundTint="@color/red_color"
+                        android:fontFamily="@font/clearsans_regular"
+                        android:gravity="center"
+                        android:padding="@dimen/_8sdp"
+                        android:text="@string/yes_move_out"
+                        android:textColor="@color/red_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ceckCB" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

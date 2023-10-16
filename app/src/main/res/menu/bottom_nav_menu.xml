@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/homeNav"
+        android:icon="@drawable/home_selector"
+        android:title="Home" />
+    <item
+        android:id="@+id/messageNav"
+        android:icon="@drawable/message_selector"
+        android:title="Message" />
+    <item
+        android:id="@+id/savedFavNav"
+        android:icon="@drawable/favorite_selector"
+        android:title="Favourites" />
+
+    <item
+        android:id="@+id/searchLocationRoomNav"
+        android:icon="@drawable/ic_search"
+        android:title="Search" />
+
+    <item
+        android:id="@+id/profileNav"
+        android:icon="@drawable/ic_user"
+        android:title="Account" />
+
+</menu>
+
