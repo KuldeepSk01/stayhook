@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">StayHook</string>
+    <string name="google_map_api_key">AIzaSyDdjn78Q56nymORUkHZvTxNfm7czVEroXY</string>
+
+
     <string name="name">Name</string>
     <string name="real_name">Real Name :</string>
     <string name="marvel_detail">Details</string>
@@ -381,8 +384,7 @@
     <string name="no_text">No</string>
     <string name="food_available_text">Food Available</string>
     <string name="_4_bed_text">4 Bed</string>
-
-
+    <string name="img_1">Img 1</string>
 
 
     <string-array name="minimum_amount">

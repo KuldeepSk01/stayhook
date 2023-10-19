@@ -34,9 +34,10 @@ class SelectRoomAdapter(private val list: MutableList<Room>, private val context
             }else{
                 rlSelectRoom.background = context.resources.getDrawable(R.drawable.otp_box_background,null)
             }
-            tvRoomsTypeSR.text = "${model.roomType.toString()}"
+            tvRoomsTypeSR.text = model.roomType.toString()
             tvSqftSR.text = "${model.roomArea.toString()} sqft"
             tv1XAttachedSR.text = model.roomDescription.toString()
+            tvPrivacyRoomSR.text = model.roomPrivacy.toString()
             tvRItemCostSR.text = "$${model.roomCharges.toString()}"
             rlSelectRoom.setOnClickListener {
                 itemPosition = position

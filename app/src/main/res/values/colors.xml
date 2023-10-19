@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="white_transparent">#33FFFFFF</color>
+    <color name="white_transparent">#66F0F3F8</color>
 
     <color name="grey">#838282</color>
     <color name="d_grey">#424242</color>
@@ -19,6 +19,9 @@
     <color name="light_color">#FAFAFA</color>
     <color name="left_chat_bg_color">#F1F5F9</color>
     <color name="online_status_color">#22C55E</color>
+    <color name="select_filter">#332972FF</color>
+    <color name="select_date_color">#662972FF</color>
+
 
     <color name="dark_gray">#1E2126</color>
     <color name="gray1">#5C6574</color>

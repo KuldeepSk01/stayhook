@@ -6,6 +6,7 @@ import com.stayhook.R
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentAccountBinding
 import com.stayhook.preference.PreferenceHelper
+import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.screen.dashboard.account.completeprofile.CompleteProfileFragment
 import com.stayhook.screen.dashboard.account.editprofile.EditProfileFragment
 import com.stayhook.screen.dashboard.account.helpcenter.HelpCenterFragment
@@ -18,6 +19,8 @@ import org.koin.core.component.inject
 
 class AccountFragment : BaseFragment() {
     private lateinit var accountBinding: FragmentAccountBinding
+    private lateinit var mainActivity: MainActivity
+
     private val mPref: PreferenceHelper by inject()
     override fun getLayoutId(): Int {
         return R.layout.fragment_account
@@ -26,6 +29,8 @@ class AccountFragment : BaseFragment() {
     override fun onInitView(binding: ViewDataBinding, view: View) {
         accountBinding = binding as FragmentAccountBinding
         showTab()
+        mainActivity= requireActivity() as MainActivity
+        mainActivity.setBottomStyle(5)
         accountBinding.aFragment = this@AccountFragment
         accountBinding.apply {
             toolbarProfile.apply {

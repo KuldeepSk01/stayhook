@@ -15,13 +15,16 @@ import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentHomeBinding
 import com.stayhook.model.Recommendation
+import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailFragment
 import com.stayhook.screen.notification.NotificationFragment
+import com.stayhook.util.Constants
 import org.koin.core.component.inject
 
 class HomeFragment : BaseFragment(), OnItemsClickListener {
 
     private val homeViewModel: HomeViewModel by inject()
+    private lateinit var mainActivity: MainActivity
     private val rDetailFragment: RecommendationDetailFragment by lazy {
         RecommendationDetailFragment()
     }
@@ -34,6 +37,8 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
     override fun onInitView(binding: ViewDataBinding, view: View) {
         homeBinding = binding as FragmentHomeBinding
         showTab()
+        mainActivity= requireActivity() as MainActivity
+        mainActivity.setBottomStyle(1)
         homeViewModel.getRecommendationList().let {
 
             homeBinding.rvRecommendationItems.apply {
@@ -51,19 +56,17 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                adapter = RecentlyAddedItemAdapter(it, requireContext())
+                adapter = RecentlyAddedItemAdapter(it, requireContext(), this@HomeFragment)
 
             }
-        }
-
-        homeViewModel.getNearByLocationList().let {
             homeBinding.rvNearByLocationItems.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                adapter = NearbyLocationItemAdapter(it, requireContext())
+                adapter = NearbyLocationItemAdapter(it, requireContext(), this@HomeFragment)
             }
         }
+
         homeBinding.tvSeeAllTXT.setOnClickListener {
             replaceFrag(SeeAllItemsFragment())
             hideTab()
@@ -78,15 +81,15 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
             hideTab()
         }
         homeBinding.llcHouseHome.setOnClickListener {
-            replaceFrag(SeeAllItemsFragment())
+            launchActivityWithB(getString(R.string.house))
             hideTab()
         }
         homeBinding.llcPrivateRoomHome.setOnClickListener {
-            replaceFrag(SeeAllItemsFragment())
+            launchActivityWithB(getString(R.string.private_room))
             hideTab()
         }
         homeBinding.llcSharedRoomHome.setOnClickListener {
-            replaceFrag(SeeAllItemsFragment())
+            launchActivityWithB(getString(R.string.shared_room))
             hideTab()
         }
         homeBinding.ivNotificationIconHome.setOnClickListener {
@@ -95,96 +98,6 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
         }
 
 
-    }
-
-    private fun getRecommendationList(): MutableList<Recommendation> {
-        val list = mutableListOf<Recommendation>()
-        list.add(
-            Recommendation(
-                "https://images.oyoroomscdn.com/uploads/hotel_image/168652/c4f2cc00b8fb02ba.jpg",
-                "Abok hook",
-                "single Room",
-                "Noida",
-                "2222",
-                "4.5"
-            )
-        )
-        list.add(
-            Recommendation(
-                "https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/04/d601b-hostels-vs-pgs-min.jpg?fit=4000%2C3000&ssl=1",
-                "Kuldeep's hotel",
-                "single Room",
-                "Noida",
-                "2222",
-                "4.5"
-            )
-        )
-        list.add(
-            Recommendation(
-                "https://content3.jdmagicbox.com/comp/chennai/g8/044pxx44.xx44.180125140725.t6g8/catalogue/victorias-in-ladies-and-pg-hostel-sirucheri-chennai-hostel-for-girl-students-c72xw2x314.jpg?clr=",
-                "Raju's",
-                "single Room",
-                "Noida",
-                "2222",
-                "4.5"
-            )
-        )
-        list.add(
-            Recommendation(
-                "https://www.thehivehostels.com/uploads/images/1658301040_7796f3aa4d7819a2f5d5.jpeg",
-                "Deep's",
-                "single Room",
-                "Noida",
-                "2222",
-                "4.5"
-            )
-        )
-        return list
-    }
-
-    private fun getNearByLocationList(): MutableList<Recommendation> {
-        val list = mutableListOf<Recommendation>()
-        list.add(
-            Recommendation(
-                "https://images.oyoroomscdn.com/uploads/hotel_image/168652/c4f2cc00b8fb02ba.jpg",
-                "Abok hook",
-                "single Room",
-                "Noida",
-                "2222",
-                "4.5"
-            )
-        )
-        list.add(
-            Recommendation(
-                "https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/04/d601b-hostels-vs-pgs-min.jpg?fit=4000%2C3000&ssl=1",
-                "Kuldeep's hotel",
-                "single Room",
-                "Greater Noida",
-                "2222",
-                "4.5"
-            )
-        )
-        list.add(
-            Recommendation(
-                "https://content3.jdmagicbox.com/comp/chennai/g8/044pxx44.xx44.180125140725.t6g8/catalogue/victorias-in-ladies-and-pg-hostel-sirucheri-chennai-hostel-for-girl-students-c72xw2x314.jpg?clr=",
-                "Raju's",
-                "single Room",
-                "Noida,Sector 4",
-                "2222",
-                "4.5"
-            )
-        )
-        list.add(
-            Recommendation(
-                "https://www.thehivehostels.com/uploads/images/1658301040_7796f3aa4d7819a2f5d5.jpeg",
-                "Deep's",
-                "single Room",
-                "Noida",
-                "2222",
-                "4.5"
-            )
-        )
-        return list
     }
 
     override fun onCLickItems(model: Recommendation) {
@@ -196,12 +109,19 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
         hideTab()
     }
 
-    private fun replaceFrag(f:Fragment){
+    private fun replaceFrag(f: Fragment) {
         replaceFragment(
             R.id.flMainContainer,
             f,
             HomeFragment().javaClass.simpleName
         )
+    }
+
+
+    private fun launchActivityWithB(title: String) {
+        val b = Bundle()
+        b.putString(Constants.DefaultConstants.STRING, title)
+        launchActivity(HomeRoomTypeActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
     }
 
 

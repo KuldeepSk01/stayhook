@@ -3,13 +3,12 @@ package com.stayhook.screen.splash
 import android.os.Handler
 import android.os.Looper
 import androidx.databinding.ViewDataBinding
-import com.stayhook.MainActivity
+import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.R
 import com.stayhook.base.BaseActivity
 import com.stayhook.databinding.ActivitySplashBinding
 import com.stayhook.preference.IS_LOGIN
 import com.stayhook.preference.PreferenceHelper
-import com.stayhook.screen.login.LoginActivity
 import com.stayhook.screen.onboarding.OnBoardingActivity
 import org.koin.core.component.inject
 
@@ -23,6 +22,7 @@ class SplashActivity : BaseActivity() {
 
     override fun onViewInit(binding: ViewDataBinding?) {
         splashBinding = binding as ActivitySplashBinding
+
         mRunnable = Runnable {
             if (mPref[IS_LOGIN, false]){
                 launchActivity(MainActivity::class.java)

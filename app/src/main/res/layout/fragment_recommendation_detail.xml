@@ -124,7 +124,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvDetailApartmentType"
-                        style="@style/headingTextSizeStyle2"
+                        style="@style/headingTextSizeStyle3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_20sdp"
@@ -154,7 +154,6 @@
                         android:layout_marginStart="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_20sdp"
-                        android:padding="@dimen/_10sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvLocationDescription">
@@ -167,7 +166,7 @@
                             android:layout_marginEnd="@dimen/_20sdp"
                             android:drawableStart="@drawable/ic_bed"
                             android:drawablePadding="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_bold"
+                            android:fontFamily="@font/clearsans_regular"
                             android:text="@string/bed"
                             android:textColor="@color/heading_text_color"
                             android:textStyle="bold"
@@ -184,7 +183,7 @@
                             android:layout_toEndOf="@id/tvBeds"
                             android:drawableStart="@drawable/ic_tabler_bath"
                             android:drawablePadding="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_bold"
+                            android:fontFamily="@font/clearsans_regular"
                             android:text="@string/_3_bath_text"
                             android:textColor="@color/heading_text_color"
                             android:textStyle="bold" />
@@ -197,7 +196,7 @@
                             android:layout_toEndOf="@id/tvBath"
                             android:drawableStart="@drawable/ic_area"
                             android:drawablePadding="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_bold"
+                            android:fontFamily="@font/clearsans_regular"
                             android:text="@string/sqft"
                             android:textColor="@color/heading_text_color"
                             android:textStyle="bold" />
@@ -560,11 +559,10 @@
                         android:background="@color/gray6"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rlRDOverview">
+                        app:layout_constraintTop_toBottomOf="@+id/rlRDOverview" />
 
-                    </View>
 
-                    <RelativeLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/rlBuildingAmenities"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -580,29 +578,38 @@
                             style="@style/headingTextSizeStyle1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/features_amp_amenties" />
+                            android:text="@string/features_amp_amenties"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvFeaturesAmenity"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_60sdp"
                             android:layout_below="@+id/tvRDAmenities"
                             android:layout_marginTop="@dimen/_10sdp"
+                            app:layout_constraintEnd_toStartOf="@+id/tvViewMoreBtn"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRDAmenities"
                             tools:itemCount="4" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvViewMoreBtn"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
                             android:background="@drawable/primary_dot_drawable"
                             android:fontFamily="@font/clearsans_bold"
                             android:gravity="center"
                             android:text="@string/view_more_text"
                             android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="@+id/rvFeaturesAmenity"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1"
+                            app:layout_constraintStart_toEndOf="@+id/rvFeaturesAmenity"
 
-                            android:textSize="@dimen/_10ssp" />
+                            app:layout_constraintTop_toBottomOf="@+id/tvRDAmenities" />
 
                         <!-- <androidx.appcompat.widget.LinearLayoutCompat
                              android:id="@+id/llRDAmenitiesFilter"
@@ -795,7 +802,20 @@
                          </RelativeLayout>-->
 
 
-                    </RelativeLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <View
+                        android:id="@+id/seperator1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:background="@color/gray6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rlBuildingAmenities" />
 
 
                     <RelativeLayout
@@ -807,13 +827,40 @@
                         android:layout_marginEnd="@dimen/_15sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rlBuildingAmenities">
+                        app:layout_constraintTop_toBottomOf="@+id/seperator1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvAboutRD"
+                            style="@style/headingTextSizeStyle1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/about_us" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvAboutUSRD"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvAboutRD"
+                            android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry" />
+
+
+                        <View
+                            android:id="@+id/seperator2"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:background="@color/gray6"
+                            android:layout_below="@+id/tvAboutUSRD" />
+
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvReviews"
                             style="@style/headingTextSizeStyle1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/seperator2"
                             android:text="@string/reviews" />
 
                         <RelativeLayout
@@ -869,25 +916,27 @@
                                 android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry" />
                         </RelativeLayout>
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvReviewsViewMore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/rlReviewsLayout"
-                            android:gravity="center"
-                            android:padding="@dimen/_10sdp"
-                            android:text="@string/view_more_text"
-                            android:textColor="@color/heading_text_color" />
+                        <!--                        <androidx.appcompat.widget.AppCompatTextView
+                                                    android:id="@+id/tvReviewsViewMore"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_below="@+id/rlReviewsLayout"
+                                                    android:gravity="center"
+                                                    android:padding="@dimen/_10sdp"
+                                                    android:text="@string/view_more_text"
+                                                    android:textColor="@color/heading_text_color" />-->
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvReviewsWriteAReview"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/tvReviewsViewMore"
+                            android:layout_below="@+id/rlReviewsLayout"
+                            android:layout_marginTop="@dimen/_10sdp"
                             android:background="@drawable/otp_box_outline_drawable"
                             android:gravity="center"
                             android:padding="@dimen/_10sdp"
                             android:text="@string/write_a_review"
+
                             android:textColor="@color/primary_color" />
                     </RelativeLayout>
 

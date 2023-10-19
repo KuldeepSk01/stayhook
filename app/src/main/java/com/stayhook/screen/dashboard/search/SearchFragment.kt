@@ -4,15 +4,23 @@ import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.stayhook.R
 import com.stayhook.adapter.SearchAdapter
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentSearchBinding
 import com.stayhook.model.Recommendation
+import com.stayhook.screen.dashboard.MainActivity
 
 
-class SearchFragment : BaseFragment() {
+class SearchFragment : BaseFragment(), OnMapReadyCallback {
     private lateinit var sBinding: FragmentSearchBinding
+    private lateinit var mainActivity: MainActivity
+    private lateinit var mGoogleMap:GoogleMap
+
     override fun getLayoutId(): Int {
         return R.layout.fragment_search
     }
@@ -20,21 +28,34 @@ class SearchFragment : BaseFragment() {
     override fun onInitView(binding: ViewDataBinding, view: View) {
         sBinding = binding as FragmentSearchBinding
         showTab()
+        mainActivity = requireActivity() as MainActivity
+        mainActivity.setBottomStyle(2)
         sBinding.apply {
             ivSearchFilterBtn.setOnClickListener {
-                replaceFragment(R.id.flMainContainer,SearchFilterFragment(),SearchFragment::javaClass.name)
+                replaceFragment(
+                    R.id.flMainContainer,
+                    SearchFilterFragment(),
+                    SearchFragment::javaClass.name
+                )
                 hideTab()
             }
+
+           val searchMap  =  childFragmentManager.findFragmentById(R.id.searchMap) as SupportMapFragment
+            searchMap.getMapAsync(this@SearchFragment)
+         // searchMap.getMapAsync(this@SearchFragment)
+
+
+
             rvSearchFragment.apply {
-                itemAnimator  = DefaultItemAnimator()
-                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-                adapter = SearchAdapter(getRecommendationList(),requireContext())
+                itemAnimator = DefaultItemAnimator()
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                adapter = SearchAdapter(getRecommendationList(), requireContext())
             }
 
         }
 
     }
-
 
 
     private fun getRecommendationList(): MutableList<Recommendation> {
@@ -80,6 +101,10 @@ class SearchFragment : BaseFragment() {
             )
         )
         return list
+    }
+
+    override fun onMapReady(p0: GoogleMap) {
+        mGoogleMap = p0
     }
 
 }

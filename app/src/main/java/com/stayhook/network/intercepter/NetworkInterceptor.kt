@@ -23,7 +23,7 @@ class NetworkInterceptor():Interceptor,KoinComponent {
 
         val newRequest = originalRequest
             .newBuilder()
-            .addHeader(AUTHORIZATION,token)
+            .addHeader(AUTHORIZATION,token!!)
             .build()
         Log.d("Authorization", "intercept: token--> $token")
         return chain.proceed(newRequest)

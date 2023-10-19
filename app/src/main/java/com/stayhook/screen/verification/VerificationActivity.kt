@@ -1,7 +1,6 @@
 package com.stayhook.screen.verification
 
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.KeyEvent
 import android.view.View
@@ -9,7 +8,7 @@ import android.view.View.OnKeyListener
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.ViewDataBinding
-import com.stayhook.MainActivity
+import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.R
 import com.stayhook.base.BaseActivity
 import com.stayhook.databinding.ActivityVerificationBinding

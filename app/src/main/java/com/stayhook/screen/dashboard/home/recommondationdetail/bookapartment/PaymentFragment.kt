@@ -1,14 +1,22 @@
 package com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment
 
+import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.stayhook.R
+import com.stayhook.base.BaseActivity
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentPaymentBinding
 import com.stayhook.screen.dashboard.home.HomeFragment
+import com.stayhook.screen.dashboard.home.HomeRoomTypeActivity
+import com.stayhook.util.Constants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class PaymentFragment : BaseFragment() {
 
@@ -44,13 +52,15 @@ class PaymentFragment : BaseFragment() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                val mbBtn =  bottomSheet.findViewById<AppCompatTextView>(R.id.myBookingCompleteBtn)
                 mbBtn.setOnClickListener {
-                    pBinding.cvBottomBtn.visibility = View.VISIBLE
 
+                    pBinding.cvBottomBtn.visibility = View.VISIBLE
                     bottomSheetB.state = BottomSheetBehavior.STATE_COLLAPSED
                     bottomSheetB.peekHeight=0
                     bottomSheetB.state = BottomSheetBehavior.STATE_HIDDEN
                     pBinding.bottomSheetBCCL.visibility = View.GONE
+                    launchActivityWithB(getString(R.string.private_room))
                     removeAllFragments()
+
                 }
             }
 
@@ -60,33 +70,19 @@ class PaymentFragment : BaseFragment() {
         })
         }
 
-
-/*    private fun openBottomDialogSheet():Dialog{
-      //  val dialog = Dialog(requireContext(),android.R.style.Theme_Translucent)
-
-
-
-
-
-//        val dialogBinding = DataBindingUtil.inflate<DialogBookingCompleteLayoutBinding>(LayoutInflater.from(requireContext()),R.layout.dialog_booking_complete_layout,null,false)
-   //     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-      //  dialog.setContentView(dialogBinding.root)
-      //  dialog.setCancelable(true)
-        //dialog.setCanceledOnTouchOutside(true)
-
-//        dialogBinding.myBookBt.setOnClickListener {
-//            dialog.dismiss()
-//        }
-       // dialog.create()
-       // return dialog
-    }*/
-
     private fun removeAllFragments() {
-       //
-    // replaceFragment(R.id.flMainContainer,HomeFragment(),null)
-        /*while (parentFragmentManager.backStackEntryCount > 0) {
-            fragmentManager?.popBackStackImmediate()
-        }*/
+        val fm = requireActivity().supportFragmentManager
+        for (i in 0 until fm.backStackEntryCount) {
+            fm.popBackStack()
+        }
     }
+
+
+    private fun launchActivityWithB(title: String) {
+        val b = Bundle()
+        b.putString(Constants.DefaultConstants.STRING, title)
+        launchActivity(HomeRoomTypeActivity::class.java, Constants.DefaultConstants.BUNDLE,b)
+    }
+
 
 }

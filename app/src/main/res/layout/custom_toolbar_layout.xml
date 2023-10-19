@@ -13,10 +13,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/back_arrow"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:scaleType="centerCrop" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvToolBarTitle"
@@ -29,11 +26,7 @@
         android:layout_toEndOf="@+id/ivToolBarBack"
         android:gravity="center"
         android:text="@string/title"
-        android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="@id/ivToolBarBack"
-        app:layout_constraintEnd_toStartOf="@+id/ivToolBarRightIcon"
-        app:layout_constraintStart_toEndOf="@+id/ivToolBarBack"
-        app:layout_constraintTop_toTopOf="@+id/ivToolBarBack" />
+        android:layout_marginTop="@dimen/_10sdp" />
 
     <androidx.appcompat.widget.AppCompatImageView
 
@@ -45,10 +38,7 @@
         android:layout_marginEnd="@dimen/_15sdp"
         android:background="@drawable/iv_fav_with_gray_bg"
         android:scaleType="centerCrop"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/ivToolBarBack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivToolBarBack" />
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

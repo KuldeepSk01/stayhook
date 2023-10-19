@@ -6,117 +6,122 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
-        android:background="@drawable/otp_box_background">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvItemSearch"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:backgroundTint="@color/gray6"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_150sdp"
-            app:cardCornerRadius="@dimen/_10sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
             >
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivItemSearch"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvItemSearch"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:src="@drawable/white_transparent_btn_background" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSearchItemTitle"
-            style="@style/headingTextSizeStyle1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp"
-            android:background="@drawable/otp_box_background"
-            android:textColor="@color/primary_color"
-            android:elevation="@dimen/_2sdp"
-            android:padding="@dimen/_10sdp"
-            android:text="@string/title_home"
-            app:layout_constraintStart_toStartOf="@+id/cvItemSearch"
-            app:layout_constraintTop_toTopOf="@+id/cvItemSearch" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cvItemSearch"
-            android:layout_margin="@dimen/_5sdp">
+                android:layout_height="@dimen/_130sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivItemSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/white_transparent_btn_background" />
+            </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvSearchApartmentType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvSearchItemTitle"
                 style="@style/headingTextSizeStyle1"
-                android:text="@string/mighty_cinco_family_text" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvSearchLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/defaultTextSizeStyle"
-                android:layout_below="@+id/tvSearchApartmentType"
-                android:text="@string/noida_india_text"
-                android:drawableStart="@drawable/ic_map_pin_gray"
-                android:drawablePadding="@dimen/_5sdp"
-                />
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/white_transparent_btn_background"
+                android:textColor="@color/primary_color"
+                android:elevation="@dimen/_2sdp"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/title_home"
+                app:layout_constraintStart_toStartOf="@+id/cvItemSearch"
+                app:layout_constraintTop_toTopOf="@+id/cvItemSearch" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvSearchLocation">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvItemSearch"
+                android:layout_margin="@dimen/_5sdp">
 
-                <RelativeLayout
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSearchApartmentType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/headingTextSizeStyle1"
+                    android:text="@string/mighty_cinco_family_text" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSearchLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center_vertical"
-                    android:layout_centerVertical="true">
+                    style="@style/defaultTextSizeStyle"
+                    android:layout_below="@+id/tvSearchApartmentType"
+                    android:text="@string/noida_india_text"
+                    android:drawableStart="@drawable/ic_map_pin_gray"
+                    android:drawablePadding="@dimen/_5sdp"
+                    />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvCostItemSearch"
-                        style="@style/headingTextSizeStyle2"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvSearchLocation">
+
+                    <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="@string/cost_1600_text"
-                        android:textColor="@color/primary_color" />
+                        android:layout_alignParentStart="true"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:layout_centerVertical="true">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvCostItemSearch"
+                            style="@style/headingTextSizeStyle2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/cost_1600_text"
+                            android:textColor="@color/primary_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvPerMonthItemSearch"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@+id/tvCostItemSearch"
+                            android:text="@string/month_text" />
+
+                    </RelativeLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvPerMonthItemSearch"
-                        style="@style/defaultTextSizeStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toEndOf="@+id/tvCostItemSearch"
-                        android:text="@string/month_text" />
+                        android:layout_alignParentEnd="true"
+                        android:drawableStart="@drawable/ic_rateus_filled"
+                        android:text="@string/_4_5_text"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:layout_centerVertical="true" />
 
                 </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:drawableStart="@drawable/ic_rateus_filled"
-                    android:text="@string/_4_5_text"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:layout_centerVertical="true" />
-
             </RelativeLayout>
 
-        </RelativeLayout>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

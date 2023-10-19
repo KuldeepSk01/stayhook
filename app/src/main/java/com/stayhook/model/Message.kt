@@ -9,5 +9,6 @@ data class Message(
     var message: String? = null,
     var time: String? = null,
     var isOnline: Boolean? = false,
+    var userType:Int?=-1
 
 ):Serializable

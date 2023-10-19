@@ -1,59 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_5sdp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@color/white">
 
-        <RelativeLayout
-            android:id="@+id/rlItemLeftChat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/left_chat_bg"
-            android:paddingEnd="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
 
-            >
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvItemLeftChat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:fontFamily="@font/clearsans_light"
-                android:text="@string/intro"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/_9sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </RelativeLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/timeRequestTV1"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:fontFamily="@font/clearsans_light"
-            android:text="@string/msg_time"
-            android:textSize="@dimen/_7sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rlItemLeftChat" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/rlItemLeftChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/left_chat_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvItemLeftChat"
+                    style="@style/defaultTextSizeStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/clearsans_light"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/hello"
+                    android:textColor="@color/grey"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/timeRequestTV1"
+                style="@style/defaultTextSizeStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/clearsans_light"
+                android:text="@string/msg_time"
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/_7sdp"
+                app:layout_constraintRight_toRightOf="@id/rlItemLeftChat"
+                app:layout_constraintTop_toBottomOf="@id/rlItemLeftChat" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.stayhook.MainActivity
+import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.R
 import org.koin.core.component.KoinComponent
 
@@ -110,6 +110,21 @@ abstract class BaseFragment : Fragment(), KoinComponent, View.OnClickListener {
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
 
+    }
+
+    fun launchActivity(classType: Class<out BaseActivity>,bundleKey: String,bundle:Bundle) {
+        val intent = Intent(baseActivity, classType)
+        intent.putExtra(bundleKey,bundle)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+    }
+
+    fun showProgress(){
+      baseActivity.showProgress()
+    }
+
+    fun hideProgress(){
+      baseActivity.hideProgress()
     }
 
 }

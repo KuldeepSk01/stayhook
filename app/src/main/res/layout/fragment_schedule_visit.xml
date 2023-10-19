@@ -52,9 +52,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@color/white"
                     app:layout_constraintTop_toBottomOf="@+id/rlToolBarScheduleVisit"
 
                     >
@@ -77,11 +77,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
+
                             <CalendarView
                                 android:id="@+id/calenderView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/app_box_background"
+                                android:dateTextAppearance="@style/CalenderViewDateCustomText"
+                                android:theme="@style/CalenderViewCustom"
+                                android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -125,12 +128,11 @@
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/tvTimePickerScheduleVisit"
+                                style="@style/headingTextSizeStyle1"
                                 android:layout_width="@dimen/_80sdp"
                                 android:layout_height="@dimen/_30sdp"
-                                android:text="@string/_20_45_text"
                                 android:gravity="center"
-                                style="@style/headingTextSizeStyle1"
-                                />
+                                android:text="@string/_20_45_text" />
 
                             <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="@dimen/_100sdp"
@@ -139,11 +141,12 @@
                                 android:layout_centerInParent="true"
                                 android:background="@drawable/otp_box_background"
                                 android:gravity="center"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_5sdp">
 
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/tvAMSelect"
-                                    style="@style/headingTextSizeStyle1"
+                                    style="@style/defaultTextSizeStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
@@ -153,7 +156,7 @@
 
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/tvPMSelect"
-                                    style="@style/headingTextSizeStyle1"
+                                    style="@style/defaultTextSizeStyle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
@@ -219,11 +222,11 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:background="@drawable/otp_box_background"
                         android:drawableStart="@drawable/ic_tele"
+                        android:drawablePadding="@dimen/_10sdp"
                         android:fontFamily="@font/clearsans_regular"
                         android:hint="@string/phone_number"
                         android:inputType="number"
                         android:maxLength="10"
-                        android:drawablePadding="@dimen/_10sdp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvPleaseLetUsScheduleText" />
                 </androidx.constraintlayout.widget.ConstraintLayout>

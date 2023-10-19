@@ -1,7 +1,7 @@
 package com.stayhook.screen.register
 
 import androidx.databinding.ViewDataBinding
-import com.stayhook.MainActivity
+import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.R
 import com.stayhook.base.BaseActivity
 import com.stayhook.databinding.ActivityRegisterBinding

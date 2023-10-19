@@ -11,10 +11,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.stayhook.R
+import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.databinding.ItemRecentlyAddedLayoutBinding
 import com.stayhook.model.Recommendation
 
-class RecentlyAddedItemAdapter(val list: MutableList<Recommendation>, val context: Context) :
+class RecentlyAddedItemAdapter(val list: MutableList<Recommendation>, val context: Context,private val listener : OnItemsClickListener) :
     RecyclerView.Adapter<RecentlyAddedItemAdapter.NearbyLVM>() {
     inner class NearbyLVM(val b: ItemRecentlyAddedLayoutBinding) : ViewHolder(b.root)
 
@@ -33,21 +34,17 @@ class RecentlyAddedItemAdapter(val list: MutableList<Recommendation>, val contex
     override fun onBindViewHolder(holder: NearbyLVM, position: Int) {
         val model = list[position]
         holder.b.apply {
+            Glide.with(context).load(model.imgUrl).into(ivRAItem)
             tvRAItemTitle.text = model.name
             tvRAItemLocation.text = model.location
             tvRAItemApartmentType.text = model.apartmentType
             tvRAItemCost.text = "$ ${model.price}"
             tvRARatingItem.text = model.rating
+
+            clItemRecentAdded.setOnClickListener {
+                listener.onCLickItems(model)
+            }
         }
-        Glide.with(context).load(model.imgUrl).into(object : CustomTarget<Drawable>() {
-            override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
-                holder.b.ivRAItem.background = resource
-            }
-
-            override fun onLoadCleared(placeholder: Drawable?) {
-            }
-
-        })
     }
 
 }

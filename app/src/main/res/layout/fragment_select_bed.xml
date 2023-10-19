@@ -50,6 +50,7 @@
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:background="@drawable/otp_box_background"
                     android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp"
                     app:layout_constraintTop_toBottomOf="@+id/rlToolBarSB">
 
                     <androidx.appcompat.widget.LinearLayoutCompat

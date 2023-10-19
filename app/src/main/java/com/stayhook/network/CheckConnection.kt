@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
 import android.util.Log
-import com.stayhook.util.setConnection
+import com.stayhook.util.Utility.setConnection
 
 class CheckConnection(val context: Context) : ConnectivityManager.NetworkCallback() {
 

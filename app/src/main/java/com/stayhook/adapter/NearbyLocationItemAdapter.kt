@@ -11,10 +11,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.stayhook.R
+import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.databinding.ItemNearbyLocationLayoutBinding
 import com.stayhook.model.Recommendation
 
-class NearbyLocationItemAdapter(val list: MutableList<Recommendation>, val context: Context) :
+class NearbyLocationItemAdapter(val list: MutableList<Recommendation>, val context: Context,private val listener : OnItemsClickListener) :
     RecyclerView.Adapter<NearbyLocationItemAdapter.NearbyLVM>() {
     inner class NearbyLVM(val b: ItemNearbyLocationLayoutBinding) : ViewHolder(b.root)
 
@@ -32,16 +33,14 @@ class NearbyLocationItemAdapter(val list: MutableList<Recommendation>, val conte
 
     override fun onBindViewHolder(holder: NearbyLVM, position: Int) {
         val model = list[position]
-        holder.b.tvItemNearbyLocation.text = model.location
-        Glide.with(context).load(model.imgUrl).into(object : CustomTarget<Drawable>() {
-            override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
-                holder.b.ivItemNearbyLocation.background = resource
+        holder.b.apply {
+            holder.b.tvItemNearbyLocation.text = model.location
+            Glide.with(context).load(model.imgUrl).into(ivItemNearbyLocation)
+            rlItemSearchNearByLocation.setOnClickListener {
+                listener.onCLickItems(model)
             }
+        }
 
-            override fun onLoadCleared(placeholder: Drawable?) {
-            }
-
-        })
     }
 
 }

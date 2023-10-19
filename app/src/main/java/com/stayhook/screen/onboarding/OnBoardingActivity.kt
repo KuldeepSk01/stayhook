@@ -4,7 +4,6 @@ import android.util.Log
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.viewpager2.widget.ViewPager2
-import com.stayhook.MainActivity
 import com.stayhook.R
 import com.stayhook.adapter.OnBoardingAdapter
 import com.stayhook.base.BaseActivity

@@ -13,6 +13,7 @@
         app:cardCornerRadius="@dimen/_10sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clItemRecentAdded"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/_5sdp">
@@ -29,7 +30,9 @@
                     android:id="@+id/ivRAItem"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/app_back_ground_img" />
+                    android:background="@drawable/app_back_ground_img"
+
+                    android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
             <RelativeLayout
