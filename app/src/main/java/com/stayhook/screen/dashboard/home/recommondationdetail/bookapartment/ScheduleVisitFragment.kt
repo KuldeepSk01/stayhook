@@ -54,7 +54,6 @@ class ScheduleVisitFragment : BaseFragment() {
                     }, hour, minute, true
                 )
                 timePickerDialog.show()
-                // Toast.makeText(requireContext(), "Open to pick a Time", Toast.LENGTH_SHORT).show()
             }
             binding.scheduleBtn.setOnClickListener {
                 replaceFragment(

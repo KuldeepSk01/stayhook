@@ -385,6 +385,8 @@
     <string name="food_available_text">Food Available</string>
     <string name="_4_bed_text">4 Bed</string>
     <string name="img_1">Img 1</string>
+    <string name="_10_000">$10,000</string>
+    <string name="men">Men</string>
 
 
     <string-array name="minimum_amount">

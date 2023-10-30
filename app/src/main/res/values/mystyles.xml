@@ -7,14 +7,14 @@
     </style>
 
     <style name="defaultTextSizeStyle">
-        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:textSize">@dimen/_8ssp</item>
         <item name="android:fontFamily">@font/clearsans_regular</item>
         <item name="android:textColor">@color/sub_heading_text_color</item>
     </style>
 
     <style name="headingTextSizeStyle1">
         <item name="android:textColor">@color/heading_text_color</item>
-        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
         <item name="android:fontFamily">@font/clearsans_bold</item>
     </style>
 

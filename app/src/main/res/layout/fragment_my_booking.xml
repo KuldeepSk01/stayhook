@@ -42,6 +42,7 @@
                     android:layout_below="@+id/rlToolBarMyBooking"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
+                    android:padding="@dimen/_5sdp"
                     android:background="@drawable/otp_box_background"
                     >
 

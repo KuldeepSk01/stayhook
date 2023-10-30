@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -19,10 +20,12 @@ abstract class BaseActivity : AppCompatActivity(), BaseInterface, KoinComponent 
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
 
         val layout = layoutId
         if (layoutId != 0) {
-            val binding = DataBindingUtil.setContentView<ViewDataBinding>(this, layoutId)
+            val binding = DataBindingUtil.setContentView<ViewDataBinding>(this, layout)
             onViewInit(binding)
         }
     }

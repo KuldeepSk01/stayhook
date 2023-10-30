@@ -41,21 +41,22 @@
                 app:layout_constraintStart_toEndOf="@+id/cvRAItem"
                 app:layout_constraintTop_toTopOf="@+id/cvRAItem">
 
-                <androidx.appcompat.widget.AppCompatTextView
+               <!-- <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRAItemTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
                     android:text="@string/shared_room"
                     android:textColor="@color/primary_color"
-                    android:textSize="@dimen/_10ssp" />
+                    android:textSize="@dimen/_10ssp" />-->
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRAItemApartmentType"
-                    style="@style/headingTextSizeStyle1"
+                    style="@style/defaultTextSizeStyle"
+                    android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/light_black"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvRAItemTitle"
                     android:text="@string/big_hall" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -102,11 +103,15 @@
                 android:id="@+id/tvRARatingItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/otp_box_background"
-                android:drawableEnd="@drawable/ic_rateus_filled"
-                android:padding="@dimen/_5sdp"
+                android:background="@drawable/green_rounded_background"
+                android:drawableEnd="@drawable/ic_white_rate"
+                android:fontFamily="@font/clearsans_medium"
+                android:gravity="center"
+                android:padding="@dimen/_3sdp"
                 android:src="@drawable/ic_heart"
-                android:text="3.5"
+                android:text="@string/_4_5_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_7ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

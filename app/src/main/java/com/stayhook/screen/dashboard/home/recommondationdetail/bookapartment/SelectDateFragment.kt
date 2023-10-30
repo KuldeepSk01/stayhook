@@ -42,7 +42,6 @@ class SelectDateFragment : BaseFragment() {
                 )
             }
 
-
             calenderViewSD.setOnDateChangeListener(object : OnDateChangeListener {
                 override fun onSelectedDayChange(p0: CalendarView, p1: Int, p2: Int, p3: Int) {
                     val year = p1

@@ -1,11 +1,19 @@
 package com.stayhook.screen.dashboard
 
+import android.util.Log
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.PermissionListener
 import com.stayhook.R
 import com.stayhook.base.BaseActivity
 import com.stayhook.databinding.ActivityMainBinding
+import com.stayhook.permissions.MyPermissions
 import com.stayhook.screen.dashboard.account.AccountFragment
 import com.stayhook.screen.dashboard.favorite.FavoriteFragment
 import com.stayhook.screen.dashboard.home.HomeFragment
@@ -57,6 +65,7 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
         mainActivityBinding = binding as ActivityMainBinding
         dashBoardListener = this@MainActivity
         dashBoardListener.onBottomIconClick(homeFragment)
+
 
         mainActivityBinding.customBottomBarLayout.ivHomeIcon.setBackgroundResource(R.drawable.ic_home_selected)
 

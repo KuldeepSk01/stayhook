@@ -7,12 +7,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.stayhook.R
+import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.databinding.ItemSearchFragmentLayoutBinding
 import com.stayhook.model.Recommendation
 
 class SearchAdapter(
     val list: MutableList<Recommendation>,
     val context: Context,
+    val listener : OnItemsClickListener
 ) : RecyclerView.Adapter<SearchAdapter.SearchVM>() {
     inner class SearchVM(val b: ItemSearchFragmentLayoutBinding) : RecyclerView.ViewHolder(b.root)
 
@@ -39,6 +41,10 @@ class SearchAdapter(
             tvSearchApartmentType.text = model.apartmentType
             tvSearchLocation.text = model.location
             tvCostItemSearch.text = "$${model.price}"
+
+            clItemSearchFl.setOnClickListener {
+                listener.onCLickItems(model)
+            }
 
         }
     }

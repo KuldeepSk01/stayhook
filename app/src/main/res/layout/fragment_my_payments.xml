@@ -51,8 +51,8 @@
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_15sdp"
                         android:background="@drawable/otp_box_background"
-                        android:paddingTop="@dimen/_5sdp"
-                        android:paddingBottom="@dimen/_5sdp">
+                        android:padding="@dimen/_5sdp"
+                        >
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvPendingPaymentMP"

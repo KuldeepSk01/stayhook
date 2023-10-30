@@ -5,7 +5,7 @@
     <color name="white_transparent">#66F0F3F8</color>
 
     <color name="grey">#838282</color>
-    <color name="d_grey">#424242</color>
+    <color name="gray_transparent">#3394A3B8</color>
     <color name="primary_color">#2972FF</color>
     <color name="grey_color">#8997A8</color>
     <color name="light_black">#1E293B</color>
@@ -19,7 +19,7 @@
     <color name="light_color">#FAFAFA</color>
     <color name="left_chat_bg_color">#F1F5F9</color>
     <color name="online_status_color">#22C55E</color>
-    <color name="select_filter">#332972FF</color>
+    <color name="select_filter">#262972FF</color>
     <color name="select_date_color">#662972FF</color>
 
 

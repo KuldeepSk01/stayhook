@@ -18,7 +18,7 @@
             app:cardElevation="@dimen/_1sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="@dimen/_150sdp"
+                android:layout_width="@dimen/_140sdp"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/_10sdp">
 
@@ -35,45 +35,51 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/ivRItem"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_120sdp" />
+                        android:layout_height="@dimen/_100sdp" />
                 </androidx.cardview.widget.CardView>
 
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRatingRItem"
-                    style="@style/headingTextSizeStyle1"
+                    style="@style/defaultTextSizeStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
-                    android:background="@drawable/otp_box_background"
-                    android:drawableStart="@drawable/ic_rateus_filled"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/white_transparent_btn_background"
+                    android:drawableEnd="@drawable/ic_rateus_filled"
                     android:drawablePadding="@dimen/_5sdp"
                     android:elevation="@dimen/_2sdp"
                     android:padding="@dimen/_5sdp"
                     android:text="@string/_4_5_text"
+                    android:textSize="@dimen/_8ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRItemName"
                     android:textSize="@dimen/_10ssp"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/inter_bold"
+                    android:fontFamily="@font/clearsans_regular"
                     android:text="@string/house"
                     android:textColor="@color/primary_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cvRItem" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRItemApartment"
                     style="@style/headingTextSizeStyle1"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
                     android:text="@string/primary_apartment_text"
                     app:layout_constraintTop_toBottomOf="@id/tvRItemName" />
 
@@ -81,12 +87,15 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRItemLocation"
                     style="@style/defaultTextSizeStyle"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:drawableStart="@drawable/ic_map_pin_gray"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:drawablePadding="@dimen/_5sdp"
-                    android:text="Noida, India"
+                    android:text="@string/greater_noida_sector_4_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvRItemApartment" />
 
                 <RelativeLayout
@@ -95,6 +104,7 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/_2sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvRItemLocation">

@@ -15,10 +15,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivItemAmenitiesCategory"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:scaleType="centerCrop"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_24sdp"
             android:background="@drawable/ac"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,6 +30,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/img_1"
+            android:fontFamily="@font/clearsans_medium"
+            android:textSize="@dimen/_8ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivItemAmenitiesCategory" />

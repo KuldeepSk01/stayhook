@@ -1,5 +1,6 @@
 package com.stayhook.util
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -7,6 +8,8 @@ import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.Fragment
+import com.stayhook.base.BaseActivity
 import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -64,6 +67,15 @@ fun getDateFormat(day:Int,month:Int,year:Int): String {
     mTime.set(Calendar.MONTH, month)
     mTime.set(Calendar.YEAR, year)
     return  sdf.format(mTime.time)
+}
+
+
+ fun removeAllFragmentsFromFragment(fragment: Fragment) {
+    val fm = fragment.requireActivity().supportFragmentManager
+    for (i in 0 until fm.backStackEntryCount) {
+        fm.popBackStack()
+    }
+    // onBackPress()
 }
 
 

@@ -1,14 +1,11 @@
 package com.stayhook.adapter
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
 import com.stayhook.R
 import com.stayhook.databinding.ItemFavoriteLayoutBinding
 import com.stayhook.model.Recommendation
@@ -32,7 +29,9 @@ class FavoriteAdapter(val list: MutableList<Recommendation>, val context: Contex
     override fun onBindViewHolder(holder: FavoriteVM, position: Int) {
         val model = list[position]
         holder.b.apply {
+/*
             tvRAItemTitle.text = model.name
+*/
             tvRAItemLocation.text = model.location
             tvRAItemApartmentType.text = model.apartmentType
             tvRAItemCost.text = "$ ${model.price}"

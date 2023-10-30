@@ -1,6 +1,5 @@
 package com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
@@ -8,15 +7,11 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.stayhook.R
-import com.stayhook.base.BaseActivity
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentPaymentBinding
 import com.stayhook.screen.dashboard.home.HomeFragment
-import com.stayhook.screen.dashboard.home.HomeRoomTypeActivity
+import com.stayhook.screen.dashboard.home.HomeRoomTypeFragment
 import com.stayhook.util.Constants
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class PaymentFragment : BaseFragment() {
 
@@ -58,8 +53,10 @@ class PaymentFragment : BaseFragment() {
                     bottomSheetB.peekHeight=0
                     bottomSheetB.state = BottomSheetBehavior.STATE_HIDDEN
                     pBinding.bottomSheetBCCL.visibility = View.GONE
-                    launchActivityWithB(getString(R.string.private_room))
+                  //  launchActivityWithB(getString(R.string.private_room))
                     removeAllFragments()
+                    replaceFragWithB(getString(R.string.private_room))
+
 
                 }
             }
@@ -75,14 +72,20 @@ class PaymentFragment : BaseFragment() {
         for (i in 0 until fm.backStackEntryCount) {
             fm.popBackStack()
         }
+       // onBackPress()
     }
 
 
-    private fun launchActivityWithB(title: String) {
+    private fun replaceFragWithB(title: String) {
         val b = Bundle()
         b.putString(Constants.DefaultConstants.STRING, title)
-        launchActivity(HomeRoomTypeActivity::class.java, Constants.DefaultConstants.BUNDLE,b)
+        replaceFragment(
+            R.id.flMainContainer,
+            HomeRoomTypeFragment(), b,
+            HomeFragment().javaClass.simpleName
+        )
     }
+
 
 
 }

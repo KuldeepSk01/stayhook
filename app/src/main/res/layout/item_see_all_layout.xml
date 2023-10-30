@@ -58,12 +58,14 @@
                     android:layout_below="@id/tvSealAllItemTitle"
                     android:drawableStart="@drawable/ic_map_pin_gray"
                     android:drawablePadding="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="@string/greater_noida_sector_4_text" />
 
                 <RelativeLayout
                     android:id="@+id/rlSeeAllItemCost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:layout_below="@id/tvSeeAllItemLocation"
                     android:gravity="center_vertical"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -97,12 +99,12 @@
                     android:layout_below="@+id/rlSeeAllItemCost"
                     android:layout_centerVertical="true"
                     android:gravity="center"
-                    android:background="@drawable/otp_box_outline_drawable"
+                    android:background="@drawable/blue_transparen_background"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_10sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingBottom="@dimen/_5sdp"
-                    android:text="Men" />
+                    android:text="@string/men" />
 
 
             </RelativeLayout>

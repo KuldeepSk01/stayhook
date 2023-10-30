@@ -1,5 +1,6 @@
 package com.stayhook.screen.dashboard.home.recommondationdetail
 
+import android.app.ActionBar.LayoutParams
 import android.os.Build
 import android.util.Log
 import android.view.View
@@ -20,6 +21,7 @@ import com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment.Boo
 import com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment.ScheduleVisitFragment
 import com.stayhook.screen.dashboard.home.recommondationdetail.writeareview.WriteAReviewFragment
 import com.stayhook.util.serializable
+
 
 class RecommendationDetailFragment : BaseFragment() {
     private lateinit var rdBinding: FragmentRecommendationDetailBinding
@@ -45,14 +47,10 @@ class RecommendationDetailFragment : BaseFragment() {
         val model = arguments?.serializable<Recommendation>("recommendationDetail")
         Log.d("TAG", "onInitView rdetail:  $model")
         rdBinding.apply {
+            setAdapterWithSpanCount(4)
             toolbarRD.apply {
                 ivToolBarBack.background =
                     ResourcesCompat.getDrawable(resources, R.drawable.ic_back, null)
-                rvFeaturesAmenity.apply {
-                    itemAnimator = DefaultItemAnimator()
-                    layoutManager = GridLayoutManager(requireContext(), 5)
-                    adapter = AmenitiesAdapter(getAmenitiesList(),requireContext())
-                }
                 ivToolBarBack.setOnClickListener {
                     onBackPress()
                 }
@@ -65,6 +63,16 @@ class RecommendationDetailFragment : BaseFragment() {
                     ScheduleVisitFragment(),
                     RecommendationDetailFragment::class.simpleName
                 )
+            }
+            tvViewMoreBtn.setOnClickListener {
+                binding.rvFeaturesAmenity.apply {
+                    layoutParams.width=LayoutParams.MATCH_PARENT
+                    layoutParams.height=LayoutParams.MATCH_PARENT
+                }
+                setAdapterWithSpanCount(5)
+                tvViewMoreBtn.visibility = View.GONE
+
+
             }
             tvReviewsWriteAReview.setOnClickListener {
                   replaceFragment(R.id.flMainContainer,WriteAReviewFragment(),RecommendationDetailFragment::class.simpleName)
@@ -108,6 +116,14 @@ class RecommendationDetailFragment : BaseFragment() {
 
     }
 
+    private fun setAdapterWithSpanCount(i: Int) {
+        rdBinding.rvFeaturesAmenity.apply {
+            itemAnimator = DefaultItemAnimator()
+            layoutManager = GridLayoutManager(requireContext(), i)
+            adapter = AmenitiesAdapter(getAmenitiesList(),requireContext())
+        }
+    }
+
 
     private fun setBackGround(vLayout: View, tv1: AppCompatTextView) {
         /*  rdBinding.apply {
@@ -138,6 +154,9 @@ class RecommendationDetailFragment : BaseFragment() {
         list.add(Amenities(8, R.drawable.ac, getString(R.string.ac_text)))
         list.add(Amenities(9, R.drawable.ac, getString(R.string.ac_text)))
         list.add(Amenities(10, R.drawable.ac, getString(R.string.ac_text)))
+        list.add(Amenities(11, R.drawable.ac, getString(R.string.ac_text)))
+        list.add(Amenities(12, R.drawable.ac, getString(R.string.ac_text)))
+        list.add(Amenities(13, R.drawable.ac, getString(R.string.ac_text)))
         return list
     }
 

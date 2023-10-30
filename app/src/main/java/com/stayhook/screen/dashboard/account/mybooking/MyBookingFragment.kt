@@ -23,7 +23,8 @@ class MyBookingFragment : BaseFragment() {
 
         mBinding.apply {
             toolBarMyBooking.apply {
-                ivToolBarBack.visibility = View.GONE
+                ivToolBarBack.visibility = View.INVISIBLE
+                tvToolBarTitle.text = getString(R.string.my_booking)
 
             }
 

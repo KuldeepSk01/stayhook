@@ -5,12 +5,15 @@
 
     <data>
 
+        <variable
+            name="homeViewModel"
+            type="com.stayhook.screen.dashboard.home.HomeViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         tools:context=".screen.dashboard.home.HomeFragment">
 
         <androidx.core.widget.NestedScrollView
@@ -45,6 +48,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:onClick="@{()->homeViewModel.onClickNotificationIcon()}"
                         android:layout_marginEnd="@dimen/_15sdp"
                         android:src="@drawable/ic_notifications" />
 
@@ -55,21 +59,23 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:onClick="@{()->homeViewModel.onClickLocation()}"
                         android:drawableEnd="@drawable/ic_down_arrow"
+                        android:padding="@dimen/_5sdp"
                         android:drawablePadding="@dimen/_10sdp"
                         android:text="@string/location" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvHomeLocation"
-                        style="@style/headingTextSizeStyle1"
+                        style="@style/defaultTextSizeStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tvLocationHome"
                         android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:drawableStart="@drawable/ic_map_blue_pin"
                         android:drawablePadding="@dimen/_5sdp"
-                        android:text="Noida, India" />
+                        android:fontFamily="@font/clearsans_bold"
+                        android:text="@string/noida_india_text" />
 
                     <!--<androidx.appcompat.widget.AppCompatEditText
                         android:layout_marginEnd="@dimen/_10sdp"
@@ -99,9 +105,9 @@
                     android:id="@+id/findCardsLLC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -111,12 +117,14 @@
                         android:id="@+id/cvHouseHome"
                         style="@style/findCardViewStyle"
                         android:layout_weight="1"
+                        android:onClick="@{()->homeViewModel.onClickHouse()}"
                         app:cardCornerRadius="@dimen/_10sdp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/llcHouseHome"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:background="@drawable/outline_search_filter_bg"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -142,12 +150,14 @@
                         style="@style/findCardViewStyle"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_weight="1"
+                        android:onClick="@{()->homeViewModel.onClickPrivateRoom()}"
                         app:cardCornerRadius="@dimen/_10sdp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/llcPrivateRoomHome"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:background="@drawable/outline_search_filter_bg"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -173,12 +183,14 @@
                         style="@style/findCardViewStyle"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_weight="1"
+                        android:onClick="@{()->homeViewModel.onClickSharedRoom()}"
                         app:cardCornerRadius="@dimen/_10sdp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/llcSharedRoomHome"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:background="@drawable/outline_search_filter_bg"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -212,7 +224,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvRecommendationsHomeTXT"
-                        style="@style/headingTextSizeStyle1"
+                        style="@style/headingTextSizeStyle2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_15sdp"
@@ -222,12 +234,13 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvSeeAllTXT"
+                        style="@style/headingTextSizeStyle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_15sdp"
-                        android:fontFamily="@font/clearsans_bold"
+                        android:onClick="@{()->homeViewModel.onClickSeeAllItems()}"
                         android:padding="@dimen/_5sdp"
                         android:text="@string/see_all_text"
                         android:textColor="@color/primary_color"
@@ -254,7 +267,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvNearbyLocation"
-                        style="@style/headingTextSizeStyle1"
+                        style="@style/headingTextSizeStyle2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_15sdp"
@@ -264,12 +277,13 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvSeeAllNearbyLocation"
+                        style="@style/headingTextSizeStyle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_15sdp"
-                        android:fontFamily="@font/clearsans_bold"
+                        android:onClick="@{()->homeViewModel.onClickSeeAllItems()}"
                         android:padding="@dimen/_5sdp"
                         android:text="@string/see_all_text"
                         android:textColor="@color/primary_color"
@@ -298,7 +312,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvRecentAdded"
-                        style="@style/headingTextSizeStyle1"
+                        style="@style/headingTextSizeStyle2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_15sdp"
@@ -307,12 +321,13 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvRecentAddSeeAll"
+                        style="@style/headingTextSizeStyle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_15sdp"
-                        android:fontFamily="@font/clearsans_bold"
+                        android:onClick="@{()->homeViewModel.onClickSeeAllItems()}"
                         android:padding="@dimen/_5sdp"
                         android:text="@string/see_all_text"
                         android:textColor="@color/primary_color"
@@ -324,7 +339,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tvRecentAddSeeAll"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp" />
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        tools:listitem="@layout/item_recommendatation_layout" />
 
                 </RelativeLayout>
 

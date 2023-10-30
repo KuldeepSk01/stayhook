@@ -211,12 +211,4 @@ class SearchFilterFragment : BaseFragment() {
         }
     }
 
-    private fun getNearLocation(): MutableList<SearchFilter> {
-        val list = mutableListOf<SearchFilter>()
-        list.add(SearchFilter("Greater Noida"))
-        list.add(SearchFilter("Noida"))
-        list.add(SearchFilter("Delhi"))
-        return list
-    }
-
 }

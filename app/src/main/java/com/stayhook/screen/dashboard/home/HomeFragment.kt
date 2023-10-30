@@ -3,6 +3,7 @@ package com.stayhook.screen.dashboard.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -15,6 +16,7 @@ import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentHomeBinding
 import com.stayhook.model.Recommendation
+import com.stayhook.permissions.MyPermissions
 import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailFragment
 import com.stayhook.screen.notification.NotificationFragment
@@ -24,6 +26,20 @@ import org.koin.core.component.inject
 class HomeFragment : BaseFragment(), OnItemsClickListener {
 
     private val homeViewModel: HomeViewModel by inject()
+
+    // FusedLocationProviderClient - Main class for receiving location updates.
+   // private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
+    // LocationRequest - Requirements for the location updates, i.e.,
+// how often you should receive updates, the priority, etc.
+    //private lateinit var locationRequest: LocationRequest
+
+    // LocationCallback - Called when FusedLocationProviderClient
+// has a new Location
+   // private lateinit var locationCallback: LocationCallback
+
+    // This will store current location info
+   // private var currentLocation: Location? = null
     private lateinit var mainActivity: MainActivity
     private val rDetailFragment: RecommendationDetailFragment by lazy {
         RecommendationDetailFragment()
@@ -36,11 +52,16 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
 
     override fun onInitView(binding: ViewDataBinding, view: View) {
         homeBinding = binding as FragmentHomeBinding
-        showTab()
-        mainActivity= requireActivity() as MainActivity
+        mainActivity = requireActivity() as MainActivity
         mainActivity.setBottomStyle(1)
-        homeViewModel.getRecommendationList().let {
+        showTab()
+        homeViewModel.fragmentHome = this@HomeFragment
+        homeBinding.homeViewModel=homeViewModel
+        //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
+
+
+        homeViewModel.getRecommendationList().let {
             homeBinding.rvRecommendationItems.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
@@ -66,38 +87,6 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
                 adapter = NearbyLocationItemAdapter(it, requireContext(), this@HomeFragment)
             }
         }
-
-        homeBinding.tvSeeAllTXT.setOnClickListener {
-            replaceFrag(SeeAllItemsFragment())
-            hideTab()
-        }
-        homeBinding.tvSeeAllNearbyLocation.setOnClickListener {
-            replaceFrag(SeeAllItemsFragment())
-            hideTab()
-
-        }
-        homeBinding.tvRecentAddSeeAll.setOnClickListener {
-            replaceFrag(SeeAllItemsFragment())
-            hideTab()
-        }
-        homeBinding.llcHouseHome.setOnClickListener {
-            launchActivityWithB(getString(R.string.house))
-            hideTab()
-        }
-        homeBinding.llcPrivateRoomHome.setOnClickListener {
-            launchActivityWithB(getString(R.string.private_room))
-            hideTab()
-        }
-        homeBinding.llcSharedRoomHome.setOnClickListener {
-            launchActivityWithB(getString(R.string.shared_room))
-            hideTab()
-        }
-        homeBinding.ivNotificationIconHome.setOnClickListener {
-            replaceFrag(NotificationFragment())
-            hideTab()
-        }
-
-
     }
 
     override fun onCLickItems(model: Recommendation) {
@@ -108,21 +97,5 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
         Log.d("TAG", "onCLickItems: model data is $model")
         hideTab()
     }
-
-    private fun replaceFrag(f: Fragment) {
-        replaceFragment(
-            R.id.flMainContainer,
-            f,
-            HomeFragment().javaClass.simpleName
-        )
-    }
-
-
-    private fun launchActivityWithB(title: String) {
-        val b = Bundle()
-        b.putString(Constants.DefaultConstants.STRING, title)
-        launchActivity(HomeRoomTypeActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
-    }
-
 
 }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.stayhook.R
 import com.stayhook.databinding.ItemHelpCenterQuestionLayoutBinding
 import com.stayhook.databinding.ItemMyPaymentLayoutBinding
@@ -37,6 +38,7 @@ class MyPaymentAdapter(val list: MutableList<Recommendation>,val context : Conte
             tvLocationItemPayment.text = model.location
             tvPaymentPriceBtn.text=model.price
             amountTV.text = "$${model.price}"
+            Glide.with(context).load(model.imgUrl).into(ivitemPaymentImg)
         }
     }
 }

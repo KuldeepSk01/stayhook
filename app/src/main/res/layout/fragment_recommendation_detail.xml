@@ -298,6 +298,7 @@
                         android:layout_marginTop="@dimen/_20sdp"
                         android:layout_marginEnd="@dimen/_15sdp"
                         android:background="@drawable/otp_box_outline_drawable"
+                        android:fontFamily="@font/clearsans_medium"
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
                         android:text="@string/schedule_a_visit_text"
@@ -348,10 +349,12 @@
 
                                     <androidx.appcompat.widget.AppCompatCheckedTextView
                                         android:id="@+id/tvPrivateRoomRD"
+                                        style="@style/headingTextSizeStyle1"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="@dimen/_10sdp"
                                         android:layout_toEndOf="@+id/ivPrivateRoom"
+                                        android:textSize="@dimen/_10ssp"
                                         android:text="@string/private_room" />
 
                                     <androidx.appcompat.widget.AppCompatCheckedTextView
@@ -380,7 +383,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_centerVertical="true"
-                                            android:fontFamily="@font/clearsans_bold"
+                                            android:fontFamily="@font/clearsans_regular"
                                             android:text="@string/cost_2500_text"
                                             android:textColor="@color/heading_text_color"
                                             android:textSize="@dimen/_12sdp" />
@@ -415,10 +418,12 @@
 
                                     <androidx.appcompat.widget.AppCompatCheckedTextView
                                         android:id="@+id/tvTwoSharingRD"
+                                        style="@style/headingTextSizeStyle1"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="@dimen/_10sdp"
                                         android:layout_toEndOf="@+id/ivTwoSharing"
+                                        android:textSize="@dimen/_10ssp"
                                         android:text="@string/two_sharing_text" />
 
                                     <androidx.appcompat.widget.AppCompatCheckedTextView
@@ -447,8 +452,8 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_centerVertical="true"
-                                            android:fontFamily="@font/clearsans_bold"
-                                            android:text="$10,000"
+                                            android:fontFamily="@font/clearsans_regular"
+                                            android:text="@string/_10_000"
                                             android:textColor="@color/heading_text_color"
                                             android:textSize="@dimen/_12sdp" />
 
@@ -483,10 +488,12 @@
 
                                 <androidx.appcompat.widget.AppCompatCheckedTextView
                                     android:id="@+id/tvThreeRoomRD"
+                                    style="@style/headingTextSizeStyle1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_10sdp"
                                     android:layout_toEndOf="@+id/ivThreeSharingRoom"
+                                    android:textSize="@dimen/_10ssp"
                                     android:text="@string/three_sharing_text" />
 
                                 <androidx.appcompat.widget.AppCompatCheckedTextView
@@ -515,7 +522,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_centerVertical="true"
-                                        android:fontFamily="@font/clearsans_bold"
+                                        android:fontFamily="@font/clearsans_regular"
                                         android:text="@string/cost_6000_text"
                                         android:textColor="@color/heading_text_color"
                                         android:textSize="@dimen/_12sdp" />
@@ -586,24 +593,26 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvFeaturesAmenity"
                             android:layout_width="0dp"
-                            android:layout_height="@dimen/_60sdp"
+                            android:layout_height="@dimen/_50sdp"
                             android:layout_below="@+id/tvRDAmenities"
                             android:layout_marginTop="@dimen/_10sdp"
+                            android:lineSpacingExtra="@dimen/_10sdp"
                             app:layout_constraintEnd_toStartOf="@+id/tvViewMoreBtn"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tvRDAmenities"
-                            tools:itemCount="4" />
+                            tools:itemCount="3"
+                            />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvViewMoreBtn"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_35sdp"
                             android:background="@drawable/primary_dot_drawable"
                             android:fontFamily="@font/clearsans_bold"
                             android:gravity="center"
                             android:text="@string/view_more_text"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_10ssp"
+                            android:textSize="@dimen/_8ssp"
                             app:layout_constraintBottom_toBottomOf="@+id/rvFeaturesAmenity"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="1"
@@ -848,11 +857,11 @@
                             android:id="@+id/seperator2"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_1sdp"
+                            android:layout_below="@+id/tvAboutUSRD"
                             android:layout_marginStart="@dimen/_15sdp"
                             android:layout_marginTop="@dimen/_20sdp"
                             android:layout_marginEnd="@dimen/_15sdp"
-                            android:background="@color/gray6"
-                            android:layout_below="@+id/tvAboutUSRD" />
+                            android:background="@color/gray6" />
 
 
                         <androidx.appcompat.widget.AppCompatTextView
