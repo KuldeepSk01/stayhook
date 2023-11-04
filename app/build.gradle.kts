@@ -92,6 +92,10 @@ dependencies {
     //google map library
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     // for runtime permission
-    implementation ("com.karumi:dexter:6.2.3")
+    implementation("com.karumi:dexter:6.2.3")
+
+    //this is flashbar library for popup
+    implementation("com.andrognito.flashbar:flashbar:1.0.3")
+
 
 }

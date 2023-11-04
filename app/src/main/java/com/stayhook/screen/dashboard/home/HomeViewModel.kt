@@ -5,8 +5,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.stayhook.R
+import com.stayhook.base.BaseResponse
 import com.stayhook.base.BaseViewModel
 import com.stayhook.model.Recommendation
+import com.stayhook.model.response.MyProfileResponse
+import com.stayhook.model.response.home.HomeResponse
+import com.stayhook.network.ApiResponse
 import com.stayhook.permissions.MyPermissions
 import com.stayhook.screen.notification.NotificationFragment
 import com.stayhook.util.Constants
@@ -16,14 +20,26 @@ import com.stayhook.util.IMAGE_3
 import com.stayhook.util.IMAGE_4
 import com.stayhook.util.IMAGE_5
 
-class HomeViewModel(val repo: HomeRepository) : BaseViewModel() {
+class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
+
+    private val homeResponse = MutableLiveData<ApiResponse<HomeResponse>>()
+    fun hitHomePageApi(){
+        homeRepo.executeHomePageAPi(homeResponse)
+    }
+    fun getHomeResponse():MutableLiveData<ApiResponse<HomeResponse>>{
+        return homeResponse
+    }
+
+
+
+
     val recommendationList = MutableLiveData<MutableList<Recommendation>>()
     var fragmentHome: HomeFragment? = null
 
-    fun onClickLocation(){
-        if (MyPermissions.isLocationEnable){
+    fun onClickLocation() {
+        if (MyPermissions.isLocationEnable) {
             Toast.makeText(fragmentHome?.requireContext(), "Granted..", Toast.LENGTH_SHORT).show()
-        }else{
+        } else {
             MyPermissions.getLocationPermission(fragmentHome!!.requireContext())
         }
     }

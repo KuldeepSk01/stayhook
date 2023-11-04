@@ -1,14 +1,19 @@
 package com.stayhook.screen.dashboard.home.recommondationdetail
 
-import androidx.core.content.res.ResourcesCompat
-import com.stayhook.R
+import androidx.lifecycle.MutableLiveData
+import com.stayhook.base.BaseResponse
 import com.stayhook.base.BaseViewModel
-import com.stayhook.model.Amenities
+import com.stayhook.model.response.getpopertydetail.GetPropertyDetail
+import com.stayhook.network.ApiResponse
 
-class RecommendationViewModel : BaseViewModel() {
-/*   fun getAmenitiesList():MutableList<Amenities>{
-       val list = mutableListOf<Amenities>()
-       list.add(Amenities(1,R.drawable.ac,"sds"))
+class RecommendationViewModel(private val repo: RecommendationRepo) : BaseViewModel() {
+    private val propertyDetailResponse =
+        MutableLiveData<ApiResponse<BaseResponse<GetPropertyDetail>>>()
 
-   }*/
+    fun hitPropertyDetail(propertyId: String) {
+        repo.executePropertyDetail(propertyId, propertyDetailResponse)
+    }
+    fun getPropertyDetailResponse(): MutableLiveData<ApiResponse<BaseResponse<GetPropertyDetail>>> {
+        return propertyDetailResponse
+    }
 }

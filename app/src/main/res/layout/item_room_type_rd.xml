@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/_5sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivItemRoom"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:src="@drawable/ic_person" />
+
+            <androidx.appcompat.widget.AppCompatCheckedTextView
+                android:id="@+id/tvRoomNameRD"
+                style="@style/headingTextSizeStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ivItemRoom"
+                android:textSize="@dimen/_10ssp"
+                android:text="@string/private_room" />
+
+            <androidx.appcompat.widget.AppCompatCheckedTextView
+                android:id="@+id/tvRoomTypeRD"
+                style="@style/defaultTextSizeStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvRoomNameRD"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ivItemRoom"
+                android:text="@string/starting_from_text" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvRoomTypeRD"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ivItemRoom"
+                android:gravity="center_vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCostItemRoom"
+                    style="@style/defaultTextSizeStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/clearsans_regular"
+                    android:text="@string/cost_2500_text"
+                    android:textColor="@color/heading_text_color"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPerMonthRoomTXT"
+                    style="@style/defaultTextSizeStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/tvCostItemRoom"
+                    android:text="@string/month_text"
+                    android:textColor="@color/heading_text_color" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

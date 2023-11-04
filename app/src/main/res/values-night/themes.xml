@@ -16,9 +16,11 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
-<!--
-        <item name="android:forceDarkAllowed">false</item>
--->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+        <!--
+                <item name="android:forceDarkAllowed">false</item>
+        -->
 
     </style>
 

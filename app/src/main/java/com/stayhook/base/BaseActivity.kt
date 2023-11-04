@@ -8,16 +8,21 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import com.stayhook.R
 import com.stayhook.base.interfaces.BaseInterface
+import com.stayhook.preference.PreferenceHelper
 import com.stayhook.util.CustomDialogs
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-abstract class BaseActivity : AppCompatActivity(), BaseInterface, KoinComponent {
+abstract class BaseActivity : AppCompatActivity(), BaseInterface, KoinComponent, LifecycleOwner {
+    val mPref: PreferenceHelper by inject()
 
-    private val progressDialog:Dialog by lazy {
+    private val progressDialog: Dialog by lazy {
         CustomDialogs.successProgressDialog(this@BaseActivity)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -36,9 +41,17 @@ abstract class BaseActivity : AppCompatActivity(), BaseInterface, KoinComponent 
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
-    fun launchActivity(classType: Class<out BaseActivity>,bundleKey: String,bundle:Bundle) {
+
+    fun launchActivity(classType: Class<out BaseActivity>, key: String, value: String) {
         val intent = Intent(this@BaseActivity, classType)
-        intent.putExtra(bundleKey,bundle)
+        intent.putExtra(key, value)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+    }
+
+    fun launchActivity(classType: Class<out BaseActivity>, bundleKey: String, bundle: Bundle) {
+        val intent = Intent(this@BaseActivity, classType)
+        intent.putExtra(bundleKey, bundle)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
@@ -66,14 +79,14 @@ abstract class BaseActivity : AppCompatActivity(), BaseInterface, KoinComponent 
         bt.commit()
     }
 
-    fun showProgress(){
-        if (!progressDialog.isShowing){
+    fun showProgress() {
+        if (!progressDialog.isShowing) {
             progressDialog.show()
         }
     }
 
-    fun hideProgress(){
-        if (progressDialog.isShowing){
+    fun hideProgress() {
+        if (progressDialog.isShowing) {
             progressDialog.dismiss()
         }
     }

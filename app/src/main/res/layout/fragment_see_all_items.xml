@@ -52,8 +52,20 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:clipToPadding="true"
-                    android:paddingBottom="@dimen/_100sdp"
-                    tools:listitem="@layout/item_see_all_layout" />
+                    android:paddingBottom="@dimen/_20sdp"
+                     />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLoadMoreBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/defaultBtnStyle"
+                    android:text="@string/load_more"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:layout_below="@+id/rvSeeAll"
+                    android:paddingBottom="@dimen/_50sdp"
+                    />
             </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

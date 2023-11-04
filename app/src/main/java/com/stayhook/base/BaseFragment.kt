@@ -11,9 +11,12 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.R
+import com.stayhook.preference.PreferenceHelper
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 abstract class BaseFragment : Fragment(), KoinComponent, View.OnClickListener {
+    val mPref:PreferenceHelper by inject()
 
     lateinit var baseActivity: BaseActivity
     private lateinit var binding: ViewDataBinding
@@ -22,11 +25,11 @@ abstract class BaseFragment : Fragment(), KoinComponent, View.OnClickListener {
     abstract fun onInitView(binding: ViewDataBinding, view: View)
 
     override fun onAttach(context: Context) {
-        super.onAttach(context)
         if (context is BaseActivity)
-            baseActivity = context
-    }
+        { baseActivity = context}
+        super.onAttach(context)
 
+    }
 
     open fun hideTab() {
         if (baseActivity is MainActivity) {

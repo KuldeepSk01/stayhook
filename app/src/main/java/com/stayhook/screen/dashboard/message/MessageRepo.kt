@@ -1,6 +1,6 @@
 package com.stayhook.screen.dashboard.message
 
-import com.stayhook.base.BaseRepositopry
+import com.stayhook.base.BaseRepository
 
-class MessageRepo:BaseRepositopry() {
+class MessageRepo:BaseRepository() {
 }

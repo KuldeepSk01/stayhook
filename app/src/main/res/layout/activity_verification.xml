@@ -67,7 +67,7 @@
                         app:layout_constraintTop_toBottomOf="@id/toolbarAV" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/createAccText"
+                        android:id="@+id/tvOtpSent"
                         style="@style/defaultTextSizeStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                         android:layout_marginEnd="@dimen/_30sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/createAccText">
+                        app:layout_constraintTop_toBottomOf="@+id/tvOtpSent">
 
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/etOne"
@@ -173,7 +173,6 @@
                             android:text="@string/pin_view"
                             android:gravity="end"
                             android:textColor="@color/text_hint_color"
-                            android:paddingEnd="@dimen/_10sdp"
                             android:textSize="@dimen/_10sdp" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -184,6 +183,16 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/_3sdp"
                             android:text="@string/resend_btn"
+                            android:textColor="@color/primary_color"
+                            android:textSize="@dimen/_12sdp" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvOTPTime"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:text="@string/otp_time"
                             android:textColor="@color/primary_color"
                             android:textSize="@dimen/_12sdp" />
 

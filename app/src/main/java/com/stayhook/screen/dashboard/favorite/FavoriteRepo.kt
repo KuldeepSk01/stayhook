@@ -1,6 +1,6 @@
 package com.stayhook.screen.dashboard.favorite
 
-import com.stayhook.base.BaseRepositopry
+import com.stayhook.base.BaseRepository
 
-class FavoriteRepo : BaseRepositopry() {
+class FavoriteRepo : BaseRepository() {
 }

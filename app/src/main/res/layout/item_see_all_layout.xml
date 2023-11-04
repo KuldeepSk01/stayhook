@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
+        android:id="@+id/cvSeeAllItem"
         app:cardCornerRadius="@dimen/_10sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +31,7 @@
                     android:id="@+id/ivSeeAllItem"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/app_back_ground_img"
+                    android:background="@drawable/default_image"
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 

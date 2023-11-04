@@ -99,12 +99,13 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvDetailRoomType"
                         style="@style/headingTextSizeStyle1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_20sdp"
                         android:text="@string/shared_room"
                         android:textColor="@color/primary_color"
+                        app:layout_constraintEnd_toStartOf="@+id/tvDetailPageRatings"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -118,7 +119,6 @@
                         android:drawableStart="@drawable/ic_rateus_filled"
                         android:drawablePadding="@dimen/_10sdp"
                         android:text="@string/_4_5_256_reviews_text"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvDetailRoomType"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvDetailRoomType" />
 
@@ -132,7 +132,7 @@
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:text="@string/primary_apartment_text"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvDetailPageRatings" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvDetailRoomType" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvLocationDescription"
@@ -167,7 +167,6 @@
                             android:drawableStart="@drawable/ic_bed"
                             android:drawablePadding="@dimen/_10sdp"
                             android:fontFamily="@font/clearsans_regular"
-                            android:text="@string/bed"
                             android:textColor="@color/heading_text_color"
                             android:textStyle="bold"
 
@@ -184,7 +183,6 @@
                             android:drawableStart="@drawable/ic_tabler_bath"
                             android:drawablePadding="@dimen/_10sdp"
                             android:fontFamily="@font/clearsans_regular"
-                            android:text="@string/_3_bath_text"
                             android:textColor="@color/heading_text_color"
                             android:textStyle="bold" />
 
@@ -197,7 +195,6 @@
                             android:drawableStart="@drawable/ic_area"
                             android:drawablePadding="@dimen/_10sdp"
                             android:fontFamily="@font/clearsans_regular"
-                            android:text="@string/sqft"
                             android:textColor="@color/heading_text_color"
                             android:textStyle="bold" />
                     </RelativeLayout>
@@ -323,236 +320,11 @@
                             android:layout_height="wrap_content"
                             android:text="@string/room_types_text" />
 
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="wrap_content"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvRoomTypeRD"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/tvRDRoomTypesText"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:orientation="vertical">
-
-                            <androidx.appcompat.widget.LinearLayoutCompat
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tvRDRoomTypesText"
-                                    android:layout_weight="1">
-
-                                    <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/ivPrivateRoom"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_person" />
-
-                                    <androidx.appcompat.widget.AppCompatCheckedTextView
-                                        android:id="@+id/tvPrivateRoomRD"
-                                        style="@style/headingTextSizeStyle1"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:layout_toEndOf="@+id/ivPrivateRoom"
-                                        android:textSize="@dimen/_10ssp"
-                                        android:text="@string/private_room" />
-
-                                    <androidx.appcompat.widget.AppCompatCheckedTextView
-                                        android:id="@+id/tvPrivateRoomStRD"
-                                        style="@style/defaultTextSizeStyle"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_below="@+id/tvPrivateRoomRD"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:layout_toEndOf="@+id/ivPrivateRoom"
-                                        android:text="@string/starting_from_text" />
-
-                                    <RelativeLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_below="@+id/tvPrivateRoomStRD"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:layout_marginBottom="@dimen/_10sdp"
-                                        android:layout_toEndOf="@+id/ivPrivateRoom"
-                                        android:gravity="center_vertical">
-
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/tvCostSB"
-                                            style="@style/defaultTextSizeStyle"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerVertical="true"
-                                            android:fontFamily="@font/clearsans_regular"
-                                            android:text="@string/cost_2500_text"
-                                            android:textColor="@color/heading_text_color"
-                                            android:textSize="@dimen/_12sdp" />
-
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/tvPerMonthSB"
-                                            style="@style/defaultTextSizeStyle"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerVertical="true"
-                                            android:layout_toEndOf="@+id/tvCostSB"
-                                            android:text="@string/month_text"
-                                            android:textColor="@color/heading_text_color" />
-
-                                    </RelativeLayout>
-
-
-                                </RelativeLayout>
-
-                                <RelativeLayout
-                                    android:id="@+id/rlTwoSharing"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tvRDRoomTypesText"
-                                    android:layout_weight="1">
-
-                                    <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/ivTwoSharing"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_person" />
-
-                                    <androidx.appcompat.widget.AppCompatCheckedTextView
-                                        android:id="@+id/tvTwoSharingRD"
-                                        style="@style/headingTextSizeStyle1"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:layout_toEndOf="@+id/ivTwoSharing"
-                                        android:textSize="@dimen/_10ssp"
-                                        android:text="@string/two_sharing_text" />
-
-                                    <androidx.appcompat.widget.AppCompatCheckedTextView
-                                        android:id="@+id/tvTwoSharingStRD"
-                                        style="@style/defaultTextSizeStyle"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_below="@+id/tvTwoSharingRD"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:layout_toEndOf="@+id/ivTwoSharing"
-                                        android:text="@string/starting_from_text" />
-
-                                    <RelativeLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_below="@+id/tvTwoSharingStRD"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:layout_marginBottom="@dimen/_10sdp"
-                                        android:layout_toEndOf="@+id/ivTwoSharing"
-                                        android:gravity="center_vertical">
-
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/tvCostTwoSharingRD"
-                                            style="@style/defaultTextSizeStyle"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerVertical="true"
-                                            android:fontFamily="@font/clearsans_regular"
-                                            android:text="@string/_10_000"
-                                            android:textColor="@color/heading_text_color"
-                                            android:textSize="@dimen/_12sdp" />
-
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/tvPerMonthTwoSharingRD"
-                                            style="@style/defaultTextSizeStyle"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerVertical="true"
-                                            android:layout_toEndOf="@+id/tvCostTwoSharingRD"
-                                            android:text="@string/month_text"
-                                            android:textColor="@color/heading_text_color" />
-
-                                    </RelativeLayout>
-
-
-                                </RelativeLayout>
-
-                            </androidx.appcompat.widget.LinearLayoutCompat>
-
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvRDRoomTypesText"
-                                android:layout_weight="1">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/ivThreeSharingRoom"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_person" />
-
-                                <androidx.appcompat.widget.AppCompatCheckedTextView
-                                    android:id="@+id/tvThreeRoomRD"
-                                    style="@style/headingTextSizeStyle1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_toEndOf="@+id/ivThreeSharingRoom"
-                                    android:textSize="@dimen/_10ssp"
-                                    android:text="@string/three_sharing_text" />
-
-                                <androidx.appcompat.widget.AppCompatCheckedTextView
-                                    android:id="@+id/tvThreeSharingRoomStRD"
-                                    style="@style/defaultTextSizeStyle"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tvThreeRoomRD"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_toEndOf="@+id/ivThreeSharingRoom"
-                                    android:text="@string/starting_from_text" />
-
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tvThreeSharingRoomStRD"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_marginBottom="@dimen/_10sdp"
-                                    android:layout_toEndOf="@+id/ivThreeSharingRoom"
-                                    android:gravity="center_vertical">
-
-                                    <androidx.appcompat.widget.AppCompatTextView
-                                        android:id="@+id/tvCostThreeSharing"
-                                        style="@style/defaultTextSizeStyle"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:fontFamily="@font/clearsans_regular"
-                                        android:text="@string/cost_6000_text"
-                                        android:textColor="@color/heading_text_color"
-                                        android:textSize="@dimen/_12sdp" />
-
-                                    <androidx.appcompat.widget.AppCompatTextView
-                                        android:id="@+id/tvPerMonthThreeSharing"
-                                        style="@style/defaultTextSizeStyle"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_toEndOf="@+id/tvCostThreeSharing"
-                                        android:text="@string/month_text"
-                                        android:textColor="@color/heading_text_color" />
-
-                                </RelativeLayout>
-
-
-                            </RelativeLayout>
-
-
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-                        <!-- <androidx.recyclerview.widget.RecyclerView
-                             android:id="@+id/rvRDOverviews"
-                             android:layout_width="match_parent"
-                             android:layout_height="match_parent"
-                             android:layout_below="@+id/tvRDOverviewText"
-                             android:layout_marginTop="@dimen/_10sdp" />-->
-
+                            android:layout_below="@+id/tvRDRoomTypesText" />
                     </RelativeLayout>
 
 
@@ -592,16 +364,16 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvFeaturesAmenity"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="@dimen/_50sdp"
                             android:layout_below="@+id/tvRDAmenities"
                             android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_40sdp"
                             android:lineSpacingExtra="@dimen/_10sdp"
                             app:layout_constraintEnd_toStartOf="@+id/tvViewMoreBtn"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tvRDAmenities"
-                            tools:itemCount="3"
-                            />
+                            tools:itemCount="3" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvViewMoreBtn"
@@ -616,7 +388,6 @@
                             app:layout_constraintBottom_toBottomOf="@+id/rvFeaturesAmenity"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="1"
-                            app:layout_constraintStart_toEndOf="@+id/rvFeaturesAmenity"
 
                             app:layout_constraintTop_toBottomOf="@+id/tvRDAmenities" />
 
@@ -839,25 +610,27 @@
                         app:layout_constraintTop_toBottomOf="@+id/seperator1">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvAboutRD"
+                            android:id="@+id/tvAboutRDTXT"
                             style="@style/headingTextSizeStyle1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/about_us" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvAboutUSRD"
+                            android:id="@+id/tvAboutRD"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/tvAboutRD"
-                            android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry" />
+                            android:layout_below="@+id/tvAboutRDTXT"
+                            android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry"
+
+                            />
 
 
                         <View
                             android:id="@+id/seperator2"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_1sdp"
-                            android:layout_below="@+id/tvAboutUSRD"
+                            android:layout_below="@+id/tvAboutRD"
                             android:layout_marginStart="@dimen/_15sdp"
                             android:layout_marginTop="@dimen/_20sdp"
                             android:layout_marginEnd="@dimen/_15sdp"

@@ -34,6 +34,8 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/ivRItem"
+                        android:background="@drawable/default_image"
+                        android:scaleType="centerCrop"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp" />
                 </androidx.cardview.widget.CardView>

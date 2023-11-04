@@ -19,7 +19,7 @@
     <string name="sign_in_btn">Sign In Here</string>
     <string name="verify_detail">We have sent the code verification to +91 2345666666</string>
     <string name="pin_view">If you didn\'t receive any code?</string>
-    <string name="resend_btn">Resend New Code</string>
+    <string name="resend_btn">Resend Code : </string>
     <string name="confirm">Confirm</string>
     <string name="close_app">Are you sure to close app?</string>
     <string name="ok_btn">OK</string>
@@ -387,6 +387,7 @@
     <string name="img_1">Img 1</string>
     <string name="_10_000">$10,000</string>
     <string name="men">Men</string>
+    <string name="otp_time">00:59</string>
 
 
     <string-array name="minimum_amount">
@@ -406,4 +407,9 @@
     </string-array>
 
 
+    <!--validation keys-->
+    <string name="error_mobile_empty">Enter your mobile number.!</string>
+    <string name="error_mobile_length">Mobile number must be 10 digit!</string>
+    <string name="error_full_name_empty">Enter your full name!</string>
+    <string name="load_more">Load More</string>
 </resources>

@@ -1,7 +1,7 @@
 package com.stayhook.adapter.interfaces
 
-import com.stayhook.model.Recommendation
+import com.stayhook.model.response.home.RecommendData
 
 interface OnItemsClickListener {
-    fun onCLickItems(model: Recommendation)
+    fun onCLickItems(model: RecommendData)
 }

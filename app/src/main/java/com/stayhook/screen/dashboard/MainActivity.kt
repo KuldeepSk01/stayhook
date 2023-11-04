@@ -1,19 +1,15 @@
 package com.stayhook.screen.dashboard
 
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionDeniedResponse
-import com.karumi.dexter.listener.PermissionGrantedResponse
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.single.PermissionListener
 import com.stayhook.R
 import com.stayhook.base.BaseActivity
 import com.stayhook.databinding.ActivityMainBinding
-import com.stayhook.permissions.MyPermissions
 import com.stayhook.screen.dashboard.account.AccountFragment
 import com.stayhook.screen.dashboard.favorite.FavoriteFragment
 import com.stayhook.screen.dashboard.home.HomeFragment
@@ -25,6 +21,7 @@ import org.koin.core.component.KoinComponent
 
 class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
     private lateinit var dashBoardListener: DashBoardListener
+    private var isBackPressed = false
 
     companion object {
         const val TAG = "MainActivity"
@@ -65,7 +62,8 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
         mainActivityBinding = binding as ActivityMainBinding
         dashBoardListener = this@MainActivity
         dashBoardListener.onBottomIconClick(homeFragment)
-
+        val userDetail = mPref.getUserDetail()
+        Log.d(TAG, "onViewInit: user detail $userDetail")
 
         mainActivityBinding.customBottomBarLayout.ivHomeIcon.setBackgroundResource(R.drawable.ic_home_selected)
 
@@ -187,4 +185,15 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
         bt.commit()
     }
 
+    override fun onBackPressed() {
+        if (isBackPressed) {
+            super.onBackPressed()
+        } else {
+            isBackPressed = true
+            Toast.makeText(this@MainActivity, "pressed back again to exit", Toast.LENGTH_SHORT).show()
+            Handler(Looper.getMainLooper()).postDelayed({
+                isBackPressed = false
+            }, 3000)
+        }
+    }
 }

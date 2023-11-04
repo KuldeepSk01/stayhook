@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="vm"
+    type="com.stayhook.screen.register.RegisterViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -99,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/etMobileOnRegister"
                     android:layout_marginTop="@dimen/_30sdp"
+                    android:onClick="@{()->vm.isValidData(etUserNameOnRegister.getText().toString(),etMobileOnRegister.getText().toString())}"
                     android:layout_marginBottom="@dimen/_30sdp"
                     android:text="@string/sign_up" />
 

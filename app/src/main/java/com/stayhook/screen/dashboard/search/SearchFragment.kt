@@ -15,6 +15,7 @@ import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentSearchBinding
 import com.stayhook.model.Recommendation
+import com.stayhook.model.response.home.RecommendData
 import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.screen.dashboard.home.HomeFragment
 import com.stayhook.screen.dashboard.home.HomeViewModel
@@ -56,8 +57,9 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener 
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                adapter =
+             /*   adapter =
                     SearchAdapter(homeViewModel.getRecommendationList(), requireContext(), this@SearchFragment)
+            */
             }
 
         }
@@ -68,7 +70,7 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener 
         mGoogleMap = p0
     }
 
-    override fun onCLickItems(model: Recommendation) {
+    override fun onCLickItems(model: RecommendData) {
         val b = Bundle()
         val rdFragment = RecommendationDetailFragment()
         b.putSerializable("recommendationDetail", model)

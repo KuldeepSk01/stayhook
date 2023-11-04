@@ -1,21 +1,22 @@
 package com.stayhook.adapter
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
 import com.stayhook.R
 import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.databinding.ItemRecentlyAddedLayoutBinding
-import com.stayhook.model.Recommendation
+import com.stayhook.model.response.home.RecommendData
 
-class RecentlyAddedItemAdapter(val list: MutableList<Recommendation>, val context: Context,private val listener : OnItemsClickListener) :
+class RecentlyAddedItemAdapter(
+    val list: MutableList<RecommendData>,
+    val context: Context,
+    private val listener: OnItemsClickListener
+) :
     RecyclerView.Adapter<RecentlyAddedItemAdapter.NearbyLVM>() {
     inner class NearbyLVM(val b: ItemRecentlyAddedLayoutBinding) : ViewHolder(b.root)
 
@@ -34,12 +35,12 @@ class RecentlyAddedItemAdapter(val list: MutableList<Recommendation>, val contex
     override fun onBindViewHolder(holder: NearbyLVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            Glide.with(context).load(model.imgUrl).into(ivRAItem)
-            tvRAItemTitle.text = model.name
-            tvRAItemLocation.text = model.location
-            tvRAItemApartmentType.text = model.apartmentType
-            tvRAItemCost.text = "$ ${model.price}"
-            tvRARatingItem.text = model.rating
+            Glide.with(context).load(model.property_image).into(ivRAItem)
+            tvRAItemTitle.text = model.property_type
+            tvRAItemLocation.text = "Secton-64"
+            tvRAItemApartmentType.text = model.property_name
+            tvRAItemCost.text = "$${model.price}"
+            tvRARatingItem.text = model.rating.toString()
 
             clItemRecentAdded.setOnClickListener {
                 listener.onCLickItems(model)

@@ -31,8 +31,7 @@
                     android:id="@+id/ivRAItem"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/app_back_ground_img"
-
+                    android:background="@drawable/default_image"
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 

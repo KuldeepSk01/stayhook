@@ -5,26 +5,36 @@ import android.os.Build
 import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.stayhook.R
 import com.stayhook.adapter.AmenitiesAdapter
 import com.stayhook.adapter.RecommendationDetailAdapter
+import com.stayhook.adapter.interfaces.AdapterRoomTypes
 import com.stayhook.base.BaseFragment
+import com.stayhook.base.BaseResponse
 import com.stayhook.databinding.FragmentRecommendationDetailBinding
-import com.stayhook.model.Amenities
-import com.stayhook.model.Recommendation
+import com.stayhook.model.response.getpopertydetail.GetPropertyDetail
+import com.stayhook.model.response.getpopertydetail.PropertyImage
+import com.stayhook.model.response.getpopertydetail.PropertyInventory
+import com.stayhook.model.response.getpopertydetail.PropertyRoom
+import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment.BookFragment
 import com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment.ScheduleVisitFragment
 import com.stayhook.screen.dashboard.home.recommondationdetail.writeareview.WriteAReviewFragment
-import com.stayhook.util.serializable
+import com.stayhook.util.CustomDialogs.showErrorMessage
+import org.koin.core.component.inject
 
 
 class RecommendationDetailFragment : BaseFragment() {
     private lateinit var rdBinding: FragmentRecommendationDetailBinding
+    private val mViewModel: RecommendationViewModel by inject()
+    private lateinit var propertyDetail: GetPropertyDetail
+    private var inventorylist = mutableListOf<PropertyInventory>()
+    private var roomList = mutableListOf<PropertyRoom>()
 
 
     private val scheduleVisitFragment: ScheduleVisitFragment by lazy {
@@ -43,11 +53,14 @@ class RecommendationDetailFragment : BaseFragment() {
     override fun onInitView(binding: ViewDataBinding, view: View) {
         rdBinding = binding as FragmentRecommendationDetailBinding
         //setBackGround(rdBinding.llInteriorRD, rdBinding.tvInteriorRd)
+        val propertyId = arguments?.getString ("propertyId")
 
-        val model = arguments?.serializable<Recommendation>("recommendationDetail")
-        Log.d("TAG", "onInitView rdetail:  $model")
+        mViewModel.hitPropertyDetail(propertyId!!)
+        mViewModel.getPropertyDetailResponse()
+            .observe(this@RecommendationDetailFragment, propertyDetailReponseObserver)
+
+
         rdBinding.apply {
-            setAdapterWithSpanCount(4)
             toolbarRD.apply {
                 ivToolBarBack.background =
                     ResourcesCompat.getDrawable(resources, R.drawable.ic_back, null)
@@ -66,33 +79,19 @@ class RecommendationDetailFragment : BaseFragment() {
             }
             tvViewMoreBtn.setOnClickListener {
                 binding.rvFeaturesAmenity.apply {
-                    layoutParams.width=LayoutParams.MATCH_PARENT
-                    layoutParams.height=LayoutParams.MATCH_PARENT
+                    layoutParams.width = LayoutParams.MATCH_PARENT
+                    layoutParams.height = LayoutParams.MATCH_PARENT
                 }
-                setAdapterWithSpanCount(5)
+                setInventoryAdapterWithSpanCount(5,inventorylist)
                 tvViewMoreBtn.visibility = View.GONE
-
-
             }
             tvReviewsWriteAReview.setOnClickListener {
-                  replaceFragment(R.id.flMainContainer,WriteAReviewFragment(),RecommendationDetailFragment::class.simpleName)
+                replaceFragment(
+                    R.id.flMainContainer,
+                    WriteAReviewFragment(),
+                    RecommendationDetailFragment::class.simpleName
+                )
             }
-
-
-            /*
-                        rvRDOverviews.itemAnimator = DefaultItemAnimator()
-                        rvRDOverviews.layoutManager = GridLayoutManager(requireContext(), 4)
-                        llInteriorRD.setOnClickListener {
-                            setBackGround(it, rdBinding.tvInteriorRd)
-                        }
-                        llExteriorRD.setOnClickListener {
-                            setBackGround(it, rdBinding.tvExteriorRD)
-                        }
-                        llAreaLotRD.setOnClickListener {
-                            setBackGround(it, rdBinding.tvAreaLotRD)
-                        }*/
-
-
 
 
             btnBookDetail.setOnClickListener {
@@ -106,59 +105,89 @@ class RecommendationDetailFragment : BaseFragment() {
                     "onInitView RDFragment: className ${this@RecommendationDetailFragment.javaClass.simpleName}"
                 )
             }
-            viewPagerRD.adapter = RecommendationDetailAdapter(model?.imagesUrls!!, requireContext())
-            indicatorRD.setViewPager(viewPagerRD)
-            tvDetailApartmentType.text = model.apartmentType
-            tvDetailRoomType.text = model.name
-            tvLocationDescription.text = model.location
+
         }
 
 
     }
 
-    private fun setAdapterWithSpanCount(i: Int) {
+    private fun setInventoryAdapterWithSpanCount(i: Int,inventoryList:MutableList<PropertyInventory>) {
+        if (inventoryList.isEmpty()){
+            rdBinding.tvViewMoreBtn.visibility = View.GONE
+            rdBinding.rlBuildingAmenities.visibility = View.GONE
+        }else {
+            if(inventoryList.size > 4 ){
+                rdBinding.rlBuildingAmenities.visibility = View.VISIBLE
+                rdBinding.tvViewMoreBtn.visibility = View.VISIBLE
+            }else{
+                rdBinding.tvViewMoreBtn.visibility = View.GONE
+            }
+        }
         rdBinding.rvFeaturesAmenity.apply {
             itemAnimator = DefaultItemAnimator()
             layoutManager = GridLayoutManager(requireContext(), i)
-            adapter = AmenitiesAdapter(getAmenitiesList(),requireContext())
+            adapter = AmenitiesAdapter(inventoryList, requireContext())
         }
     }
 
+    private val propertyDetailReponseObserver: Observer<ApiResponse<BaseResponse<GetPropertyDetail>>> by lazy {
+        Observer {
+            when (it.status) {
+                ApiResponse.Status.LOADING -> {
+                    showProgress()
+                }
 
-    private fun setBackGround(vLayout: View, tv1: AppCompatTextView) {
-        /*  rdBinding.apply {
-              llInteriorRD.background =
-                  ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
-              llExteriorRD.background =
-                  ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
-              llAreaLotRD.background =
-                  ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
-              tvInteriorRd.setTextColor(resources.getColor(R.color.sub_heading_text_color, null))
-              tvExteriorRD.setTextColor(resources.getColor(R.color.sub_heading_text_color, null))
-              tvAreaLotRD.setTextColor(resources.getColor(R.color.sub_heading_text_color, null))
-          }
-          tv1.setTextColor(resources.getColor(R.color.primary_color, null))
-          (vLayout as LinearLayoutCompat).background =
-              ResourcesCompat.getDrawable(resources, R.drawable.select_bed_filter_bg, null)*/
+                ApiResponse.Status.SUCCESS -> {
+                    hideProgress()
+                    propertyDetail = it.data?.data!!
+                    setDetail(propertyDetail)
+                }
+
+                ApiResponse.Status.ERROR -> {
+                    hideProgress()
+                    showErrorMessage(requireActivity(), it.error?.message.toString())
+                }
+            }
+        }
     }
 
-    private fun getAmenitiesList(): MutableList<Amenities> {
-        val list = mutableListOf<Amenities>()
-        list.add(Amenities(1, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(2, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(3, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(4, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(5, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(6, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(7, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(8, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(9, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(10, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(11, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(12, R.drawable.ac, getString(R.string.ac_text)))
-        list.add(Amenities(13, R.drawable.ac, getString(R.string.ac_text)))
-        return list
+    private fun setDetail(getPropertyDetail: GetPropertyDetail) {
+        rdBinding.apply {
+            getPropertyDetail.let {
+                inventorylist = it.property_inventory as MutableList<PropertyInventory>
+                roomList = it.property_room as MutableList<PropertyRoom>
+
+                viewPagerRD.adapter = RecommendationDetailAdapter(
+                    it.property_images!! as MutableList<PropertyImage>,
+                    requireContext()
+                )
+                indicatorRD.setViewPager(viewPagerRD)
+                tvDetailApartmentType.text = it.property_name
+                tvDetailPageRatings.text = "${it.rating} (${it.total_review} Reviews)"
+                tvDetailRoomType.text = it.property_type
+                tvLocationDescription.text = it.area
+                tvBeds.text = "${it.total_bed.toString()} Bed"
+                tvBath.text = "${it.total_bath.toString()} Bath"
+                tvSqrft.text = "${it.total_area}"
+                tvAboutRD.text = it.about
+                tvRItemCostDetail.text = "$${it.price}"
+                setInventoryAdapterWithSpanCount(4,inventorylist)
+                setRoomTypeAdapter(roomList)
+            }
+
+
+
+        }
     }
+
+    private fun setRoomTypeAdapter(roomList: MutableList<PropertyRoom>) {
+        rdBinding.rvRoomTypeRD.apply {
+            itemAnimator = DefaultItemAnimator()
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            adapter = AdapterRoomTypes(roomList, requireContext())
+        }
+    }
+
 
 }
 

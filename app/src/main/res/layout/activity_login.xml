@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="vm"
+    type="com.stayhook.screen.login.LoginViewModel" />
     </data>
 
     <ScrollView
@@ -20,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
+            android:id="@+id/rlLoginActivity"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -28,6 +31,14 @@
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 tools:context=".screen.login.LoginActivity">
+
+                <FrameLayout
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/frameLayout"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"/>
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivBigLocationPin"
@@ -83,6 +94,7 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginBottom="@dimen/_30sdp"
                     android:text="@string/login_btn"
+                    android:onClick="@{()->vm.isValidData(etMobileOnLogin.getText().toString())}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etMobileOnLogin" />

@@ -11,7 +11,7 @@ import com.stayhook.adapter.SearchAdapter
 import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentHomeRoomTypeBinding
-import com.stayhook.model.Recommendation
+import com.stayhook.model.response.home.RecommendData
 import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailFragment
 import com.stayhook.util.Constants
 import org.koin.core.component.inject
@@ -21,7 +21,7 @@ class HomeRoomTypeFragment : BaseFragment(), OnItemsClickListener {
 
     private lateinit var bindingHRT: FragmentHomeRoomTypeBinding
     private val homeViewModel: HomeViewModel by inject()
-    override fun onInitView(binding: ViewDataBinding, view:View) {
+    override fun onInitView(binding: ViewDataBinding, view: View) {
         bindingHRT = binding as FragmentHomeRoomTypeBinding
         hideTab()
         val title = arguments?.getString(Constants.DefaultConstants.STRING) as String
@@ -43,7 +43,11 @@ class HomeRoomTypeFragment : BaseFragment(), OnItemsClickListener {
                         LinearLayoutManager.VERTICAL,
                         false
                     )
-                adapter = SearchAdapter(filterList as MutableList, requireContext(),this@HomeRoomTypeFragment)
+              /*  adapter = SearchAdapter(
+                    filterList as MutableList,
+                    requireContext(),
+                    this@HomeRoomTypeFragment
+                )*/
             }
         }
 
@@ -51,13 +55,13 @@ class HomeRoomTypeFragment : BaseFragment(), OnItemsClickListener {
 
 
     override fun getLayoutId() = R.layout.fragment_home_room_type
-    override fun onCLickItems(model: Recommendation) {
+    override fun onCLickItems(model: RecommendData) {
         val b = Bundle()
         val rdFragment = RecommendationDetailFragment()
         b.putSerializable("recommendationDetail", model)
         replaceFragment(R.id.flMainContainer, rdFragment, b, HomeFragment().javaClass.simpleName)
         Log.d("TAG", "onCLickItems: model data is $model")
-      //  hideTab()
+        //  hideTab()
 
     }
 

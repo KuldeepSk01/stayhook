@@ -10,9 +10,10 @@ import com.stayhook.R
 import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.databinding.ItemSearchFragmentLayoutBinding
 import com.stayhook.model.Recommendation
+import com.stayhook.model.response.home.RecommendData
 
 class SearchAdapter(
-    val list: MutableList<Recommendation>,
+    val list: MutableList<RecommendData>,
     val context: Context,
     val listener : OnItemsClickListener
 ) : RecyclerView.Adapter<SearchAdapter.SearchVM>() {
@@ -36,10 +37,10 @@ class SearchAdapter(
     override fun onBindViewHolder(holder: SearchVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            Glide.with(context).load(model.imgUrl).into(ivItemSearch)
-            tvSearchItemTitle.text = model.name
-            tvSearchApartmentType.text = model.apartmentType
-            tvSearchLocation.text = model.location
+            Glide.with(context).load(model.property_image).into(ivItemSearch)
+            tvSearchItemTitle.text = model.property_name
+            tvSearchApartmentType.text = model.property_type
+            tvSearchLocation.text = ""
             tvCostItemSearch.text = "$${model.price}"
 
             clItemSearchFl.setOnClickListener {

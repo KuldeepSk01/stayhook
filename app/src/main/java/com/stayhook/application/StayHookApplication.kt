@@ -2,13 +2,12 @@ package com.stayhook.application
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.stayhook.koin.appModule
 import com.stayhook.koin.repositoryModule
 import com.stayhook.koin.viewModelModule
-import com.stayhook.network.CheckConnection
+import com.stayhook.network.NetworkConnectionManager
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.component.KoinComponent
@@ -22,7 +21,7 @@ class StayHookApplication : Application(), KoinComponent {
             androidContext(this@StayHookApplication)
             modules(listOf(appModule, repositoryModule, viewModelModule))
         }
-        CheckConnection(applicationContext)
+        NetworkConnectionManager(applicationContext)
         if (checkGooglePlayService()){
             Log.d("TAG", "onCreate: google play service is Available...")
         }else{

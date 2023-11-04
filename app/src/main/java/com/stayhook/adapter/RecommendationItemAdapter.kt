@@ -15,9 +15,10 @@ import com.stayhook.R
 import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.databinding.ItemRecommendatationLayoutBinding
 import com.stayhook.model.Recommendation
+import com.stayhook.model.response.home.RecommendData
 
 class RecommendationItemAdapter(
-    private val list: MutableList<Recommendation>,
+    private val list: MutableList<RecommendData>,
     private val context: Context,
     private val listener :OnItemsClickListener
 ) : RecyclerView.Adapter<RecommendationItemAdapter.RItemVm>() {
@@ -42,16 +43,16 @@ class RecommendationItemAdapter(
     override fun getItemCount() = list.size
     override fun onBindViewHolder(holder: RItemVm, position: Int) {
         val model = list[position]
-        Log.d("TAG", "onBindViewHolder: ${model.imgUrl}")
-        Glide.with(context).load(model.imgUrl).into(object : SimpleTarget<Drawable>() {
+        Log.d("TAG", "onBindViewHolder: ${model.property_image}")
+        Glide.with(context).load(model.property_image).into(object : SimpleTarget<Drawable>() {
             override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
                 holder.b.ivRItem.background=resource
             }
         })
-        holder.b.tvRItemName.text = model.name
-        holder.b.tvRItemApartment.text = model.apartmentType
-        holder.b.tvRItemCost.text = "$ ${model.price}"
-        holder.b.tvRatingRItem.text = model.rating
+        holder.b.tvRItemName.text = model.property_type
+        holder.b.tvRItemApartment.text = model.property_name
+        holder.b.tvRItemCost.text = "$${model.price}"
+        holder.b.tvRatingRItem.text = model.rating.toString()
         holder.b.cvRItem.setOnClickListener {
             listener.onCLickItems(model)
         }

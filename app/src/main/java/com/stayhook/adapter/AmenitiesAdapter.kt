@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.stayhook.R
 import com.stayhook.databinding.ItemAmenitiesLayoutBinding
-import com.stayhook.model.Amenities
+import com.stayhook.model.response.getpopertydetail.PropertyInventory
 
-class AmenitiesAdapter(val list: MutableList<Amenities>, val context: Context) :
+class AmenitiesAdapter(val list: MutableList<PropertyInventory>, val context: Context) :
     RecyclerView.Adapter<AmenitiesAdapter.AmenitiesAdapterVM>() {
     class AmenitiesAdapterVM(val b: ItemAmenitiesLayoutBinding) : ViewHolder(b.root)
 
@@ -26,10 +27,10 @@ class AmenitiesAdapter(val list: MutableList<Amenities>, val context: Context) :
     override fun getItemCount() = list.size
 
     override fun onBindViewHolder(holder: AmenitiesAdapterVM, position: Int) {
-        val images = list[position]
+        val model = list[position]
         holder.b.apply {
-            ivItemAmenitiesCategory.setBackgroundResource(images.img!!)
-            tvItemAmenitiesCategory.text = images.title
+            Glide.with(context).load(model.image).into(ivItemAmenitiesCategory)
+            tvItemAmenitiesCategory.text = model.inventory_sub_category
         }
     }
 }

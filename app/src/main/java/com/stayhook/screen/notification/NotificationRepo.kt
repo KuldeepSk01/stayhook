@@ -1,6 +1,6 @@
 package com.stayhook.screen.notification
 
-import com.stayhook.base.BaseRepositopry
+import com.stayhook.base.BaseRepository
 
-class NotificationRepo : BaseRepositopry() {
+class NotificationRepo : BaseRepository() {
 }
