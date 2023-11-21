@@ -32,8 +32,8 @@ class MyTicketFragment : BaseFragment() {
             rvMyTickets.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                adapter = MyTicketAdapter(getTicketsList(), requireContext())
+                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
+                adapter = MyTicketAdapter(getTicketsList(), baseActivity.baseContext)
             }
 
             btnNewTicket.setOnClickListener {

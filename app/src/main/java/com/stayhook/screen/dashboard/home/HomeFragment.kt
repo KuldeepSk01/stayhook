@@ -18,8 +18,12 @@ import com.stayhook.model.response.home.HomeResponse
 import com.stayhook.model.response.home.RecommendData
 import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.MainActivity
-import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailFragment
+import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailActivity
+import com.stayhook.util.Constants
+import com.stayhook.util.Constants.NetworkConstant.Companion.NO_INTERNET_AVAILABLE
+import com.stayhook.util.CustomDialogs
 import com.stayhook.util.CustomDialogs.showErrorMessage
+import com.stayhook.util.Utility.isConnectionAvailable
 import org.koin.core.component.inject
 
 class HomeFragment : BaseFragment(), OnItemsClickListener {
@@ -43,8 +47,8 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
     // This will store current location info
     // private var currentLocation: Location? = null
     private lateinit var mainActivity: MainActivity
-    private val rDetailFragment: RecommendationDetailFragment by lazy {
-        RecommendationDetailFragment()
+    private val rDetailFragment: RecommendationDetailActivity by lazy {
+        RecommendationDetailActivity()
     }
 
     private lateinit var homeBinding: FragmentHomeBinding
@@ -69,29 +73,29 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
             rvRecommendationItems.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.HORIZONTAL, false)
                 adapter = RecommendationItemAdapter(
                     recommendationList,
-                    requireContext(),
+                    baseActivity.baseContext,
                     this@HomeFragment
                 )
             }
             rvRecentlyAddedHome.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
                 adapter = RecentlyAddedItemAdapter(
                     recentlyAddedDataList,
-                    requireContext(),
+                    baseActivity.baseContext,
                     this@HomeFragment
                 )
             }
             homeBinding.rvNearByLocationItems.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.HORIZONTAL, false)
                 adapter =
-                    NearbyLocationItemAdapter(nearbyDataList, requireContext(), this@HomeFragment)
+                    NearbyLocationItemAdapter(nearbyDataList, baseActivity.baseContext, this@HomeFragment)
             }
 
         }
@@ -99,6 +103,11 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
     }
 
     private fun hitHomeApi() {
+        if (!isConnectionAvailable()){
+            CustomDialogs.showErrorMessage(requireActivity(),NO_INTERNET_AVAILABLE)
+            return
+        }
+
         homeViewModel.hitHomePageApi()
         homeViewModel.getHomeResponse().observe(requireActivity(), homeResponseObserver)
     }
@@ -127,12 +136,16 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
     }
 
     override fun onCLickItems(model: RecommendData) {
+        mPref.put(Constants.DefaultConstants.SELECT_PROPERTY_ID,model.id.toString())
+        launchActivity(RecommendationDetailActivity::class.java)
+      /*
         val b = Bundle()
-        val rdFragment = RecommendationDetailFragment()
+        val rdFragment = RecommendationDetailActivity()
         b.putString("propertyId", model.id.toString())
-        replaceFragment(R.id.flMainContainer, rdFragment, b, HomeFragment().javaClass.simpleName)
+        replaceFragment(R.id.flMainContainer, rdFragment, b, HomeFragment::class.java.simpleName)
         Log.d("TAG", "onCLickItems: model data is $model")
-        hideTab()
+        */
+        //hideTab()
     }
 
 }

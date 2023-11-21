@@ -33,8 +33,8 @@ class FavoriteFragment : BaseFragment() {
             rvFavoriteNav.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                adapter = FavoriteAdapter(getRecommendationList(), requireContext())
+                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
+                adapter = FavoriteAdapter(getRecommendationList(), baseActivity.baseContext)
             }
 
         }

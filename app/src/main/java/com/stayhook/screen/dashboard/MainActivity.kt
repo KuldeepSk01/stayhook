@@ -1,5 +1,8 @@
 package com.stayhook.screen.dashboard
 
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -10,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.stayhook.R
 import com.stayhook.base.BaseActivity
 import com.stayhook.databinding.ActivityMainBinding
+import com.stayhook.permissions.MyPermissions
 import com.stayhook.screen.dashboard.account.AccountFragment
 import com.stayhook.screen.dashboard.favorite.FavoriteFragment
 import com.stayhook.screen.dashboard.home.HomeFragment
@@ -19,9 +23,10 @@ import com.stayhook.screen.interfaces.DashBoardListener
 import org.koin.core.component.KoinComponent
 
 
-class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
+class MainActivity : BaseActivity(), KoinComponent, DashBoardListener, LocationListener {
     private lateinit var dashBoardListener: DashBoardListener
     private var isBackPressed = false
+    private lateinit var locationManager: LocationManager
 
     companion object {
         const val TAG = "MainActivity"
@@ -60,10 +65,13 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
 
     override fun onViewInit(binding: ViewDataBinding?) {
         mainActivityBinding = binding as ActivityMainBinding
+        locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         dashBoardListener = this@MainActivity
         dashBoardListener.onBottomIconClick(homeFragment)
+
         val userDetail = mPref.getUserDetail()
         Log.d(TAG, "onViewInit: user detail $userDetail")
+
 
         mainActivityBinding.customBottomBarLayout.ivHomeIcon.setBackgroundResource(R.drawable.ic_home_selected)
 
@@ -92,88 +100,92 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
        }*/
 
     open fun setBottomStyle(bottomTabItem: Int) {
-        mainActivityBinding.customBottomBarLayout.tvHomeNav.setTextColor(
-            resources.getColor(
-                R.color.sub_heading_text_color, null
-            )
-        )
-        mainActivityBinding.customBottomBarLayout.tvSearchNav.setTextColor(
-            resources.getColor(
-                R.color.sub_heading_text_color, null
-            )
-        )
-        mainActivityBinding.customBottomBarLayout.tvFavoriteNav.setTextColor(
-            resources.getColor(
-                R.color.sub_heading_text_color, null
-            )
-        )
-        mainActivityBinding.customBottomBarLayout.tvMessageNav.setTextColor(
-            resources.getColor(
-                R.color.sub_heading_text_color, null
-            )
-        )
-        mainActivityBinding.customBottomBarLayout.tvProfileNav.setTextColor(
-            resources.getColor(
-                R.color.sub_heading_text_color, null
-            )
-        )
-        mainActivityBinding.customBottomBarLayout.ivHomeIcon.background =
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_home, null)
-        mainActivityBinding.customBottomBarLayout.ivSearchIcon.background =
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_search, null)
-        mainActivityBinding.customBottomBarLayout.ivFavoriteIcon.background =
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_heart, null)
-        mainActivityBinding.customBottomBarLayout.ivMessageIcon.background =
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_message, null)
-        mainActivityBinding.customBottomBarLayout.ivProfileIcon.background =
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_user, null)
+        mainActivityBinding.customBottomBarLayout.apply {
 
-        when (bottomTabItem) {
-            HOME_FRAGMENT -> {
-                mainActivityBinding.customBottomBarLayout.ivHomeIcon.setBackgroundResource(R.drawable.ic_home_selected)
-                mainActivityBinding.customBottomBarLayout.tvHomeNav.setTextColor(
-                    resources.getColor(
-                        R.color.primary_color, null
-                    )
+            tvHomeNav.setTextColor(
+                resources.getColor(
+                    R.color.sub_heading_text_color, null
                 )
+            )
+            tvSearchNav.setTextColor(
+                resources.getColor(
+                    R.color.sub_heading_text_color, null
+                )
+            )
+            tvFavoriteNav.setTextColor(
+                resources.getColor(
+                    R.color.sub_heading_text_color, null
+                )
+            )
+            tvMessageNav.setTextColor(
+                resources.getColor(
+                    R.color.sub_heading_text_color, null
+                )
+            )
+            tvProfileNav.setTextColor(
+                resources.getColor(
+                    R.color.sub_heading_text_color, null
+                )
+            )
 
+            ivHomeIcon.background = ResourcesCompat.getDrawable(resources, R.drawable.ic_home, null)
+            ivSearchIcon.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_search, null)
+            ivFavoriteIcon.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_heart, null)
+            ivMessageIcon.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_message, null)
+            ivProfileIcon.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_user, null)
+
+            when (bottomTabItem) {
+                HOME_FRAGMENT -> {
+                    ivHomeIcon.setBackgroundResource(R.drawable.ic_home_selected)
+                    tvHomeNav.setTextColor(
+                        resources.getColor(
+                            R.color.primary_color, null
+                        )
+                    )
+
+                }
+
+                SEARCH_FRAGMENT -> {
+                    ivSearchIcon.setBackgroundResource(R.drawable.ic_search_selected)
+                    tvSearchNav.setTextColor(
+                        resources.getColor(
+                            R.color.primary_color, null
+                        )
+                    )
+                }
+
+                FAVORITE_FRAGMENT -> {
+                    ivFavoriteIcon.setBackgroundResource(R.drawable.ic_filled_fav)
+                    tvFavoriteNav.setTextColor(
+                        resources.getColor(
+                            R.color.primary_color, null
+                        )
+                    )
+                }
+
+                MESSAGE_FRAGMENT -> {
+                    ivMessageIcon.setBackgroundResource(R.drawable.ic_message_selected)
+                    tvMessageNav.setTextColor(
+                        resources.getColor(
+                            R.color.primary_color, null
+                        )
+                    )
+                }
+
+                ACCOUNT_FRAGMENT -> {
+                    ivProfileIcon.setBackgroundResource(R.drawable.ic_user_selected)
+                    tvProfileNav.setTextColor(
+                        resources.getColor(
+                            R.color.primary_color, null
+                        )
+                    )
+                }
             }
 
-            SEARCH_FRAGMENT -> {
-                mainActivityBinding.customBottomBarLayout.ivSearchIcon.setBackgroundResource(R.drawable.ic_search_selected)
-                mainActivityBinding.customBottomBarLayout.tvSearchNav.setTextColor(
-                    resources.getColor(
-                        R.color.primary_color, null
-                    )
-                )
-            }
-
-            FAVORITE_FRAGMENT -> {
-                mainActivityBinding.customBottomBarLayout.ivFavoriteIcon.setBackgroundResource(R.drawable.ic_filled_fav)
-                mainActivityBinding.customBottomBarLayout.tvFavoriteNav.setTextColor(
-                    resources.getColor(
-                        R.color.primary_color, null
-                    )
-                )
-            }
-
-            MESSAGE_FRAGMENT -> {
-                mainActivityBinding.customBottomBarLayout.ivMessageIcon.setBackgroundResource(R.drawable.ic_message_selected)
-                mainActivityBinding.customBottomBarLayout.tvMessageNav.setTextColor(
-                    resources.getColor(
-                        R.color.primary_color, null
-                    )
-                )
-            }
-
-            ACCOUNT_FRAGMENT -> {
-                mainActivityBinding.customBottomBarLayout.ivProfileIcon.setBackgroundResource(R.drawable.ic_user_selected)
-                mainActivityBinding.customBottomBarLayout.tvProfileNav.setTextColor(
-                    resources.getColor(
-                        R.color.primary_color, null
-                    )
-                )
-            }
         }
 
 
@@ -186,14 +198,41 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
     }
 
     override fun onBackPressed() {
-        if (isBackPressed) {
-            super.onBackPressed()
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
         } else {
-            isBackPressed = true
-            Toast.makeText(this@MainActivity, "pressed back again to exit", Toast.LENGTH_SHORT).show()
-            Handler(Looper.getMainLooper()).postDelayed({
-                isBackPressed = false
-            }, 3000)
+            if (isBackPressed) {
+                onBackPressedDispatcher.onBackPressed()
+            } else {
+                isBackPressed = true
+                Toast.makeText(this@MainActivity, "pressed back again to exit", Toast.LENGTH_SHORT)
+                    .show()
+                Handler(Looper.getMainLooper()).postDelayed({
+                    isBackPressed = false
+                }, 3000)
+            }
+        }
+    }
+
+    override fun onLocationChanged(p0: Location) {
+
+    }
+
+
+    private fun requestLocationService() {
+        if (locationManager == null) {
+            locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+        } else {
+            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+                if (MyPermissions.isLocationEnable) {
+                   // locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 1000, this)
+                } else {
+                    MyPermissions.getLocationPermission(this@MainActivity)
+                }
+            }else{
+
+            }
+
         }
     }
 }

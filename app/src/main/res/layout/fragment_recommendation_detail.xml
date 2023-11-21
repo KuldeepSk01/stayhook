@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".screen.dashboard.home.recommondationdetail.RecommendationDetailFragment">
+        tools:context=".screen.dashboard.home.recommondationdetail.RecommendationDetailActivity">
 
 
         <androidx.core.widget.NestedScrollView
@@ -152,6 +152,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_20sdp"
+                        android:gravity="center_vertical"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_20sdp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -164,6 +165,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"
                             android:drawableStart="@drawable/ic_bed"
                             android:drawablePadding="@dimen/_10sdp"
                             android:fontFamily="@font/clearsans_regular"
@@ -179,7 +182,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_20sdp"
+                            android:gravity="center_vertical"
                             android:layout_toEndOf="@id/tvBeds"
+                            android:layout_centerVertical="true"
                             android:drawableStart="@drawable/ic_tabler_bath"
                             android:drawablePadding="@dimen/_10sdp"
                             android:fontFamily="@font/clearsans_regular"
@@ -191,6 +196,8 @@
                             style="@style/defaultTextSizeStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"
                             android:layout_toEndOf="@id/tvBath"
                             android:drawableStart="@drawable/ic_area"
                             android:drawablePadding="@dimen/_10sdp"
@@ -323,7 +330,7 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvRoomTypeRD"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/_50sdp"
                             android:layout_below="@+id/tvRDRoomTypesText" />
                     </RelativeLayout>
 
@@ -364,11 +371,10 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvFeaturesAmenity"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="@dimen/_50sdp"
                             android:layout_below="@+id/tvRDAmenities"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_40sdp"
                             android:lineSpacingExtra="@dimen/_10sdp"
                             app:layout_constraintEnd_toStartOf="@+id/tvViewMoreBtn"
                             app:layout_constraintStart_toStartOf="parent"

@@ -69,7 +69,9 @@
     <string name="loram">Loream Ipsum</string>
     <string name="desc_kyc">Please ensure that all the details are true and accurate as these details will be used to License Agreement</string>
     <string name="private_room">Private Room</string>
+    <string name="private_text">Private</string>
     <string name="shared_room">Shared Room</string>
+    <string name="shared_text">Shared</string>
     <string name="client_review">(456 reviews)</string>
     <string name="review">3.5</string>
     <string name="description">Description</string>
@@ -210,7 +212,7 @@
     <string name="title_book">Book</string>
     <string name="title_book_room">Book Room 1</string>
     <string name="month_text">/ per month</string>
-    <string name="cost_1600_text">$1600</string>
+    <string name="cost_1600_text">₹1600</string>
     <string name="title">Title</string>
     <string name="primary_apartment_text">Primary Apartment</string>
     <string name="_701_ocean_avenue_unit_103_santa_monica_text">701 Ocean avenue, Unit 103, Santa Monica</string>
@@ -236,12 +238,13 @@
     <string name="room_3_text">Room 3</string>
     <string name="sold_out_text">Sold Out</string>
     <string name="continue_3_months_text">Continue - 3 months</string>
-    <string name="book_room_1_999_text">Book Room 1-$999</string>
+    <string name="book_room_1_999_text">Book Room 1-₹999</string>
     <string name="april_23_2023_text">April 23, 2023</string>
-    <string name="_319">$319</string>
-    <string name="_57_text">$57</string>
-    <string name="_10161_text">$1061</string>
-    <string name="_628_text">$628</string>
+    <string name="_319">₹319</string>
+    <string name="_57_text">₹57</string>
+    <string name="_10161_text">₹1061</string>
+    <string name="indian_currency_symbol">₹</string>
+    <string name="_628_text">₹628</string>
     <string name="pay_628_text">Pay $628</string>
     <string name="booking_complete_text">Booking Complete</string>
     <string name="our_representative_will_contact_you_shortly_text">Our representative will contact you shortly.</string>
@@ -290,7 +293,7 @@
     <string name="loream_gmail_com_text">loream@gmail.com</string>
     <string name="review_description_text">Review Description</string>
     <string name="submit_text">Submit</string>
-    <string name="_20_45_text">20:45</string>
+    <string name="_20_45_text">08:45</string>
     <string name="ohh_hello">Ohh! hello</string>
     <string name="_20_06">20:06</string>
     <string name="dania">Dania</string>
@@ -361,9 +364,9 @@
     <string name="upload_front_aadhaar_text">Upload Front Aadhaar</string>
     <string name="upload_back_aadhaar_text">Upload Back Aadhaar</string>
     <string name="_10_am_11_am_text">10 am - 11 am</string>
-    <string name="master_text">Master</string>
-    <string name="guest_text">Guest</string>
-    <string name="kids_text">Kids</string>
+    <string name="master_text">Master Room</string>
+    <string name="guest_text">Guest Room</string>
+    <string name="kids_text">Kids Room</string>
     <string name="bed_text">(Bed)</string>
     <string name="log_out_text">Log out</string>
     <string name="property_type_text">Property Type</string>
@@ -411,5 +414,20 @@
     <string name="error_mobile_empty">Enter your mobile number.!</string>
     <string name="error_mobile_length">Mobile number must be 10 digit!</string>
     <string name="error_full_name_empty">Enter your full name!</string>
+    <string name="error_email_empty">Enter your email!</string>
+
     <string name="load_more">Load More</string>
+    <string name="continue_text">Continue</string>
+    <string name="available">Available</string>
+    <string name="not_available">Not available</string>
+    <string name="room_select">Room_Select</string>
+    <string name="Bed_select">Bed_Select</string>
+    <string name="token">Token</string>
+    <string name="my_scheduled_visit">My Scheduled Visit</string>
+    <string name="current_status">Current Status :</string>
+    <string name="token_collected">Token Collected</string>
+    <string name="token_status">Token Status\n</string>
+    <string name="_2023_11_2">2023-11-02</string>
+    <string name="available_date">Available Date</string>
+    <string name="_07_am_08_am">07 AM - 08 AM</string>
 </resources>

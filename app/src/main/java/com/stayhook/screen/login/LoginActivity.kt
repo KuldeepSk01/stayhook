@@ -3,6 +3,7 @@ package com.stayhook.screen.login
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.stayhook.R
 import com.stayhook.base.BaseActivity
@@ -22,19 +23,26 @@ import org.koin.core.component.inject
 class LoginActivity : BaseActivity() {
     private lateinit var loginBinding: ActivityLoginBinding
     private lateinit var mobileNo: String
-    private val loginViewModel: LoginViewModel by inject()
+    private val mViewModel: LoginViewModel by inject()
 
     override val layoutId: Int
         get() = R.layout.activity_login
 
     override fun onViewInit(binding: ViewDataBinding?) {
         loginBinding = binding as ActivityLoginBinding
-        loginBinding.vm = loginViewModel
-        validDataObserver()
-        loginBinding.tvSignUpAccountBtn.setOnClickListener {
-            launchActivity(RegisterActivity::class.java)
-            finish()
+        loginBinding.vm = mViewModel
+        loginBinding.apply {
+            tvSignUpAccountBtn.setOnClickListener {
+                launchActivity(RegisterActivity::class.java)
+                finish()
+            }
+
+            loginBtn.setOnClickListener {
+                mViewModel.isValidData(etMobileOnLogin.text.toString())
+                mViewModel.validationLoginData.observe(this@LoginActivity, loginValidDataObserver)
+            }
         }
+
 
     }
 
@@ -68,32 +76,34 @@ class LoginActivity : BaseActivity() {
 
         }
     }
-    private fun validDataObserver() {
-        loginViewModel.validationRegisterData.observe(this@LoginActivity, loginValidDataObserver)
-    }
 
-    private val loginValidDataObserver:Observer<ValidationState> by lazy {
+
+
+    private val loginValidDataObserver: Observer<ValidationState> by lazy {
         Observer {
-            when(it.msg){
-                ValidationResult.EMPTY_MOBILE_NUMBER, ValidationResult.VALID_MOBILE_NUMBER->{
+            when (it.msg) {
+                ValidationResult.EMPTY_MOBILE_NUMBER, ValidationResult.VALID_MOBILE_NUMBER -> {
                     loginBinding.etMobileOnLogin.error = getString(it.code)
                     loginBinding.etMobileOnLogin.requestFocus()
                 }
-                ValidationResult.SUCCESS->{
+
+                ValidationResult.SUCCESS -> {
                     if (!Utility.isConnectionAvailable()) {
-                        showErrorMessage(this@LoginActivity,
+                        showErrorMessage(
+                            this@LoginActivity,
                             Constants.NetworkConstant.NO_INTERNET_AVAILABLE
                         )
-                    }else{
+                    } else {
                         mobileNo = loginBinding.etMobileOnLogin.text.toString()
                         val loginRequest = UserRequest().apply {
                             mobile = mobileNo
                         }
-                        loginViewModel.hitLoginApi(loginRequest)
-                        loginViewModel.getLoginResponse().observe(this@LoginActivity, loginObserver)
+                        mViewModel.hitLoginApi(loginRequest)
+                        mViewModel.getLoginResponse().observe(this@LoginActivity, loginObserver)
                     }
                 }
-                else->{}
+
+                else -> {}
             }
 
         }

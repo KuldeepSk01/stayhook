@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollIndicators="none"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            tools:context=".screen.dashboard.home.HomeRoomTypeActivity">
+
+            <RelativeLayout
+                android:id="@+id/rlToolBarHRT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include
+                    android:id="@+id/toolBarHRT"
+                    layout="@layout/custom_toolbar_layout" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlHRTLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/otp_box_background"
+                android:backgroundTint="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/rlToolBarHRT"
+                tools:layout_editor_absoluteX="13dp">
+
+                <!-- <androidx.appcompat.widget.AppCompatTextView
+                     android:id="@+id/tvLocationHRT"
+                     style="@style/headingTextSizeStyle1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="@dimen/_15sdp"
+                     android:layout_marginTop="@dimen/_10sdp"
+                     android:drawableEnd="@drawable/ic_down_arrow"
+                     android:drawablePadding="@dimen/_10sdp"
+                     android:text="@string/noida_india_text" />-->
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:backgroundTint="@color/gray6"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvLocationHRT">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etHRTS"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:drawableStart="@drawable/ic_search"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:gravity="center_vertical"
+                            android:hint="@string/search"
+                            android:inputType="text"
+                            android:padding="@dimen/_10sdp"
+                            android:singleLine="true" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivHRTFilterBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/_10sdp"
+                            android:src="@drawable/ic_filter_search" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHRT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:clipToPadding="true"
+                android:paddingBottom="@dimen/_50sdp"
+                app:layout_constraintTop_toBottomOf="@+id/rlHRTLayout" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

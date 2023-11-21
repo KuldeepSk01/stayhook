@@ -1,6 +1,5 @@
 package com.stayhook.screen.dashboard.account
 
-import android.os.Bundle
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.ViewDataBinding
@@ -13,11 +12,12 @@ import com.stayhook.databinding.FragmentAccountBinding
 import com.stayhook.model.response.MyProfileResponse
 import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.MainActivity
-import com.stayhook.screen.dashboard.account.completeprofile.CompleteProfileFragment
-import com.stayhook.screen.dashboard.account.editprofile.EditProfileFragment
+import com.stayhook.screen.dashboard.account.completeprofile.CompleteProfileActivity
+import com.stayhook.screen.dashboard.account.editprofile.EditProfileActivity
 import com.stayhook.screen.dashboard.account.helpcenter.HelpCenterFragment
-import com.stayhook.screen.dashboard.account.mybooking.MyBookingFragment
+import com.stayhook.screen.dashboard.account.mybooking.MyBookingActivity
 import com.stayhook.screen.dashboard.account.mypayment.MyPaymentsFragment
+import com.stayhook.screen.dashboard.account.myschedule.MyScheduledVisitActivity
 import com.stayhook.screen.dashboard.account.myticket.MyTicketFragment
 import com.stayhook.screen.login.LoginActivity
 import com.stayhook.util.CustomDialogs
@@ -37,7 +37,6 @@ class AccountFragment : BaseFragment() {
         showTab()
         mainActivity = requireActivity() as MainActivity
         mainActivity.setBottomStyle(5)
-        hitMyProfileApi()
         accountBinding.aFragment = this@AccountFragment
         accountBinding.apply {
             toolbarProfile.apply {
@@ -49,33 +48,21 @@ class AccountFragment : BaseFragment() {
     }
 
     fun onClickEditProfile() {
-        val b = Bundle()
-        replaceFragment(
-            R.id.flMainContainer,
-            EditProfileFragment(),
-            AccountFragment().javaClass.simpleName
-        )
-        hideTab()
+        launchActivity(EditProfileActivity::class.java)
+    }
 
+    fun onClickMyScheduleVisit() {
+        launchActivity(MyScheduledVisitActivity::class.java)
 
     }
 
     fun onClickMyBooking() {
-        replaceFragment(
-            R.id.flMainContainer,
-            MyBookingFragment(),
-            AccountFragment().javaClass.simpleName
-        )
-        hideTab()
-
-
+        launchActivity(MyBookingActivity::class.java)
     }
 
     fun onClickMyPayment() {
         replaceFragment(
-            R.id.flMainContainer,
-            MyPaymentsFragment(),
-            AccountFragment().javaClass.simpleName
+            R.id.flMainContainer, MyPaymentsFragment(), AccountFragment().javaClass.simpleName
         )
         hideTab()
 
@@ -83,13 +70,7 @@ class AccountFragment : BaseFragment() {
     }
 
     fun onClickMyCompleteProfile() {
-        replaceFragment(
-            R.id.flMainContainer,
-            CompleteProfileFragment(),
-            AccountFragment().javaClass.simpleName
-        )
-        hideTab()
-
+        launchActivity(CompleteProfileActivity::class.java)
     }
 
     fun onClickDownloadDocument() {
@@ -99,9 +80,7 @@ class AccountFragment : BaseFragment() {
 
     fun onClickResolveProblemTicket() {
         replaceFragment(
-            R.id.flMainContainer,
-            MyTicketFragment(),
-            AccountFragment().javaClass.simpleName
+            R.id.flMainContainer, MyTicketFragment(), AccountFragment().javaClass.simpleName
         )
         hideTab()
 
@@ -109,9 +88,7 @@ class AccountFragment : BaseFragment() {
 
     fun onClickHelpCenter() {
         replaceFragment(
-            R.id.flMainContainer,
-            HelpCenterFragment(),
-            AccountFragment().javaClass.simpleName
+            R.id.flMainContainer, HelpCenterFragment(), AccountFragment().javaClass.simpleName
         )
         hideTab()
     }
@@ -150,9 +127,7 @@ class AccountFragment : BaseFragment() {
                     accountBinding.profilePostIV.apply {
                         if (it.data.data.profile.isEmpty()) {
                             this.background = ResourcesCompat.getDrawable(
-                                resources,
-                                R.drawable.place_holder,
-                                null
+                                resources, R.drawable.place_holder, null
                             )
                         } else {
                             Glide.with(requireActivity()).load(it.data.data.profile).into(this)
@@ -166,6 +141,12 @@ class AccountFragment : BaseFragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        hitMyProfileApi()
+
     }
 
 

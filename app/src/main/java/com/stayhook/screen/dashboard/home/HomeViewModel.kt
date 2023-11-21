@@ -1,19 +1,15 @@
 package com.stayhook.screen.dashboard.home
 
-import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.stayhook.R
-import com.stayhook.base.BaseResponse
 import com.stayhook.base.BaseViewModel
 import com.stayhook.model.Recommendation
-import com.stayhook.model.response.MyProfileResponse
 import com.stayhook.model.response.home.HomeResponse
 import com.stayhook.network.ApiResponse
 import com.stayhook.permissions.MyPermissions
 import com.stayhook.screen.notification.NotificationFragment
-import com.stayhook.util.Constants
 import com.stayhook.util.IMAGE_1
 import com.stayhook.util.IMAGE_2
 import com.stayhook.util.IMAGE_3
@@ -40,23 +36,23 @@ class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
         if (MyPermissions.isLocationEnable) {
             Toast.makeText(fragmentHome?.requireContext(), "Granted..", Toast.LENGTH_SHORT).show()
         } else {
-            MyPermissions.getLocationPermission(fragmentHome!!.requireContext())
+            MyPermissions.getLocationPermission(fragmentHome!!.baseActivity.baseContext)
         }
     }
 
     fun onClickHouse() {
-        replaceFragWithB(fragmentHome!!.getString(R.string.house))
-        fragmentHome?.hideTab()
+       // replaceFragWithB(fragmentHome!!.getString(R.string.house))
+        fragmentHome?.launchActivity(HomeRoomTypeActivity::class.java)
     }
 
     fun onClickPrivateRoom() {
-        replaceFragWithB(fragmentHome!!.getString(R.string.private_room))
-        fragmentHome?.hideTab()
+        //replaceFragWithB(fragmentHome!!.getString(R.string.private_room))
+        fragmentHome?.launchActivity(HomeRoomTypeActivity::class.java)
     }
 
     fun onClickSharedRoom() {
-        replaceFragWithB(fragmentHome!!.getString(R.string.shared_room))
-        fragmentHome?.hideTab()
+        //replaceFragWithB(fragmentHome!!.getString(R.string.shared_room))
+        fragmentHome?.launchActivity(HomeRoomTypeActivity::class.java)
     }
 
     fun onClickNotificationIcon() {
@@ -121,7 +117,7 @@ class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
     }
 
 
-    private fun replaceFragWithB(title: String) {
+   /* private fun replaceFragWithB(title: String) {
         val b = Bundle()
         b.putString(Constants.DefaultConstants.STRING, title)
         fragmentHome?.replaceFragment(
@@ -129,7 +125,7 @@ class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
             HomeRoomTypeFragment(), b,
             HomeFragment().javaClass.simpleName
         )
-    }
+    }*/
 
     private fun replaceFrag(f: Fragment) {
         fragmentHome?.replaceFragment(

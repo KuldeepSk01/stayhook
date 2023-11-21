@@ -31,13 +31,13 @@ class MovedOutFragment : BaseFragment() {
             calenderView.setOnDateChangeListener(object:CalendarView.OnDateChangeListener{
                 override fun onSelectedDayChange(p0: CalendarView, p1: Int, p2: Int, p3: Int) {
                     val year = p1
-                    val month = p2 + 1
+                    val month = p2
                     val dayOfMonth = p3
                     moveInTV.text = getDateFormat(dayOfMonth, month, year)                }
 
             })
             moveOutBtn.setOnClickListener {
-                CustomDialogs.showCustomSuccessDialog(requireContext(),
+                CustomDialogs.showCustomSuccessDialog(baseActivity.baseContext,
                     getString(R.string.payment_you_have_successfully_text),
                     getString(R.string.payment_our_representative_text),
                     getString(R.string.title_okay),

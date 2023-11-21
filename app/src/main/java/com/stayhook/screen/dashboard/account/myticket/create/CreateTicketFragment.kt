@@ -24,7 +24,7 @@ class CreateTicketFragment : BaseFragment() {
                 }
             }
             btnNewTicket.setOnClickListener {
-                CustomDialogs.showCustomSuccessDialog(requireContext(),
+                CustomDialogs.showCustomSuccessDialog(baseActivity.baseContext,
                     getString(R.string.ticket_created_successfully_text),
                     getString(R.string.ticket_created_successfully_text),
                     getString(R.string.new_ticket_text),

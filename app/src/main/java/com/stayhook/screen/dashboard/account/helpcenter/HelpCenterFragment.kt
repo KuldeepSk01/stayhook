@@ -33,8 +33,8 @@ class HelpCenterFragment : BaseFragment() {
             rvHelpCenter.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                adapter = HelpCenterAdapter(getHelpCenterList(), requireContext())
+                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
+                adapter = HelpCenterAdapter(getHelpCenterList(), baseActivity.baseContext)
             }
 
 

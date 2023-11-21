@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="vm"
-    type="com.stayhook.screen.register.RegisterViewModel" />
+
+        <variable
+            name="vm"
+            type="com.stayhook.screen.register.RegisterViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -93,16 +94,15 @@
                     android:maxLength="10"
                     android:singleLine="true" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/signupBtn"
                     style="@style/defaultBtnStyle"
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/etMobileOnRegister"
                     android:layout_marginTop="@dimen/_30sdp"
-                    android:onClick="@{()->vm.isValidData(etUserNameOnRegister.getText().toString(),etMobileOnRegister.getText().toString())}"
                     android:layout_marginBottom="@dimen/_30sdp"
+                    android:gravity="center"
                     android:text="@string/sign_up" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -133,8 +133,7 @@
                     style="@style/defaultTextSizeStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/already_have_an_account"
-                    />
+                    android:text="@string/already_have_an_account" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvLoginTXTBtn"

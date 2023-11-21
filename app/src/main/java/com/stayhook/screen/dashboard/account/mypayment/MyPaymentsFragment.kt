@@ -45,9 +45,9 @@ class MyPaymentsFragment : BaseFragment() {
             rvMyPayment.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
 
-                adapter = MyPaymentAdapter(hVM.getRecommendationList(), requireContext())
+                adapter = MyPaymentAdapter(hVM.getRecommendationList(), baseActivity.baseContext)
 
 
             }

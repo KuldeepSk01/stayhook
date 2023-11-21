@@ -3,6 +3,7 @@ package com.stayhook.base
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.stayhook.R
 import com.stayhook.preference.PreferenceHelper
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import kotlin.math.log
 
 abstract class BaseFragment : Fragment(), KoinComponent, View.OnClickListener {
     val mPref:PreferenceHelper by inject()
@@ -25,9 +27,16 @@ abstract class BaseFragment : Fragment(), KoinComponent, View.OnClickListener {
     abstract fun onInitView(binding: ViewDataBinding, view: View)
 
     override fun onAttach(context: Context) {
+
         if (context is BaseActivity)
-        { baseActivity = context}
-        super.onAttach(context)
+        {
+            baseActivity = context
+            Log.d("BaseActivity", "onAttach:baseActivity context $context")
+        }
+        super.onAttach(context
+        )
+        Log.d("BaseActivity", "onAttach: context $context")
+
 
     }
 
@@ -91,6 +100,28 @@ abstract class BaseFragment : Fragment(), KoinComponent, View.OnClickListener {
 
     }
 
+
+    fun replaceFragment(
+        containerId: Int,
+        fragment: Fragment,
+        addToBackStack: String? = null,
+        key:String,
+        value:String
+    ) {
+        val b =Bundle()
+        b.putString(key,value)
+        fragment.arguments = b
+        val fm = parentFragmentManager
+        val bt = fm.beginTransaction()
+        bt.setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
+        bt.replace(containerId, fragment)
+        bt.addToBackStack(addToBackStack)
+        bt.commit()
+
+    }
+
+
+
     fun replaceFragment(
         containerId: Int,
         fragment: Fragment,
@@ -110,7 +141,7 @@ abstract class BaseFragment : Fragment(), KoinComponent, View.OnClickListener {
 
     fun launchActivity(classType: Class<out BaseActivity>) {
         val intent = Intent(baseActivity, classType)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
 
     }
@@ -129,5 +160,9 @@ abstract class BaseFragment : Fragment(), KoinComponent, View.OnClickListener {
     fun hideProgress(){
       baseActivity.hideProgress()
     }
+
+
+
+
 
 }

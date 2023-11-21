@@ -7,13 +7,21 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.stayhook.R
 import com.stayhook.databinding.ItemSelectBedBinding
+import com.stayhook.interfaces.OnRoomClickListener
 import com.stayhook.model.Bed
+import com.stayhook.model.response.getpopertydetail.PropertyRoom
 
-class SelectBedAdapter(val list: MutableList<Bed>, val context: Context) :
+class SelectBedAdapter(val list: MutableList<PropertyRoom>, val context: Context, private val listener: SelectBedListener
+) :
     RecyclerView.Adapter<SelectBedAdapter.SBVM>() {
+    private var myListener : SelectBedListener = listener
+
     inner class SBVM(val b: ItemSelectBedBinding) : RecyclerView.ViewHolder(b.root)
 
-    private var itemPosition = -1
+    interface SelectBedListener{
+        fun onBedClick(model:PropertyRoom)
+    }
+    private var itemPosition = 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SBVM {
         val view = DataBindingUtil.inflate<ItemSelectBedBinding>(
             LayoutInflater.from(parent.context), R.layout.item_select_bed, parent, false
@@ -28,19 +36,26 @@ class SelectBedAdapter(val list: MutableList<Bed>, val context: Context) :
     override fun onBindViewHolder(holder: SBVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            tvMonthsSb.text = "${model.beds.toString()} Beds"
-            tvAttachedBathroomSB.text = "${model.bedDescription.toString()}"
-            tvCostSB.text = "$${model.bedChargesPerMonth.toString()}"
+            tvItemRoomNameSD.text = model.roomType
+            tvItemBedSD.text = "(${model.roomBed})"
+
             if (itemPosition == position) {
-                rlBedLayout.background =
+                llItemSD.background =
                     context.resources.getDrawable(R.drawable.otp_box_outline_drawable, null)
             } else {
-                rlBedLayout.background =
+                llItemSD.background =
                     context.resources.getDrawable(R.drawable.otp_box_background, null)
             }
-            rlBedLayout.setOnClickListener {
+/*
+            tvMonthsSb.text = "${model.roomBed.toString()} Beds"
+            tvAttachedBathroomSB.text = "${model.bedDescription.toString()}"
+            tvCostSB.text = "$${model.bedChargesPerMonth.toString()}"
+           */
+            llItemSD.setOnClickListener {
                 itemPosition = position
                 notifyDataSetChanged()
+                listener.onBedClick(model)
+
             }
         }
     }

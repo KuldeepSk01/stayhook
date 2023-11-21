@@ -1,6 +1,7 @@
 package com.stayhook.model.response.getpopertydetail
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class PropertyInventory(
     @SerializedName("id")
@@ -13,4 +14,4 @@ data class PropertyInventory(
     val inventory_sub_category: String,
     @SerializedName("inventory_type")
     val inventory_type: String
-)
+): Serializable

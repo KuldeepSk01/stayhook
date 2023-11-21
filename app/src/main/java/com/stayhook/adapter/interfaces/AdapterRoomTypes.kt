@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.stayhook.R
-import com.stayhook.databinding.ItemAmenitiesLayoutBinding
 import com.stayhook.databinding.ItemRoomTypeRdBinding
-import com.stayhook.model.response.getpopertydetail.PropertyInventory
 import com.stayhook.model.response.getpopertydetail.PropertyRoom
 
 class AdapterRoomTypes(val list: MutableList<PropertyRoom>, val context: Context) :
@@ -32,8 +30,8 @@ class AdapterRoomTypes(val list: MutableList<PropertyRoom>, val context: Context
         val model = list[position]
         holder.b.apply {
             Glide.with(context).load(model.icon).into(ivItemRoom)
-            tvRoomNameRD.text = model.room_name
-            tvRoomTypeRD.text = model.room_type
+            tvRoomNameRD.text = model.roomType
+            tvRoomTypeRD.text = model.roomPrivacy
             tvCostItemRoom.text = "$${model.price.toString()}"
         }
     }

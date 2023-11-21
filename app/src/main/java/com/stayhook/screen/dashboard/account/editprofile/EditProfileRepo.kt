@@ -3,7 +3,7 @@ package com.stayhook.screen.dashboard.account.editprofile
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.stayhook.base.BaseRepository
-import com.stayhook.model.response.UpdateProfileResponse
+import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.network.ApiResponse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -17,7 +17,7 @@ class EditProfileRepo : BaseRepository() {
     fun executeUpdateProfileApi(
         map: HashMap<String, Any>,
         image: MultipartBody.Part?,
-        responseLive: MutableLiveData<ApiResponse<UpdateProfileResponse>>
+        responseLive: MutableLiveData<ApiResponse<SuccessErrorResponse>>
     ) {
         val fullName =
             RequestBody.create("text/plain".toMediaTypeOrNull(), map["first_name"].toString())
@@ -28,9 +28,9 @@ class EditProfileRepo : BaseRepository() {
         val call = apiService.updateProfile(fullName, email, mobile, gender, image)
         responseLive.postValue(ApiResponse.loading())
 
-        call.enqueue(object : Callback<UpdateProfileResponse> {
+        call.enqueue(object : Callback<SuccessErrorResponse> {
             override fun onResponse(
-                call: Call<UpdateProfileResponse>, response: Response<UpdateProfileResponse>
+                call: Call<SuccessErrorResponse>, response: Response<SuccessErrorResponse>
             ) {
                 try {
                     if (response.body()?.success!!) {
@@ -43,7 +43,7 @@ class EditProfileRepo : BaseRepository() {
                 }
             }
 
-            override fun onFailure(call: Call<UpdateProfileResponse>, t: Throwable) {
+            override fun onFailure(call: Call<SuccessErrorResponse>, t: Throwable) {
                 Log.d("LoginRepo", "onFailure: ${t.message}")
                 responseLive.postValue(ApiResponse.error(t))
             }

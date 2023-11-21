@@ -10,16 +10,15 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.stayhook.R
-import com.stayhook.adapter.SearchAdapter
 import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentSearchBinding
-import com.stayhook.model.Recommendation
 import com.stayhook.model.response.home.RecommendData
 import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.screen.dashboard.home.HomeFragment
 import com.stayhook.screen.dashboard.home.HomeViewModel
-import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailFragment
+import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailActivity
+import com.stayhook.util.Constants
 import org.koin.core.component.inject
 
 
@@ -56,9 +55,9 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener 
             rvSearchFragment.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
              /*   adapter =
-                    SearchAdapter(homeViewModel.getRecommendationList(), requireContext(), this@SearchFragment)
+                    SearchAdapter(homeViewModel.getRecommendationList(), baseActivity.baseContext, this@SearchFragment)
             */
             }
 
@@ -71,12 +70,14 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener 
     }
 
     override fun onCLickItems(model: RecommendData) {
-        val b = Bundle()
-        val rdFragment = RecommendationDetailFragment()
+        mPref.put(Constants.DefaultConstants.SELECT_PROPERTY_ID,model.id.toString())
+        launchActivity(RecommendationDetailActivity::class.java)
+       /* val b = Bundle()
+        val rdFragment = RecommendationDetailActivity()
         b.putSerializable("recommendationDetail", model)
         replaceFragment(R.id.flMainContainer, rdFragment, b, HomeFragment().javaClass.simpleName)
         Log.d("TAG", "onCLickItems: model data is $model")
-        hideTab()
+        hideTab()*/
     }
 
 }

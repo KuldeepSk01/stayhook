@@ -15,7 +15,8 @@ import com.stayhook.databinding.FragmentSeeAllItemsBinding
 import com.stayhook.model.response.getproperty.GetPropertyBaseResponse
 import com.stayhook.model.response.home.RecommendData
 import com.stayhook.network.ApiResponse
-import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailFragment
+import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailActivity
+import com.stayhook.util.Constants
 import org.koin.core.component.inject
 
 class SeeAllItemsFragment : BaseFragment(), OnItemsClickListener {
@@ -25,13 +26,15 @@ class SeeAllItemsFragment : BaseFragment(), OnItemsClickListener {
     private var propertyCurrentList = mutableListOf<RecommendData>()
     private var currentItemCount: Int = propertyList.size
     private var totalItemCount = 0
-    private var pageNumber: Int = 1
+    private  var pageNumber: Int=0
     override fun getLayoutId(): Int {
         return R.layout.fragment_see_all_items
     }
 
     override fun onInitView(binding: ViewDataBinding, view: View) {
         seeAllBinding = binding as FragmentSeeAllItemsBinding
+        propertyList.clear()
+        pageNumber = 1
         getAllList(pageNumber)
         currentItemCount = propertyList.size
 
@@ -82,36 +85,10 @@ class SeeAllItemsFragment : BaseFragment(), OnItemsClickListener {
         currentItemCount = propertyList.size
         seeAllBinding.apply {
             rvSeeAll.apply {
-                val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                val lm = LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
                 itemAnimator = DefaultItemAnimator()
                 layoutManager = lm
-                adapter =
-                    SeeAllItemAdapter(propertyList, requireContext(), this@SeeAllItemsFragment)
-                /*
-                                rvSeeAll.addOnScrollListener(object : PaginationScrollListener(lm){
-                                    override fun loadMoreItems() {
-                                        isLoading = true
-                                        currentPage += 1
-
-                                        Log.d("SeeAll", "loadMoreItems: ")
-                                       // doApiCall()
-                                    }
-
-                                    override fun isLastPage(): Boolean {
-                                        Log.d("SeeAll", "isLastPage: ")
-
-                                        return isLastPage
-
-                                    }
-
-                                    override fun isLoading(): Boolean {
-                                        Log.d("SeeAll", "isLoading: ")
-
-                                        return isLoading
-
-                                    }
-                                })
-                */
+                adapter = SeeAllItemAdapter(propertyList, baseActivity.baseContext, this@SeeAllItemsFragment)
             }
 
             Log.d("SeeAll", "onInitView: PageNo $pageNumber")
@@ -127,12 +104,15 @@ class SeeAllItemsFragment : BaseFragment(), OnItemsClickListener {
     }
 
     override fun onCLickItems(model: RecommendData) {
-        val b = Bundle()
-        val rdFragment = RecommendationDetailFragment()
+        mPref.put(Constants.DefaultConstants.SELECT_PROPERTY_ID,model.id.toString())
+        launchActivity(RecommendationDetailActivity::class.java)
+      /*  val b = Bundle()
+
+        val rdFragment = RecommendationDetailActivity()
         b.putString("propertyId", model.id.toString())
         replaceFragment(R.id.flMainContainer, rdFragment, b, HomeFragment().javaClass.simpleName)
         Log.d("TAG", "onCLickItems: model data is $model")
-        hideTab()
+        hideTab()*/
     }
 
 

@@ -103,13 +103,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
+                            android:drawableEnd="@drawable/ic_verify"
+                            android:drawablePadding="@dimen/_10sdp"
                             android:fontFamily="@font/clearsans_medium"
                             android:gravity="center"
                             android:text="@string/dania"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_14sdp"
-                            android:drawablePadding="@dimen/_10sdp"
-                            android:drawableEnd="@drawable/ic_verify"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/ivEditProfileBtn" />
@@ -149,6 +149,53 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clMyScheduleVisitProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:onClick="@{()->aFragment.onClickMyScheduleVisit()}"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/booking">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/myScheduleVisit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/clearsans_regular"
+                                android:gravity="center"
+                                android:text="@string/my_scheduled_visit"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/nextIV0"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:src="@drawable/ic_right_arrow"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:id="@+id/view_zero"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="#F3F4F4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clMyScheduleVisitProfile" />
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/clMyBookingProfile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -156,7 +203,7 @@
                             android:onClick="@{()->aFragment.onClickMyBooking()}"
                             android:padding="@dimen/_10sdp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/booking">
+                            app:layout_constraintTop_toBottomOf="@id/view_zero">
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/myBook"

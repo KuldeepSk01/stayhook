@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".screen.dashboard.home.recommondationdetail.writeareview.WriteAReviewActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/svWriteAreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollIndicators="none"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:id="@+id/rlToolbarWriteAReview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <include
+                        android:id="@+id/toolbarWriteAReview"
+                        layout="@layout/custom_toolbar_layout" />
+
+                </RelativeLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/rlToolbarWriteAReview">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/reviewTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/clearsans_medium"
+                        android:gravity="center"
+                        android:text="@string/name1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/reviewTitleET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:background="@drawable/otp_box_background"
+                        android:fontFamily="@font/clearsans_medium"
+                        android:hint="@string/write_review_title_text"
+                        android:inputType="textEmailAddress"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/text_hint_color"
+                        android:textSize="@dimen/_9sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/reviewTitle" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/clearsans_medium"
+                        android:gravity="center"
+                        android:text="@string/user_name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/reviewTitleET" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/nameET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:background="@drawable/otp_box_background"
+                        android:fontFamily="@font/clearsans_medium"
+                        android:hint="@string/loram"
+                        android:inputType="textEmailAddress"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/text_hint_color"
+                        android:textSize="@dimen/_9sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/name" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/clearsans_medium"
+                        android:gravity="center"
+                        android:text="@string/email_i"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/nameET" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/emailET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:background="@drawable/otp_box_background"
+                        android:fontFamily="@font/clearsans_medium"
+                        android:hint="@string/loream_gmail_com_text"
+                        android:inputType="textEmailAddress"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/text_hint_color"
+                        android:textSize="@dimen/_9sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/email" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/reviewDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:fontFamily="@font/clearsans_medium"
+                        android:gravity="center"
+                        android:text="@string/review_dsc"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/emailET" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/reviewDescET"
+                        style="@style/defaultEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:hint="@string/review_description_text"
+                        android:inputType="textEmailAddress"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/gray2"
+                        android:textColorHint="@color/text_hint_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/reviewDesc" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/submitBT"
+                        style="@style/defaultBtnStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:padding="@dimen/_12sdp"
+                        android:text="@string/submit_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/reviewDescET" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

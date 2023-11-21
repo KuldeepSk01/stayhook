@@ -9,86 +9,102 @@
         android:id="@+id/rlSelectRoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_5sdp"
         android:background="@drawable/otp_box_background"
-        android:padding="@dimen/_10sdp">
+        android:layout_margin="@dimen/_5sdp">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAvailability"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/available"
+            android:textColor="@color/white"
+            android:gravity="center"
+            style="@style/defaultTextSizeStyle"
+            android:background="@drawable/available_drawable"
+            />
+
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true">
+            android:padding="@dimen/_10sdp">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvRoomsTypeSR"
+                android:layout_alignParentEnd="true"
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvRItemCostSR"
+                    style="@style/headingTextSizeStyle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/cost_1600_text"
+                    android:textColor="@color/primary_color" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPerMonthSR"
+                    style="@style/defaultTextSizeStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/tvRItemCostSR"
+                    android:text="@string/month_text" />
+
+            </RelativeLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvRItemCostSR"
+                android:id="@+id/tvRoomsTypeSR"
                 style="@style/headingTextSizeStyle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/cost_1600_text"
-                android:textColor="@color/primary_color" />
+                android:fontFamily="@font/clearsans_bold"
+                android:text="@string/master_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvPerMonthSR"
+                android:id="@+id/tvPrivacyRoomSR"
                 style="@style/defaultTextSizeStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/tvRItemCostSR"
-                android:text="@string/month_text" />
+                android:layout_below="@+id/tvRoomsTypeSR"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/clearsans_regular"
+                android:text="@string/private_room" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSqftSR"
+                style="@style/defaultTextSizeStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvPrivacyRoomSR"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/clearsans_regular"
+                android:text="@string/_104_sqft_text" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv1XAttachedSR"
+                style="@style/defaultTextSizeStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSqftSR"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/clearsans_regular"
+                android:text="@string/_1_x_attached_bathroom_common_kitchen_text"
+                android:textColor="@color/heading_text_color" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSoldOrNotSB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv1XAttachedSR"
+                android:fontFamily="@font/clearsans_bold"
+                android:text="@string/sold_out_text"
+                android:textColor="@color/red_color"
+                android:visibility="gone" />
 
         </RelativeLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRoomsTypeSR"
-            style="@style/headingTextSizeStyle1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/clearsans_bold"
-            android:text="@string/master_text" />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvPrivacyRoomSR"
-            style="@style/defaultTextSizeStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvRoomsTypeSR"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:fontFamily="@font/clearsans_regular"
-            android:text="@string/private_room"
-            />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSqftSR"
-            style="@style/defaultTextSizeStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvPrivacyRoomSR"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:fontFamily="@font/clearsans_regular"
-            android:text="@string/_104_sqft_text"
-             />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv1XAttachedSR"
-            style="@style/defaultTextSizeStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvSqftSR"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:fontFamily="@font/clearsans_regular"
-            android:text="@string/_1_x_attached_bathroom_common_kitchen_text"
-            android:textColor="@color/heading_text_color" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSoldOrNotSB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/red_color"
-            android:visibility="gone"
-            android:fontFamily="@font/clearsans_bold"
-            android:layout_below="@+id/tv1XAttachedSR"
-            android:text="@string/sold_out_text" />
-
 
     </RelativeLayout>
 

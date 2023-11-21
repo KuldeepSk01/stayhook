@@ -7,16 +7,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.stayhook.R
 import com.stayhook.adapter.SelectDurationAdapter
-import com.stayhook.adapter.SelectRoomAdapter
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentSelectDurationBinding
 import com.stayhook.model.Duration
-import com.stayhook.model.Room
 
 class SelectDurationFragment : BaseFragment() {
     private lateinit var sdBinding: FragmentSelectDurationBinding
-    private val selectRoomFragment : BookFragment by lazy {
-        BookFragment()
+    private val selectRoomActivity : RoomActivity by lazy {
+        RoomActivity()
     }
     override fun getLayoutId(): Int {
         return R.layout.fragment_select_duration
@@ -34,12 +32,13 @@ class SelectDurationFragment : BaseFragment() {
             rvDuration.itemAnimator = DefaultItemAnimator()
             rvDuration.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            rvDuration.adapter = SelectDurationAdapter(getList(), requireContext())
+            rvDuration.adapter = SelectDurationAdapter(getList(), baseActivity.baseContext)
 
 
         }
         sdBinding.btnSelectDurationDetail.setOnClickListener {
-                replaceFragment(R.id.flMainContainer,selectRoomFragment,this@SelectDurationFragment.javaClass.simpleName)
+            launchActivity(RoomActivity::class.java)
+               // replaceFragment(R.id.flMainContainer,selectRoomFragment,this@SelectDurationFragment.javaClass.simpleName)
                 Log.d("RDFragment", "onInitView RDFragment: className ${this@SelectDurationFragment.javaClass.simpleName}")
         }
 

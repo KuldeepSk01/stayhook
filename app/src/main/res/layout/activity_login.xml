@@ -94,10 +94,13 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginBottom="@dimen/_30sdp"
                     android:text="@string/login_btn"
-                    android:onClick="@{()->vm.isValidData(etMobileOnLogin.getText().toString())}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etMobileOnLogin" />
+<!--
+                    android:onClick="@{()->vm.isValidData(etMobileOnLogin.getText().toString())}"
+-->
+
 
 
                 <androidx.appcompat.widget.LinearLayoutCompat

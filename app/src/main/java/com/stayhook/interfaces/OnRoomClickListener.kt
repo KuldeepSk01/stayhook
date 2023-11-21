@@ -1,7 +1,7 @@
 package com.stayhook.interfaces
 
-import com.stayhook.model.Room
+import com.stayhook.model.response.getpopertydetail.PropertyRoom
 
 interface OnRoomClickListener {
-    fun onRoomClick(room: Room)
+    fun onRoomClick(room: PropertyRoom)
 }

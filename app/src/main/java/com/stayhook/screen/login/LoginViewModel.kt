@@ -11,7 +11,7 @@ import com.stayhook.validation.ValidationState
 
 class LoginViewModel(private val loginRepo: LoginRepo) : BaseViewModel() {
     private val userResponse = MutableLiveData<ApiResponse<OTPResponse>>()
-    var validationRegisterData = MutableLiveData<ValidationState>()
+    var validationLoginData = MutableLiveData<ValidationState>()
 
     fun hitLoginApi(loginRequest: UserRequest) {
         loginRepo.executeLoginApi(loginRequest, userResponse)
@@ -21,12 +21,14 @@ class LoginViewModel(private val loginRepo: LoginRepo) : BaseViewModel() {
         return userResponse
     }
 
+
+
     fun isValidData(mobile: String?) {
         if (mobile?.trim()?.let { validator.validMobileNo(mobile) } != ValidationResult.SUCCESS) {
             if (mobile?.trim()
                     ?.let { validator.validMobileNo(mobile) } == ValidationResult.EMPTY_MOBILE_NUMBER
             ) {
-                validationRegisterData.postValue(
+                validationLoginData.postValue(
                     ValidationState(
                         ValidationResult.EMPTY_MOBILE_NUMBER,
                         R.string.error_mobile_empty
@@ -37,7 +39,7 @@ class LoginViewModel(private val loginRepo: LoginRepo) : BaseViewModel() {
             if (mobile?.trim()
                     ?.let { validator.validMobileNo(mobile) } == ValidationResult.VALID_MOBILE_NUMBER
             ) {
-                validationRegisterData.postValue(
+                validationLoginData.postValue(
                     ValidationState(
                         ValidationResult.VALID_MOBILE_NUMBER,
                         R.string.error_mobile_length
@@ -46,7 +48,7 @@ class LoginViewModel(private val loginRepo: LoginRepo) : BaseViewModel() {
                 return
             }
         }
-        validationRegisterData.postValue(
+        validationLoginData.postValue(
             ValidationState(
                 ValidationResult.SUCCESS,
                 R.string.verify_success

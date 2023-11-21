@@ -61,7 +61,7 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRItemName"
                     android:textSize="@dimen/_10ssp"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -75,13 +75,15 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRItemApartment"
-                    style="@style/headingTextSizeStyle1"
-                    android:layout_width="0dp"
+                    style="@style/defaultTextSizeStyle"
+                    android:layout_width="match_parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_3sdp"
+                    android:textSize="@dimen/_10ssp"
+                    android:textColor="@color/black"
                     android:text="@string/primary_apartment_text"
                     app:layout_constraintTop_toBottomOf="@id/tvRItemName" />
 
@@ -89,7 +91,7 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRItemLocation"
                     style="@style/defaultTextSizeStyle"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:drawableStart="@drawable/ic_map_pin_gray"

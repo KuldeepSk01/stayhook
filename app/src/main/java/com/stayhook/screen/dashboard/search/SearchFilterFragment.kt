@@ -36,7 +36,7 @@ class SearchFilterFragment : BaseFragment() {
             setBackGround(tvSFilterYes, getString(R.string.food_available_text))
 
             ArrayAdapter.createFromResource(
-                requireContext(), R.array.minimum_amount, android.R.layout.simple_spinner_item
+                baseActivity.baseContext, R.array.minimum_amount, android.R.layout.simple_spinner_item
             ).also { adapter ->
                 // Specify the layout to use when the list of choices appears.
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -46,7 +46,7 @@ class SearchFilterFragment : BaseFragment() {
 
 
             ArrayAdapter.createFromResource(
-                requireContext(),
+                baseActivity.baseContext,
                 R.array.maximus_amount,
                 android.R.layout.simple_spinner_item
             ).also { adapter ->
@@ -59,7 +59,7 @@ class SearchFilterFragment : BaseFragment() {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     Log.d("SearchFilter", "onItemSelected: item ${p0?.getItemAtPosition(p2)}")
                     /*  Toast.makeText(
-                          requireContext(),
+                          baseActivity.baseContext,
                           "item ${p0?.getItemAtPosition(p2)}",
                           Toast.LENGTH_SHORT
                       ).show()*/

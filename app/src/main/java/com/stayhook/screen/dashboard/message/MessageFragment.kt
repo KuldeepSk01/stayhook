@@ -55,8 +55,8 @@ class MessageFragment : BaseFragment(), OnMessageClickListener {
             rvMessage.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                adapter = MessageAdapter(getMessageList(),requireContext(),this@MessageFragment)
+                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
+                adapter = MessageAdapter(getMessageList(),baseActivity.baseContext,this@MessageFragment)
             }
         }
     }

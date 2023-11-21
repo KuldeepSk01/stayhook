@@ -1,6 +1,7 @@
 package com.stayhook.model.response.getpopertydetail
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class GetPropertyDetail(
     @SerializedName("about")
@@ -47,4 +48,4 @@ data class GetPropertyDetail(
     val total_bed: Int,
     @SerializedName("total_review")
     val total_review: Int
-)
+):Serializable

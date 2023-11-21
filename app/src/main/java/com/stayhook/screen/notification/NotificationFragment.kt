@@ -29,8 +29,8 @@ class NotificationFragment : BaseFragment(), NotificationClickListener {
             }
 
             rvNotification.itemAnimator = DefaultItemAnimator()
-            rvNotification.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-            rvNotification.adapter = NotificationAdapter(getList(),requireContext(),this@NotificationFragment)
+            rvNotification.layoutManager = LinearLayoutManager(baseActivity.baseContext,LinearLayoutManager.VERTICAL,false)
+            rvNotification.adapter = NotificationAdapter(getList(),baseActivity.baseContext,this@NotificationFragment)
 
         }
 

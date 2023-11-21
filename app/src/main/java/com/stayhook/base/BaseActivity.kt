@@ -15,6 +15,7 @@ import com.stayhook.preference.PreferenceHelper
 import com.stayhook.util.CustomDialogs
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import java.io.Serializable
 
 abstract class BaseActivity : AppCompatActivity(), BaseInterface, KoinComponent, LifecycleOwner {
     val mPref: PreferenceHelper by inject()
@@ -39,6 +40,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseInterface, KoinComponent,
     fun launchActivity(classType: Class<out BaseActivity>) {
         val intent = Intent(this@BaseActivity, classType)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }
 
@@ -51,10 +53,13 @@ abstract class BaseActivity : AppCompatActivity(), BaseInterface, KoinComponent,
 
     fun launchActivity(classType: Class<out BaseActivity>, bundleKey: String, bundle: Bundle) {
         val intent = Intent(this@BaseActivity, classType)
-        intent.putExtra(bundleKey, bundle)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        intent.putExtra(bundleKey, bundle)
+
         startActivity(intent)
     }
+
+
 
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {

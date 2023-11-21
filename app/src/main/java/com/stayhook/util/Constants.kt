@@ -44,6 +44,13 @@ object Constants {
             const val homeApi = "homePage"
             const val getPropertyApi = "getProperty"
             const val getPropertyDetailApi = "getPropertyDetails"
+            const val getPropertyRoomApi = "getPropertyRoom"
+            const val getPropertyBedApi = "getRoomBed"
+            const val tokenCollected = "tokenCollected"
+            const val getTokenCollected = "getTokenCollected"
+            const val getScheduledToken = "getScheduleToken"
+            const val getScheduledDetailToken = "getScheduleTokenDetails"
+            const val scheduleVisit = "scheduleVisit"
 
             const val updateApi = "updateProfile"
             const val myProfileApi = "myProfile"
@@ -53,7 +60,11 @@ object Constants {
     class DefaultConstants{
         companion object{
             const val BUNDLE="bundle"
+            const val SELECT_PROPERTY_ID="property_id"
+            const val SELECT_PROPERTY_ROOM_ID="property_room_id"
+            const val SELECT_PROPERTY_ROOM_BED_ID="property_room_bed_id"
             const val STRING = "title"
+            const val ROOM_TYPE = "title"
 
         }
     }

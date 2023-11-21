@@ -32,18 +32,19 @@ class RegisterActivity : BaseActivity() {
             ivBackRegister.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
             }
-            validDataObserver()
             tvLoginTXTBtn.setOnClickListener {
                 launchActivity(LoginActivity::class.java)
                 finish()
+            }
+
+            signupBtn.setOnClickListener {
+                mViewModel.isValidData(etUserNameOnRegister.text.toString(),etMobileOnRegister.text.toString())
+                mViewModel.validationRegisterData.observe(this@RegisterActivity, registerValidDataObserver)
             }
         }
 
     }
 
-    private fun validDataObserver() {
-        mViewModel.validationRegisterData.observe(this@RegisterActivity, registerValidDataObserver)
-    }
 
     private val registerObserver: Observer<ApiResponse<OTPResponse>> by lazy {
         Observer<ApiResponse<OTPResponse>> {

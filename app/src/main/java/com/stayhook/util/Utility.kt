@@ -63,9 +63,15 @@ fun getTimeFormat(hh: Int, mm: Int): String {
     mTime.set(Calendar.MINUTE, mm)
     return sdf.format(mTime.time)
 }
+fun getCurrentDate():String {
+    val sdf = SimpleDateFormat("yyyy-MM-dd")
+    val currentDate = Calendar.getInstance().time
+    return sdf.format(currentDate)
+}
 
 fun getDateFormat(day: Int, month: Int, year: Int): String {
-    val sdf = SimpleDateFormat("EEE dd MMM yyyy")
+  //  val sdf = SimpleDateFormat("EEE dd MMM yyyy")
+    val sdf = SimpleDateFormat("yyyy-MM-dd")
     val mTime: Calendar = Calendar.getInstance()
     mTime.set(Calendar.DAY_OF_MONTH, day)
     mTime.set(Calendar.MONTH, month)

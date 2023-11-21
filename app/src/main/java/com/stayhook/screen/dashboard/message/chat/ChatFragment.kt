@@ -53,8 +53,8 @@ class ChatFragment : BaseFragment() {
 
             rvChat.apply {
                 itemAnimator = DefaultItemAnimator()
-                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-                adapter = MessageChatAdapter(getMessageList(),requireContext())
+                layoutManager = LinearLayoutManager(baseActivity.baseContext,LinearLayoutManager.VERTICAL,false)
+                adapter = MessageChatAdapter(getMessageList(),baseActivity.baseContext)
             }
 
 
