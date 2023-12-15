@@ -1,5 +1,6 @@
 package com.stayhook.screen.verification
 
+import android.annotation.SuppressLint
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
@@ -7,13 +8,16 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.KeyEvent
+import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnKeyListener
+import android.view.View.OnTouchListener
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
+import com.google.android.material.internal.ViewUtils.showKeyboard
 import com.stayhook.R
 import com.stayhook.base.BaseActivity
 import com.stayhook.base.BaseResponse
@@ -26,6 +30,7 @@ import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.util.Constants.PreferenceConstant.IS_LOGIN
 import com.stayhook.util.Constants.PreferenceConstant.TOKEN
 import com.stayhook.util.CustomDialogs
+import com.stayhook.util.showKeyboard
 import org.koin.core.component.inject
 
 class VerificationActivity : BaseActivity() {
@@ -57,18 +62,7 @@ class VerificationActivity : BaseActivity() {
                 tvToolBarTitle.visibility = View.GONE
                 ivToolBarRightIcon.visibility = View.GONE
             }
-            etOne.setOnClickListener {
-                isFocused(etOne.isFocusable, etOne)
-            }
-            etTwo.setOnClickListener {
-                isFocused(etTwo.isFocusable, etTwo)
-            }
-            etThree.setOnClickListener {
-                isFocused(etThree.isFocusable, etThree)
-            }
-            etFour.setOnClickListener {
-                isFocused(etFour.isFocusable, etFour)
-            }
+
 
             tvResend.setOnClickListener {
                 val request = UserRequest().apply {
@@ -215,33 +209,78 @@ class VerificationActivity : BaseActivity() {
         }
     }
 
-    private fun isFocused(isFocus: Boolean, v: View) {
-        if (isFocus) {
-            setOnOtpETClick(v)
-        }
-    }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun otpHandler() {
         vBinding.apply {
+
+            etOne.setOnTouchListener(object : OnTouchListener {
+                override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+                    if(p1?.action == MotionEvent.ACTION_UP) {
+                        setOtpBackground(etOne)
+                        p0?.showKeyboard()
+
+                        return true
+                    }
+                    return false
+                }
+
+
+            })
+            etTwo.setOnTouchListener(object : OnTouchListener {
+                override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+                    if(p1?.action == MotionEvent.ACTION_UP) {
+                        setOtpBackground(etTwo)
+                        p0?.showKeyboard()
+                        return true
+                    }
+                    return false
+                }
+
+            })
+            etThree.setOnTouchListener(object : OnTouchListener {
+                override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+                    if(p1?.action == MotionEvent.ACTION_UP) {
+                        setOtpBackground(etThree)
+                        p0?.showKeyboard()
+
+                        return true
+                    }
+                    return false
+                }
+
+            })
+            etFour.setOnTouchListener(object : OnTouchListener {
+                override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+                    if(p1?.action == MotionEvent.ACTION_UP) {
+                        setOtpBackground(etFour)
+                        p0?.showKeyboard()
+                        return true
+                    }
+                    return false
+                }
+
+            })
+
             etOne.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
                 }
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
                     if (p0?.length == 1) {
                         etTwo.requestFocus()
                         setOtpBackground(etTwo)
-
                     }
                 }
 
             })
             etTwo.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -275,7 +314,6 @@ class VerificationActivity : BaseActivity() {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
                 }
-
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
 
@@ -286,6 +324,7 @@ class VerificationActivity : BaseActivity() {
                 }
 
             })
+
 
             etTwo.setOnKeyListener(object : OnKeyListener {
                 override fun onKey(p0: View?, p1: Int, p2: KeyEvent?): Boolean {
@@ -305,11 +344,12 @@ class VerificationActivity : BaseActivity() {
                 override fun onKey(p0: View?, p1: Int, p2: KeyEvent?): Boolean {
                     if (p1 == KeyEvent.KEYCODE_DEL && p2?.action == KeyEvent.ACTION_DOWN) {
                         return if (vBinding.etThree.text.toString().trim().isEmpty()) {
-                            vBinding.etTwo.setSelection(vBinding.etOne.text?.length!!)
-                            vBinding.etTwo.requestFocus()
-                            setOtpBackground(vBinding.etTwo)
+                            etTwo.setSelection(vBinding.etOne.text?.length!!)
+                            etTwo.requestFocus()
+                            setOtpBackground(etTwo)
                             true
-                        } else false
+                        }
+                        else false
                     }
                     return false
                 }
@@ -318,12 +358,12 @@ class VerificationActivity : BaseActivity() {
             etFour.setOnKeyListener(object : OnKeyListener {
                 override fun onKey(p0: View?, p1: Int, p2: KeyEvent?): Boolean {
                     if (p1 == KeyEvent.KEYCODE_DEL && p2?.action == KeyEvent.ACTION_DOWN) {
-                        return if (vBinding.etFour.text.toString().trim().isEmpty()) {
-                            vBinding.etThree.setSelection(vBinding.etOne.text?.length!!)
-                            vBinding.etThree.requestFocus()
-                            setOtpBackground(vBinding.etThree)
+                        return if (etFour.text.toString().trim().isEmpty()) {
+                            etThree.setSelection(vBinding.etOne.text?.length!!)
+                            etThree.requestFocus()
+                            setOtpBackground(etThree)
                             true
-                        } else false
+                        }else false
                     }
                     return false
                 }
@@ -343,14 +383,12 @@ class VerificationActivity : BaseActivity() {
         vBinding.etFour.background =
             ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
         etTwo.background =
-            ResourcesCompat.getDrawable(resources, R.drawable.otp_box_outline_drawable, null)
+            ResourcesCompat.getDrawable(resources, R.drawable.selected_box_drawable, null)
 
 
     }
 
-    fun setOnOtpETClick(v: View) {
-        setOtpBackground(v as AppCompatEditText)
-    }
+
 
 
     private fun stopCountDownTime() {

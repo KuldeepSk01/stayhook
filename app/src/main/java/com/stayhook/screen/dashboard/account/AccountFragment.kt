@@ -13,12 +13,13 @@ import com.stayhook.model.response.MyProfileResponse
 import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.screen.dashboard.account.completeprofile.CompleteProfileActivity
+import com.stayhook.screen.dashboard.account.downloadprofile.KYCActivity
 import com.stayhook.screen.dashboard.account.editprofile.EditProfileActivity
 import com.stayhook.screen.dashboard.account.helpcenter.HelpCenterFragment
 import com.stayhook.screen.dashboard.account.mybooking.MyBookingActivity
-import com.stayhook.screen.dashboard.account.mypayment.MyPaymentsFragment
+import com.stayhook.screen.dashboard.account.mypayment.MyPaymentsActivity
 import com.stayhook.screen.dashboard.account.myschedule.MyScheduledVisitActivity
-import com.stayhook.screen.dashboard.account.myticket.MyTicketFragment
+import com.stayhook.screen.dashboard.account.myticket.MyTicketActivity
 import com.stayhook.screen.login.LoginActivity
 import com.stayhook.util.CustomDialogs
 import org.koin.core.component.inject
@@ -61,12 +62,7 @@ class AccountFragment : BaseFragment() {
     }
 
     fun onClickMyPayment() {
-        replaceFragment(
-            R.id.flMainContainer, MyPaymentsFragment(), AccountFragment().javaClass.simpleName
-        )
-        hideTab()
-
-
+        launchActivity(MyPaymentsActivity::class.java)
     }
 
     fun onClickMyCompleteProfile() {
@@ -75,14 +71,17 @@ class AccountFragment : BaseFragment() {
 
     fun onClickDownloadDocument() {
         //  hideTab()
+        launchActivity(KYCActivity::class.java)
 
     }
 
     fun onClickResolveProblemTicket() {
-        replaceFragment(
+
+        launchActivity(MyTicketActivity::class.java)
+       /* replaceFragment(
             R.id.flMainContainer, MyTicketFragment(), AccountFragment().javaClass.simpleName
         )
-        hideTab()
+        hideTab()*/
 
     }
 

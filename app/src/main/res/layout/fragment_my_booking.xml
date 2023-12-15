@@ -42,6 +42,8 @@
                     android:layout_below="@+id/rlToolBarMyBooking"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:background="@drawable/otp_box_background"
                     >
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -53,7 +55,6 @@
                         android:fontFamily="@font/clearsans_bold"
                         android:gravity="center"
                         android:padding="@dimen/_12sdp"
-                        android:background="@drawable/otp_box_background"
                         android:text="@string/title_current" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -66,7 +67,6 @@
                         android:gravity="center"
                         android:padding="@dimen/_12sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:background="@drawable/otp_box_background"
                         android:text="@string/title_past" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -79,7 +79,6 @@
                         android:gravity="center"
                         android:padding="@dimen/_12sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:background="@drawable/otp_box_background"
                         android:text="@string/title_upcoming" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 

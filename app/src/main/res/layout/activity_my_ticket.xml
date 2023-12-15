@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.dashboard.account.myticket.MyTicketFragment">
+        tools:context=".screen.dashboard.account.myticket.MyTicketActivity">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/svRegister"
@@ -23,7 +23,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".screen.dashboard.account.myticket.MyTicketFragment">
+                tools:context=".screen.dashboard.account.myticket.MyTicketActivity">
 
                 <RelativeLayout
                     android:id="@+id/rlToolbarMyTicket"

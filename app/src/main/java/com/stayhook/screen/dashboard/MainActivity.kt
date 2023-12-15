@@ -1,7 +1,5 @@
 package com.stayhook.screen.dashboard
 
-import android.location.Location
-import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Handler
 import android.os.Looper
@@ -13,7 +11,6 @@ import androidx.fragment.app.Fragment
 import com.stayhook.R
 import com.stayhook.base.BaseActivity
 import com.stayhook.databinding.ActivityMainBinding
-import com.stayhook.permissions.MyPermissions
 import com.stayhook.screen.dashboard.account.AccountFragment
 import com.stayhook.screen.dashboard.favorite.FavoriteFragment
 import com.stayhook.screen.dashboard.home.HomeFragment
@@ -21,12 +18,15 @@ import com.stayhook.screen.dashboard.message.MessageFragment
 import com.stayhook.screen.dashboard.search.SearchFragment
 import com.stayhook.screen.interfaces.DashBoardListener
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import org.koin.dsl.module
 
 
-class MainActivity : BaseActivity(), KoinComponent, DashBoardListener, LocationListener {
+class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
     private lateinit var dashBoardListener: DashBoardListener
     private var isBackPressed = false
-    private lateinit var locationManager: LocationManager
+    private val mainViewModel: MainViewModel by inject()
+
 
     companion object {
         const val TAG = "MainActivity"
@@ -39,8 +39,6 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener, LocationL
 
     }
 
-
-    private var onBackPressAgain: Boolean = false
 
     private val homeFragment: HomeFragment by lazy {
         HomeFragment()
@@ -65,12 +63,9 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener, LocationL
 
     override fun onViewInit(binding: ViewDataBinding?) {
         mainActivityBinding = binding as ActivityMainBinding
-        locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         dashBoardListener = this@MainActivity
         dashBoardListener.onBottomIconClick(homeFragment)
-
-        val userDetail = mPref.getUserDetail()
-        Log.d(TAG, "onViewInit: user detail $userDetail")
+        mainViewModel.checkLocationPermission()
 
 
         mainActivityBinding.customBottomBarLayout.ivHomeIcon.setBackgroundResource(R.drawable.ic_home_selected)
@@ -214,25 +209,5 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener, LocationL
         }
     }
 
-    override fun onLocationChanged(p0: Location) {
 
-    }
-
-
-    private fun requestLocationService() {
-        if (locationManager == null) {
-            locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
-        } else {
-            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-                if (MyPermissions.isLocationEnable) {
-                   // locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 1000, this)
-                } else {
-                    MyPermissions.getLocationPermission(this@MainActivity)
-                }
-            }else{
-
-            }
-
-        }
-    }
 }

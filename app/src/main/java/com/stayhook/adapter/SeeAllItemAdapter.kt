@@ -29,12 +29,22 @@ inner class SeeAllItemVM(val b : ItemSeeAllLayoutBinding):ViewHolder(b.root)
     override fun onBindViewHolder(holder: SeeAllItemVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            Glide.with(context).load(model.property_image).into(ivSeeAllItem)
-            tvSealAllItemTitle.text =model.property_name
-            tvSeeAllItemLocation.text = ""
-            tvSeeAllItemCost.text = "$${model.price}"
-            tvSeeAllItemPerGender.text = model.gender_type
+            model.let {
+                Glide.with(context).load(it.property_image).placeholder(R.drawable.default_image).into(ivSeeAllItem)
+                tvSealAllItemTitle.text =it.property_name
+                tvSeeAllItemLocation.text = String.format(
+                    "%s%s%s%s%s%s",
+                    it.street,
+                    it.city,
+                    it.state,
+                    it.area,
+                    it.pincode,
+                    it.country
+                )
+                tvSeeAllItemCost.text = String.format("%s %d",context.getString(R.string.indian_currency_symbol),it.price)
+                tvSeeAllItemPerGender.text = it.gender_type
 
+            }
             cvSeeAllItem.setOnClickListener {
                 listener.onCLickItems(model)
             }

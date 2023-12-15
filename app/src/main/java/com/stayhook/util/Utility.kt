@@ -11,6 +11,7 @@ import android.provider.OpenableColumns
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import java.io.File
 import java.io.FileOutputStream
@@ -27,6 +28,10 @@ object Utility {
         isConnect = isAvailable
     }
 
+}
+
+fun mLog(msg:String){
+    Log.d("StayHook",msg)
 }
 
 inline fun <reified T : Serializable> Bundle.serializable(key: String): T? = when {
@@ -63,14 +68,15 @@ fun getTimeFormat(hh: Int, mm: Int): String {
     mTime.set(Calendar.MINUTE, mm)
     return sdf.format(mTime.time)
 }
-fun getCurrentDate():String {
+
+fun getCurrentDate(): String {
     val sdf = SimpleDateFormat("yyyy-MM-dd")
     val currentDate = Calendar.getInstance().time
     return sdf.format(currentDate)
 }
 
 fun getDateFormat(day: Int, month: Int, year: Int): String {
-  //  val sdf = SimpleDateFormat("EEE dd MMM yyyy")
+    //  val sdf = SimpleDateFormat("EEE dd MMM yyyy")
     val sdf = SimpleDateFormat("yyyy-MM-dd")
     val mTime: Calendar = Calendar.getInstance()
     mTime.set(Calendar.DAY_OF_MONTH, day)
@@ -116,6 +122,23 @@ fun getRealPathFromURI(uri: Uri, activity: Activity): String? {
         Log.e("Exception", e.message!!)
     }
     return file.absolutePath
+}
+
+
+interface OnDropDownListener {
+    fun onDropDownClick(item: String)
+}
+
+fun dropDownPopup(
+    context: Context, isBelow: View, menuLayout: Int, listener: OnDropDownListener
+): PopupMenu {
+    val popup = PopupMenu(context, isBelow)
+    popup.menuInflater.inflate(menuLayout, popup.menu)
+    popup.setOnMenuItemClickListener { item ->
+        listener.onDropDownClick(item.title.toString())
+        true
+    }
+    return popup
 }
 
 

@@ -35,8 +35,19 @@ class NearbyLocationItemAdapter(
     override fun onBindViewHolder(holder: NearbyLVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            holder.b.tvItemNearbyLocation.text = "Noida Sec-4"
-            Glide.with(context).load(model.property_image).into(ivItemNearbyLocation)
+           model.let {
+               holder.b.tvItemNearbyLocation.text = String.format(
+                   "%s%s%s%s%s%s",
+                   it.street,
+                   it.city,
+                   it.state,
+                   it.area,
+                   it.pincode,
+                   it.country
+               )
+               Glide.with(context).load(it.property_image).placeholder(R.drawable.default_image).into(ivItemNearbyLocation)
+
+           }
             rlItemSearchNearByLocation.setOnClickListener {
                 listener.onCLickItems(model)
             }

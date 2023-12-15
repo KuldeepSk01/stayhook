@@ -25,6 +25,10 @@ class PreferenceHelper(private val sharedPref: SharedPreferences) : KoinComponen
         sharedPref.edit().putInt(key, value).apply()
     }
 
+    fun put(key: String, value: Float) {
+        sharedPref.edit().putFloat(key, value).apply()
+    }
+
     fun setUserDetail(userResponse: MyProfileResponse) {
         val userDetail = reflectionUtil.parseClassToJson(userResponse)
         sharedPref.edit().putString(USER_DETAIL, userDetail).apply()
@@ -37,6 +41,11 @@ class PreferenceHelper(private val sharedPref: SharedPreferences) : KoinComponen
     operator fun get(key: String, defaultValue: String): String? {
         return sharedPref.getString(key, defaultValue)
     }
+
+    operator fun get(key: String, defaultValue: Float): Float? {
+        return sharedPref.getFloat(key, defaultValue)
+    }
+
 
     operator fun get(key: String, defaultValue: Int): Int {
         return sharedPref.getInt(key, defaultValue)

@@ -1,15 +1,18 @@
 package com.stayhook.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.stayhook.R
 import com.stayhook.databinding.ItemImagesLayoutBinding
 import com.stayhook.model.response.getpopertydetail.PropertyImage
+import com.stayhook.util.mLog
 
 class RecommendationDetailAdapter(private val list: MutableList<PropertyImage>, val context: Context) :
     RecyclerView.Adapter<RecommendationDetailAdapter.OnVM>() {
@@ -30,7 +33,9 @@ class RecommendationDetailAdapter(private val list: MutableList<PropertyImage>, 
 
     override fun onBindViewHolder(holder: OnVM, position: Int) {
         val model = list[position]
-        Glide.with(context).load(model.image).into(holder.b.ivOnboardingItem)
+        mLog("Rd Images $list")
+        Glide.with(context).load(model.image).placeholder(R.drawable.default_image).into(holder.b.ivOnboardingItem)
+
     }
 
 }

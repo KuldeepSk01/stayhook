@@ -99,7 +99,7 @@ class HelpCenterFragment : BaseFragment() {
         }
         tv1.setTextColor(resources.getColor(R.color.primary_color, null))
         tv1.background =
-            ResourcesCompat.getDrawable(resources, R.drawable.select_bed_filter_bg, null)
+            ResourcesCompat.getDrawable(resources, R.drawable.select_white_bg, null)
     }
 
 }

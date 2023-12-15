@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.stayhook.R
 import com.stayhook.databinding.ItemAmenitiesLayoutBinding
 import com.stayhook.databinding.ItemTimeListDialogBinding
+import com.stayhook.model.response.StateCityResponse
 
-class ScheduledTimePickAdapter(val list: MutableList<String>, val context: Context,private val listener:OnScheduledTimePickerListener) :
+class ScheduledTimePickAdapter(val list: MutableList<StateCityResponse>, val context: Context,private val listener:OnScheduledTimePickerListener) :
     RecyclerView.Adapter<ScheduledTimePickAdapter.ScheduledTimePickVM>() {
      class ScheduledTimePickVM(val b: ItemTimeListDialogBinding) : ViewHolder(b.root)
 
     interface OnScheduledTimePickerListener{
-        fun onTimePicker(model:String)
+        fun onTimePicker(model:StateCityResponse)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduledTimePickVM {
         return ScheduledTimePickVM(
@@ -30,7 +31,7 @@ class ScheduledTimePickAdapter(val list: MutableList<String>, val context: Conte
     override fun onBindViewHolder(holder: ScheduledTimePickVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            tvItemScheduleTime.text = model
+            tvItemScheduleTime.text = model.name
             tvItemScheduleTime.setOnClickListener {
                 listener.onTimePicker(model)
             }

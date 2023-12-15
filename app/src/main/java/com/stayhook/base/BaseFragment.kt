@@ -153,6 +153,13 @@ abstract class BaseFragment : Fragment(), KoinComponent, View.OnClickListener {
         startActivity(intent)
     }
 
+    fun launchActivity(classType: Class<out BaseActivity>,key: String,value:String) {
+        val intent = Intent(baseActivity, classType)
+        intent.putExtra(key,value)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+    }
+
     fun showProgress(){
       baseActivity.showProgress()
     }

@@ -1,26 +1,21 @@
 package com.stayhook.adapter
 
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.transition.Transition
 import com.stayhook.R
 import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.databinding.ItemRecommendatationLayoutBinding
-import com.stayhook.model.Recommendation
 import com.stayhook.model.response.home.RecommendData
 
 class RecommendationItemAdapter(
     private val list: MutableList<RecommendData>,
     private val context: Context,
-    private val listener :OnItemsClickListener
+    private val listener: OnItemsClickListener
 ) : RecyclerView.Adapter<RecommendationItemAdapter.RItemVm>() {
 
     inner class RItemVm(val b: ItemRecommendatationLayoutBinding) : ViewHolder(b.root)
@@ -43,19 +38,34 @@ class RecommendationItemAdapter(
     override fun getItemCount() = list.size
     override fun onBindViewHolder(holder: RItemVm, position: Int) {
         val model = list[position]
-        Log.d("TAG", "onBindViewHolder: ${model.property_image}")
-        Glide.with(context).load(model.property_image).into(object : SimpleTarget<Drawable>() {
-            override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
-                holder.b.ivRItem.background=resource
+        holder.b.apply {
+            model.let {
+                Glide.with(context).load(it.property_image).placeholder(R.drawable.default_image)
+                    .into(ivRItem)
+                tvRItemName.text = it.property_type
+                tvRItemApartment.text = it.property_name
+                tvRItemLocation.text = String.format(
+                    "%s%s%s%s%s%s",
+                    it.street,
+                    it.city,
+                    it.state,
+                    it.area,
+                    it.pincode,
+                    it.country
+                )
+                tvRItemCost.text = String.format(
+                    "%s %d",
+                    context.getString(R.string.indian_currency_symbol),
+                    it.price
+                )
+                tvRatingRItem.text = it.rating.toString()
             }
-        })
-        holder.b.tvRItemName.text = model.property_type
-        holder.b.tvRItemApartment.text = model.property_name
-        holder.b.tvRItemCost.text = "$${model.price}"
-        holder.b.tvRatingRItem.text = model.rating.toString()
-        holder.b.cvRItem.setOnClickListener {
-            listener.onCLickItems(model)
+            cvRItem.setOnClickListener {
+                listener.onCLickItems(model)
+            }
         }
+
     }
+
 
 }

@@ -47,5 +47,8 @@ data class GetPropertyDetail(
     @SerializedName("total_bed")
     val total_bed: Int,
     @SerializedName("total_review")
-    val total_review: Int
+    val total_review: Int,
+    @SerializedName("property_map")
+    val property_map: String
+
 ):Serializable

@@ -38,6 +38,13 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    sourceSets {
+        getByName("main") {
+            assets {
+                srcDirs("src\\main\\assets", "src\\main\\assets")
+            }
+        }
+    }
 }
 
 dependencies {
@@ -97,10 +104,8 @@ dependencies {
     //this is flashbar library for popup
     implementation("com.andrognito.flashbar:flashbar:1.0.3")
 
-/*
     //for lotties animation
     implementation ("com.airbnb.android:lottie:3.4.0")
-*/
 
 
 }

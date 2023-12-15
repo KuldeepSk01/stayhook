@@ -3,12 +3,11 @@ package com.stayhook.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.stayhook.R
 import com.stayhook.databinding.ItemSelectBedBinding
-import com.stayhook.interfaces.OnRoomClickListener
-import com.stayhook.model.Bed
 import com.stayhook.model.response.getpopertydetail.PropertyRoom
 
 class SelectBedAdapter(val list: MutableList<PropertyRoom>, val context: Context, private val listener: SelectBedListener
@@ -36,27 +35,32 @@ class SelectBedAdapter(val list: MutableList<PropertyRoom>, val context: Context
     override fun onBindViewHolder(holder: SBVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            tvItemRoomNameSD.text = model.roomType
-            tvItemBedSD.text = "(${model.roomBed})"
+            if (model.roomType == "Common Room"){
+                tvItemRoomNameSD.text = model.roomType
+                tvItemBedSD.text = if (model.roomBed != null) String.format("%s%s%s","(",model.roomBed,")") else "(0 Bed)"
+            }else{
+                tvItemRoomNameSD.text = model.roomType
+                tvItemBedSD.text = if (model.roomBed != null) String.format("%s%s%s","(",model.roomBed,")") else "(0 Bed)"
 
-            if (itemPosition == position) {
-                llItemSD.background =
-                    context.resources.getDrawable(R.drawable.otp_box_outline_drawable, null)
-            } else {
-                llItemSD.background =
-                    context.resources.getDrawable(R.drawable.otp_box_background, null)
-            }
-/*
-            tvMonthsSb.text = "${model.roomBed.toString()} Beds"
-            tvAttachedBathroomSB.text = "${model.bedDescription.toString()}"
-            tvCostSB.text = "$${model.bedChargesPerMonth.toString()}"
-           */
-            llItemSD.setOnClickListener {
-                itemPosition = position
-                notifyDataSetChanged()
-                listener.onBedClick(model)
+                if (itemPosition == position) {
+                    llItemSD.background =ResourcesCompat.getDrawable(context.resources,R.drawable.select_white_bg,null)
+                } else {
+                    llItemSD.background = null
+                }
+                /*
+                            tvMonthsSb.text = "${model.roomBed.toString()} Beds"
+                            tvAttachedBathroomSB.text = "${model.bedDescription.toString()}"
+                            tvCostSB.text = "$${model.bedChargesPerMonth.toString()}"
+                           */
+                llItemSD.setOnClickListener {
+                    itemPosition = position
+                    notifyDataSetChanged()
+                    listener.onBedClick(model)
 
+                }
             }
+
+
         }
     }
 }

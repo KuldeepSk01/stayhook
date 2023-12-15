@@ -13,6 +13,7 @@ import com.stayhook.base.CollectionBaseResponse
 import com.stayhook.databinding.FragmentMyBookingBinding
 import com.stayhook.model.response.TokenCollectedResponse
 import com.stayhook.network.ApiResponse
+import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.screen.dashboard.account.myschedule.ScheduleVisitStatusActivity
 import com.stayhook.util.CustomDialogs
 import org.koin.core.component.inject
@@ -93,24 +94,23 @@ class MyBookingActivity : BaseActivity(), MyBookingAdapter.OnClickTokenListener 
         tv1: AppCompatTextView,
     ) {
         mBinding.apply {
-            tvCurrentMB.background =
-                ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
-            tvPastMB.background =
-                ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
-            tvUpcomingMB.background =
-                ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
-            /* tvCurrentMB.setTextColor(resources.getColor(R.color.sub_heading_text_color, null))
-             tvPastMB.setTextColor(resources.getColor(R.color.sub_heading_text_color, null))
-             tvUpcomingMB.setTextColor(resources.getColor(R.color.sub_heading_text_color, null))
- */
+            tvCurrentMB.background = null
+            tvPastMB.background = null
+            tvUpcomingMB.background = null
         }
-        //  tv1.setTextColor(resources.getColor(R.color.primary_color, null))
         tv1.background =
-            ResourcesCompat.getDrawable(resources, R.drawable.otp_box_outline_drawable, null)
+            ResourcesCompat.getDrawable(resources, R.drawable.select_white_bg, null)
     }
 
     override fun onClickToken(model: TokenCollectedResponse) {
         launchActivity(ScheduleVisitStatusActivity::class.java,"tokenId",model.id.toString())
+    }
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        launchActivity(MainActivity::class.java)
+        finish()
     }
 
 

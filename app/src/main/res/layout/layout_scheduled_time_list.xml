@@ -19,7 +19,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 app:cardCornerRadius="@dimen/_10sdp"
-                android:layout_width="@dimen/_150sdp"
+                android:layout_width="match_parent"
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_height="@dimen/_400sdp">
                 <androidx.recyclerview.widget.RecyclerView

@@ -7,10 +7,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.stayhook.R
+import com.stayhook.adapter.interfaces.MyTicketAdapterListener
 import com.stayhook.databinding.ItemMyTicketsLayoutBinding
 import com.stayhook.model.Ticket
 
-class MyTicketAdapter(val list: MutableList<Ticket>, val context: Context) :
+class MyTicketAdapter(val list: MutableList<Ticket>, val context: Context,private val listener:MyTicketAdapterListener) :
     RecyclerView.Adapter<MyTicketAdapter.MyTicketVM>() {
     inner class MyTicketVM(val b: ItemMyTicketsLayoutBinding) : ViewHolder(b.root)
 
@@ -31,6 +32,9 @@ class MyTicketAdapter(val list: MutableList<Ticket>, val context: Context) :
             tvItemTicketStatus.text = "${model.id} - Open"
             tvItemTicketTitle.text = model.ticketTitle
             tvItemTicketDescription.text = model.ticketDescription
+            clItemTicket.setOnClickListener {
+                listener.onTicketClick(model)
+            }
         }
     }
 

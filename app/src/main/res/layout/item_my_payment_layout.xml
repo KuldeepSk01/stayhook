@@ -43,6 +43,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+<!--
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -72,6 +73,7 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+-->
 
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -104,6 +106,7 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvMovedStatusPayment"
                     android:layout_width="wrap_content"
+                    style="@style/defaultTextSizeStyle"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:fontFamily="@font/clearsans_medium"

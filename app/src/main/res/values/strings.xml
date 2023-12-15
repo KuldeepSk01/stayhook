@@ -336,7 +336,7 @@
     <string name="title_delete">Delete</string>
     <string name="upload_back_of_aadhaar_card_text">Upload back of Aadhaar Card</string>
     <string name="upload_pan_card_text">Upload PAN Card</string>
-    <string name="upload_work_id_text">Upload Work ID</string>
+    <string name="upload_work_id_text">Upload Police Verification</string>
     <string name="verification_complete_text">Verification Complete</string>
     <string name="verification_our_representative_will_text">Our representative will review your information shortly.</string>
     <string name="_1_room_text">1 Room</string>
@@ -361,8 +361,8 @@
     <string name="upload_documents_text">Upload Documents</string>
     <string name="title_agreement">Agreement</string>
     <string name="_34_000">34,000/</string>
-    <string name="upload_front_aadhaar_text">Upload Front Aadhaar</string>
-    <string name="upload_back_aadhaar_text">Upload Back Aadhaar</string>
+    <string name="upload_front_aadhaar_text">Upload Front image of Aadhaar</string>
+    <string name="upload_back_aadhaar_text">Upload Back image of Aadhaar</string>
     <string name="_10_am_11_am_text">10 am - 11 am</string>
     <string name="master_text">Master Room</string>
     <string name="guest_text">Guest Room</string>
@@ -409,6 +409,13 @@
         <item>45000</item>
     </string-array>
 
+<!--    slider range -->
+    <array name="slider_values">
+        <item>0.0</item>
+        <item>10.0</item>
+    </array>
+<!--    slider range-->
+
 
     <!--validation keys-->
     <string name="error_mobile_empty">Enter your mobile number.!</string>
@@ -430,4 +437,23 @@
     <string name="_2023_11_2">2023-11-02</string>
     <string name="available_date">Available Date</string>
     <string name="_07_am_08_am">07 AM - 08 AM</string>
+    <string name="upload_front_of_aadhaar_card">Upload front of Aadhaar Card</string>
+    <string name="other">Other</string>
+    <string name="select_state">Select State</string>
+    <string name="address_text">Address</string>
+    <string name="select_city">Select City</string>
+    <string name="remark">Remark :</string>
+    <string name="rs_8000_paid">Rs. 8000 Paid</string>
+    <string name="sk_boss">Sk Boss</string>
+    <string name="police_verification">Police Verification</string>
+    <string name="signeture_agreement">Signeture Agreement</string>
+    <string name="pending">Pending</string>
+    <string name="paid">Paid</string>
+    <string name="no_data_found">No Data Found !</string>
+    <string name="_100">$100</string>
+    <string name="create_ticket">Create Ticket</string>
+    <string name="ticket2_text">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</string>
+    <string name="view_status">View Status</string>
+    <string name="error_empty_search_location">Please enter you location!</string>
+    <string name="enter_your_location">Enter your location..</string>
 </resources>

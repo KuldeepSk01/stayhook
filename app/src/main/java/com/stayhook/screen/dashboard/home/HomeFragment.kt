@@ -1,7 +1,5 @@
 package com.stayhook.screen.dashboard.home
 
-import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
@@ -21,7 +19,6 @@ import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailActivity
 import com.stayhook.util.Constants
 import com.stayhook.util.Constants.NetworkConstant.Companion.NO_INTERNET_AVAILABLE
-import com.stayhook.util.CustomDialogs
 import com.stayhook.util.CustomDialogs.showErrorMessage
 import com.stayhook.util.Utility.isConnectionAvailable
 import org.koin.core.component.inject
@@ -32,25 +29,7 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
     private var recommendationList = mutableListOf<RecommendData>()
     private var recentlyAddedDataList = mutableListOf<RecommendData>()
     private var nearbyDataList = mutableListOf<RecommendData>()
-
-    // FusedLocationProviderClient - Main class for receiving location updates.
-    // private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-
-    // LocationRequest - Requirements for the location updates, i.e.,
-// how often you should receive updates, the priority, etc.
-    //private lateinit var locationRequest: LocationRequest
-
-    // LocationCallback - Called when FusedLocationProviderClient
-// has a new Location
-    // private lateinit var locationCallback: LocationCallback
-
-    // This will store current location info
-    // private var currentLocation: Location? = null
     private lateinit var mainActivity: MainActivity
-    private val rDetailFragment: RecommendationDetailActivity by lazy {
-        RecommendationDetailActivity()
-    }
-
     private lateinit var homeBinding: FragmentHomeBinding
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
@@ -61,10 +40,11 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
         mainActivity = requireActivity() as MainActivity
         mainActivity.setBottomStyle(1)
         showTab()
+
         homeViewModel.fragmentHome = this@HomeFragment
         homeBinding.homeViewModel = homeViewModel
+
         hitHomeApi()
-        //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
     }
 
@@ -73,7 +53,11 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
             rvRecommendationItems.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.HORIZONTAL, false)
+                    LinearLayoutManager(
+                        baseActivity.baseContext,
+                        LinearLayoutManager.HORIZONTAL,
+                        false
+                    )
                 adapter = RecommendationItemAdapter(
                     recommendationList,
                     baseActivity.baseContext,
@@ -83,7 +67,11 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
             rvRecentlyAddedHome.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
+                    LinearLayoutManager(
+                        baseActivity.baseContext,
+                        LinearLayoutManager.VERTICAL,
+                        false
+                    )
                 adapter = RecentlyAddedItemAdapter(
                     recentlyAddedDataList,
                     baseActivity.baseContext,
@@ -93,9 +81,17 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
             homeBinding.rvNearByLocationItems.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.HORIZONTAL, false)
+                    LinearLayoutManager(
+                        baseActivity.baseContext,
+                        LinearLayoutManager.HORIZONTAL,
+                        false
+                    )
                 adapter =
-                    NearbyLocationItemAdapter(nearbyDataList, baseActivity.baseContext, this@HomeFragment)
+                    NearbyLocationItemAdapter(
+                        nearbyDataList,
+                        baseActivity.baseContext,
+                        this@HomeFragment
+                    )
             }
 
         }
@@ -103,8 +99,8 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
     }
 
     private fun hitHomeApi() {
-        if (!isConnectionAvailable()){
-            CustomDialogs.showErrorMessage(requireActivity(),NO_INTERNET_AVAILABLE)
+        if (!isConnectionAvailable()) {
+            showErrorMessage(requireActivity(), NO_INTERNET_AVAILABLE)
             return
         }
 
@@ -136,16 +132,8 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
     }
 
     override fun onCLickItems(model: RecommendData) {
-        mPref.put(Constants.DefaultConstants.SELECT_PROPERTY_ID,model.id.toString())
+        mPref.put(Constants.DefaultConstants.SELECT_PROPERTY_ID, model.id.toString())
         launchActivity(RecommendationDetailActivity::class.java)
-      /*
-        val b = Bundle()
-        val rdFragment = RecommendationDetailActivity()
-        b.putString("propertyId", model.id.toString())
-        replaceFragment(R.id.flMainContainer, rdFragment, b, HomeFragment::class.java.simpleName)
-        Log.d("TAG", "onCLickItems: model data is $model")
-        */
-        //hideTab()
     }
 
 }

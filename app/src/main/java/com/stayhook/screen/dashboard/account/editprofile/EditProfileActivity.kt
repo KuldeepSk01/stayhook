@@ -2,7 +2,8 @@ package com.stayhook.screen.dashboard.account.editprofile
 
 import android.net.Uri
 import android.util.Log
-import android.view.View
+import android.view.MenuItem
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.res.ResourcesCompat
@@ -11,12 +12,12 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.stayhook.R
 import com.stayhook.base.BaseActivity
-import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentEditProfileBinding
 import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.network.ApiResponse
 import com.stayhook.util.CustomDialogs.showErrorMessage
-import com.stayhook.util.CustomDialogs.showSuccessMessage
+import com.stayhook.util.OnDropDownListener
+import com.stayhook.util.dropDownPopup
 import com.stayhook.util.getRealPathFromURI
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -49,6 +50,13 @@ class EditProfileActivity : BaseActivity() {
                 imageContract.launch("image/*")
             }
 
+            genderET.setOnClickListener {
+                dropDownPopup(this@EditProfileActivity,it,R.menu.menu_gender_items,object :OnDropDownListener{
+                    override fun onDropDownClick(item: String) {
+                        genderET.setText(item)
+                    }
+                }).show()
+            }
 
             btnUpdateProfile.setOnClickListener {
                 val map = HashMap<String, Any>()
@@ -56,7 +64,6 @@ class EditProfileActivity : BaseActivity() {
                 map["email"] = etEmailEditProfle.text.toString()
                 map["mobile"] = tvMobileEditProfile.text.toString()
                 map["gender"] = genderET.text.toString()
-                map["profile"] = ""
 
                 var file = File("")
                 if (imageUri != null) {

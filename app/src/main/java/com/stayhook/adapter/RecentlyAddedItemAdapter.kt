@@ -35,13 +35,27 @@ class RecentlyAddedItemAdapter(
     override fun onBindViewHolder(holder: NearbyLVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            Glide.with(context).load(model.property_image).into(ivRAItem)
-            tvRAItemTitle.text = model.property_type
-            tvRAItemLocation.text = "Secton-64"
-            tvRAItemApartmentType.text = model.property_name
-            tvRAItemCost.text = "$${model.price}"
-            tvRARatingItem.text = model.rating.toString()
+           model.let {
+               Glide.with(context).load(it.property_image).placeholder(R.drawable.default_image).into(ivRAItem)
+               tvRAItemTitle.text = it.property_type
+               tvRAItemLocation.text = String.format(
+                   "%s%s%s%s%s%s",
+                   it.street,
+                   it.city,
+                   it.state,
+                   it.area,
+                   it.pincode,
+                   it.country
+               )
+               tvRAItemApartmentType.text = it.property_name
+               tvRAItemCost.text = String.format(
+                   "%s %d",
+                   context.getString(R.string.indian_currency_symbol),
+                   it.price
+               )
+               tvRARatingItem.text = it.rating.toString()
 
+           }
             clItemRecentAdded.setOnClickListener {
                 listener.onCLickItems(model)
             }

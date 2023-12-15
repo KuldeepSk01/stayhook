@@ -10,7 +10,7 @@ import com.stayhook.R
 import com.stayhook.base.BaseActivity
 import com.stayhook.databinding.ActivityPaymentBinding
 import com.stayhook.model.response.getpopertydetail.PropertyRoom
-import com.stayhook.screen.dashboard.home.HomeRoomTypeActivity
+import com.stayhook.screen.dashboard.home.privateroom.PrivateRoomActivity
 import com.stayhook.util.serializable
 
 class PaymentActivity : BaseActivity() {
@@ -57,7 +57,10 @@ class PaymentActivity : BaseActivity() {
                     bottomSheetB.peekHeight = 0
                     bottomSheetB.state = BottomSheetBehavior.STATE_HIDDEN
                     pBinding.bottomSheetBCCL.visibility = View.GONE
-                    launchActivity(HomeRoomTypeActivity::class.java)
+
+
+
+                    launchActivity(PrivateRoomActivity::class.java)
                     finish()
 
                     // launchActivityWithB(getString(R.string.private_room))

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.stayhook.base.BaseRepository
 import com.stayhook.base.BaseResponse
+import com.stayhook.model.request.GetPropertyRequest
 import com.stayhook.model.response.getpopertydetail.GetPropertyDetail
 import com.stayhook.model.response.getproperty.GetPropertyBaseResponse
 import com.stayhook.network.ApiResponse
@@ -14,10 +15,10 @@ import retrofit2.Response
 
 class SeeAllItemRepo :BaseRepository(){
     fun executeGetProperty(
-        pageId: String,
+        req: GetPropertyRequest,
         responseLiveDataData: MutableLiveData<ApiResponse<GetPropertyBaseResponse>>
     ) {
-        val call = apiService.getProperty(pageId)
+        val call = apiService.getProperty(req)
         responseLiveDataData.postValue(ApiResponse.loading())
         call.enqueue(object : Callback<GetPropertyBaseResponse> {
             override fun onResponse(

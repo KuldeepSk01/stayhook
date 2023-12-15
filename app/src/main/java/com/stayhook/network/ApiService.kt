@@ -2,11 +2,14 @@ package com.stayhook.network
 
 import com.stayhook.base.BaseResponse
 import com.stayhook.base.CollectionBaseResponse
+import com.stayhook.model.request.GetPropertyRequest
 import com.stayhook.model.request.PropertyRoomRequest
 import com.stayhook.model.request.ScheduleAVisitRequest
 import com.stayhook.model.request.UserRequest
+import com.stayhook.model.response.MyPaymentsResponse
 import com.stayhook.model.response.MyProfileResponse
 import com.stayhook.model.response.OTPResponse
+import com.stayhook.model.response.StateCityResponse
 import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.model.response.TokenCollectedResponse
 import com.stayhook.model.response.UserResponse
@@ -39,8 +42,12 @@ interface ApiService {
     @POST(Constants.NetworkConstant.homeApi)
     fun homePage(): Call<HomeResponse>
 
-    @POST(Constants.NetworkConstant.getPropertyApi)
+   /* @POST(Constants.NetworkConstant.getPropertyApi)
     fun getProperty(@Query("page") page:String): Call<GetPropertyBaseResponse>
+*/
+    @POST(Constants.NetworkConstant.getPropertyApi)
+    fun getProperty(@Body body:GetPropertyRequest): Call<GetPropertyBaseResponse>
+
 
     @POST(Constants.NetworkConstant.getPropertyDetailApi)
     fun getPropertyDetail(@Query("property_id") propertyDetail: String): Call<BaseResponse<GetPropertyDetail>>
@@ -61,10 +68,13 @@ interface ApiService {
     fun getScheduledToken(): Call<CollectionBaseResponse<TokenCollectedResponse>>
 
     @POST(Constants.NetworkConstant.getScheduledDetailToken)
-    fun getScheduledDetailToken(@Query("id") tokenId:String): Call<ScheduleTokenDetailResponse>
+    fun getScheduledDetailToken(@Query("id") tokenId:String): Call<BaseResponse<TokenCollectedResponse>>
 
     @POST(Constants.NetworkConstant.scheduleVisit)
     fun scheduleAVisit(@Body request: ScheduleAVisitRequest): Call<SuccessErrorResponse>
+
+    @POST(Constants.NetworkConstant.myPayments)
+    fun myPayments(@Query("type") type:String,@Query("page") page:String): Call<CollectionBaseResponse<MyPaymentsResponse>>
 
 
     @POST(Constants.NetworkConstant.myProfileApi)
@@ -79,6 +89,31 @@ interface ApiService {
         @Part("gender") gender: RequestBody,
         @Part image: MultipartBody.Part?,
     ): Call<SuccessErrorResponse>
+
+
+    @Multipart
+    @POST(Constants.NetworkConstant.updateKYCApi)
+    fun updateKYC(
+        @Part("first_name") fullName: RequestBody,
+        @Part("dob") dob: RequestBody,
+        @Part("gender") gender: RequestBody,
+        @Part("aadhar_number") aadhaarNo: RequestBody,
+        @Part("pan_number") panNo: RequestBody,
+        @Part("address") address: RequestBody,
+        @Part("state") state: RequestBody,
+        @Part("city") city: RequestBody,
+        @Part frontAadhaar: MultipartBody.Part?,
+        @Part backAadhaar: MultipartBody.Part?,
+        @Part panAadhaar: MultipartBody.Part?,
+        @Part policeVerificationAadhaar: MultipartBody.Part?,
+    ): Call<SuccessErrorResponse>
+
+    @POST(Constants.NetworkConstant.getStateApi)
+    fun getStates(@Query("country_id") countryId:String): Call<CollectionBaseResponse<StateCityResponse>>
+
+    @POST(Constants.NetworkConstant.getCityApi)
+    fun getCity(@Query("state_id") stateId:String): Call<CollectionBaseResponse<StateCityResponse>>
+
 
 
 }

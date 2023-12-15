@@ -12,6 +12,7 @@ class RoomViewModel(private val roomRepo: RoomRepo) : BaseViewModel() {
 
     fun hitPropertyDetail(propertyId: String) {
         roomRepo.executePropertyRoom(propertyId, propertyRoomResponse)
+
     }
 
     fun getPropertyDetailResponse(): MutableLiveData<ApiResponse<CollectionBaseResponse<PropertyRoom>>> {

@@ -2,7 +2,10 @@ package com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,13 +25,13 @@ import com.stayhook.util.Utility
 import com.stayhook.util.serializable
 import org.koin.core.component.inject
 
-class RoomActivity : BaseActivity(), OnRoomClickListener {
+class RoomActivity : BaseActivity(), OnRoomClickListener,LifecycleOwner {
 
     private lateinit var bookFBinding: ActivityRoomBinding
     private lateinit var roomList: MutableList<PropertyRoom>
     private lateinit var propertyId: String
     private lateinit var propertyDetail: GetPropertyDetail
-    private var propertyRoom:PropertyRoom?=null
+    private var propertyRoom: PropertyRoom? = null
 
 
     private val mViewModel: RoomViewModel by inject()
@@ -39,10 +42,12 @@ class RoomActivity : BaseActivity(), OnRoomClickListener {
 
     override fun onViewInit(binding: ViewDataBinding?) {
         bookFBinding = binding as ActivityRoomBinding
+        Log.d("TAG","onViewInit")
         propertyId = mPref[Constants.DefaultConstants.SELECT_PROPERTY_ID, ""]!!
         propertyDetail = intent.getBundleExtra("bundleDetail")?.serializable("propertyDetail")!!
         // propertyId = arguments?.getString(Constants.DefaultConstants.SELECT_PROPERTY_ID)!!
         roomList = mutableListOf()
+
         hitPropertyRoomApi(propertyDetail.id.toString())
 
 
@@ -62,8 +67,12 @@ class RoomActivity : BaseActivity(), OnRoomClickListener {
                     return@setOnClickListener
                 }
 
-                if (propertyRoom==null) {
+                if (propertyRoom == null) {
                     showErrorMessage(this@RoomActivity, "Please select room !")
+                } else if (propertyRoom?.availabele == getString(R.string.no_text)) {
+                    CustomDialogs.showErrorMessage(
+                        this@RoomActivity, getString(R.string.not_available)
+                    )
                 } else {
                     when (propertyRoom!!.roomPrivacy!!) {
                         getString(R.string.private_text) -> {
@@ -90,10 +99,11 @@ class RoomActivity : BaseActivity(), OnRoomClickListener {
     }
 
 
+
     private fun hitPropertyRoomApi(propertyId: String) {
         mViewModel.hitPropertyDetail(propertyId)
-        mViewModel.getPropertyDetailResponse()
-            .observe(this@RoomActivity, propertyRoomResponseObserver)
+        mViewModel.getPropertyDetailResponse().observe(this,propertyRoomResponseObserver)
+           // .observe(this@RoomActivity, propertyRoomResponseObserver)
     }
 
     private val propertyRoomResponseObserver: Observer<ApiResponse<CollectionBaseResponse<PropertyRoom>>> by lazy {
@@ -105,8 +115,12 @@ class RoomActivity : BaseActivity(), OnRoomClickListener {
 
                 ApiResponse.Status.SUCCESS -> {
                     hideProgress()
+
                     roomList.clear()
-                    Log.d("Tag", "room list ${it.data?.data}")
+                    //Log.d("Tag", "room list ${it.data?.data}")
+                    Log.d("TAG","OnData")
+                   // Toast.makeText(this@RoomActivity,"data",Toast.LENGTH_SHORT).show()
+
                     roomList = it.data?.data!! as MutableList<PropertyRoom>
                     setAdapter(roomList)
 
@@ -114,7 +128,7 @@ class RoomActivity : BaseActivity(), OnRoomClickListener {
 
                 ApiResponse.Status.ERROR -> {
                     hideProgress()
-                    CustomDialogs.showErrorMessage(this@RoomActivity, it.error?.message.toString())
+                    showErrorMessage(this@RoomActivity, it.error?.message.toString())
                 }
             }
         }
@@ -134,6 +148,13 @@ class RoomActivity : BaseActivity(), OnRoomClickListener {
     override fun onRoomClick(room: PropertyRoom) {
         // roomPrivacy = room.roomPrivacy
         propertyRoom = room
+
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("TAG","OnDestroy")
+        mViewModel.getPropertyDetailResponse().removeObserver(propertyRoomResponseObserver)
+
 
     }
 

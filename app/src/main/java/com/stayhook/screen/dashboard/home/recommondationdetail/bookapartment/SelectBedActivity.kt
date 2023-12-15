@@ -67,6 +67,10 @@ class SelectBedActivity : BaseActivity(), OnRoomClickListener, SelectBedAdapter.
 
                 if (!isBedSelect){
                     showErrorMessage(this@SelectBedActivity,"Please select bed !")
+                }else if (propertyRoom.availabele == getString(R.string.no_text)) {
+                    CustomDialogs.showErrorMessage(
+                        this@SelectBedActivity, getString(R.string.not_available)
+                    )
                 }else{
                     val b = Bundle()
                     b.putSerializable("tokenRequest",propertyRoom)
@@ -143,17 +147,15 @@ class SelectBedActivity : BaseActivity(), OnRoomClickListener, SelectBedAdapter.
     }
 
     private fun setRoomList(roomList: MutableList<PropertyRoom>) {
-        sBBinding.apply {
-            rvRooms.itemAnimator = DefaultItemAnimator()
-            rvRooms.layoutManager =
-                LinearLayoutManager(this@SelectBedActivity, LinearLayoutManager.HORIZONTAL, false)
-            rvRooms.adapter = SelectBedAdapter(roomList, this@SelectBedActivity, this@SelectBedActivity)
+        sBBinding.rvRooms.apply {
+            layoutManager = LinearLayoutManager(this@SelectBedActivity, LinearLayoutManager.HORIZONTAL, false)
+            adapter = SelectBedAdapter(roomList, this@SelectBedActivity, this@SelectBedActivity)
                hitPropertyRoomBedsApi(propertyId, roomList[0].id.toString())
-
         }
-
-
     }
+
+
+
 
     private fun setRoomBedList(roomList: MutableList<PropertyRoom>) {
         sBBinding.apply {

@@ -12,6 +12,7 @@ import com.stayhook.adapter.SeeAllItemAdapter
 import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentSeeAllItemsBinding
+import com.stayhook.model.request.GetPropertyRequest
 import com.stayhook.model.response.getproperty.GetPropertyBaseResponse
 import com.stayhook.model.response.home.RecommendData
 import com.stayhook.network.ApiResponse
@@ -54,7 +55,12 @@ class SeeAllItemsFragment : BaseFragment(), OnItemsClickListener {
     }
 
     private fun getAllList(pageNumber: Int) {
-        mViewModel.hitPropertyApi(page = pageNumber.toString())
+
+        val req = GetPropertyRequest().apply {
+            page = pageNumber
+        }
+
+        mViewModel.hitPropertyApi(req)
         mViewModel.getPropertyResponse().observe(requireActivity(), propertyResponseObserver)
     }
 

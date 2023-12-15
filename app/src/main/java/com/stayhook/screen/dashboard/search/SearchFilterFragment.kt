@@ -10,10 +10,15 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.ViewDataBinding
+import com.google.android.material.slider.LabelFormatter
+import com.google.android.material.slider.RangeSlider
+import com.google.android.material.slider.RangeSlider.OnChangeListener
 import com.stayhook.R
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentSearchFilterBinding
 import com.stayhook.model.SearchFilter
+import java.text.NumberFormat
+import java.util.Currency
 
 
 class SearchFilterFragment : BaseFragment() {
@@ -25,13 +30,16 @@ class SearchFilterFragment : BaseFragment() {
     override fun onInitView(binding: ViewDataBinding, view: View) {
         bindingSearchFilter = binding as FragmentSearchFilterBinding
         bindingSearchFilter.apply {
-            toolbarFilterSearch.apply {
+            /*toolbarFilterSearch.apply {
                 ivToolBarBack.setOnClickListener {
                     onBackPress()
                 }
                 tvToolBarTitle.text = getString(R.string.filter_text)
-            }
-            setBackGround(tvSFilterMale, getString(R.string.gender))
+            }*/
+
+
+
+     /*       setBackGround(tvSFilterMale, getString(R.string.gender))
             setBackGround(tvSFilterOneBed, getString(R.string.bedrooms_text))
             setBackGround(tvSFilterYes, getString(R.string.food_available_text))
 
@@ -58,11 +66,11 @@ class SearchFilterFragment : BaseFragment() {
             val onItemSelectLis = object : OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     Log.d("SearchFilter", "onItemSelected: item ${p0?.getItemAtPosition(p2)}")
-                    /*  Toast.makeText(
+                    *//*  Toast.makeText(
                           baseActivity.baseContext,
                           "item ${p0?.getItemAtPosition(p2)}",
                           Toast.LENGTH_SHORT
-                      ).show()*/
+                      ).show()*//*
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -70,10 +78,37 @@ class SearchFilterFragment : BaseFragment() {
 
             }
             acsMaxPrice.onItemSelectedListener = onItemSelectLis
+*/
+
+            rangeSliderPrice.apply {
+                valueTo = 100000.0F
+                valueFrom = 0.0F
+
+                setLabelFormatter(object : LabelFormatter{
+                    override fun getFormattedValue(value: Float): String {
+                        val format = NumberFormat.getCurrencyInstance()
+                        format.maximumFractionDigits = 0
+                        format.currency = Currency.getInstance("INR")
+                        format.format(value.toDouble())
+                        return format.format(value.toDouble())
+                    }
+
+                })
 
 
+                    this.addOnChangeListener(object : OnChangeListener{
+                        override fun onValueChange(slider: RangeSlider, value: Float, fromUser: Boolean) {
+                            tvMinPrice.text = slider.values[0].toString()
+                            tvMaxPrice.text = slider.values[1].toString()
+                            Log.d("TAG","current value $value  from ${slider.valueFrom} to ${slider.valueTo} and values ${slider.values}")
+                        }
+
+                    })
+
+            }
             btnFilterApply.setOnClickListener {
-                onBackPress()
+                Toast.makeText(requireContext(),"values ${rangeSliderPrice.values}",Toast.LENGTH_SHORT).show()
+                Log.d("TAG","from ${rangeSliderPrice.valueFrom} to ${rangeSliderPrice.valueTo} and values ${rangeSliderPrice.values}")
 
             }
             llcFilterHouse.setOnClickListener {
@@ -85,7 +120,9 @@ class SearchFilterFragment : BaseFragment() {
             llcFilterSharedRoom.setOnClickListener {
                 setBackGround(it as LinearLayoutCompat)
             }
-            tvSFilterMale.setOnClickListener {
+
+
+         /*   tvSFilterMale.setOnClickListener {
                 setBackGround(it as AppCompatTextView, getString(R.string.gender))
             }
             tvSFilterFemale.setOnClickListener {
@@ -100,7 +137,6 @@ class SearchFilterFragment : BaseFragment() {
             tvSFilterNo.setOnClickListener {
                 setBackGround(it as AppCompatTextView, getString(R.string.food_available_text))
             }
-
             tvSFilterOneBed.setOnClickListener {
                 setBackGround(it as AppCompatTextView, getString(R.string.bedrooms_text))
             }
@@ -113,12 +149,12 @@ class SearchFilterFragment : BaseFragment() {
             tvSFilterFourBed.setOnClickListener {
                 setBackGround(it as AppCompatTextView, getString(R.string.bedrooms_text))
             }
-
+*/
 
         }
     }
 
-    private fun setBackGround(
+   /* private fun setBackGround(
         tv: AppCompatTextView, filterType: String
     ) {
         bindingSearchFilter.apply {
@@ -195,7 +231,7 @@ class SearchFilterFragment : BaseFragment() {
             }
         }
     }
-
+*/
     private fun setBackGround(llc: LinearLayoutCompat) {
         bindingSearchFilter.apply {
             llcFilterHouse.background = null
@@ -204,11 +240,10 @@ class SearchFilterFragment : BaseFragment() {
             llc.background =
                 ResourcesCompat.getDrawable(
                     resources,
-                    R.drawable.outline_search_filter_bg,
+                    R.drawable.selected_box_drawable,
                     null
                 )
 
         }
     }
-
 }

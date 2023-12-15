@@ -46,16 +46,4 @@ class NetworkConnectionManager(val context: Context) {
         })
     }
 
-
-    /*    override fun onAvailable(network: Network) {
-            super.onAvailable(network)
-            setConnection(true)
-            Log.d("Connection", "onAvailable: true")
-        }
-
-        override fun onLost(network: Network) {
-            setConnection(false)
-            Log.d("Connection", "onAvailable: false")
-            super.onLost(network)
-        }*/
 }

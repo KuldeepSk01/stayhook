@@ -12,7 +12,6 @@ import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.model.response.getpopertydetail.PropertyRoom
 import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.account.mybooking.MyBookingActivity
-import com.stayhook.screen.dashboard.home.HomeRoomTypeActivity
 import com.stayhook.screen.dashboard.home.recommondationdetail.PaymentViewModel
 import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs

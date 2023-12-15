@@ -52,6 +52,7 @@ class SelectDateActivity : BaseActivity() {
                 //launchActivity(SummaryBookFragment::class.java)
             }
 
+            calenderViewSD.minDate = System.currentTimeMillis()-1000
             calenderViewSD.setOnDateChangeListener(object : OnDateChangeListener {
                 override fun onSelectedDayChange(p0: CalendarView, p1: Int, p2: Int, p3: Int) {
                     val year = p1

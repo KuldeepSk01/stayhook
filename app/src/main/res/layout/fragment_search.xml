@@ -25,6 +25,25 @@
                 android:id="@+id/fSearchLayoutCL"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <RelativeLayout
+                    android:id="@+id/rlMapSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_300sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <fragment
+                        android:id="@+id/searchMap"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </RelativeLayout>
+
+
 
                 <RelativeLayout
                     android:id="@+id/rlSearchLayout"
@@ -67,6 +86,7 @@
                             android:drawablePadding="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:hint="@string/search_text"
+                            android:imeOptions="actionDone"
                             android:inputType="text"
                             android:padding="@dimen/_10sdp"
                             android:singleLine="true" />
@@ -83,16 +103,61 @@
 
                 </RelativeLayout>
 
+
                 <RelativeLayout
+
                     android:id="@+id/rlRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_150sdp"
                     android:background="@drawable/top_corner_rounded"
-                    android:elevation="@dimen/_5sdp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/_minus40sdp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rlSearchLayout">
+                    app:layout_constraintTop_toBottomOf="@+id/rlMapSearch">
+
+                    <RelativeLayout
+                        android:id="@+id/rlNoDataFound"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:layout_centerVertical="true"
+                        android:visibility="gone"
+
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        >
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivSadImojiSearchNotFound"
+                            android:layout_width="@dimen/_150sdp"
+                            android:layout_height="@dimen/_150sdp"
+                            android:layout_centerHorizontal="true"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_15sdp"
+                            android:src="@drawable/ic_sad_imoji_illustration" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvPlaceDoesNotExist"
+                            style="@style/headingTextSizeStyle2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ivSadImojiSearchNotFound"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:text="@string/the_place_doesn_t_exist_text" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvPlaceDoesNotExist"
+                            android:gravity="center"
+                            android:text="@string/please_enable_your_location_services_for_more_optimal_result_text"
+                            android:textColor="@color/gray1" />
+                    </RelativeLayout>
+
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvSearchFragment"
@@ -102,35 +167,38 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:clipToPadding="true"
-                        android:paddingBottom="@dimen/_100sdp"
+                        tools:itemCount="1"
+                        android:paddingBottom="@dimen/_50sdp"
                         tools:listitem="@layout/item_search_fragment_layout" />
-                </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_300sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <fragment
-                        android:id="@+id/searchMap"
-                        android:name="com.google.android.gms.maps.SupportMapFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                    <androidx.appcompat.widget.AppCompatTextView
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:id="@+id/tvLoadMoreBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/defaultBtnStyle"
+                        android:text="@string/load_more"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:layout_below="@+id/rvSearchFragment"
+                        android:paddingBottom="@dimen/_50sdp"
+                        />
+
+
                 </RelativeLayout>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/searchFilterCL"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <!--this layout for if search place is not found-->
+                &lt;!&ndash;this layout for if search place is not found&ndash;&gt;
                 <RelativeLayout
                     android:id="@+id/rlPlaceDoesNotExist"
                     android:layout_width="match_parent"
@@ -138,7 +206,6 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:gravity="center"
-                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -173,7 +240,7 @@
                         android:textColor="@color/gray1" />
                 </RelativeLayout>
 
-                <!--this layout for applying filter-->
+                &lt;!&ndash;this layout for applying filter&ndash;&gt;
                 <RelativeLayout
                     android:id="@+id/rlSearchFilterLayout"
                     android:layout_width="match_parent"
@@ -188,6 +255,7 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

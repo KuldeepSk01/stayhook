@@ -12,9 +12,11 @@ object Constants {
         const val PREFERENCE_NAME = "StayHookApplication"
         const val IS_LOGIN = "IS_LOGIN"
         const val TOKEN = "TOKEN"
+        const val LATITUDE = "LATITUDE"
+        const val LONGITUDE = "LONGITUDE"
         const val AUTHORIZATION = "Authorization"
         const val USER_DETAIL = "USER_DETAIL"
-        const val API_TIMEOUT = 60000L
+        const val API_TIMEOUT = 6000L
         fun updateUserDetail(response: UserResponse) {
             val updateResponse = UserResponse().apply {
                 id = response.id
@@ -51,15 +53,20 @@ object Constants {
             const val getScheduledToken = "getScheduleToken"
             const val getScheduledDetailToken = "getScheduleTokenDetails"
             const val scheduleVisit = "scheduleVisit"
+            const val myPayments = "myPayment"
 
             const val updateApi = "updateProfile"
+            const val updateKYCApi = "updateKyc"
             const val myProfileApi = "myProfile"
+            const val getStateApi = "getState"
+            const val getCityApi = "getCity"
 
         }
     }
     class DefaultConstants{
         companion object{
             const val BUNDLE="bundle"
+            const val MODEL_DETAIL="MODEL_DETAIL"
             const val SELECT_PROPERTY_ID="property_id"
             const val SELECT_PROPERTY_ROOM_ID="property_room_id"
             const val SELECT_PROPERTY_ROOM_BED_ID="property_room_bed_id"

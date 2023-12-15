@@ -330,22 +330,59 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvRoomTypeRD"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_50sdp"
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/tvRDRoomTypesText" />
                     </RelativeLayout>
 
 
-                    <View
+                    <RelativeLayout
                         android:id="@+id/rlRDMap"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_1sdp"
+                        android:layout_height="@dimen/_200sdp"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginTop="@dimen/_20sdp"
                         android:layout_marginEnd="@dimen/_15sdp"
-                        android:background="@color/gray6"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rlRDOverview" />
+                        app:layout_constraintTop_toBottomOf="@+id/rlRDOverview" >
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/headingTextSizeStyle1"
+                            android:text="@string/location"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/mapRL"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_150sdp"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_below="@+id/tvLocation" >
+                            <WebView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/wvMap"
+                                />
+
+
+
+
+                          <!--  <fragment
+                                android:id="@+id/searchMapRD"
+                                android:name="com.google.android.gms.maps.SupportMapFragment"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+-->
+
+                        </androidx.cardview.widget.CardView>
+
+                    </RelativeLayout>
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -379,7 +416,7 @@
                             app:layout_constraintEnd_toStartOf="@+id/tvViewMoreBtn"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tvRDAmenities"
-                            tools:itemCount="3" />
+                             />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvViewMoreBtn"
@@ -736,93 +773,125 @@
 
         </androidx.core.widget.NestedScrollView>
 
-        <androidx.cardview.widget.CardView
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnBookDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/app_box_background"
-            android:padding="@dimen/_15sdp"
-            app:cardElevation="@dimen/_20sdp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            style="@style/defaultBtnStyle"
+            android:background="@drawable/btn_background"
+            android:fontFamily="@font/clearsans_bold"
+            android:gravity="center"
+            android:text="@string/title_book"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:textColor="@color/white" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvPriceDetail"
-                    style="@style/defaultTextSizeStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:text="@string/price" />
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="@color/app_box_background"-->
+<!--            android:padding="@dimen/_15sdp"-->
+<!--            app:cardElevation="@dimen/_20sdp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            >-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center_vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvPriceDetail">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:paddingBottom="@dimen/_10sdp"-->
+<!--                android:layout_height="wrap_content">-->
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvRItemCostDetail"
-                        style="@style/headingTextSizeStyle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="@string/cost_1600_text"
-                        android:textColor="@color/primary_color" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvRItemPerMonthTXT"
-                        style="@style/defaultTextSizeStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toEndOf="@+id/tvRItemCostDetail"
-                        android:text="@string/month_text" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/btnBookDetail"
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        android:background="@drawable/btn_background"
-                        android:fontFamily="@font/clearsans_bold"
-                        android:gravity="center"
-                        android:text="@string/title_book"
-                        android:textColor="@color/white" />
-
-                    <!--<androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/btnBookDetail"
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        android:background="@drawable/btn_background"
-                        android:elevation="@dimen/_2sdp"
-                        android:fontFamily="@font/clearsans_bold"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:outlineAmbientShadowColor="@color/primary_color"
-                        android:outlineProvider="background"
-                        android:outlineSpotShadowColor="@color/primary_color"
-                        android:text="@string/title_book"
-                        android:textColor="@color/white" />-->
-                </RelativeLayout>
+<!--                <androidx.appcompat.widget.AppCompatTextView-->
+<!--                    android:id="@+id/btnBookDetail"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    style="@style/defaultBtnStyle"-->
+<!--                    android:background="@drawable/btn_background"-->
+<!--                    android:fontFamily="@font/clearsans_bold"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/title_book"-->
+<!--                    android:textColor="@color/white" />-->
 
 
-            </RelativeLayout>
+<!--&lt;!&ndash;                <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/tvPriceDetail"&ndash;&gt;-->
+<!--&lt;!&ndash;                    style="@style/defaultTextSizeStyle"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_alignParentStart="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_alignParentTop="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_marginStart="@dimen/_15sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="@string/price" />&ndash;&gt;-->
 
-        </androidx.cardview.widget.CardView>
+<!--&lt;!&ndash;                <RelativeLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_marginStart="@dimen/_15sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_marginTop="@dimen/_10sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_marginBottom="@dimen/_10sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity="center_vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;                    app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@id/tvPriceDetail">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/tvRItemCostDetail"&ndash;&gt;-->
+<!--&lt;!&ndash;                        style="@style/headingTextSizeStyle1"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="@string/cost_1600_text"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textColor="@color/primary_color" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/tvRItemPerMonthTXT"&ndash;&gt;-->
+<!--&lt;!&ndash;                        style="@style/defaultTextSizeStyle"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_toEndOf="@+id/tvRItemCostDetail"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="@string/month_text" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/btnBookDetail"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="@dimen/_100sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="@dimen/_30sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_alignParentEnd="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_marginEnd="@dimen/_15sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:background="@drawable/btn_background"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:fontFamily="@font/clearsans_bold"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="@string/title_book"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textColor="@color/white" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    &lt;!&ndash;<androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/btnBookDetail"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="@dimen/_100sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="@dimen/_30sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_alignParentEnd="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_marginEnd="@dimen/_15sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:background="@drawable/btn_background"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:elevation="@dimen/_2sdp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:fontFamily="@font/clearsans_bold"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:foreground="?attr/selectableItemBackground"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:outlineAmbientShadowColor="@color/primary_color"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:outlineProvider="background"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:outlineSpotShadowColor="@color/primary_color"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="@string/title_book"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textColor="@color/white" />&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </RelativeLayout>&ndash;&gt;-->
+
+
+<!--            </RelativeLayout>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
 
         <!--   <include
                android:id="@+id/recommendationDetailToolBar"

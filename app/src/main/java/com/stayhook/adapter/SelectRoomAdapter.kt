@@ -17,8 +17,7 @@ class SelectRoomAdapter(
     private val context: Context,
     private val listener: OnRoomClickListener,
     private val roomOrBed: String
-) :
-    RecyclerView.Adapter<SelectRoomAdapter.SRVM>() {
+) : RecyclerView.Adapter<SelectRoomAdapter.SRVM>() {
     private var itemPosition = -1
 
     inner class SRVM(val b: ItemSelectRoomLayoutBinding) : RecyclerView.ViewHolder(b.root)
@@ -37,64 +36,65 @@ class SelectRoomAdapter(
     override fun onBindViewHolder(holder: SRVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-
-            when (model.availabele) {
-                "Yes" -> {
-                    tvAvailability.apply {
-                        text = context.getString(R.string.available)
-                        background = ResourcesCompat.getDrawable(
-                            context.resources,
-                            R.drawable.available_drawable,
-                            null
-                        )
-                    }
-                }
-
-                "No" -> {
-                    tvAvailability.apply {
-                        text = context.getString(R.string.not_available)
-                        background = ResourcesCompat.getDrawable(
-                            context.resources,
-                            R.drawable.not_available_drawable,
-                            null
-                        )
-                    }
-                }
-
-            }
-
-
-
-            if (itemPosition == position) {
-                rlSelectRoom.background =
-                    context.resources.getDrawable(R.drawable.otp_box_outline_drawable, null)
-            } else {
-                rlSelectRoom.background =
-                    context.resources.getDrawable(R.drawable.otp_box_background, null)
-            }
-            tvRoomsTypeSR.text = model.roomType.toString()
-            tvSqftSR.text =String.format("%s %s",model.roomArea,"sqft")
-            tv1XAttachedSR.text = String.format("%s,%s",model.kitchen,model.bathroom)
-            tvPrivacyRoomSR.text = model.roomPrivacy.toString()
-            tvRItemCostSR.text = model.price.toString()
-
-
-            if (roomOrBed == context.getString(R.string.room_select)) {
-                tvPrivacyRoomSR.visibility = View.VISIBLE
+            if (model.roomType == "Common Room") {
                 tvAvailability.visibility=View.GONE
-            } else {
-                tvPrivacyRoomSR.visibility = View.GONE
-                tvAvailability.visibility=View.VISIBLE
+                rlPriceRoom.visibility=View.GONE
+                tvRoomsTypeSR.text = model.roomType.toString()
+                tvSqftSR.text = String.format("%s %s", model.roomArea, "sqft")
+                tv1XAttachedSR.text = String.format("%s,%s", model.kitchen, model.bathroom)
+                tvPrivacyRoomSR.text = model.roomPrivacy.toString()
+            }else{
+                when (model.availabele) {
+                    context.getString(R.string.yes_text) -> {
+                        tvAvailability.apply {
+                            text = context.getString(R.string.available)
+                            background = ResourcesCompat.getDrawable(
+                                context.resources, R.drawable.available_drawable, null
+                            )
+                        }
+                    }
+
+                    context.getString(R.string.no_text) -> {
+                        tvAvailability.apply {
+                            text = context.getString(R.string.not_available)
+                            background = ResourcesCompat.getDrawable(
+                                context.resources, R.drawable.not_available_drawable, null
+                            )
+                        }
+                    }
+
+                }
+
+                if (itemPosition == position) {
+                    rlSelectRoom.background =ResourcesCompat.getDrawable(context.resources,R.drawable.selected_box_drawable,null)
+                } else {
+                    rlSelectRoom.background = ResourcesCompat.getDrawable(context.resources,R.drawable.otp_box_background,null)
+                }
+
+                if (roomOrBed == context.getString(R.string.room_select)) {
+                    tvRoomsTypeSR.text = model.roomType.toString()
+                    //  tvAvailability.visibility=View.GONE
+                } else {
+                    tvPrivacyRoomSR.visibility = View.GONE
+                    tvRoomsTypeSR.text = model.bedName
+                }
+
+                tvPrivacyRoomSR.visibility = View.VISIBLE
+                tvSqftSR.text = String.format("%s %s", model.roomArea, "sqft")
+                tv1XAttachedSR.text = String.format("%s,%s", model.kitchen, model.bathroom)
+                tvPrivacyRoomSR.text = model.roomPrivacy.toString()
+                tvRItemCostSR.text = model.price.toString()
+
+                rlSelectRoom.setOnClickListener {
+                    itemPosition = position
+                    notifyDataSetChanged()
+                    listener.onRoomClick(model)
+                }
             }
 
 
 
 
-            rlSelectRoom.setOnClickListener {
-                itemPosition = position
-                notifyDataSetChanged()
-                listener.onRoomClick(model)
-            }
         }
     }
 }

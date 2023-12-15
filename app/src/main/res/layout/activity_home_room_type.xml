@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            tools:context=".screen.dashboard.home.HomeRoomTypeActivity">
+            tools:context=".screen.dashboard.home.privateroom.PrivateRoomActivity">
 
             <RelativeLayout
                 android:id="@+id/rlToolBarHRT"
@@ -33,6 +33,7 @@
                     layout="@layout/custom_toolbar_layout" />
             </RelativeLayout>
 
+<!--
             <RelativeLayout
                 android:id="@+id/rlHRTLayout"
                 android:layout_width="match_parent"
@@ -43,7 +44,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rlToolBarHRT"
                 tools:layout_editor_absoluteX="13dp">
 
-                <!-- <androidx.appcompat.widget.AppCompatTextView
+                &lt;!&ndash; <androidx.appcompat.widget.AppCompatTextView
                      android:id="@+id/tvLocationHRT"
                      style="@style/headingTextSizeStyle1"
                      android:layout_width="wrap_content"
@@ -52,7 +53,7 @@
                      android:layout_marginTop="@dimen/_10sdp"
                      android:drawableEnd="@drawable/ic_down_arrow"
                      android:drawablePadding="@dimen/_10sdp"
-                     android:text="@string/noida_india_text" />-->
+                     android:text="@string/noida_india_text" />&ndash;&gt;
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -92,6 +93,7 @@
                 </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
+-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHRT"
@@ -101,7 +103,24 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:clipToPadding="true"
                 android:paddingBottom="@dimen/_50sdp"
-                app:layout_constraintTop_toBottomOf="@+id/rlHRTLayout" />
+                tools:itemCount="5"
+                tools:listitem="@layout/item_search_fragment_layout"
+                app:layout_constraintTop_toBottomOf="@+id/rlToolBarHRT" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/tvLoadMoreBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/defaultBtnStyle"
+                android:text="@string/load_more"
+                android:gravity="center"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/rvHRT"
+                android:paddingBottom="@dimen/_50sdp"
+                />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

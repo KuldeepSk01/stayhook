@@ -1,30 +1,32 @@
 package com.stayhook.screen.dashboard.account.myticket
 
-import android.view.View
+import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.stayhook.R
 import com.stayhook.adapter.MyTicketAdapter
-import com.stayhook.base.BaseFragment
-import com.stayhook.databinding.FragmentMyTicketBinding
+import com.stayhook.adapter.interfaces.MyTicketAdapterListener
+import com.stayhook.base.BaseActivity
+import com.stayhook.databinding.ActivityMyTicketBinding
 import com.stayhook.model.Ticket
-import com.stayhook.screen.dashboard.account.myticket.create.CreateTicketFragment
+import com.stayhook.screen.dashboard.account.myticket.create.CreateTicketActivity
+import com.stayhook.util.Constants
+import com.stayhook.util.serializable
 
-class MyTicketFragment : BaseFragment() {
+class MyTicketActivity : BaseActivity(), MyTicketAdapterListener {
 
-    private lateinit var sBinding: FragmentMyTicketBinding
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_my_ticket
-    }
+    private lateinit var sBinding: ActivityMyTicketBinding
+    override val layoutId: Int
+        get() = R.layout.activity_my_ticket
 
-    override fun onInitView(binding: ViewDataBinding, view: View) {
-        sBinding = binding as FragmentMyTicketBinding
+    override fun onViewInit(binding: ViewDataBinding?) {
+        sBinding = binding as ActivityMyTicketBinding
 
         sBinding.apply {
             toolbarMyTicket.apply {
                 ivToolBarBack.setOnClickListener {
-                    onBackPress()
+                    onBackPressedDispatcher.onBackPressed()
                 }
                 tvToolBarTitle.text = getString(R.string.my_ticket_text)
             }
@@ -32,20 +34,24 @@ class MyTicketFragment : BaseFragment() {
             rvMyTickets.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
-                adapter = MyTicketAdapter(getTicketsList(), baseActivity.baseContext)
+                    LinearLayoutManager(this@MyTicketActivity, LinearLayoutManager.VERTICAL, false)
+                adapter =
+                    MyTicketAdapter(getTicketsList(), this@MyTicketActivity, this@MyTicketActivity)
             }
 
             btnNewTicket.setOnClickListener {
-                replaceFragment(
-                    R.id.flMainContainer,
-                    CreateTicketFragment(),
-                    MyTicketFragment::javaClass.name
-                )
+                launchActivity(CreateTicketActivity::class.java)
+
+//                replaceFragment(
+//                    R.id.flMainContainer,
+//                    CreateTicketFragment(),
+//                    MyTicketFragment::javaClass.name
+//                )
             }
 
         }
     }
+
 
     private fun getTicketsList(): MutableList<Ticket> {
         val list = mutableListOf<Ticket>()
@@ -79,6 +85,13 @@ class MyTicketFragment : BaseFragment() {
         )
 
         return list
+    }
+
+    override fun onTicketClick(model: Ticket) {
+        //launch open ticket activity
+        val b = Bundle()
+        b.putSerializable(Constants.DefaultConstants.MODEL_DETAIL,model)
+        launchActivity(OpenTicketActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
     }
 
 

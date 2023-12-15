@@ -88,16 +88,12 @@ class MyScheduledVisitActivity : BaseActivity(), MyBookingAdapter.OnClickTokenLi
         tv1: AppCompatTextView,
     ) {
         mBinding.apply {
-            tvCurrentMB.background =
-                ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
-            tvPastMB.background =
-                ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
-            tvUpcomingMB.background =
-                ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
-
+            tvCurrentMB.background = null
+            tvPastMB.background = null
+            tvUpcomingMB.background = null
         }
         tv1.background =
-            ResourcesCompat.getDrawable(resources, R.drawable.otp_box_outline_drawable, null)
+            ResourcesCompat.getDrawable(resources, R.drawable.select_white_bg, null)
     }
 
     override fun onClickToken(model: TokenCollectedResponse) {

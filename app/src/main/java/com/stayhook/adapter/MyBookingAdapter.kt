@@ -37,7 +37,7 @@ class MyBookingAdapter(val list: MutableList<TokenCollectedResponse>, val contex
     override fun onBindViewHolder(holder: MyBookingVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            Glide.with(context).load(model.propertyImage).into(ivItemMyBooking)
+            Glide.with(context).load(model.propertyImage).placeholder(R.drawable.default_image).into(ivItemMyBooking)
             tvMyBookingApartmentType.text = model.propertyName
             tvMyBookingCurrentStatus.text = model.status
             tvMyBookingLocation.text = String.format(
@@ -49,7 +49,7 @@ class MyBookingAdapter(val list: MutableList<TokenCollectedResponse>, val contex
                 model.pincode,
                 model.country
             )
-            tvMyBookingViewStatus.setOnClickListener {
+            rlViewStatus.setOnClickListener {
                 listener.onClickToken(model)
             }
         }

@@ -16,6 +16,8 @@ import com.stayhook.screen.verification.VerificationActivity
 import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs.showErrorMessage
 import com.stayhook.util.Utility
+import com.stayhook.util.Utility.isConnectionAvailable
+import com.stayhook.util.mLog
 import com.stayhook.validation.ValidationResult
 import com.stayhook.validation.ValidationState
 import org.koin.core.component.inject
@@ -55,15 +57,14 @@ class LoginActivity : BaseActivity() {
                 }
 
                 ApiResponse.Status.SUCCESS -> {
-
                     hideProgress()
-                    launchActivity(VerificationActivity::class.java, "MobileNo", mobileNo)
+
+                    mLog("LoginActivity login data message ${it.data?.message}")
                     Toast.makeText(this, it.data?.otp.toString(), Toast.LENGTH_LONG)
                         .show()
-                    Log.d(
-                        "LoginActivity",
-                        "onViewInit: login data message ${it.data?.message}"
-                    )
+                    launchActivity(VerificationActivity::class.java, "MobileNo", mobileNo)
+                    finish()
+
                 }
 
                 ApiResponse.Status.ERROR -> {
@@ -94,12 +95,15 @@ class LoginActivity : BaseActivity() {
                             Constants.NetworkConstant.NO_INTERNET_AVAILABLE
                         )
                     } else {
+
                         mobileNo = loginBinding.etMobileOnLogin.text.toString()
                         val loginRequest = UserRequest().apply {
                             mobile = mobileNo
                         }
                         mViewModel.hitLoginApi(loginRequest)
                         mViewModel.getLoginResponse().observe(this@LoginActivity, loginObserver)
+
+
                     }
                 }
 

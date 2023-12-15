@@ -59,7 +59,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:onClick="@{()->homeViewModel.onClickLocation()}"
                         android:drawableEnd="@drawable/ic_down_arrow"
                         android:padding="@dimen/_5sdp"
                         android:drawablePadding="@dimen/_10sdp"
@@ -124,7 +123,6 @@
                             android:id="@+id/llcHouseHome"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/outline_search_filter_bg"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -157,7 +155,6 @@
                             android:id="@+id/llcPrivateRoomHome"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/outline_search_filter_bg"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -190,7 +187,6 @@
                             android:id="@+id/llcSharedRoomHome"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/outline_search_filter_bg"
                             android:gravity="center"
                             android:orientation="vertical">
 

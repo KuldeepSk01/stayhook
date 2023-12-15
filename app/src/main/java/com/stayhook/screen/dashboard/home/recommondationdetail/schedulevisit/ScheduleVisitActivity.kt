@@ -17,6 +17,7 @@ import com.stayhook.base.BaseActivity
 import com.stayhook.databinding.ActivityScheduleVisitBinding
 import com.stayhook.databinding.LayoutScheduledTimeListBinding
 import com.stayhook.model.request.ScheduleAVisitRequest
+import com.stayhook.model.response.StateCityResponse
 import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.model.response.getpopertydetail.GetPropertyDetail
 import com.stayhook.network.ApiResponse
@@ -88,8 +89,6 @@ class ScheduleVisitActivity : BaseActivity() {
                         }
             */
             selectTimeCL.setOnClickListener {
-
-
                 // val alertDialog = AlertDialog.Builder(this@ScheduleVisitActivity)
                 val alertDialog = Dialog(this@ScheduleVisitActivity)
                 val b = DataBindingUtil.inflate<LayoutScheduledTimeListBinding>(
@@ -103,9 +102,9 @@ class ScheduleVisitActivity : BaseActivity() {
                     adapter = ScheduledTimePickAdapter(getScheduledPickTimeList(),
                         this@ScheduleVisitActivity,
                         object : ScheduledTimePickAdapter.OnScheduledTimePickerListener {
-                            override fun onTimePicker(model: String) {
+                            override fun onTimePicker(model: StateCityResponse) {
                                 Log.d("TAG", "onTimePicker: time $model")
-                                tvTimePickerScheduleVisit.text = model
+                                tvTimePickerScheduleVisit.text = model.name
                                 alertDialog.dismiss()
                             }
                         })
@@ -232,23 +231,24 @@ class ScheduleVisitActivity : BaseActivity() {
     }
 
 
-    private fun getScheduledPickTimeList(): MutableList<String> {
-        val list = mutableListOf<String>()
-        list.add("07 AM - 08 AM")
-        list.add("08 AM - 09 AM")
-        list.add("09 AM - 10 AM")
-        list.add("10 AM - 11 AM")
-        list.add("11 AM - 12 PM")
-        list.add("12 PM - 01 PM")
-        list.add("01 PM - 02 PM")
-        list.add("03 PM - 04 PM")
-        list.add("04 PM - 05 PM")
-        list.add("05 PM - 06 PM")
-        list.add("06 PM - 07 PM")
-        list.add("07 PM - 08 PM")
-        list.add("08 PM - 09 PM")
-        list.add("09 PM - 10 PM")
-        list.add("10 PM - 11 PM")
+    private fun getScheduledPickTimeList(): MutableList<StateCityResponse> {
+        val list = mutableListOf<StateCityResponse>()
+        list.add(StateCityResponse(1,"07 AM - 08 AM"))
+        list.add(StateCityResponse(1,"08 AM - 09 AM"))
+        list.add(StateCityResponse(1,"09 AM - 10 AM"))
+        list.add(StateCityResponse(1,"10 AM - 11 AM"))
+        list.add(StateCityResponse(1,"11 AM - 12 PM"))
+        list.add(StateCityResponse(1,"12 PM - 01 PM"))
+        list.add(StateCityResponse(1,"01 PM - 02 PM"))
+        list.add(StateCityResponse(1,"02 PM - 03 PM"))
+        list.add(StateCityResponse(1,"03 PM - 04 PM"))
+        list.add(StateCityResponse(1,"04 PM - 05 PM"))
+        list.add(StateCityResponse(1,"05 PM - 06 PM"))
+        list.add(StateCityResponse(1,"06 PM - 07 PM"))
+        list.add(StateCityResponse(1,"07 PM - 08 PM"))
+        list.add(StateCityResponse(1,"08 PM - 09 PM"))
+        list.add(StateCityResponse(1,"09 PM - 10 PM"))
+        list.add(StateCityResponse(1,"10 PM - 11 PM"))
         return list
     }
 
