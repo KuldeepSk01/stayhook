@@ -115,7 +115,7 @@
     <string name="select_option">Select Option</string>
     <string name="enter_full_name">Please enter full name</string>
     <string name="enter_email">Please enter email</string>
-    <string name="email_validation">Please enter a valid email address</string>
+    <string name="email_validation">Please enter a valid email</string>
     <string name="enter_phone">Enter the phone number</string>
     <string name="enter_pin">Please enter otp</string>
     <string name="enter_mobile_num">Please enter mobile number</string>
@@ -421,6 +421,7 @@
     <string name="error_mobile_empty">Enter your mobile number.!</string>
     <string name="error_mobile_length">Mobile number must be 10 digit!</string>
     <string name="error_full_name_empty">Enter your full name!</string>
+    <string name="error_title_empty">Enter your title!</string>
     <string name="error_email_empty">Enter your email!</string>
 
     <string name="load_more">Load More</string>
@@ -456,4 +457,5 @@
     <string name="view_status">View Status</string>
     <string name="error_empty_search_location">Please enter you location!</string>
     <string name="enter_your_location">Enter your location..</string>
+    <string name="search_location">Search location...</string>
 </resources>

@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/property_type_text"
-                app:fontFamily="@font/clearsans_medium" />
+                app:fontFamily="@font/sp_pro_display_medium" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/llcFilterPropertyType"
@@ -187,9 +187,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvLocationSearch"
-                    android:background="@null"
+                    android:background="@drawable/otp_box_outline_drawable"
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:gravity="center_vertical"
                     android:hint="@string/enter_your_location"
                     android:imeOptions="actionDone"
@@ -281,7 +282,7 @@
                             android:layout_below="@+id/llcFilterPropertyType"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:text="@string/nearby_your_location_text"
-                            app:fontFamily="@font/clearsans_medium" />
+                            app:fontFamily="@font/sp_pro_display_medium" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvFilterAddMore"
@@ -292,7 +293,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:text="@string/add_more_text" />
 
                         <androidx.appcompat.widget.LinearLayoutCompat
@@ -357,7 +358,7 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:text="@string/price_text"
-                            app:fontFamily="@font/clearsans_medium" />
+                            app:fontFamily="@font/sp_pro_display_medium" />
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/llcFilterPrice"
@@ -400,7 +401,7 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:text="@string/gender"
-                            app:fontFamily="@font/clearsans_medium" />
+                            app:fontFamily="@font/sp_pro_display_medium" />
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/llcFilterGender"
@@ -452,7 +453,7 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:text="@string/bedrooms_text"
-                            app:fontFamily="@font/clearsans_medium" />
+                            app:fontFamily="@font/sp_pro_display_medium" />
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/llcFilterBedRooms"
@@ -513,7 +514,7 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:text="@string/food_available_text"
-                            app:fontFamily="@font/clearsans_medium" />
+                            app:fontFamily="@font/sp_pro_display_medium" />
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/llcFilterFoodAvailable"

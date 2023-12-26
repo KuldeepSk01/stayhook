@@ -68,7 +68,7 @@ class SelectRoomAdapter(
                 if (itemPosition == position) {
                     rlSelectRoom.background =ResourcesCompat.getDrawable(context.resources,R.drawable.selected_box_drawable,null)
                 } else {
-                    rlSelectRoom.background = ResourcesCompat.getDrawable(context.resources,R.drawable.otp_box_background,null)
+                    rlSelectRoom.background = ResourcesCompat.getDrawable(context.resources,R.drawable.otp_box_outline_drawable,null)
                 }
 
                 if (roomOrBed == context.getString(R.string.room_select)) {

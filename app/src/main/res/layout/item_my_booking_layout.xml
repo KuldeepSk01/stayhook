@@ -9,107 +9,117 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/clItemSearchFl"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_10sdp"
         android:backgroundTint="@color/gray6"
-        android:layout_height="wrap_content">
+        app:cardCornerRadius="@dimen/_10sdp">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <androidx.appcompat.widget.AppCompatImageView
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                app:shapeAppearance="@style/CornerCut"
                 android:id="@+id/ivItemMyBooking"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_130sdp"
                 android:scaleType="centerCrop"
+                android:layout_margin="@dimen/_5sdp"
+                android:src="@drawable/default_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/default_image"
-                />
-
-
+                app:layout_constraintTop_toTopOf="parent" />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="@dimen/_5sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivItemMyBooking"
-                android:layout_margin="@dimen/_5sdp">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivItemMyBooking">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvMyBookingApartmentType"
+                    style="@style/headingTextSizeStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/headingTextSizeStyle1"
                     android:text="@string/mighty_cinco_family_text" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvMyBookingLocation"
+                    style="@style/defaultTextSizeStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/defaultTextSizeStyle"
                     android:layout_below="@+id/tvMyBookingApartmentType"
-                    android:text="@string/noida_india_text"
                     android:drawableStart="@drawable/ic_map_pin_gray"
                     android:drawablePadding="@dimen/_5sdp"
-                    />
+                    android:text="@string/noida_india_text" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvMyBookingCurrentStatusTXT"
+                    style="@style/defaultTextSizeStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/defaultTextSizeStyle"
                     android:layout_below="@+id/tvMyBookingLocation"
-                    android:text="@string/current_status"
                     android:drawablePadding="@dimen/_5sdp"
-                    />
+                    android:text="@string/current_status" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvMyBookingCurrentStatus"
+                    style="@style/defaultTextSizeStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/defaultTextSizeStyle"
-                    android:textColor="@color/green_color"
-                    android:layout_toEndOf="@+id/tvMyBookingCurrentStatusTXT"
                     android:layout_below="@+id/tvMyBookingLocation"
-                    android:text="@string/token_collected"
+                    android:layout_toEndOf="@+id/tvMyBookingCurrentStatusTXT"
                     android:drawablePadding="@dimen/_5sdp"
-                    />
+                    android:text="@string/token_collected"
+                    android:textColor="@color/green_color" />
 
                 <RelativeLayout
                     android:id="@+id/rlViewStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:layout_below="@id/tvMyBookingCurrentStatusTXT">
+                    android:layout_below="@id/tvMyBookingCurrentStatusTXT"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvMyBookingViewStatus"
+                        style="@style/defaultTextSizeStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/defaultTextSizeStyle"
                         android:text="@string/view_status"
+                        android:layout_centerVertical="true"
                         android:textSize="@dimen/_10ssp"
-                        android:padding="@dimen/_5sdp"
                         />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvMyBookingArrow"
+                        style="@style/defaultTextSizeStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/defaultTextSizeStyle"
-                        android:background="@drawable/ic_right_arrow"
                         android:layout_alignParentEnd="true"
-                        android:drawablePadding="@dimen/_5sdp"
                         android:layout_centerVertical="true"
-                        />
+                        android:background="@drawable/ic_right_arrow"
+                        android:drawablePadding="@dimen/_5sdp" />
 
                 </RelativeLayout>
 
-            </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBookingMoveOutBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/light_red_bg"
+                    android:backgroundTint="@color/red_color"
+                    android:fontFamily="@font/sp_pro_display_regular"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:padding="@dimen/_8sdp"
+                    android:text="@string/move_out"
+                    android:textColor="@color/red_color"
+                    android:layout_below="@id/rlViewStatus" />
 
+            </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

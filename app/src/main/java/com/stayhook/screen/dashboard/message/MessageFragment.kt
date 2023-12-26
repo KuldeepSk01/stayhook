@@ -13,8 +13,8 @@ import com.stayhook.adapter.interfaces.OnMessageClickListener
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentMessageBinding
 import com.stayhook.model.Message
-import com.stayhook.screen.dashboard.MainActivity
-import com.stayhook.screen.dashboard.message.chat.ChatFragment
+import com.stayhook.screen.dashboard.message.chat.ChatActivity
+import com.stayhook.util.Constants
 import com.stayhook.util.IMAGE_1
 import com.stayhook.util.IMAGE_2
 import com.stayhook.util.IMAGE_3
@@ -29,7 +29,6 @@ class MessageFragment : BaseFragment(), OnMessageClickListener {
 
     override fun onInitView(binding: ViewDataBinding, view: View) {
         mBinding = binding as FragmentMessageBinding
-        showTab()
         mBinding.apply {
             toolBarMessage.apply {
                 ivToolBarBack.visibility = View.INVISIBLE
@@ -68,11 +67,12 @@ class MessageFragment : BaseFragment(), OnMessageClickListener {
     }
 
     override fun onClickMessage(model: Message) {
-        val cf = ChatFragment()
         val b = Bundle()
-        hideTab()
-        b.putSerializable("MessageDetail",model)
-        replaceFragment(R.id.flMainContainer,cf,b,MessageFragment().javaClass.simpleName)
+        //hideTab()
+        b.putSerializable(Constants.DefaultConstants.MODEL_DETAIL,model)
+
+        launchActivity(ChatActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
+        //replaceFragment(R.id.flMainContainer,cf,b,MessageFragment().javaClass.simpleName)
     }
 
 }

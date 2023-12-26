@@ -2,5 +2,8 @@
 <shape android:shape="rectangle"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="@dimen/_10sdp"/>
+<!--
     <solid android:color="@color/select_filter"/>
+-->
+    <solid android:color="@color/schedule_visit_btn"/>
 </shape>

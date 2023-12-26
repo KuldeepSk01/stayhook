@@ -1,21 +1,18 @@
 package com.stayhook.screen.dashboard.home
 
+import android.location.Geocoder
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.stayhook.R
 import com.stayhook.base.BaseViewModel
-import com.stayhook.model.Recommendation
 import com.stayhook.model.response.home.HomeResponse
 import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.home.privateroom.PrivateRoomActivity
 import com.stayhook.screen.dashboard.home.sharedroom.SharedRoomActivity
 import com.stayhook.screen.notification.NotificationFragment
 import com.stayhook.util.Constants
-import com.stayhook.util.IMAGE_1
-import com.stayhook.util.IMAGE_2
-import com.stayhook.util.IMAGE_3
-import com.stayhook.util.IMAGE_4
-import com.stayhook.util.IMAGE_5
+import com.stayhook.util.mLog
+import java.util.Locale
 
 class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
 
@@ -29,6 +26,10 @@ class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
         return homeResponse
     }
 
+    fun onClickLocationBtn() {
+        // replaceFragWithB(fragmentHome!!.getString(R.string.house))
+        //fragmentHome?.launchActivity(HomeRoomTypeActivity::class.java)
+    }
 
     fun onClickHouse() {
         // replaceFragWithB(fragmentHome!!.getString(R.string.house))
@@ -80,5 +81,41 @@ class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
         )
     }
 
+
+    fun getCurrentAddress(): String? {
+        val lat = mPref[Constants.PreferenceConstant.LATITUDE, 0f]?.toDouble()
+        val lng = mPref[Constants.PreferenceConstant.LONGITUDE, 0f]?.toDouble()
+        var address: String? = null
+        if (lat != 0.0 && lng != 0.0) {
+            mLog("user current address $lat $lng")
+
+            val geocoder = Geocoder(fragmentHome.requireContext(), Locale.getDefault())
+            val addresses = geocoder.getFromLocation(
+                lat!!,
+                lng!!,
+                1
+            ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+           val addressLine =
+                addresses!![0].getAddressLine(1) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+            mLog("user current complete address line $addressLine")
+
+            val city = addresses[0].locality
+            val state = addresses[0].adminArea
+            val country = addresses[0].countryName
+            val postalCode = addresses[0].postalCode
+            val knownName = addresses[0].featureName
+
+            address =  String.format("%s,%s",city,country)
+
+        } else {
+            mLog("user current null address $lat $lng")
+            address = ""
+        }
+
+
+
+        return address
+    }
 
 }

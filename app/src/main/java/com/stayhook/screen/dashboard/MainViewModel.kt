@@ -22,6 +22,8 @@ class MainViewModel(private val context: StayHookApplication) : BaseViewModel() 
     lateinit var locationManager: LocationManager
 
     fun checkLocationPermission() {
+        mPref.put(Constants.PreferenceConstant.LATITUDE, 0f)
+        mPref.put(Constants.PreferenceConstant.LONGITUDE, 0f)
         locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         Dexter.withContext(context).withPermissions(
             arrayListOf(
@@ -77,7 +79,6 @@ class MainViewModel(private val context: StayHookApplication) : BaseViewModel() 
             }
 
             if (hasGps) {
-
                 locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
                     LOCATION_UPDATE_TIME,

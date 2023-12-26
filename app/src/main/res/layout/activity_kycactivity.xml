@@ -236,9 +236,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/upload_front_of_aadhaar_card" />
 
@@ -247,17 +246,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvUploadFrontAadhaarKYCTXT"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
 
                         <androidx.appcompat.widget.AppCompatImageView
+                            app:shapeAppearance="@style/CornerCut"
                             android:id="@+id/ivUploadFrontAadhaarBtnKYC"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:src="@drawable/ic_upload_btn" />
 
@@ -272,20 +272,17 @@
                                 android:id="@+id/ivUploadFrontAadhaarImageKYC"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_180sdp"
-                                android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:layout_marginEnd="@dimen/_10sdp"
                                 android:scaleType="fitXY" />
-
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/ivDeleteFAImageBtnKYC"
                                 style="@style/defaultBtnStyle1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/ivUploadFrontAadhaarImageKYC"
-                                android:layout_margin="@dimen/_10sdp"
                                 android:background="@drawable/light_red_bg"
                                 android:gravity="center"
+                                android:layout_marginTop="@dimen/_5sdp"
                                 android:text="@string/title_delete"
                                 android:textColor="@color/red_color"
 
@@ -310,9 +307,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/upload_back_of_aadhaar_card_text"
 
@@ -323,14 +319,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvtUploadBackAadhaarKYC"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/ivUploadBackAadhaarBtnKYC"
-                            android:layout_width="wrap_content"
+                            android:layout_width="@dimen/_24sdp"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentEnd="true"
@@ -346,13 +341,12 @@
 
                             >
 
-                            <androidx.appcompat.widget.AppCompatImageView
+                            <com.google.android.material.imageview.ShapeableImageView
+                                app:shapeAppearance="@style/CornerCut"
                                 android:id="@+id/ivUploadedBackAadhaarImageKYC"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_180sdp"
-                                android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:layout_marginEnd="@dimen/_10sdp"
                                 android:scaleType="fitXY" />
 
                             <androidx.appcompat.widget.AppCompatTextView
@@ -361,9 +355,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/ivUploadedBackAadhaarImageKYC"
-                                android:layout_margin="@dimen/_10sdp"
                                 android:background="@drawable/light_red_bg"
                                 android:gravity="center"
+                                android:layout_marginTop="@dimen/_5sdp"
                                 android:text="@string/title_delete"
                                 android:textColor="@color/red_color"
 
@@ -388,9 +382,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/upload_pan_card_text" />
 
@@ -399,14 +392,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvtUploadPan1KYC"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/ivUploadPanBtnKYC"
-                            android:layout_width="wrap_content"
+                            android:layout_width="@dimen/_24sdp"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentEnd="true"
@@ -422,13 +414,12 @@
 
                             >
 
-                            <androidx.appcompat.widget.AppCompatImageView
+                            <com.google.android.material.imageview.ShapeableImageView
+                                app:shapeAppearance="@style/CornerCut"
                                 android:id="@+id/ivUploadedPanImageKYC"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_180sdp"
-                                android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:layout_marginEnd="@dimen/_10sdp"
                                 android:scaleType="fitXY" />
 
                             <androidx.appcompat.widget.AppCompatTextView
@@ -437,9 +428,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/ivUploadedPanImageKYC"
-                                android:layout_margin="@dimen/_10sdp"
                                 android:background="@drawable/light_red_bg"
                                 android:gravity="center"
+                                android:layout_marginTop="@dimen/_5sdp"
                                 android:text="@string/title_delete"
                                 android:textColor="@color/red_color"
 
@@ -465,9 +456,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/upload_work_id_text" />
 
@@ -476,14 +466,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvtUploadPoliceVerificationKYC"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/ivUploadPoliceVerificationBtnKYC"
-                            android:layout_width="wrap_content"
+                            android:layout_width="@dimen/_24sdp"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentEnd="true"
@@ -497,13 +486,12 @@
                             android:layout_below="@+id/tvUploadPoliceVerificationKYC"
                             android:visibility="gone">
 
-                            <androidx.appcompat.widget.AppCompatImageView
+                            <com.google.android.material.imageview.ShapeableImageView
+                                app:shapeAppearance="@style/CornerCut"
                                 android:id="@+id/ivUploadedPoliceVerificationImageKYC"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_180sdp"
-                                android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:layout_marginEnd="@dimen/_10sdp"
                                 android:scaleType="fitXY" />
 
                             <androidx.appcompat.widget.AppCompatTextView
@@ -512,9 +500,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/ivUploadedPoliceVerificationImageKYC"
-                                android:layout_margin="@dimen/_10sdp"
                                 android:background="@drawable/light_red_bg"
                                 android:gravity="center"
+                                android:layout_marginTop="@dimen/_5sdp"
                                 android:text="@string/title_delete"
                                 android:textColor="@color/red_color" />
                         </RelativeLayout>

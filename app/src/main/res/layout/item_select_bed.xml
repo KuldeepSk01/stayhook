@@ -24,7 +24,7 @@
             android:id="@+id/tvItemRoomNameSD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/clearsans_regular"
+            android:fontFamily="@font/sp_pro_display_regular"
             android:text="@string/kids_text"
             android:textSize="@dimen/_12ssp" />
 
@@ -32,7 +32,7 @@
             android:id="@+id/tvItemBedSD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/clearsans_regular"
+            android:fontFamily="@font/sp_pro_display_regular"
             android:text="@string/bed_text"
             android:textSize="@dimen/_10ssp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -85,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:visibility="gone"
                         android:textColor="@color/red_color"
-                        android:fontFamily="@font/clearsans_bold"
+                        android:fontFamily="@font/sp_pro_display_bold"
                         android:layout_below="@+id/tvAttachedBathroomSB"
                         android:text="@string/sold_out_text" />
 

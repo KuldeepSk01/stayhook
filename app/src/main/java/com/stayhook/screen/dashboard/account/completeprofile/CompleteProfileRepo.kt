@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.stayhook.base.BaseRepository
 import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.network.ApiResponse
+import com.stayhook.util.Constants
+import com.stayhook.util.mLog
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -44,8 +46,12 @@ class CompleteProfileRepo : BaseRepository() {
             }
 
             override fun onFailure(call: Call<SuccessErrorResponse>, t: Throwable) {
-                Log.d("LoginRepo", "onFailure: ${t.message}")
-                responseLive.postValue(ApiResponse.error(t))
+                if (t.message.equals("Software caused connection abort")) {
+                    responseLive.postValue(ApiResponse.error(Throwable(Constants.NetworkConstant.CONNECTION_LOST)))
+                } else {
+                    mLog("onFailure: ${t.message}")
+                    responseLive.postValue(ApiResponse.error(t))
+                }
             }
 
         })

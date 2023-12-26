@@ -62,8 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/clearsans_regular"
-                    android:text="@string/cost_2500_text"
+                    android:fontFamily="@font/sp_pro_display_regular"
                     android:textColor="@color/heading_text_color"
                     android:textSize="@dimen/_12sdp" />
 

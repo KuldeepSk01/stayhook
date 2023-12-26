@@ -1,9 +1,7 @@
 package com.stayhook.screen.dashboard
 
-import android.location.LocationManager
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.ViewDataBinding
@@ -19,7 +17,6 @@ import com.stayhook.screen.dashboard.search.SearchFragment
 import com.stayhook.screen.interfaces.DashBoardListener
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import org.koin.dsl.module
 
 
 class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
@@ -64,26 +61,26 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
     override fun onViewInit(binding: ViewDataBinding?) {
         mainActivityBinding = binding as ActivityMainBinding
         dashBoardListener = this@MainActivity
-        dashBoardListener.onBottomIconClick(homeFragment)
+        dashBoardListener.onBottomIconClick(homeFragment, HOME_FRAGMENT)
         mainViewModel.checkLocationPermission()
 
 
         mainActivityBinding.customBottomBarLayout.ivHomeIcon.setBackgroundResource(R.drawable.ic_home_selected)
 
         mainActivityBinding.customBottomBarLayout.clHomeNav.setOnClickListener {
-            dashBoardListener.onBottomIconClick(homeFragment)
+            dashBoardListener.onBottomIconClick(homeFragment,HOME_FRAGMENT)
         }
         mainActivityBinding.customBottomBarLayout.clSearchNav.setOnClickListener {
-            dashBoardListener.onBottomIconClick(searchFragment)
+            dashBoardListener.onBottomIconClick(searchFragment, SEARCH_FRAGMENT)
         }
         mainActivityBinding.customBottomBarLayout.clFavoriteNav.setOnClickListener {
-            dashBoardListener.onBottomIconClick(favoriteFragment)
+            dashBoardListener.onBottomIconClick(favoriteFragment, FAVORITE_FRAGMENT)
         }
         mainActivityBinding.customBottomBarLayout.clMessageNav.setOnClickListener {
-            dashBoardListener.onBottomIconClick(messageFragment)
+            dashBoardListener.onBottomIconClick(messageFragment, MESSAGE_FRAGMENT)
         }
         mainActivityBinding.customBottomBarLayout.clProfileNav.setOnClickListener {
-            dashBoardListener.onBottomIconClick(accountFragment)
+            dashBoardListener.onBottomIconClick(accountFragment, ACCOUNT_FRAGMENT)
         }
 
     }
@@ -94,7 +91,7 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
 
        }*/
 
-    open fun setBottomStyle(bottomTabItem: Int) {
+    private fun setBottomStyle(bottomTabItem: Int) {
         mainActivityBinding.customBottomBarLayout.apply {
 
             tvHomeNav.setTextColor(
@@ -186,7 +183,8 @@ class MainActivity : BaseActivity(), KoinComponent, DashBoardListener {
 
     }
 
-    override fun onBottomIconClick(fragment: Fragment) {
+    override fun onBottomIconClick(fragment: Fragment, tabItem: Int) {
+        setBottomStyle(tabItem)
         val bt = supportFragmentManager.beginTransaction()
         bt.replace(R.id.flMainContainer, fragment)
         bt.commit()

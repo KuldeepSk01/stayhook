@@ -14,884 +14,900 @@
         android:background="@color/white"
         tools:context=".screen.dashboard.home.recommondationdetail.RecommendationDetailActivity">
 
-
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/svDetail"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clRdLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:scrollIndicators="none"
-            android:scrollbars="none"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <RelativeLayout
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/svDetail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/_100sdp">
-
-                <RelativeLayout
-                    android:id="@+id/ivDetailImg"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_250sdp"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.viewpager2.widget.ViewPager2
-                        android:id="@+id/viewPagerRD"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                    <me.relex.circleindicator.CircleIndicator3
-                        android:id="@+id/indicatorRD"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:shadowColor="@color/white"
-                        app:ci_drawable="@drawable/white_dot_drawable"
-
-                        />
-                </RelativeLayout>
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:scrollIndicators="none"
+                android:scrollbars="none"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp">
-
-                    <include
-                        android:id="@+id/toolbarRD"
-                        layout="@layout/custom_toolbar_layout" />
-
-
-                    <!-- <androidx.appcompat.widget.AppCompatImageView
-                         android:id="@+id/ivbackRD"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:layout_alignParentStart="true"
-                         android:layout_alignParentTop="true"
-                         android:layout_marginTop="@dimen/_10sdp"
-                         android:src="@drawable/ic_back" />
-
-                     <androidx.appcompat.widget.AppCompatImageView
-                         android:id="@+id/ivFavRD"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:layout_alignParentTop="true"
-                         android:layout_alignParentEnd="true"
-                         android:layout_marginTop="@dimen/_10sdp"
-                         android:src="@drawable/iv_fav_with_gray_bg" />-->
-                </RelativeLayout>
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/ivDetailImg"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivDetailImg">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvDetailRoomType"
-                        style="@style/headingTextSizeStyle1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:text="@string/shared_room"
-                        android:textColor="@color/primary_color"
-                        app:layout_constraintEnd_toStartOf="@+id/tvDetailPageRatings"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvDetailPageRatings"
-                        style="@style/defaultTextSizeStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:drawableStart="@drawable/ic_rateus_filled"
-                        android:drawablePadding="@dimen/_10sdp"
-                        android:text="@string/_4_5_256_reviews_text"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tvDetailRoomType" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvDetailApartmentType"
-                        style="@style/headingTextSizeStyle3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:text="@string/primary_apartment_text"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvDetailRoomType" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvLocationDescription"
-                        style="@style/defaultTextSizeStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:text="@string/_701_ocean_avenue_unit_103_santa_monica_text"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvDetailApartmentType" />
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/_100sdp">
 
                     <RelativeLayout
-                        android:id="@+id/rlRoomDetails"
+                        android:id="@+id/ivDetailImg"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:gravity="center_vertical"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:layout_height="@dimen/_250sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLocationDescription">
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvBeds"
-                            style="@style/defaultTextSizeStyle"
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/viewPagerRD"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <me.relex.circleindicator.CircleIndicator3
+                            android:id="@+id/indicatorRD"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_20sdp"
-                            android:gravity="center_vertical"
-                            android:layout_centerVertical="true"
-                            android:drawableStart="@drawable/ic_bed"
-                            android:drawablePadding="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_regular"
-                            android:textColor="@color/heading_text_color"
-                            android:textStyle="bold"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:shadowColor="@color/white"
+                            app:ci_drawable="@drawable/white_dot_drawable"
 
                             />
-
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvBath"
-                            style="@style/defaultTextSizeStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_20sdp"
-                            android:gravity="center_vertical"
-                            android:layout_toEndOf="@id/tvBeds"
-                            android:layout_centerVertical="true"
-                            android:drawableStart="@drawable/ic_tabler_bath"
-                            android:drawablePadding="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_regular"
-                            android:textColor="@color/heading_text_color"
-                            android:textStyle="bold" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvSqrft"
-                            style="@style/defaultTextSizeStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:layout_centerVertical="true"
-                            android:layout_toEndOf="@id/tvBath"
-                            android:drawableStart="@drawable/ic_area"
-                            android:drawablePadding="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_regular"
-                            android:textColor="@color/heading_text_color"
-                            android:textStyle="bold" />
                     </RelativeLayout>
 
-                    <View
-                        android:id="@+id/separateLine"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_1sdp"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        android:background="@color/gray6"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rlRoomDetails" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvStayHookManager"
-                        style="@style/headingTextSizeStyle1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:text="@string/stay_hook_managaer_text"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/separateLine" />
-
                     <RelativeLayout
-                        android:id="@+id/rlSHM"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvStayHookManager">
+                        android:layout_height="@dimen/_50sdp">
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cvSHManager"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            app:cardCornerRadius="@dimen/_50sdp"
-                            app:cardElevation="0dp">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/ivStayHookManagerImg"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/avatar_profile" />
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvSHMName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_toEndOf="@+id/cvSHManager"
-                            android:fontFamily="@font/clearsans_bold"
-                            android:text="@string/default_name_text"
-                            android:textColor="@color/heading_text_color"
-                            android:textSize="@dimen/_12ssp" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/tvSHMName"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_toEndOf="@+id/cvSHManager"
-                            android:text="@string/manager_text"
-                            android:textSize="@dimen/_12ssp" />
+                        <include
+                            android:id="@+id/toolbarRD"
+                            layout="@layout/custom_toolbar_layout" />
 
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/ivSHManagerChat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_15sdp"
-                            android:src="@drawable/ic_chat_with_circle_bg" />
+                        <!-- <androidx.appcompat.widget.AppCompatImageView
+                             android:id="@+id/ivbackRD"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_alignParentStart="true"
+                             android:layout_alignParentTop="true"
+                             android:layout_marginTop="@dimen/_10sdp"
+                             android:src="@drawable/ic_back" />
 
-                    </RelativeLayout>
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvRDScheduleList"
-                        style="@style/headingTextSizeStyle1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        android:background="@drawable/otp_box_outline_drawable"
-                        android:fontFamily="@font/clearsans_medium"
-                        android:gravity="center"
-                        android:padding="@dimen/_10sdp"
-                        android:text="@string/schedule_a_visit_text"
-                        android:textColor="@color/primary_color"
-                        app:layout_constraintTop_toBottomOf="@+id/rlSHM" />
-
-                    <RelativeLayout
-                        android:id="@+id/rlRDOverview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvRDScheduleList">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvRDRoomTypesText"
-                            style="@style/headingTextSizeStyle1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/room_types_text" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rvRoomTypeRD"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/tvRDRoomTypesText" />
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
-                        android:id="@+id/rlRDMap"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_200sdp"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rlRDOverview" >
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvLocation"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            style="@style/headingTextSizeStyle1"
-                            android:text="@string/location"/>
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/mapRL"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_150sdp"
-                            app:cardCornerRadius="@dimen/_10sdp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            android:layout_below="@+id/tvLocation" >
-                            <WebView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:id="@+id/wvMap"
-                                />
-
-
-
-
-                          <!--  <fragment
-                                android:id="@+id/searchMapRD"
-                                android:name="com.google.android.gms.maps.SupportMapFragment"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
--->
-
-                        </androidx.cardview.widget.CardView>
-
+                         <androidx.appcompat.widget.AppCompatImageView
+                             android:id="@+id/ivFavRD"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_alignParentTop="true"
+                             android:layout_alignParentEnd="true"
+                             android:layout_marginTop="@dimen/_10sdp"
+                             android:src="@drawable/iv_fav_with_gray_bg" />-->
                     </RelativeLayout>
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/rlBuildingAmenities"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginTop="@dimen/_15sdp"
-                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/ivDetailImg"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rlRDMap">
+                        app:layout_constraintTop_toBottomOf="@+id/ivDetailImg">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvRDAmenities"
+                            android:id="@+id/tvDetailRoomType"
                             style="@style/headingTextSizeStyle1"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/features_amp_amenties"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:text="@string/shared_room"
+                            android:textColor="@color/primary_color"
+                            app:layout_constraintEnd_toStartOf="@+id/tvDetailPageRatings"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rvFeaturesAmenity"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/_50sdp"
-                            android:layout_below="@+id/tvRDAmenities"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:lineSpacingExtra="@dimen/_10sdp"
-                            app:layout_constraintEnd_toStartOf="@+id/tvViewMoreBtn"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvRDAmenities"
-                             />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvDetailPageRatings"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:drawableStart="@drawable/ic_rateus_filled"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:text="@string/_4_5_256_reviews_text"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/tvDetailRoomType" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvViewMoreBtn"
-                            android:layout_width="@dimen/_35sdp"
-                            android:layout_height="@dimen/_35sdp"
-                            android:background="@drawable/primary_dot_drawable"
-                            android:fontFamily="@font/clearsans_bold"
-                            android:gravity="center"
-                            android:text="@string/view_more_text"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_8ssp"
-                            app:layout_constraintBottom_toBottomOf="@+id/rvFeaturesAmenity"
+                            android:id="@+id/tvDetailApartmentType"
+                            style="@style/headingTextSizeStyle3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:text="@string/primary_apartment_text"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvDetailRoomType" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvLocationDescription"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:text="@string/_701_ocean_avenue_unit_103_santa_monica_text"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvDetailApartmentType" />
 
-                            app:layout_constraintTop_toBottomOf="@+id/tvRDAmenities" />
+                        <RelativeLayout
+                            android:id="@+id/rlRoomDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:gravity="center_vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvLocationDescription">
 
-                        <!-- <androidx.appcompat.widget.LinearLayoutCompat
-                             android:id="@+id/llRDAmenitiesFilter"
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:layout_below="@+id/tvRDAmenities"
-                             android:layout_marginTop="@dimen/_10sdp"
-                             android:background="@drawable/otp_box_background"
-                             android:orientation="horizontal">
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvBeds"
+                                style="@style/defaultTextSizeStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:drawableStart="@drawable/ic_bed"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:fontFamily="@font/sp_pro_display_regular"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/heading_text_color"
+                                android:textStyle="bold"
 
-                             <androidx.appcompat.widget.LinearLayoutCompat
-                                 android:id="@+id/llInteriorRD"
-                                 android:layout_width="wrap_content"
+                                />
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvBath"
+                                style="@style/defaultTextSizeStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:layout_toEndOf="@id/tvBeds"
+                                android:drawableStart="@drawable/ic_tabler_bath"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:fontFamily="@font/sp_pro_display_regular"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/heading_text_color"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvSqrft"
+                                style="@style/defaultTextSizeStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@id/tvBath"
+                                android:drawableStart="@drawable/ic_area"
+                                android:drawablePadding="@dimen/_10sdp"
+                                android:fontFamily="@font/sp_pro_display_regular"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/heading_text_color"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+
+                        <View
+                            android:id="@+id/separateLine"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:background="@color/gray6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/rlRoomDetails" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvStayHookManager"
+                            style="@style/headingTextSizeStyle1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:text="@string/stay_hook_managaer_text"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/separateLine" />
+
+                        <RelativeLayout
+                            android:id="@+id/rlSHM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvStayHookManager">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cvSHManager"
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                app:cardCornerRadius="@dimen/_50sdp"
+                                app:cardElevation="0dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivStayHookManagerImg"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/avatar_profile" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvSHMName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_toEndOf="@+id/cvSHManager"
+                                android:fontFamily="@font/sp_pro_display_bold"
+                                android:text="@string/default_name_text"
+                                android:textColor="@color/heading_text_color"
+                                android:textSize="@dimen/_12ssp" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tvSHMName"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_toEndOf="@+id/cvSHManager"
+                                android:text="@string/manager_text"
+                                android:textSize="@dimen/_12ssp" />
+
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivSHManagerChatBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_15sdp"
+                                android:src="@drawable/ic_chat_with_circle_bg" />
+
+                        </RelativeLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvRDScheduleList"
+                            style="@style/headingTextSizeStyle1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:background="@drawable/otp_box_outline_drawable"
+                            android:fontFamily="@font/sp_pro_display_medium"
+                            android:gravity="center"
+                            android:padding="@dimen/_10sdp"
+                            android:text="@string/schedule_a_visit_text"
+                            android:textColor="@color/primary_color"
+                            app:layout_constraintTop_toBottomOf="@+id/rlSHM" />
+
+                        <RelativeLayout
+                            android:id="@+id/rlRDOverview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvRDScheduleList">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvRDRoomTypesText"
+                                style="@style/headingTextSizeStyle1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/room_types_text" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvRoomTypeRD"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tvRDRoomTypesText" />
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:id="@+id/rlRDMap"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_200sdp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/rlRDOverview">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvLocation"
+                                style="@style/headingTextSizeStyle1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/location" />
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/mapRL"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_150sdp"
+                                android:layout_below="@+id/tvLocation"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <WebView
+                                    android:id="@+id/wvMap"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+
+                                <!--  <fragment
+                                      android:id="@+id/searchMapRD"
+                                      android:name="com.google.android.gms.maps.SupportMapFragment"
+                                      android:layout_width="match_parent"
+                                      android:layout_height="match_parent"
+                                      app:layout_constraintEnd_toEndOf="parent"
+                                      app:layout_constraintStart_toStartOf="parent"
+                                      app:layout_constraintTop_toTopOf="parent" />
+      -->
+
+                            </androidx.cardview.widget.CardView>
+
+                        </RelativeLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/rlBuildingAmenities"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/rlRDMap">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvRDAmenities"
+                                style="@style/headingTextSizeStyle1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/features_amp_amenties"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvFeaturesAmenity"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_50sdp"
+                                android:layout_below="@+id/tvRDAmenities"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:lineSpacingExtra="@dimen/_10sdp"
+                                app:layout_constraintEnd_toStartOf="@+id/tvViewMoreBtn"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvRDAmenities" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvViewMoreBtn"
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:background="@drawable/primary_dot_drawable"
+                                android:fontFamily="@font/sp_pro_display_bold"
+                                android:gravity="center"
+                                android:text="@string/view_more_text"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_8ssp"
+                                app:layout_constraintBottom_toBottomOf="@+id/rvFeaturesAmenity"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1"
+
+                                app:layout_constraintTop_toBottomOf="@+id/tvRDAmenities" />
+
+                            <!-- <androidx.appcompat.widget.LinearLayoutCompat
+                                 android:id="@+id/llRDAmenitiesFilter"
+                                 android:layout_width="match_parent"
                                  android:layout_height="wrap_content"
-                                 android:layout_weight="@integer/material_motion_duration_long_1"
-                                 android:background="@drawable/select_bed_filter_bg"
-                                 android:gravity="center"
-                                 android:orientation="vertical"
-                                 android:padding="@dimen/_5sdp">
+                                 android:layout_below="@+id/tvRDAmenities"
+                                 android:layout_marginTop="@dimen/_10sdp"
+                                 android:background="@drawable/otp_box_background"
+                                 android:orientation="horizontal">
 
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     android:id="@+id/tvInteriorRd"
+                                 <androidx.appcompat.widget.LinearLayoutCompat
+                                     android:id="@+id/llInteriorRD"
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
-                                     android:fontFamily="@font/clearsans_bold"
-                                     android:text="@string/interior_text"
-                                     android:textSize="@dimen/_12ssp" />
+                                     android:layout_weight="@integer/material_motion_duration_long_1"
+                                     android:background="@drawable/select_bed_filter_bg"
+                                     android:gravity="center"
+                                     android:orientation="vertical"
+                                     android:padding="@dimen/_5sdp">
 
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         android:id="@+id/tvInteriorRd"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:fontFamily="@font/sp_pro_display_bold"
+                                         android:text="@string/interior_text"
+                                         android:textSize="@dimen/_12ssp" />
+
+                                 </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                 <androidx.appcompat.widget.LinearLayoutCompat
+                                     android:id="@+id/llExteriorRD"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                     android:layout_weight="@integer/material_motion_duration_long_1"
+                                     android:gravity="center"
+                                     android:orientation="vertical"
+                                     android:padding="@dimen/_5sdp">
+
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         android:id="@+id/tvExteriorRD"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:fontFamily="@font/sp_pro_display_bold"
+                                         android:text="@string/exterior_text"
+                                         android:textSize="@dimen/_12ssp" />
+
+                                 </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                 <androidx.appcompat.widget.LinearLayoutCompat
+                                     android:id="@+id/llAreaLotRD"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                     android:layout_weight="@integer/material_motion_duration_long_1"
+                                     android:gravity="center"
+                                     android:orientation="vertical"
+                                     android:padding="@dimen/_5sdp">
+
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         android:id="@+id/tvAreaLotRD"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:fontFamily="@font/sp_pro_display_bold"
+                                         android:text="@string/area_lot_text"
+                                         android:textSize="@dimen/_12ssp" />
+
+                                 </androidx.appcompat.widget.LinearLayoutCompat>
                              </androidx.appcompat.widget.LinearLayoutCompat>
 
-                             <androidx.appcompat.widget.LinearLayoutCompat
-                                 android:id="@+id/llExteriorRD"
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:layout_weight="@integer/material_motion_duration_long_1"
-                                 android:gravity="center"
-                                 android:orientation="vertical"
-                                 android:padding="@dimen/_5sdp">
-
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     android:id="@+id/tvExteriorRD"
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:fontFamily="@font/clearsans_bold"
-                                     android:text="@string/exterior_text"
-                                     android:textSize="@dimen/_12ssp" />
-
-                             </androidx.appcompat.widget.LinearLayoutCompat>
-
-                             <androidx.appcompat.widget.LinearLayoutCompat
-                                 android:id="@+id/llAreaLotRD"
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:layout_weight="@integer/material_motion_duration_long_1"
-                                 android:gravity="center"
-                                 android:orientation="vertical"
-                                 android:padding="@dimen/_5sdp">
-
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     android:id="@+id/tvAreaLotRD"
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:fontFamily="@font/clearsans_bold"
-                                     android:text="@string/area_lot_text"
-                                     android:textSize="@dimen/_12ssp" />
-
-                             </androidx.appcompat.widget.LinearLayoutCompat>
-                         </androidx.appcompat.widget.LinearLayoutCompat>
-
-                         <RelativeLayout
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:layout_below="@+id/llRDAmenitiesFilter"
-                             android:layout_marginTop="@dimen/_10sdp">
-
                              <RelativeLayout
-                                 android:id="@+id/rlFAOne"
-                                 android:layout_width="match_parent"
-                                 android:layout_height="wrap_content">
-
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     style="@style/defaultTextSizeStyle"
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:layout_alignParentStart="true"
-                                     android:text="@string/status_cap_text" />
-
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     android:id="@+id/tvStatusRD"
-                                     style="@style/headingTextSizeStyle1"
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:layout_alignParentEnd="true"
-                                     android:text="@string/for_sale_text" />
-                             </RelativeLayout>
-
-                             <RelativeLayout
-                                 android:id="@+id/rlFATwo"
                                  android:layout_width="match_parent"
                                  android:layout_height="wrap_content"
-                                 android:layout_below="@id/rlFAOne"
-                                 android:layout_marginTop="@dimen/_5sdp">
+                                 android:layout_below="@+id/llRDAmenitiesFilter"
+                                 android:layout_marginTop="@dimen/_10sdp">
 
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     style="@style/defaultTextSizeStyle"
-                                     android:layout_width="wrap_content"
+                                 <RelativeLayout
+                                     android:id="@+id/rlFAOne"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="wrap_content">
+
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         style="@style/defaultTextSizeStyle"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentStart="true"
+                                         android:text="@string/status_cap_text" />
+
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         android:id="@+id/tvStatusRD"
+                                         style="@style/headingTextSizeStyle1"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentEnd="true"
+                                         android:text="@string/for_sale_text" />
+                                 </RelativeLayout>
+
+                                 <RelativeLayout
+                                     android:id="@+id/rlFATwo"
+                                     android:layout_width="match_parent"
                                      android:layout_height="wrap_content"
-                                     android:layout_alignParentStart="true"
-                                     android:text="@string/living_area_cap_text" />
+                                     android:layout_below="@id/rlFAOne"
+                                     android:layout_marginTop="@dimen/_5sdp">
 
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     android:id="@+id/tvLivingAreaRD"
-                                     style="@style/headingTextSizeStyle1"
-                                     android:layout_width="wrap_content"
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         style="@style/defaultTextSizeStyle"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentStart="true"
+                                         android:text="@string/living_area_cap_text" />
+
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         android:id="@+id/tvLivingAreaRD"
+                                         style="@style/headingTextSizeStyle1"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentEnd="true"
+                                         android:text="@string/_104_sqft_text" />
+                                 </RelativeLayout>
+
+                                 <RelativeLayout
+                                     android:id="@+id/rlFAThree"
+                                     android:layout_width="match_parent"
                                      android:layout_height="wrap_content"
-                                     android:layout_alignParentEnd="true"
-                                     android:text="@string/_104_sqft_text" />
-                             </RelativeLayout>
+                                     android:layout_below="@id/rlFATwo"
+                                     android:layout_marginTop="@dimen/_5sdp">
 
-                             <RelativeLayout
-                                 android:id="@+id/rlFAThree"
-                                 android:layout_width="match_parent"
-                                 android:layout_height="wrap_content"
-                                 android:layout_below="@id/rlFATwo"
-                                 android:layout_marginTop="@dimen/_5sdp">
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         style="@style/defaultTextSizeStyle"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentStart="true"
+                                         android:text="@string/type_cap_text" />
 
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     style="@style/defaultTextSizeStyle"
-                                     android:layout_width="wrap_content"
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         android:id="@+id/tvFATypeRD"
+                                         style="@style/headingTextSizeStyle1"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentEnd="true"
+                                         android:text="@string/condo_text" />
+                                 </RelativeLayout>
+
+                                 <RelativeLayout
+                                     android:id="@+id/rlFAFour"
+                                     android:layout_width="match_parent"
                                      android:layout_height="wrap_content"
-                                     android:layout_alignParentStart="true"
-                                     android:text="@string/type_cap_text" />
+                                     android:layout_below="@id/rlFAThree"
+                                     android:layout_marginTop="@dimen/_5sdp">
 
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     android:id="@+id/tvFATypeRD"
-                                     style="@style/headingTextSizeStyle1"
-                                     android:layout_width="wrap_content"
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         style="@style/defaultTextSizeStyle"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentStart="true"
+                                         android:text="@string/year_built_cap_text" />
+
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         android:id="@+id/tvFAYearBuiltRD"
+                                         style="@style/headingTextSizeStyle1"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentEnd="true"
+                                         android:text="@string/_1994_text" />
+                                 </RelativeLayout>
+
+                                 <RelativeLayout
+                                     android:id="@+id/rlFAFive"
+                                     android:layout_width="match_parent"
                                      android:layout_height="wrap_content"
-                                     android:layout_alignParentEnd="true"
-                                     android:text="@string/condo_text" />
-                             </RelativeLayout>
+                                     android:layout_below="@id/rlFAFour"
+                                     android:layout_marginTop="@dimen/_5sdp">
 
-                             <RelativeLayout
-                                 android:id="@+id/rlFAFour"
-                                 android:layout_width="match_parent"
-                                 android:layout_height="wrap_content"
-                                 android:layout_below="@id/rlFAThree"
-                                 android:layout_marginTop="@dimen/_5sdp">
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         style="@style/defaultTextSizeStyle"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentStart="true"
+                                         android:text="@string/nearby_cap_text" />
 
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     style="@style/defaultTextSizeStyle"
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:layout_alignParentStart="true"
-                                     android:text="@string/year_built_cap_text" />
-
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     android:id="@+id/tvFAYearBuiltRD"
-                                     style="@style/headingTextSizeStyle1"
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:layout_alignParentEnd="true"
-                                     android:text="@string/_1994_text" />
-                             </RelativeLayout>
-
-                             <RelativeLayout
-                                 android:id="@+id/rlFAFive"
-                                 android:layout_width="match_parent"
-                                 android:layout_height="wrap_content"
-                                 android:layout_below="@id/rlFAFour"
-                                 android:layout_marginTop="@dimen/_5sdp">
-
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     style="@style/defaultTextSizeStyle"
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:layout_alignParentStart="true"
-                                     android:text="@string/nearby_cap_text" />
-
-                                 <androidx.appcompat.widget.AppCompatTextView
-                                     android:id="@+id/tvFANearbyRD"
-                                     style="@style/headingTextSizeStyle1"
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:layout_alignParentEnd="true"
-                                     android:text="@string/beach_text" />
-                             </RelativeLayout>
+                                     <androidx.appcompat.widget.AppCompatTextView
+                                         android:id="@+id/tvFANearbyRD"
+                                         style="@style/headingTextSizeStyle1"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentEnd="true"
+                                         android:text="@string/beach_text" />
+                                 </RelativeLayout>
 
 
-                         </RelativeLayout>-->
+                             </RelativeLayout>-->
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <View
+                            android:id="@+id/seperator1"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:background="@color/gray6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/rlBuildingAmenities" />
+
+
+                        <RelativeLayout
+                            android:id="@+id/rlAboutUsRD"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/seperator1">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvAboutRDTXT"
+                                style="@style/headingTextSizeStyle1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/about_us" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvAboutRD"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tvAboutRDTXT"
+                                android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry"
+
+                                />
+
+
+                            <View
+                                android:id="@+id/seperator2"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:layout_below="@+id/tvAboutRD"
+                                android:layout_marginStart="@dimen/_15sdp"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_15sdp"
+                                android:background="@color/gray6" />
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvReviews"
+                                style="@style/headingTextSizeStyle1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/seperator2"
+                                android:text="@string/reviews" />
+
+                            <RelativeLayout
+                                android:id="@+id/rlReviewsLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tvReviews"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:background="@drawable/gray_box_outline_drawable"
+                                android:padding="@dimen/_10sdp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivReviewsProfile"
+                                    android:layout_width="@dimen/_50sdp"
+                                    android:layout_height="@dimen/_50sdp"
+                                    android:src="@drawable/avatar_profile" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/tvReviewsTitle"
+                                    style="@style/headingTextSizeStyle1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_toEndOf="@+id/ivReviewsProfile"
+                                    android:text="@string/marlis_choe_text" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/tvReviewsRatings"
+                                    style="@style/defaultTextSizeStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tvReviewsTitle"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_toEndOf="@+id/ivReviewsProfile"
+                                    android:text="@string/_10_may_2000_text" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/tvReviewsGB"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tvReviewsRatings"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_toEndOf="@+id/ivReviewsProfile"
+                                    android:text="@string/good_budget_text" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/tvReviewsDiscription"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tvReviewsGB"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_toEndOf="@+id/ivReviewsProfile"
+                                    android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry" />
+                            </RelativeLayout>
+
+                            <!--                        <androidx.appcompat.widget.AppCompatTextView
+                                                        android:id="@+id/tvReviewsViewMore"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_below="@+id/rlReviewsLayout"
+                                                        android:gravity="center"
+                                                        android:padding="@dimen/_10sdp"
+                                                        android:text="@string/view_more_text"
+                                                        android:textColor="@color/heading_text_color" />-->
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvReviewsWriteAReview"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rlReviewsLayout"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:background="@drawable/otp_box_outline_drawable"
+                                android:gravity="center"
+                                android:padding="@dimen/_10sdp"
+                                android:text="@string/write_a_review"
+
+                                android:textColor="@color/primary_color" />
+                        </RelativeLayout>
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                    <View
-                        android:id="@+id/seperator1"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_1sdp"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        android:background="@color/gray6"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rlBuildingAmenities" />
+                </RelativeLayout>
 
+            </androidx.core.widget.NestedScrollView>
 
-                    <RelativeLayout
-                        android:id="@+id/rlAboutUsRD"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginTop="@dimen/_15sdp"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/seperator1">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnBookDetail"
+                style="@style/defaultBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/btn_background"
+                android:fontFamily="@font/sp_pro_display_bold"
+                android:gravity="center"
+                android:text="@string/title_book"
+                android:textColor="@color/white"
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvAboutRDTXT"
-                            style="@style/headingTextSizeStyle1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/about_us" />
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvAboutRD"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/tvAboutRDTXT"
-                            android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry"
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                            />
-
-
-                        <View
-                            android:id="@+id/seperator2"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_1sdp"
-                            android:layout_below="@+id/tvAboutRD"
-                            android:layout_marginStart="@dimen/_15sdp"
-                            android:layout_marginTop="@dimen/_20sdp"
-                            android:layout_marginEnd="@dimen/_15sdp"
-                            android:background="@color/gray6" />
-
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvReviews"
-                            style="@style/headingTextSizeStyle1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/seperator2"
-                            android:text="@string/reviews" />
-
-                        <RelativeLayout
-                            android:id="@+id/rlReviewsLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/tvReviews"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:background="@drawable/gray_box_outline_drawable"
-                            android:padding="@dimen/_10sdp">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/ivReviewsProfile"
-                                android:layout_width="@dimen/_50sdp"
-                                android:layout_height="@dimen/_50sdp"
-                                android:src="@drawable/avatar_profile" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tvReviewsTitle"
-                                style="@style/headingTextSizeStyle1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:layout_toEndOf="@+id/ivReviewsProfile"
-                                android:text="@string/marlis_choe_text" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tvReviewsRatings"
-                                style="@style/defaultTextSizeStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvReviewsTitle"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:layout_toEndOf="@+id/ivReviewsProfile"
-                                android:text="@string/_10_may_2000_text" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tvReviewsGB"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvReviewsRatings"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:layout_toEndOf="@+id/ivReviewsProfile"
-                                android:text="@string/good_budget_text" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tvReviewsDiscription"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvReviewsGB"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:layout_toEndOf="@+id/ivReviewsProfile"
-                                android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry" />
-                        </RelativeLayout>
-
-                        <!--                        <androidx.appcompat.widget.AppCompatTextView
-                                                    android:id="@+id/tvReviewsViewMore"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_below="@+id/rlReviewsLayout"
-                                                    android:gravity="center"
-                                                    android:padding="@dimen/_10sdp"
-                                                    android:text="@string/view_more_text"
-                                                    android:textColor="@color/heading_text_color" />-->
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvReviewsWriteAReview"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/rlReviewsLayout"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:background="@drawable/otp_box_outline_drawable"
-                            android:gravity="center"
-                            android:padding="@dimen/_10sdp"
-                            android:text="@string/write_a_review"
-
-                            android:textColor="@color/primary_color" />
-                    </RelativeLayout>
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </RelativeLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/btnBookDetail"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clRdChatLayout"
+            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            style="@style/defaultBtnStyle"
-            android:background="@drawable/btn_background"
-            android:fontFamily="@font/clearsans_bold"
-            android:gravity="center"
-            android:text="@string/title_book"
-            android:layout_marginBottom="@dimen/_10sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="match_parent">
 
-            android:textColor="@color/white" />
-
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:backgroundTint="@color/app_box_background"-->
-<!--            android:padding="@dimen/_15sdp"-->
-<!--            app:cardElevation="@dimen/_20sdp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            >-->
-
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:paddingBottom="@dimen/_10sdp"-->
-<!--                android:layout_height="wrap_content">-->
-
-<!--                <androidx.appcompat.widget.AppCompatTextView-->
-<!--                    android:id="@+id/btnBookDetail"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_alignParentEnd="true"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    style="@style/defaultBtnStyle"-->
-<!--                    android:background="@drawable/btn_background"-->
-<!--                    android:fontFamily="@font/clearsans_bold"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="@string/title_book"-->
-<!--                    android:textColor="@color/white" />-->
+            <FrameLayout
+                android:id="@+id/flRdChat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-<!--&lt;!&ndash;                <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:id="@+id/tvPriceDetail"&ndash;&gt;-->
-<!--&lt;!&ndash;                    style="@style/defaultTextSizeStyle"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_alignParentStart="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_alignParentTop="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_marginStart="@dimen/_15sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:text="@string/price" />&ndash;&gt;-->
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:backgroundTint="@color/app_box_background"-->
+        <!--            android:padding="@dimen/_15sdp"-->
+        <!--            app:cardElevation="@dimen/_20sdp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            >-->
 
-<!--&lt;!&ndash;                <RelativeLayout&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_marginStart="@dimen/_15sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_marginTop="@dimen/_10sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_marginBottom="@dimen/_10sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:gravity="center_vertical"&ndash;&gt;-->
-<!--&lt;!&ndash;                    app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@id/tvPriceDetail">&ndash;&gt;-->
+        <!--            <RelativeLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:paddingBottom="@dimen/_10sdp"-->
+        <!--                android:layout_height="wrap_content">-->
 
-<!--&lt;!&ndash;                    <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:id="@+id/tvRItemCostDetail"&ndash;&gt;-->
-<!--&lt;!&ndash;                        style="@style/headingTextSizeStyle1"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:text="@string/cost_1600_text"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:textColor="@color/primary_color" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:id="@+id/tvRItemPerMonthTXT"&ndash;&gt;-->
-<!--&lt;!&ndash;                        style="@style/defaultTextSizeStyle"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_toEndOf="@+id/tvRItemCostDetail"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:text="@string/month_text" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:id="@+id/btnBookDetail"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_width="@dimen/_100sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_height="@dimen/_30sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_alignParentEnd="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_marginEnd="@dimen/_15sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:background="@drawable/btn_background"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:fontFamily="@font/clearsans_bold"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:gravity="center"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:text="@string/title_book"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:textColor="@color/white" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    &lt;!&ndash;<androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:id="@+id/btnBookDetail"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_width="@dimen/_100sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_height="@dimen/_30sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_alignParentEnd="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_marginEnd="@dimen/_15sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:background="@drawable/btn_background"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:elevation="@dimen/_2sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:fontFamily="@font/clearsans_bold"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:foreground="?attr/selectableItemBackground"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:gravity="center"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:outlineAmbientShadowColor="@color/primary_color"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:outlineProvider="background"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:outlineSpotShadowColor="@color/primary_color"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:text="@string/title_book"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:textColor="@color/white" />&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                </RelativeLayout>&ndash;&gt;-->
+        <!--                <androidx.appcompat.widget.AppCompatTextView-->
+        <!--                    android:id="@+id/btnBookDetail"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_alignParentEnd="true"-->
+        <!--                    android:layout_centerVertical="true"-->
+        <!--                    style="@style/defaultBtnStyle"-->
+        <!--                    android:background="@drawable/btn_background"-->
+        <!--                    android:fontFamily="@font/sp_pro_display_bold"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:text="@string/title_book"-->
+        <!--                    android:textColor="@color/white" />-->
 
 
-<!--            </RelativeLayout>-->
+        <!--&lt;!&ndash;                <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:id="@+id/tvPriceDetail"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    style="@style/defaultTextSizeStyle"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_alignParentStart="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_alignParentTop="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_marginStart="@dimen/_15sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:text="@string/price" />&ndash;&gt;-->
 
-<!--        </androidx.cardview.widget.CardView>-->
+        <!--&lt;!&ndash;                <RelativeLayout&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_marginStart="@dimen/_15sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_marginTop="@dimen/_10sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_marginBottom="@dimen/_10sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:gravity="center_vertical"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@id/tvPriceDetail">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;                    <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:id="@+id/tvRItemCostDetail"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        style="@style/headingTextSizeStyle1"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:text="@string/cost_1600_text"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:textColor="@color/primary_color" />&ndash;&gt;-->
+
+        <!--&lt;!&ndash;                    <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:id="@+id/tvRItemPerMonthTXT"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        style="@style/defaultTextSizeStyle"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_toEndOf="@+id/tvRItemCostDetail"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:text="@string/month_text" />&ndash;&gt;-->
+
+        <!--&lt;!&ndash;                    <androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:id="@+id/btnBookDetail"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_width="@dimen/_100sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_height="@dimen/_30sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_alignParentEnd="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_marginEnd="@dimen/_15sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:background="@drawable/btn_background"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:fontFamily="@font/sp_pro_display_bold"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:gravity="center"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:text="@string/title_book"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:textColor="@color/white" />&ndash;&gt;-->
+
+        <!--&lt;!&ndash;                    &lt;!&ndash;<androidx.appcompat.widget.AppCompatTextView&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:id="@+id/btnBookDetail"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_width="@dimen/_100sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_height="@dimen/_30sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_alignParentEnd="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_centerVertical="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:layout_marginEnd="@dimen/_15sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:background="@drawable/btn_background"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:elevation="@dimen/_2sdp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:fontFamily="@font/sp_pro_display_bold"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:foreground="?attr/selectableItemBackground"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:gravity="center"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:outlineAmbientShadowColor="@color/primary_color"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:outlineProvider="background"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:outlineSpotShadowColor="@color/primary_color"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:text="@string/title_book"&ndash;&gt;-->
+        <!--&lt;!&ndash;                        android:textColor="@color/white" />&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;                </RelativeLayout>&ndash;&gt;-->
+
+
+        <!--            </RelativeLayout>-->
+
+        <!--        </androidx.cardview.widget.CardView>-->
 
         <!--   <include
                android:id="@+id/recommendationDetailToolBar"

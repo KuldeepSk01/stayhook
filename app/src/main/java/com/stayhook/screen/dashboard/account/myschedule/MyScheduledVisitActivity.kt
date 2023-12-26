@@ -16,7 +16,7 @@ import com.stayhook.network.ApiResponse
 import com.stayhook.util.CustomDialogs
 import org.koin.core.component.inject
 
-class MyScheduledVisitActivity : BaseActivity(), MyBookingAdapter.OnClickTokenListener {
+ class MyScheduledVisitActivity : BaseActivity(), MyBookingAdapter.OnClickTokenListener {
     private lateinit var mBinding: ActivityMyScheduledBinding
     private val mViewModel: MyScheduleVisitViewModel by inject()
 
@@ -98,6 +98,10 @@ class MyScheduledVisitActivity : BaseActivity(), MyBookingAdapter.OnClickTokenLi
 
     override fun onClickToken(model: TokenCollectedResponse) {
         launchActivity(ScheduleVisitStatusActivity::class.java,"tokenId",model.id.toString())
+    }
+
+    override fun onMovingOut(model: TokenCollectedResponse) {
+
     }
 
 }

@@ -55,7 +55,7 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_toEndOf="@+id/cvSHManager"
-                android:fontFamily="@font/clearsans_bold"
+                android:fontFamily="@font/sp_pro_display_bold"
                 android:text="@string/default_name_text"
                 android:textColor="@color/heading_text_color"
                 android:textSize="@dimen/_12ssp" />
@@ -67,7 +67,7 @@
                 android:layout_below="@+id/tvItemMessageName"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_toEndOf="@+id/cvSHManager"
-                android:fontFamily="@font/clearsans_bold"
+                android:fontFamily="@font/sp_pro_display_bold"
                 android:text="@string/ohh_hello"
                 android:textSize="@dimen/_12ssp" />
 

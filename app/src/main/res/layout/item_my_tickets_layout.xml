@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/clearsans_medium"
+                android:fontFamily="@font/sp_pro_display_medium"
                 android:gravity="start"
                 android:text="@string/amet_minim_mollit_non_deserunt_ullamco_est_sit_aliqua_dolor_do_amet_sint_velit_officia_consequat_duis_enim_velit_mollit_exercitation_veniam_consequat_sunt_nostrud_amet_text"
                 android:textColor="@color/black"

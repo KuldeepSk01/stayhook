@@ -14,6 +14,8 @@ import com.stayhook.util.CustomDialogs
 import com.stayhook.util.Utility
 import com.stayhook.util.getCurrentDate
 import com.stayhook.util.getDateFormat
+import com.stayhook.util.getSelectedDateForApi
+import com.stayhook.util.selectDateFormat
 import com.stayhook.util.serializable
 
 class SelectDateActivity : BaseActivity() {
@@ -36,6 +38,19 @@ class SelectDateActivity : BaseActivity() {
                 }
                 tvToolBarTitle.text = getString(R.string.move_in_date)
             }
+
+            calenderViewSD.minDate = System.currentTimeMillis()-1000
+            calenderViewSD.setOnDateChangeListener(object : OnDateChangeListener {
+                override fun onSelectedDayChange(p0: CalendarView, p1: Int, p2: Int, p3: Int) {
+                    val year = p1
+                    val month = p2
+                    val dayOfMonth = p3
+                    moveInTV.text = selectDateFormat(dayOfMonth, month, year)
+                }
+
+            })
+
+
             btnSelectMoveInDate.setOnClickListener {
                 if (!Utility.isConnectionAvailable()){
                     CustomDialogs.showErrorMessage(
@@ -45,24 +60,12 @@ class SelectDateActivity : BaseActivity() {
                     return@setOnClickListener
                 }
 
-                propertyRoom.availabilityDate = moveInTV.text.toString()
+                propertyRoom.availabilityDate = getSelectedDateForApi(moveInTV.text.toString())
+                //propertyRoom.availabilityDate = moveInDate
                 val b = Bundle()
                 b.putSerializable("tokenRequest", propertyRoom)
                 launchActivity(SummaryBookActivity::class.java, "bundleToken", b)
-                //launchActivity(SummaryBookFragment::class.java)
             }
-
-            calenderViewSD.minDate = System.currentTimeMillis()-1000
-            calenderViewSD.setOnDateChangeListener(object : OnDateChangeListener {
-                override fun onSelectedDayChange(p0: CalendarView, p1: Int, p2: Int, p3: Int) {
-                    val year = p1
-                    val month = p2
-                    val dayOfMonth = p3
-                    moveInTV.text = getDateFormat(dayOfMonth, month, year)
-                }
-
-            })
-
 
         }
     }

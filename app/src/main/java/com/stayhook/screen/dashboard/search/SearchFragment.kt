@@ -48,7 +48,6 @@ import kotlin.math.min
 class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
     TextView.OnEditorActionListener {
     private lateinit var sBinding: FragmentSearchBinding
-    private lateinit var mainActivity: MainActivity
     private lateinit var mGoogleMap: GoogleMap
     private val mViewMode: SearchFilterViewModel by inject()
     private val propertySet = mutableSetOf<RecommendData>()
@@ -69,8 +68,6 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
     override fun onInitView(binding: ViewDataBinding, view: View) {
         sBinding = binding as FragmentSearchBinding
         showTab()
-        mainActivity = requireActivity() as MainActivity
-        mainActivity.setBottomStyle(2)
         propertySet.clear()
         propertyList.clear()
 

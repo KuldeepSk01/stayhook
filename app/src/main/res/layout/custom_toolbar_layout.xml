@@ -22,6 +22,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:layout_toStartOf="@+id/ivToolBarRightIcon"
         android:layout_toEndOf="@+id/ivToolBarBack"
         android:gravity="center"
@@ -38,7 +39,8 @@
         android:layout_marginEnd="@dimen/_15sdp"
         android:background="@drawable/iv_fav_with_gray_bg"
         android:scaleType="centerCrop"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        />
 
 
 </RelativeLayout>

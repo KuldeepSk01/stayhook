@@ -84,6 +84,19 @@ abstract class BaseActivity : AppCompatActivity(), BaseInterface, KoinComponent,
         bt.commit()
     }
 
+    fun replaceFragment(
+        containerId: Int,
+        fragment: Fragment,
+        addToBackStack: String? = null
+    ) {
+        val bt = supportFragmentManager.beginTransaction()
+        bt.setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
+        bt.replace(containerId, fragment)
+        bt.addToBackStack(addToBackStack)
+        bt.commit()
+    }
+
+
     fun showProgress() {
         if (!progressDialog.isShowing) {
             progressDialog.show()

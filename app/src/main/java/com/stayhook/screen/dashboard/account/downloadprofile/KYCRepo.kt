@@ -7,6 +7,7 @@ import com.stayhook.base.CollectionBaseResponse
 import com.stayhook.model.response.StateCityResponse
 import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.network.ApiResponse
+import com.stayhook.util.Constants
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -126,8 +127,12 @@ class KYCRepo : BaseRepository() {
             }
 
             override fun onFailure(call: Call<CollectionBaseResponse<StateCityResponse>>, t: Throwable) {
-                Log.d("KYCRepo", "onFailure: ${t.message}")
-                responseLive.postValue(ApiResponse.error(t))
+                if (t.message.equals("Software caused connection abort")) {
+                    responseLive.postValue(ApiResponse.error(Throwable(Constants.NetworkConstant.CONNECTION_LOST)))
+                } else {
+                    Log.d("KYCRepo", "onFailure: ${t.message}")
+                    responseLive.postValue(ApiResponse.error(t))
+                }
             }
 
         })

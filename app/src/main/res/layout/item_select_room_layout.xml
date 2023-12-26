@@ -61,7 +61,7 @@
                 style="@style/headingTextSizeStyle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/clearsans_bold"
+                android:fontFamily="@font/sp_pro_display_bold"
                 android:text="@string/master_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvRoomsTypeSR"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/clearsans_regular"
+                android:fontFamily="@font/sp_pro_display_regular"
                 android:text="@string/private_room" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvPrivacyRoomSR"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/clearsans_regular"
+                android:fontFamily="@font/sp_pro_display_regular"
                 android:text="@string/_104_sqft_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvSqftSR"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/clearsans_regular"
+                android:fontFamily="@font/sp_pro_display_regular"
                 android:text="@string/_1_x_attached_bathroom_common_kitchen_text"
                 android:textColor="@color/heading_text_color" />
 
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv1XAttachedSR"
-                android:fontFamily="@font/clearsans_bold"
+                android:fontFamily="@font/sp_pro_display_bold"
                 android:text="@string/sold_out_text"
                 android:textColor="@color/red_color"
                 android:visibility="gone" />

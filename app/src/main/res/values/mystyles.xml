@@ -7,25 +7,25 @@
     </style>
 
     <style name="defaultTextSizeStyle">
-        <item name="android:textSize">@dimen/_8ssp</item>
-        <item name="android:fontFamily">@font/clearsans_regular</item>
+        <item name="android:textSize">@dimen/_9ssp</item>
+        <item name="android:fontFamily">@font/sp_pro_display_regular</item>
         <item name="android:textColor">@color/sub_heading_text_color</item>
     </style>
 
     <style name="headingTextSizeStyle1">
         <item name="android:textColor">@color/heading_text_color</item>
         <item name="android:textSize">@dimen/_11ssp</item>
-        <item name="android:fontFamily">@font/clearsans_bold</item>
+        <item name="android:fontFamily">@font/sp_pro_display_bold</item>
     </style>
 
     <style name="headingTextSizeStyle2">
         <item name="android:textSize">@dimen/_14ssp</item>
-        <item name="android:fontFamily">@font/clearsans_bold</item>
+        <item name="android:fontFamily">@font/sp_pro_display_bold</item>
         <item name="android:textColor">@color/heading_text_color</item>
     </style>
     <style name="headingTextSizeStyle3">
         <item name="android:textSize">@dimen/_16ssp</item>
-        <item name="android:fontFamily">@font/clearsans_bold</item>
+        <item name="android:fontFamily">@font/sp_pro_display_bold</item>
         <item name="android:textColor">@color/heading_text_color</item>
     </style>
 
@@ -35,7 +35,7 @@
         <item name="android:layout_marginStart">@dimen/_15sdp</item>
         <item name="android:layout_marginEnd">@dimen/_15sdp</item>
         <item name="android:padding">@dimen/_10sdp</item>
-        <item name="android:fontFamily">@font/clearsans_medium</item>
+        <item name="android:fontFamily">@font/sp_pro_display_medium</item>
         <item name="android:textColorHint">@color/text_hint_color</item>
     </style>
 
@@ -45,7 +45,7 @@
         <item name="android:layout_marginStart">@dimen/_15sdp</item>
         <item name="android:layout_marginEnd">@dimen/_15sdp</item>
         <item name="android:padding">@dimen/_10sdp</item>
-        <item name="android:fontFamily">@font/clearsans_medium</item>
+        <item name="android:fontFamily">@font/sp_pro_display_medium</item>
         <item name="android:textColorHint">@color/text_hint_color</item>
         <item name="android:singleLine">true</item>
         <item name="android:textColor">@color/heading_text_color</item>
@@ -59,8 +59,9 @@
         <item name="android:layout_marginStart">@dimen/_15sdp</item>
         <item name="android:layout_marginEnd">@dimen/_15sdp</item>
         <item name="android:padding">@dimen/_10sdp</item>
-        <item name="android:fontFamily">@font/clearsans_bold</item>
+        <item name="android:fontFamily">@font/sp_pro_display_regular</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColorHint">@color/text_hint_color</item>
     </style>
 
@@ -70,7 +71,7 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">@dimen/_12sdp</item>
         <item name="android:padding">@dimen/_10sdp</item>
-        <item name="android:fontFamily">@font/clearsans_bold</item>
+        <item name="android:fontFamily">@font/sp_pro_display_bold</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/text_hint_color</item>
     </style>
@@ -80,7 +81,7 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/otp_box_background</item>
         <item name="android:textSize">@dimen/_14ssp</item>
-        <item name="android:fontFamily">@font/clearsans_bold</item>
+        <item name="android:fontFamily">@font/sp_pro_display_bold</item>
         <item name="android:textColorHint">@color/black</item>
     </style>
 
@@ -92,7 +93,7 @@
         <item name="android:background">@drawable/btn_background</item>
         <item name="android:textSize">@dimen/_16sdp</item>
         <item name="android:padding">@dimen/_15sdp</item>
-        <item name="android:fontFamily">@font/clearsans_bold</item>
+        <item name="android:fontFamily">@font/sp_pro_display_bold</item>
         <item name="android:textColorHint">@color/black</item>
     </style>
 

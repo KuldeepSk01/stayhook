@@ -122,7 +122,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/clearsans_bold"
+                            android:fontFamily="@font/sp_pro_display_bold"
                             android:text="Token Amount"
                             android:textSize="@dimen/_12ssp" />
 
@@ -236,7 +236,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/clearsans_bold"
+                            android:fontFamily="@font/sp_pro_display_bold"
                             android:text="@string/total_payable_now"
                             android:textSize="@dimen/_12ssp" />
 

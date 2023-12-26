@@ -32,7 +32,7 @@ class AdapterRoomTypes(val list: MutableList<PropertyRoom>, val context: Context
             Glide.with(context).load(model.icon).into(ivItemRoom)
             tvRoomNameRD.text = model.roomType
             tvRoomTypeRD.text = model.roomPrivacy
-            tvCostItemRoom.text = "$${model.price.toString()}"
+            tvCostItemRoom.text = String.format("%s%s",context.getString(R.string.indian_currency_symbol),model.price.toString())
         }
     }
 }

@@ -48,6 +48,7 @@
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="@dimen/_10sdp"
                     android:hint="@string/search_a_question_text"
+                    android:singleLine="true"
                     android:textColorHint="@color/text_hint_color" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -58,38 +59,43 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
+                    android:padding="@dimen/_5sdp"
                     android:background="@drawable/otp_box_background"
                     >
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvReservationHC"
-                        style="@style/defaultTextSizeStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/clearsans_bold"
+                        android:textColor="@color/default_color"
+                        style="@style/headingTextSizeStyle1"
+                        android:fontFamily="@font/sp_pro_display_medium"
+                        android:background="@drawable/otp_box_outline_drawable"
+
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
                         android:text="@string/title_reservation" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvPaymentsHC"
-                        style="@style/defaultTextSizeStyle"
-                        android:layout_width="wrap_content"
+                        android:textColor="@color/default_color"
+                        style="@style/headingTextSizeStyle1"
+                        android:fontFamily="@font/sp_pro_display_medium"                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/clearsans_bold"
+
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
                         android:text="@string/title_payments" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvCouponsHC"
-                        style="@style/defaultTextSizeStyle"
-                        android:layout_width="wrap_content"
+                        android:textColor="@color/default_color"
+                        style="@style/headingTextSizeStyle1"
+                        android:fontFamily="@font/sp_pro_display_medium"                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/clearsans_bold"
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
                         android:text="@string/title_coupons" />
@@ -104,6 +110,7 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
+                    android:fontFamily="@font/sp_pro_display_bold"
                     android:text="@string/top_question_text" />
 
                 <androidx.recyclerview.widget.RecyclerView

@@ -229,9 +229,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/upload_front_of_aadhaar_card" />
 
@@ -240,18 +239,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvUploadFrontAadhaarCPTXT"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
 
-                        <androidx.appcompat.widget.AppCompatImageView
+                        <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/ivUploadFrontAadhaarImageCP"
                             android:layout_width="match_parent"
+                            app:shapeAppearance="@style/CornerCut"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_below="@+id/tvUploadFrontAadhaarCP"
                             android:scaleType="fitXY" />
 
@@ -308,9 +305,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/upload_back_of_aadhaar_card_text"
 
@@ -321,18 +317,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvtUploadBackAadhaarCP"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
 
-                        <androidx.appcompat.widget.AppCompatImageView
+                        <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/ivUploadedBackAadhaarImageCP"
                             android:layout_width="match_parent"
+                            app:shapeAppearance="@style/CornerCut"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_below="@+id/tvUploadBackAadhaarCP"
                             android:scaleType="fitXY" />
 
@@ -396,9 +390,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/upload_pan_card_text" />
 
@@ -407,18 +400,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvtUploadPan1CP"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
 
-                        <androidx.appcompat.widget.AppCompatImageView
+                        <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/ivUploadedPanImageCP"
+                            app:shapeAppearance="@style/CornerCut"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_below="@+id/tvUploadPan2CP"
                             android:scaleType="fitXY" />
 
@@ -484,9 +475,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/upload_work_id_text" />
 
@@ -495,18 +485,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvtUploadPoliceVerificationCP"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:fontFamily="@font/clearsans_medium"
+                            android:fontFamily="@font/sp_pro_display_medium"
                             android:gravity="center"
                             android:text="@string/click_the_upload_icon_to_capture_or_select_text" />
 
-                        <androidx.appcompat.widget.AppCompatImageView
+                        <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/ivUploadedPoliceVerificationImageCP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
+                            app:shapeAppearance="@style/CornerCut"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_below="@+id/tvUploadPoliceVerificationCP"
                             android:scaleType="fitXY" />
 

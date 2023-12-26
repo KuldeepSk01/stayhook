@@ -37,7 +37,7 @@
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:fontFamily="@font/clearsans_bold"
+                android:fontFamily="@font/sp_pro_display_bold"
                 android:gravity="center"
                 android:text="@string/ticket_created_successfully_text"
                 android:textColor="@color/black"
@@ -56,7 +56,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
 
-                android:fontFamily="@font/clearsans_bold"
+                android:fontFamily="@font/sp_pro_display_bold"
                 android:gravity="center"
                 android:text="@string/our_representative_will_respond_you_within_24_hours_text"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -76,6 +76,7 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
+                            android:paddingBottom="@dimen/_5sdp"
                             android:layout_height="wrap_content">
 
 
@@ -219,7 +220,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/_5sdp"
-                            android:text="@string/_2023_11_2"
                             android:textColor="@color/primary_color"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -236,7 +236,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:fontFamily="@font/clearsans_medium"
+                        android:fontFamily="@font/sp_pro_display_medium"
                         android:gravity="center"
                         android:text="@string/enter_details"
                         android:textColor="@color/black"
@@ -293,7 +293,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:fontFamily="@font/clearsans_medium"
+                        android:fontFamily="@font/sp_pro_display_medium"
                         android:gravity="start"
                         android:text="@string/please_let_us_know_what_number_to_call_at_the_schedule_time_text"
                         android:textColor="@color/black"
@@ -313,7 +313,7 @@
                         android:background="@drawable/otp_box_background"
                         android:drawableStart="@drawable/ic_tele"
                         android:drawablePadding="@dimen/_10sdp"
-                        android:fontFamily="@font/clearsans_regular"
+                        android:fontFamily="@font/sp_pro_display_regular"
                         android:hint="@string/phone_number"
                         android:inputType="number"
                         android:maxLength="10"

@@ -26,7 +26,7 @@ class HomeRepository : BaseRepository() {
                     }
                 } catch (e: Exception) {
                     Log.d("HomeRepo", "onResponse: Error $e")
-                    responseLiveData.postValue(ApiResponse.error(Throwable(e)))
+                    responseLiveData.postValue(ApiResponse.error(Throwable(e.message)))
                 }
 
             }

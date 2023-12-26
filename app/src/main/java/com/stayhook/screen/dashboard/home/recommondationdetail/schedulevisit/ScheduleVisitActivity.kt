@@ -1,12 +1,9 @@
 package com.stayhook.screen.dashboard.home.recommondationdetail.schedulevisit
 
 import android.app.Dialog
-import android.app.TimePickerDialog
 import android.util.Log
 import android.view.LayoutInflater
-import android.widget.CalendarView
-import android.widget.CalendarView.OnDateChangeListener
-import android.widget.TimePicker
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
@@ -22,17 +19,17 @@ import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.model.response.getpopertydetail.GetPropertyDetail
 import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.MainActivity
-import com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment.SelectDurationFragment
 import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs
 import com.stayhook.util.Utility
-import com.stayhook.util.getDateFormat
-import com.stayhook.util.getTimeFormat
+import com.stayhook.util.getCurrentDate
+import com.stayhook.util.getSelectedDateForApi
+import com.stayhook.util.mLog
+import com.stayhook.util.selectDateFormat
 import com.stayhook.util.serializable
 import com.stayhook.validation.ValidationResult
 import com.stayhook.validation.ValidationState
 import org.koin.core.component.inject
-import java.util.Calendar
 
 class ScheduleVisitActivity : BaseActivity() {
 
@@ -52,6 +49,7 @@ class ScheduleVisitActivity : BaseActivity() {
             ?.serializable("propertyDetail")!!
         validDataObserver()
         binding.apply {
+            tvAvailableDate.text = getCurrentDate()
             // setBackGround(tvAMSelect)
             toolbarScheduleAVisit.apply {
                 ivToolBarBack.setOnClickListener {
@@ -59,18 +57,12 @@ class ScheduleVisitActivity : BaseActivity() {
                 }
                 tvToolBarTitle.text = getString(R.string.schedule_visit)
             }
-            /*   tvAMSelect.setOnClickListener {
-                   setBackGround(tvAMSelect)
-               }
-               tvPMSelect.setOnClickListener {
-                   setBackGround(tvPMSelect)
-               }*/
-
+            calenderView.minDate = System.currentTimeMillis() - 1000  // from this we can't select previous date
             calenderView.setOnDateChangeListener { p0, p1, p2, p3 ->
-                val year = p1
-                val month = p2
-                val day = p3
-                tvAvailableDate.text = getDateFormat(day, month, year)
+                val year = p1    //
+                val month = p2   //
+                val day = p3     //
+                tvAvailableDate.text = selectDateFormat(day, month, year)
             }
 
             /*
@@ -186,16 +178,17 @@ class ScheduleVisitActivity : BaseActivity() {
                             mobileNo = userMobileNumberET.text.toString()
                             fullName = usernameET.text.toString()
                             message = userMessageET.text.toString()
-                            availabilityDate = tvAvailableDate.text.toString()
-                            availabilityTime = tvTimePickerScheduleVisit.text.toString() /*String.format(
+                            availabilityDate = getSelectedDateForApi(tvAvailableDate.text.toString())
+                            availabilityTime = tvTimePickerScheduleVisit.text.toString()
+                        /*String.format(
                                 "%s %s", tvTimePickerScheduleVisit.text.toString(), amPm
                            )*/
                         }
                         Log.d("TAG", "schedule request $request: ")
 
-                       /*  mViewModel.hitScheduleVisit(request)
+                         mViewModel.hitScheduleVisit(request)
                          mViewModel.getScheduleVisitResponse()
-                             .observe(this@ScheduleVisitActivity, scheduledResponseObserver)*/
+                             .observe(this@ScheduleVisitActivity, scheduledResponseObserver)
 
                     }
 
@@ -215,6 +208,8 @@ class ScheduleVisitActivity : BaseActivity() {
 
                 ApiResponse.Status.SUCCESS -> {
                     hideProgress()
+                    mLog("success fully visit")
+                    Toast.makeText(this@ScheduleVisitActivity,"Visit Confirm successfully. ",Toast.LENGTH_SHORT).show()
                     launchActivity(MainActivity::class.java)
                     finish()
                 }

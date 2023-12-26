@@ -11,13 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".screen.dashboard.message.chat.ChatFragment">
+        tools:context=".screen.dashboard.message.chat.ChatActivity">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/rlToolBarChat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -26,8 +27,7 @@
                 android:id="@+id/ivToolBarChatBack"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/back_arrow"
                 android:scaleType="centerCrop"
@@ -38,25 +38,27 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvToolBarChatTitle"
                 style="@style/headingTextSizeStyle2"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_toRightOf="@+id/ivToolBarChatBack"
-                android:gravity="center_vertical"
-                android:text="@string/dania" />
+                android:text="@string/dania"
+                app:layout_constraintStart_toEndOf="@+id/ivToolBarChatBack"
+                app:layout_constraintTop_toTopOf="@+id/ivToolBarChatBack" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvToolBarChatOnlineStatus"
                 style="@style/defaultTextSizeStyle"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvToolBarChatTitle"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_toEndOf="@+id/ivToolBarChatBack"
                 android:gravity="center_vertical"
                 android:text="@string/status_Offline"
-                />
-        </RelativeLayout>
+                app:layout_constraintStart_toEndOf="@+id/ivToolBarChatBack"
+                app:layout_constraintTop_toBottomOf="@+id/tvToolBarChatTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <RelativeLayout
@@ -71,9 +73,9 @@
                 android:id="@+id/rvChat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="true"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:clipToPadding="true"
                 android:paddingBottom="@dimen/_100sdp"
                 tools:listitem="@layout/item_left_chat" />
 

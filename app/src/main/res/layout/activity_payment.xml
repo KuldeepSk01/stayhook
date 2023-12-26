@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
-                android:fontFamily="@font/clearsans_medium"
+                android:fontFamily="@font/sp_pro_display_medium"
                 android:gravity="center"
                 android:text="@string/cred_pay_debit_card_netbanking_upi"
                 android:textColor="@color/sub_heading_text_color"

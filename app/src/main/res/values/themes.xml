@@ -6,7 +6,7 @@
         <item name="colorSecondary">@color/white</item>
         <item name="colorSecondaryVariant">@color/text_hint_color</item>
         <item name="android:colorAccent">@color/white</item>
-        <item name="android:fontFamily">@font/clearsans_regular</item>
+        <item name="android:fontFamily">@font/sp_pro_display_regular</item>
         <item name="colorOnSurface">@color/text_hint_color</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimaryDark">@color/white</item>

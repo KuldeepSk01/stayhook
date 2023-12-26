@@ -43,7 +43,7 @@
                 android:layout_toEndOf="@+id/ivItemNotification"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_below="@+id/tvItemNotificationTitle"
-                android:fontFamily="@font/clearsans_bold"
+                android:fontFamily="@font/sp_pro_display_bold"
                 android:text="@string/lots_of_great_deals_around_new_york_that_you_should_check_out_text"
                 style="@style/defaultTextSizeStyle" />
 

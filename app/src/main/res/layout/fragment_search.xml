@@ -56,7 +56,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-
+<!--
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvLocationSearch"
                         style="@style/headingTextSizeStyle1"
@@ -66,12 +66,11 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:drawableEnd="@drawable/ic_down_arrow"
                         android:drawablePadding="@dimen/_10sdp"
-                        android:text="@string/noida_india_text" />
+                        android:text="@string/noida_india_text" />-->
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvLocationSearch"
                         android:layout_margin="@dimen/_10sdp"
                         android:background="@drawable/otp_box_background"
 
@@ -85,7 +84,7 @@
                             android:drawableStart="@drawable/ic_search"
                             android:drawablePadding="@dimen/_10sdp"
                             android:gravity="center_vertical"
-                            android:hint="@string/search_text"
+                            android:hint="@string/search_location"
                             android:imeOptions="actionDone"
                             android:inputType="text"
                             android:padding="@dimen/_10sdp"

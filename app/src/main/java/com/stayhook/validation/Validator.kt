@@ -32,4 +32,13 @@ class Validator(private val validationHelper: ValidationHelper) {
             return ValidationResult.EMPTY_FULL_NAME
         }
     }
+
+    fun validTitleReview(text: String): ValidationResult {
+        return if (!validationHelper.isEmptyField(text)) {
+            return ValidationResult.SUCCESS
+        } else {
+            return ValidationResult.EMPTY_TITLE
+        }
+    }
+
 }

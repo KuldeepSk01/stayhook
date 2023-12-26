@@ -1,5 +1,6 @@
 package com.stayhook.screen.dashboard.account.mybooking
 
+import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.res.ResourcesCompat
@@ -14,7 +15,9 @@ import com.stayhook.databinding.FragmentMyBookingBinding
 import com.stayhook.model.response.TokenCollectedResponse
 import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.MainActivity
+import com.stayhook.screen.dashboard.account.mybooking.moveout.MovedOutActivity
 import com.stayhook.screen.dashboard.account.myschedule.ScheduleVisitStatusActivity
+import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs
 import org.koin.core.component.inject
 
@@ -104,6 +107,13 @@ class MyBookingActivity : BaseActivity(), MyBookingAdapter.OnClickTokenListener 
 
     override fun onClickToken(model: TokenCollectedResponse) {
         launchActivity(ScheduleVisitStatusActivity::class.java,"tokenId",model.id.toString())
+    }
+
+    override fun onMovingOut(model: TokenCollectedResponse) {
+        val b = Bundle()
+        b.putSerializable(Constants.DefaultConstants.MODEL_DETAIL,model)
+        launchActivity(MovedOutActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
+
     }
 
 

@@ -15,6 +15,7 @@ class MyBookingAdapter(val list: MutableList<TokenCollectedResponse>, val contex
     RecyclerView.Adapter<MyBookingAdapter.MyBookingVM>() {
     interface OnClickTokenListener{
         fun onClickToken(model:TokenCollectedResponse)
+        fun onMovingOut(model:TokenCollectedResponse)
     }
 
     inner class MyBookingVM(val b: ItemMyBookingLayoutBinding) : ViewHolder(b.root)
@@ -51,6 +52,10 @@ class MyBookingAdapter(val list: MutableList<TokenCollectedResponse>, val contex
             )
             rlViewStatus.setOnClickListener {
                 listener.onClickToken(model)
+            }
+
+            tvBookingMoveOutBtn.setOnClickListener {
+                listener.onMovingOut(model)
             }
         }
     }

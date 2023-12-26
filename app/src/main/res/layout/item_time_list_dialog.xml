@@ -16,7 +16,7 @@
             android:src="@drawable/ic_person"
             android:padding="@dimen/_10sdp"
             android:gravity="center"
-            android:fontFamily="@font/clearsans_regular"
+            android:fontFamily="@font/sp_pro_display_regular"
             style="@style/headingTextSizeStyle1"
             android:text="@string/_07_am_08_am"
             android:layout_centerHorizontal="true" />

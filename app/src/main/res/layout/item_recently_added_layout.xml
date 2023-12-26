@@ -48,15 +48,17 @@
                     android:id="@+id/tvRAItemTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/clearsans_medium"
+                    android:fontFamily="@font/sp_pro_display_medium"
                     android:text="@string/shared_room"
+                    style="@style/defaultTextSizeStyle"
                     android:textColor="@color/primary_color"
-                    android:textSize="@dimen/_10ssp" />
+                    />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRAItemApartmentType"
                     style="@style/headingTextSizeStyle1"
                     android:layout_width="wrap_content"
+                    android:textSize="@dimen/_12ssp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvRAItemTitle"
                     android:text="@string/big_hall" />
@@ -120,7 +122,7 @@
                 android:layout_height="@dimen/_15sdp"
                 android:background="@drawable/green_rounded_background"
                 android:drawableEnd="@drawable/ic_white_rate"
-                android:fontFamily="@font/clearsans_medium"
+                android:fontFamily="@font/sp_pro_display_medium"
                 android:gravity="center"
                 android:padding="@dimen/_3sdp"
 

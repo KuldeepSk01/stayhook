@@ -52,7 +52,7 @@
                 style="@style/headingTextSizeStyle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/clearsans_bold"
+                android:fontFamily="@font/sp_pro_display_bold"
                 android:text="@string/room_1_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvRoomItemBookList"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/clearsans_bold"
+                android:fontFamily="@font/sp_pro_display_bold"
                 android:text="@string/_104_sqft_text"
                 android:textColor="@color/heading_text_color" />
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv104Sqft2ItemBookList"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/clearsans_bold"
+                android:fontFamily="@font/sp_pro_display_bold"
                 android:text="@string/_1_x_attached_bathroom_common_kitchen_text"
                 android:textColor="@color/heading_text_color" />
 

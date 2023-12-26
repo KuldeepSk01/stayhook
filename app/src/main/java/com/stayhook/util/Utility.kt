@@ -69,8 +69,18 @@ fun getTimeFormat(hh: Int, mm: Int): String {
     return sdf.format(mTime.time)
 }
 
+fun getSelectedDateForApi(date:String): String {
+    val sdf = SimpleDateFormat("MMM dd,yyyy")
+   val nDate =  sdf.parse(date)
+    val c = Calendar.getInstance()
+    c.time = nDate!!
+    val sdf1 = SimpleDateFormat("yyyy-MM-dd")
+    return sdf1.format(c.time)
+
+}
+
 fun getCurrentDate(): String {
-    val sdf = SimpleDateFormat("yyyy-MM-dd")
+    val sdf = SimpleDateFormat("MMM dd,yyyy")
     val currentDate = Calendar.getInstance().time
     return sdf.format(currentDate)
 }
@@ -78,6 +88,16 @@ fun getCurrentDate(): String {
 fun getDateFormat(day: Int, month: Int, year: Int): String {
     //  val sdf = SimpleDateFormat("EEE dd MMM yyyy")
     val sdf = SimpleDateFormat("yyyy-MM-dd")
+    val mTime: Calendar = Calendar.getInstance()
+    mTime.set(Calendar.DAY_OF_MONTH, day)
+    mTime.set(Calendar.MONTH, month)
+    mTime.set(Calendar.YEAR, year)
+    return sdf.format(mTime.time)
+}
+
+fun selectDateFormat(day: Int, month: Int, year: Int): String {
+    //  val sdf = SimpleDateFormat("EEE dd MMM yyyy")
+    val sdf = SimpleDateFormat("MMM dd,yyyy")
     val mTime: Calendar = Calendar.getInstance()
     mTime.set(Calendar.DAY_OF_MONTH, day)
     mTime.set(Calendar.MONTH, month)

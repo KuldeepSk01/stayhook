@@ -6,6 +6,7 @@ import com.stayhook.model.request.GetPropertyRequest
 import com.stayhook.model.request.PropertyRoomRequest
 import com.stayhook.model.request.ScheduleAVisitRequest
 import com.stayhook.model.request.UserRequest
+import com.stayhook.model.request.WriteReviewRequest
 import com.stayhook.model.response.MyPaymentsResponse
 import com.stayhook.model.response.MyProfileResponse
 import com.stayhook.model.response.OTPResponse
@@ -113,6 +114,11 @@ interface ApiService {
 
     @POST(Constants.NetworkConstant.getCityApi)
     fun getCity(@Query("state_id") stateId:String): Call<CollectionBaseResponse<StateCityResponse>>
+
+
+
+    @POST(Constants.NetworkConstant.addReview)
+    fun addReview(@Body request: WriteReviewRequest): Call<SuccessErrorResponse>
 
 
 

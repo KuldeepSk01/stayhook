@@ -13,7 +13,6 @@ import com.stayhook.screen.dashboard.MainActivity
 
 class FavoriteFragment : BaseFragment() {
     private lateinit var favoriteBinding: FragmentFavoriteBinding
-    private lateinit var mainActivity: MainActivity
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_favorite
@@ -22,8 +21,6 @@ class FavoriteFragment : BaseFragment() {
     override fun onInitView(binding: ViewDataBinding, view: View) {
         favoriteBinding = binding as FragmentFavoriteBinding
         showTab()
-        mainActivity= requireActivity() as MainActivity
-        mainActivity.setBottomStyle(3)
         favoriteBinding.apply {
             toolBarFavorites.apply {
                 ivToolBarBack.visibility = View.VISIBLE
@@ -33,7 +30,11 @@ class FavoriteFragment : BaseFragment() {
             rvFavoriteNav.apply {
                 itemAnimator = DefaultItemAnimator()
                 layoutManager =
-                    LinearLayoutManager(baseActivity.baseContext, LinearLayoutManager.VERTICAL, false)
+                    LinearLayoutManager(
+                        baseActivity.baseContext,
+                        LinearLayoutManager.VERTICAL,
+                        false
+                    )
                 adapter = FavoriteAdapter(getRecommendationList(), baseActivity.baseContext)
             }
 

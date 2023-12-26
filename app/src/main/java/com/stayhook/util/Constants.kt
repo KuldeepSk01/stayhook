@@ -61,6 +61,9 @@ object Constants {
             const val getStateApi = "getState"
             const val getCityApi = "getCity"
 
+            const val addReview = "addReview"
+            const val addRemoveFavorite = "addRemoveFavorite"
+
         }
     }
     class DefaultConstants{

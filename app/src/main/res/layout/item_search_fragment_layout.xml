@@ -134,7 +134,7 @@
                         android:drawableEnd="@drawable/ic_rateus_filled"
                         android:text="@string/_4_5_text"
                         android:background="@drawable/gray_transparent_background"
-                        android:fontFamily="@font/clearsans_medium"
+                        android:fontFamily="@font/sp_pro_display_medium"
                         android:gravity="center_vertical"
                         android:id="@+id/tvRatingItemSearch"
                         android:textSize="@dimen/_8ssp"

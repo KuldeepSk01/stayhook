@@ -28,10 +28,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rlToolBarMyScheduledVisitStatus">
 
             <!--
@@ -67,7 +67,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginStart="@dimen/_3sdp"
                                     android:layout_marginEnd="@dimen/_3sdp"
-                                    android:fontFamily="@font/clearsans_bold"
+                                    android:fontFamily="@font/sp_pro_display_bold"
                                     android:gravity="center"
                                     android:text="@string/_1_room_text"
                                     android:textColor="@color/primary_color"
@@ -87,7 +87,7 @@
                                   android:layout_height="wrap_content"
                                   android:layout_marginStart="@dimen/_5sdp"
                                   android:layout_marginTop="@dimen/_7sdp"
-                                  android:fontFamily="@font/clearsans_medium"
+                                  android:fontFamily="@font/sp_pro_display_medium"
                                   android:gravity="center"
                                   android:text="@string/house"
                                   android:textColor="@color/primary_color"
@@ -104,7 +104,7 @@
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
                                 android:layout_marginEnd="@dimen/_5sdp"
-                                android:fontFamily="@font/clearsans_medium"
+                                android:fontFamily="@font/sp_pro_display_medium"
                                 android:text="@string/big_hall"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_11sdp"
@@ -128,7 +128,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_3sdp"
                                 android:layout_marginTop="@dimen/_3sdp"
-                                android:fontFamily="@font/clearsans_regular"
+                                android:fontFamily="@font/sp_pro_display_regular"
                                 android:gravity="center"
                                 android:text="@string/address_detail"
                                 android:textColor="@color/grey"
@@ -143,7 +143,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginTop="@dimen/_5sdp"
-                                android:fontFamily="@font/clearsans_medium"
+                                android:fontFamily="@font/sp_pro_display_medium"
 
                                 android:gravity="center"
                                 android:text="@string/moved_in_text"
@@ -159,7 +159,7 @@
                                 android:layout_marginStart="@dimen/_5sdp"
                                 android:layout_marginTop="@dimen/_5sdp"
 
-                                android:fontFamily="@font/clearsans_medium"
+                                android:fontFamily="@font/sp_pro_display_medium"
                                 android:gravity="center"
                                 android:text="@string/nov_21_2023_text"
                                 android:textColor="@color/green_color"
@@ -174,7 +174,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_2sdp"
                                 android:layout_marginEnd="@dimen/_5sdp"
-                                android:fontFamily="@font/clearsans_bold"
+                                android:fontFamily="@font/sp_pro_display_bold"
                                 android:gravity="center"
                                 android:text="@string/amount"
                                 android:textColor="@color/black"
@@ -190,7 +190,7 @@
                                 android:layout_marginTop="@dimen/_4sdp"
                                 android:layout_marginEnd="@dimen/_10sdp"
 
-                                android:fontFamily="@font/clearsans_regular"
+                                android:fontFamily="@font/sp_pro_display_regular"
                                 android:gravity="center"
                                 android:text="@string/month"
                                 android:textColor="@color/black"
@@ -266,8 +266,8 @@
                                     android:layout_marginStart="@dimen/_6sdp"
                                     android:layout_marginTop="@dimen/_8sdp"
                                     android:layout_marginEnd="@dimen/_5sdp"
-                                    android:fontFamily="@font/clearsans_medium"
-                                    android:text="@string/tenant_schedule_visit_text"
+                                    android:fontFamily="@font/sp_pro_display_medium"
+                                    android:text="@string/token_collected"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_10sdp"
                                     app:layout_constraintStart_toEndOf="@id/tvTokenCollectedTikImg"
@@ -299,43 +299,20 @@
                                     app:layout_constraintStart_toEndOf="@id/successLineTC"
                                     app:layout_constraintTop_toBottomOf="@+id/tvTokenCollectedTikImg">
 
-                                    <androidx.constraintlayout.widget.Guideline
-                                        android:id="@+id/verticalTCGL"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical"
-                                        app:layout_constraintGuide_end="149dp" />
-
-
-                                    <androidx.appcompat.widget.AppCompatTextView
-                                        android:id="@+id/tvRemarkTC"
-                                        android:layout_width="wrap_content"
-
-                                        android:layout_height="match_parent"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:fontFamily="@font/clearsans_medium"
-                                        android:gravity="center"
-                                        android:text="@string/remark"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_10sdp"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
 
                                     <androidx.appcompat.widget.AppCompatTextView
                                         android:id="@+id/tvRemarkStatusTC"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_marginEnd="@dimen/_10sdp"
-                                        android:fontFamily="@font/clearsans_regular"
-                                        android:gravity="center"
+                                        android:fontFamily="@font/sp_pro_display_regular"
                                         android:padding="@dimen/_2sdp"
+                                        android:gravity="end"
                                         android:text="@string/rs_8000_paid"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_10sdp"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintHorizontal_bias="1"
-                                        app:layout_constraintStart_toEndOf="@+id/tvRemarkTC"
                                         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -343,9 +320,9 @@
                                         android:id="@+id/tvCreatedTimeTC"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
-                                        android:layout_marginTop="@dimen/_20sdp"
+                                        android:layout_marginTop="@dimen/_5sdp"
                                         android:layout_marginEnd="@dimen/_10sdp"
-                                        android:fontFamily="@font/clearsans_regular"
+                                        android:fontFamily="@font/sp_pro_display_regular"
                                         android:gravity="center"
                                         android:padding="@dimen/_2sdp"
                                         android:text="@string/april_23_2023_text"
@@ -353,7 +330,7 @@
                                         android:textSize="@dimen/_10sdp"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintTop_toBottomOf="@+id/tvRemarkTC" />
+                                        app:layout_constraintTop_toBottomOf="@+id/tvRemarkStatusTC" />
 
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -365,7 +342,8 @@
                                 android:id="@+id/clVisitLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/clTokenCollectedLayout">
+                                android:layout_below="@+id/clTokenCollectedLayout"
+                                android:visibility="gone">
 
                                 <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/tvVisitTikImg"
@@ -384,7 +362,7 @@
                                     android:layout_marginStart="@dimen/_6sdp"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginEnd="@dimen/_5sdp"
-                                    android:fontFamily="@font/clearsans_medium"
+                                    android:fontFamily="@font/sp_pro_display_medium"
                                     android:text="@string/tenant_schedule_visit_text"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_10sdp"
@@ -405,41 +383,58 @@
                                     app:layout_constraintStart_toEndOf="@id/sucessLineSV"
                                     app:layout_constraintTop_toBottomOf="@+id/tvVisitStatus">
 
-                                    <androidx.constraintlayout.widget.Guideline
-                                        android:id="@+id/verticalGL"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical"
-                                        app:layout_constraintGuide_end="149dp" />
-
 
                                     <androidx.appcompat.widget.AppCompatTextView
-                                        android:id="@+id/tvVisitName"
+                                        android:id="@+id/tvRemarkVisitFieldName"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:fontFamily="@font/clearsans_medium"
-                                        android:gravity="center"
-                                        android:text="@string/sk_boss"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_10sdp"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-
-                                    <androidx.appcompat.widget.AppCompatTextView
-                                        android:id="@+id/tvRemarkVisit"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:layout_marginTop="@dimen/_5sdp"
-                                        android:fontFamily="@font/clearsans_medium"
+                                        android:fontFamily="@font/sp_pro_display_medium"
                                         android:gravity="center"
                                         android:text="@string/remark"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_10sdp"
                                         app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toBottomOf="@+id/tvVisitName" />
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:id="@+id/llVisitName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/sp_pro_display_medium"
+                                        android:gravity="center"
+                                        android:text="@string/sk_boss"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/_10sdp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tvRemarkVisitFieldName">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/tvRemarkVisit"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:fontFamily="@font/sp_pro_display_medium"
+                                            android:gravity="center"
+                                            android:text="@string/remark"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_10sdp"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@+id/tvVisitName" />
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/tvRemarkVisitName"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="@dimen/_5sdp"
+                                            android:fontFamily="@font/sp_pro_display_medium"
+                                            android:gravity="center"
+                                            android:text="@string/sk_boss"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_10sdp"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
                                     <androidx.appcompat.widget.AppCompatTextView
@@ -447,31 +442,30 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:layout_marginEnd="@dimen/_5sdp"
-                                        android:fontFamily="@font/clearsans_regular"
+                                        android:fontFamily="@font/sp_pro_display_regular"
                                         android:gravity="center"
                                         android:padding="@dimen/_2sdp"
                                         android:text="@string/rs_8000_paid"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_10sdp"
                                         app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintTop_toTopOf="@+id/tvRemarkVisit" />
+                                        app:layout_constraintTop_toTopOf="@+id/llVisitName" />
 
 
                                     <androidx.appcompat.widget.AppCompatTextView
                                         android:id="@+id/tvVisitDateText"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10sdp"
                                         android:layout_marginTop="@dimen/_10sdp"
                                         android:drawableStart="@drawable/ic_calender"
                                         android:drawablePadding="@dimen/_5sdp"
-                                        android:fontFamily="@font/clearsans_medium"
+                                        android:fontFamily="@font/sp_pro_display_medium"
                                         android:gravity="center"
                                         android:text="@string/select_date"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_10sdp"
                                         app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toBottomOf="@+id/tvRemarkVisit" />
+                                        app:layout_constraintTop_toBottomOf="@+id/tvRemarkStatusVisit" />
 
 
                                     <androidx.appcompat.widget.AppCompatTextView
@@ -479,7 +473,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:layout_marginEnd="@dimen/_5sdp"
-                                        android:fontFamily="@font/clearsans_regular"
+                                        android:fontFamily="@font/sp_pro_display_regular"
                                         android:gravity="center"
                                         android:padding="@dimen/_2sdp"
                                         android:text="@string/april_23_2023_text"
@@ -492,11 +486,10 @@
                                         android:id="@+id/time"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
-                                        android:layout_marginStart="@dimen/_10sdp"
                                         android:layout_marginTop="@dimen/_7sdp"
                                         android:drawableStart="@drawable/ic_clock"
                                         android:drawablePadding="@dimen/_5sdp"
-                                        android:fontFamily="@font/clearsans_medium"
+                                        android:fontFamily="@font/sp_pro_display_medium"
                                         android:gravity="center"
                                         android:text="@string/select_time"
                                         android:textColor="@color/black"
@@ -509,7 +502,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:layout_marginEnd="@dimen/_5sdp"
-                                        android:fontFamily="@font/clearsans_regular"
+                                        android:fontFamily="@font/sp_pro_display_regular"
                                         android:gravity="center"
                                         android:padding="@dimen/_2sdp"
                                         android:text="@string/_10_am_11_am_text"
@@ -520,7 +513,6 @@
 
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/sucessLineSV"
@@ -539,8 +531,8 @@
                                 android:id="@+id/clAgreementLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:visibility="gone"
-                                android:layout_below="@+id/clVisitLayout">
+                                android:layout_below="@+id/clVisitLayout"
+                                >
 
                                 <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/tvAgreementTikImg"
@@ -559,7 +551,7 @@
                                     android:layout_marginStart="@dimen/_6sdp"
                                     android:layout_marginTop="@dimen/_8sdp"
                                     android:layout_marginEnd="@dimen/_5sdp"
-                                    android:fontFamily="@font/clearsans_medium"
+                                    android:fontFamily="@font/sp_pro_display_medium"
                                     android:text="@string/tenant_schedule_visit_text"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_10sdp"
@@ -590,116 +582,139 @@
                                     android:padding="@dimen/_10sdp"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toEndOf="@id/successLineAgreement"
-                                    app:layout_constraintTop_toBottomOf="@+id/tvAgreementTikImg">
+                                    app:layout_constraintTop_toBottomOf="@+id/tvAgreementStatus">
 
-                                    <androidx.appcompat.widget.AppCompatTextView
-                                        android:id="@+id/tvRemarkAgreement"
-                                        android:layout_width="wrap_content"
-
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:id="@+id/llcAgreement"
+                                        android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_marginStart="@dimen/_10sdp"
-                                        android:fontFamily="@font/clearsans_medium"
-                                        android:gravity="center"
-                                        android:text="@string/remark"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_10sdp"
                                         app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
+                                        app:layout_constraintTop_toTopOf="parent">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/tvRemarkAgreementTXT"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:fontFamily="@font/sp_pro_display_medium"
+                                            android:text="@string/remark"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_10sdp"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@+id/tvVisitName" />
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/tvRemarkAgreement"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="@dimen/_10sdp"
+                                            android:fontFamily="@font/sp_pro_display_medium"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_10sdp"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
                                     <HorizontalScrollView
                                         android:id="@+id/rvAgreement"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_5sdp"
                                         android:scrollIndicators="none"
                                         android:scrollbars="none"
-                                        android:layout_marginTop="@dimen/_5sdp"
-                                        app:layout_constraintTop_toBottomOf="@+id/tvRemarkAgreement"
+                                        app:layout_constraintTop_toBottomOf="@+id/llcAgreement"
                                         tools:listitem="@layout/item_amenities_layout">
 
-                                       <androidx.appcompat.widget.LinearLayoutCompat
-                                           android:layout_width="match_parent"
-                                           android:orientation="horizontal"
-                                           android:padding="@dimen/_5sdp"
-                                           android:layout_height="wrap_content">
-                                           <androidx.appcompat.widget.LinearLayoutCompat
-                                               android:layout_width="@dimen/_80sdp"
-                                               android:layout_height="wrap_content"
-                                               android:layout_weight="1"
-                                               android:orientation="vertical">
+                                        <androidx.appcompat.widget.LinearLayoutCompat
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            android:padding="@dimen/_5sdp">
 
-                                               <com.google.android.material.imageview.ShapeableImageView
-                                                   android:id="@+id/ivAgreement"
-                                                   android:layout_width="@dimen/_80sdp"
-                                                   android:layout_height="@dimen/_80sdp"
-                                                   android:adjustViewBounds="true"
-                                                   android:scaleType="centerCrop"
-                                                   android:layout_gravity="center_horizontal"
-                                                   android:src="@drawable/default_image"
-                                                   app:shapeAppearance="@style/CornerCut" />
+                                            <androidx.appcompat.widget.LinearLayoutCompat
+                                                android:layout_width="@dimen/_80sdp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:orientation="vertical">
 
-                                               <androidx.appcompat.widget.AppCompatTextView
-                                                   android:id="@+id/tvAgreement"
-                                                   android:layout_width="wrap_content"
-                                                   android:layout_height="wrap_content"
-                                                   android:gravity="center"
-                                                   android:text="@string/title_agreement" />
+                                                <com.google.android.material.imageview.ShapeableImageView
+                                                    android:id="@+id/ivAgreement"
+                                                    android:layout_width="@dimen/_80sdp"
+                                                    android:layout_height="@dimen/_80sdp"
+                                                    android:layout_gravity="center_horizontal"
+                                                    android:adjustViewBounds="true"
+                                                    android:scaleType="centerCrop"
+                                                    android:src="@drawable/default_image"
+                                                    app:shapeAppearance="@style/CornerCut" />
 
-                                           </androidx.appcompat.widget.LinearLayoutCompat>
-                                           <androidx.appcompat.widget.LinearLayoutCompat
-                                               android:layout_width="@dimen/_80sdp"
-                                               android:layout_height="wrap_content"
-                                               android:layout_weight="1"
-                                               android:layout_marginStart="@dimen/_5sdp"
-                                               android:scrollbars="none"
-                                               android:scrollIndicators="none"
-                                               android:orientation="vertical">
+                                                <androidx.appcompat.widget.AppCompatTextView
+                                                    android:id="@+id/tvAgreement"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center"
+                                                    android:text="@string/title_agreement" />
 
-                                               <com.google.android.material.imageview.ShapeableImageView
-                                                   android:id="@+id/ivPoliceVerification"
-                                                   android:layout_width="@dimen/_80sdp"
-                                                   android:layout_height="@dimen/_80sdp"
-                                                   android:adjustViewBounds="true"
-                                                   android:scaleType="centerCrop"
-                                                   android:layout_gravity="center_horizontal"
-                                                   android:src="@drawable/default_image"
-                                                   app:shapeAppearance="@style/CornerCut" />
+                                            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                                               <androidx.appcompat.widget.AppCompatTextView
-                                                   android:id="@+id/tvPoliceVerification"
-                                                   android:layout_width="wrap_content"
-                                                   android:layout_height="wrap_content"
-                                                   android:gravity="center"
-                                                   android:text="@string/police_verification" />
+                                            <androidx.appcompat.widget.LinearLayoutCompat
+                                                android:layout_width="@dimen/_80sdp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="@dimen/_5sdp"
+                                                android:layout_weight="1"
+                                                android:orientation="vertical"
+                                                android:scrollIndicators="none"
+                                                android:scrollbars="none">
 
-                                           </androidx.appcompat.widget.LinearLayoutCompat>
-                                           <androidx.appcompat.widget.LinearLayoutCompat
-                                               android:layout_width="@dimen/_80sdp"
-                                               android:layout_height="wrap_content"
-                                               android:layout_weight="1"
-                                               android:layout_marginStart="@dimen/_5sdp"
-                                               android:orientation="vertical">
+                                                <com.google.android.material.imageview.ShapeableImageView
+                                                    android:id="@+id/ivPoliceVerification"
+                                                    android:layout_width="@dimen/_80sdp"
+                                                    android:layout_height="@dimen/_80sdp"
+                                                    android:layout_gravity="center_horizontal"
+                                                    android:adjustViewBounds="true"
+                                                    android:scaleType="centerCrop"
+                                                    android:src="@drawable/default_image"
+                                                    app:shapeAppearance="@style/CornerCut" />
 
-                                               <com.google.android.material.imageview.ShapeableImageView
-                                                   android:id="@+id/ivSignAgreement"
-                                                   android:layout_width="@dimen/_80sdp"
-                                                   android:layout_height="@dimen/_80sdp"
-                                                   android:adjustViewBounds="true"
-                                                   android:scaleType="centerCrop"
-                                                   android:layout_gravity="center_horizontal"
-                                                   android:src="@drawable/default_image"
-                                                   app:shapeAppearance="@style/CornerCut" />
+                                                <androidx.appcompat.widget.AppCompatTextView
+                                                    android:id="@+id/tvPoliceVerification"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center"
+                                                    android:text="@string/police_verification" />
 
-                                               <androidx.appcompat.widget.AppCompatTextView
-                                                   android:id="@+id/tvSignAgreement"
-                                                   android:layout_width="wrap_content"
-                                                   android:layout_height="wrap_content"
-                                                   android:gravity="center"
-                                                   android:text="@string/signeture_agreement" />
+                                            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                                           </androidx.appcompat.widget.LinearLayoutCompat>
+                                            <androidx.appcompat.widget.LinearLayoutCompat
+                                                android:layout_width="@dimen/_80sdp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="@dimen/_5sdp"
+                                                android:layout_weight="1"
+                                                android:orientation="vertical">
+
+                                                <com.google.android.material.imageview.ShapeableImageView
+                                                    android:id="@+id/ivSignAgreement"
+                                                    android:layout_width="@dimen/_80sdp"
+                                                    android:layout_height="@dimen/_80sdp"
+                                                    android:layout_gravity="center_horizontal"
+                                                    android:adjustViewBounds="true"
+                                                    android:scaleType="centerCrop"
+                                                    android:src="@drawable/default_image"
+                                                    app:shapeAppearance="@style/CornerCut" />
+
+                                                <androidx.appcompat.widget.AppCompatTextView
+                                                    android:id="@+id/tvSignAgreement"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center"
+                                                    android:text="@string/signeture_agreement" />
+
+                                            </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-                                       </androidx.appcompat.widget.LinearLayoutCompat>
+                                        </androidx.appcompat.widget.LinearLayoutCompat>
                                     </HorizontalScrollView>
 
 
@@ -709,7 +724,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/_20sdp"
                                         android:layout_marginEnd="@dimen/_10sdp"
-                                        android:fontFamily="@font/clearsans_regular"
+                                        android:fontFamily="@font/sp_pro_display_regular"
                                         android:gravity="center"
                                         android:padding="@dimen/_2sdp"
                                         android:textColor="@color/black"
@@ -772,7 +787,7 @@
                                                         android:layout_marginStart="@dimen/_6sdp"
                                                         android:layout_marginTop="@dimen/_8sdp"
                                                         android:layout_marginEnd="@dimen/_5sdp"
-                                                        android:fontFamily="@font/clearsans_medium"
+                                                        android:fontFamily="@font/sp_pro_display_medium"
                                                         android:text="@string/tenant_schedule_visit_text"
                                                         android:textColor="@color/black"
                                                         android:textSize="@dimen/_10sdp"
@@ -809,7 +824,7 @@
                                                         android:layout_marginStart="@dimen/_6sdp"
                                                         android:layout_marginTop="@dimen/_11sdp"
                                                         android:layout_marginEnd="@dimen/_5sdp"
-                                                        android:fontFamily="@font/clearsans_medium"
+                                                        android:fontFamily="@font/sp_pro_display_medium"
                                                         android:text="@string/rajesh_sharma_text"
                                                         android:textColor="@color/black"
                                                         android:textSize="@dimen/_10sdp"
@@ -844,7 +859,7 @@
                                                         android:layout_marginStart="@dimen/_6sdp"
                                                         android:layout_marginTop="@dimen/_11sdp"
                                                         android:layout_marginEnd="@dimen/_5sdp"
-                                                        android:fontFamily="@font/clearsans_medium"
+                                                        android:fontFamily="@font/sp_pro_display_medium"
                                                         android:text="@string/tenant_update_text"
                                                         android:textColor="@color/black"
                                                         android:textSize="@dimen/_10sdp"
@@ -858,7 +873,7 @@
                                                         android:layout_marginStart="@dimen/_6sdp"
                                                         android:layout_marginTop="@dimen/_11sdp"
                                                         android:layout_marginEnd="@dimen/_5sdp"
-                                                        android:fontFamily="@font/clearsans_medium"
+                                                        android:fontFamily="@font/sp_pro_display_medium"
                                                         android:text="@string/request_payment_text"
                                                         android:textColor="@color/black"
                                                         android:textSize="@dimen/_10sdp"
@@ -872,7 +887,7 @@
                                                         android:layout_marginStart="@dimen/_6sdp"
                                                         android:layout_marginTop="@dimen/_11sdp"
                                                         android:layout_marginEnd="@dimen/_5sdp"
-                                                        android:fontFamily="@font/clearsans_medium"
+                                                        android:fontFamily="@font/sp_pro_display_medium"
                                                         android:text="@string/tenant_accept_the_offer_text"
                                                         android:textColor="@color/black"
                                                         android:textSize="@dimen/_10sdp"
@@ -886,7 +901,7 @@
                                                         android:layout_marginStart="@dimen/_6sdp"
                                                         android:layout_marginTop="@dimen/_11sdp"
                                                         android:layout_marginEnd="@dimen/_5sdp"
-                                                        android:fontFamily="@font/clearsans_medium"
+                                                        android:fontFamily="@font/sp_pro_display_medium"
                                                         android:text="@string/upload_documents_text"
                                                         android:textColor="@color/black"
                                                         android:textSize="@dimen/_10sdp"
@@ -900,7 +915,7 @@
                                                         android:layout_marginStart="@dimen/_6sdp"
                                                         android:layout_marginTop="@dimen/_11sdp"
                                                         android:layout_marginEnd="@dimen/_5sdp"
-                                                        android:fontFamily="@font/clearsans_medium"
+                                                        android:fontFamily="@font/sp_pro_display_medium"
                                                         android:text="@string/title_agreement"
                                                         android:textColor="@color/black"
                                                         android:textSize="@dimen/_10sdp"
@@ -1019,7 +1034,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="match_parent"
                                                             android:layout_marginEnd="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_regular"
+                                                            android:fontFamily="@font/sp_pro_display_regular"
                                                             android:text="@string/intro"
                                                             android:textColor="@color/black"
                                                             android:textSize="@dimen/_10sdp"
@@ -1047,7 +1062,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="match_parent"
                                                             android:layout_marginEnd="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_regular"
+                                                            android:fontFamily="@font/sp_pro_display_regular"
                                                             android:text="@string/intro"
                                                             android:textColor="@color/black"
                                                             android:textSize="@dimen/_10sdp"
@@ -1075,7 +1090,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="match_parent"
                                                             android:layout_marginEnd="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_regular"
+                                                            android:fontFamily="@font/sp_pro_display_regular"
                                                             android:text="@string/_34_000"
                                                             android:textColor="@color/black"
                                                             android:textSize="@dimen/_10sdp"
@@ -1104,7 +1119,7 @@
                                                             android:layout_height="wrap_content"
                                                             android:layout_marginStart="@dimen/_10sdp"
                                                             android:layout_marginTop="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_medium"
+                                                            android:fontFamily="@font/sp_pro_display_medium"
                                                             android:gravity="center"
                                                             android:text="@string/upload_front_aadhaar_text"
                                                             android:textColor="#CFCACA"
@@ -1146,7 +1161,7 @@
                                                             android:layout_height="wrap_content"
                                                             android:layout_marginStart="@dimen/_10sdp"
                                                             android:layout_marginTop="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_medium"
+                                                            android:fontFamily="@font/sp_pro_display_medium"
                                                             android:gravity="center"
                                                             android:text="@string/upload_back_aadhaar_text"
                                                             android:textColor="#CFCACA"
@@ -1188,7 +1203,7 @@
                                                             android:layout_height="wrap_content"
                                                             android:layout_marginStart="@dimen/_10sdp"
                                                             android:layout_marginTop="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_medium"
+                                                            android:fontFamily="@font/sp_pro_display_medium"
                                                             android:gravity="center"
                                                             android:text="@string/upload_pan_card_text"
                                                             android:textColor="#CFCACA"
@@ -1230,7 +1245,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="match_parent"
                                                             android:layout_marginEnd="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_regular"
+                                                            android:fontFamily="@font/sp_pro_display_regular"
                                                             android:text="Yes"
                                                             android:textColor="@color/black"
                                                             android:textSize="@dimen/_10sdp"
@@ -1258,7 +1273,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="match_parent"
                                                             android:layout_marginEnd="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_regular"
+                                                            android:fontFamily="@font/sp_pro_display_regular"
                                                             android:text="@string/intro"
                                                             android:textColor="@color/black"
                                                             android:textSize="@dimen/_10sdp"
@@ -1303,7 +1318,7 @@
                                                             android:layout_width="0dp"
                                                             android:layout_height="match_parent"
                                                             android:layout_marginStart="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_medium"
+                                                            android:fontFamily="@font/sp_pro_display_medium"
                                                             android:gravity="center"
                                                             android:text="@string/select_date"
                                                             android:textColor="@color/black"
@@ -1317,7 +1332,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="match_parent"
                                                             android:layout_marginEnd="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_regular"
+                                                            android:fontFamily="@font/sp_pro_display_regular"
                                                             android:gravity="center"
                                                             android:text="@string/april_23_2023_text"
                                                             android:textColor="@color/black"
@@ -1343,7 +1358,7 @@
                                                             android:layout_height="match_parent"
                                                             android:layout_marginStart="@dimen/_10sdp"
                                                             android:layout_marginTop="@dimen/_7sdp"
-                                                            android:fontFamily="@font/clearsans_medium"
+                                                            android:fontFamily="@font/sp_pro_display_medium"
                                                             android:gravity="center"
                                                             android:text="@string/select_time"
                                                             android:textColor="@color/black"
@@ -1357,7 +1372,7 @@
                                                             android:layout_height="match_parent"
                                                             android:layout_marginTop="@dimen/_7sdp"
                                                             android:layout_marginEnd="@dimen/_10sdp"
-                                                            android:fontFamily="@font/clearsans_regular"
+                                                            android:fontFamily="@font/sp_pro_display_regular"
                                                             android:gravity="center"
                                                             android:text="@string/_10_am_11_am_text"
                                                             android:textColor="@color/black"
@@ -1378,7 +1393,7 @@
                                                         android:layout_marginBottom="@dimen/_10sdp"
                                                         android:background="@drawable/light_red_bg"
                                                         android:backgroundTint="@color/red_color"
-                                                        android:fontFamily="@font/clearsans_regular"
+                                                        android:fontFamily="@font/sp_pro_display_regular"
                                                         android:gravity="center"
                                                         android:padding="@dimen/_8sdp"
                                                         android:text="Move-Out"
@@ -1416,7 +1431,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="match_parent"
                                                             android:layout_marginStart="@dimen/_5sdp"
-                                                            android:fontFamily="@font/clearsans_medium"
+                                                            android:fontFamily="@font/sp_pro_display_medium"
                                                             android:gravity="center"
                                                             android:text="@string/review"
                                                             android:textColor="@color/black"

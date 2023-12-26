@@ -59,7 +59,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/clearsans_bold"
+                            android:fontFamily="@font/sp_pro_display_bold"
                             android:gravity="center"
                             android:padding="@dimen/_10sdp"
                             android:text="@string/pending" />
@@ -70,7 +70,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/clearsans_bold"
+                            android:fontFamily="@font/sp_pro_display_bold"
                             android:gravity="center"
                             android:padding="@dimen/_10sdp"
                             android:layout_marginStart="@dimen/_10sdp"

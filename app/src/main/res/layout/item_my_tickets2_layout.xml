@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/clearsans_medium"
+                android:fontFamily="@font/sp_pro_display_medium"
                 android:gravity="start"
                 android:text="@string/ticket2_text"
                 android:textColor="@color/black"

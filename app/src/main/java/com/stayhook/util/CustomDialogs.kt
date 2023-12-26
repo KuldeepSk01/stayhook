@@ -113,14 +113,13 @@ object CustomDialogs {
     @RequiresApi(Build.VERSION_CODES.O)
     fun showDateDialog(context: Context, listener: OnShowDateDialogListener) {
         val dialog = Dialog(context)
-
-
         val b = DataBindingUtil.inflate<DateDialougeLayoutBinding>(
             LayoutInflater.from(context),
             R.layout.date_dialouge_layout,
             null,
             false
         )
+        //b.calenderViewDialog.minDate = System.currentTimeMillis()-1000
         b.calenderViewDialog.setOnDateChangedListener { datePicker_, i, i2, i3 ->
             listener.onSelectDate(getDateFormat(i3, i2, i))
             dialog.dismiss()

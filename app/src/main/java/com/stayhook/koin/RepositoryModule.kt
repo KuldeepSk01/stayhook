@@ -16,6 +16,7 @@ import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationRep
 import com.stayhook.screen.dashboard.home.recommondationdetail.beds.BedsRepo
 import com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment.RoomRepo
 import com.stayhook.screen.dashboard.home.recommondationdetail.schedulevisit.ScheduleAVisitRepo
+import com.stayhook.screen.dashboard.home.recommondationdetail.writeareview.WriteReviewRepo
 import com.stayhook.screen.dashboard.home.sharedroom.SharedRoomRepo
 import com.stayhook.screen.dashboard.search.SearchFilterViewModel
 import com.stayhook.screen.dashboard.search.SearchRepo
@@ -48,6 +49,7 @@ val repositoryModule = module {
     single { AccountRepo() }
     single { EditProfileRepo() }
     single { KYCRepo() }
+    single { WriteReviewRepo() }
 
 
 }

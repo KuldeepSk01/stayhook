@@ -92,9 +92,9 @@ class HelpCenterFragment : BaseFragment() {
                 ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
             tvCouponsHC.background =
                 ResourcesCompat.getDrawable(resources, R.drawable.otp_box_background, null)
-            tvReservationHC.setTextColor(resources.getColor(R.color.sub_heading_text_color, null))
-            tvPaymentsHC.setTextColor(resources.getColor(R.color.sub_heading_text_color, null))
-            tvCouponsHC.setTextColor(resources.getColor(R.color.sub_heading_text_color, null))
+            tvReservationHC.setTextColor(resources.getColor(R.color.default_color, null))
+            tvPaymentsHC.setTextColor(resources.getColor(R.color.default_color, null))
+            tvCouponsHC.setTextColor(resources.getColor(R.color.default_color, null))
 
         }
         tv1.setTextColor(resources.getColor(R.color.primary_color, null))

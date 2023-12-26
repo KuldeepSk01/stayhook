@@ -10,6 +10,7 @@ import com.stayhook.model.response.TokenCollectedResponse
 import com.stayhook.model.response.getpopertydetail.GetPropertyDetail
 import com.stayhook.network.ApiResponse
 import com.stayhook.util.Constants
+import com.stayhook.util.mLog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,10 +38,10 @@ class MyBookingRepo : BaseRepository() {
             }
 
             override fun onFailure(call: Call<CollectionBaseResponse<TokenCollectedResponse>>, t: Throwable) {
-                if (t.message.equals("Software caused connection abort")){
+                if (t.message.equals("Software caused connection abort")) {
                     responseLiveData.postValue(ApiResponse.error(Throwable(Constants.NetworkConstant.CONNECTION_LOST)))
-                }else{
-                    Log.d("RegisterRepo", "onFailure: ${t.message}")
+                } else {
+                    mLog("onFailure: ${t.message}")
                     responseLiveData.postValue(ApiResponse.error(t))
                 }
             }

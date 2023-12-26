@@ -18,6 +18,7 @@ import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationVie
 import com.stayhook.screen.dashboard.home.recommondationdetail.beds.BedsViewModel
 import com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment.RoomViewModel
 import com.stayhook.screen.dashboard.home.recommondationdetail.schedulevisit.ScheduleAVisitViewModel
+import com.stayhook.screen.dashboard.home.recommondationdetail.writeareview.WriteReviewViewModel
 import com.stayhook.screen.dashboard.home.sharedroom.SharedRoomViewModel
 import com.stayhook.screen.dashboard.search.SearchFilterViewModel
 import com.stayhook.screen.login.LoginViewModel
@@ -51,4 +52,5 @@ val viewModelModule = module {
     single { AccountViewModel(get()) }
     single { EditProfileViewModel(get()) }
     single { KYCViewModel(get()) }
+    single { WriteReviewViewModel(get()) }
 }

@@ -21,6 +21,7 @@ import com.stayhook.util.Constants
 import com.stayhook.util.Constants.NetworkConstant.Companion.NO_INTERNET_AVAILABLE
 import com.stayhook.util.CustomDialogs.showErrorMessage
 import com.stayhook.util.Utility.isConnectionAvailable
+import com.stayhook.util.mLog
 import org.koin.core.component.inject
 
 class HomeFragment : BaseFragment(), OnItemsClickListener {
@@ -29,7 +30,6 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
     private var recommendationList = mutableListOf<RecommendData>()
     private var recentlyAddedDataList = mutableListOf<RecommendData>()
     private var nearbyDataList = mutableListOf<RecommendData>()
-    private lateinit var mainActivity: MainActivity
     private lateinit var homeBinding: FragmentHomeBinding
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
@@ -37,12 +37,16 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
 
     override fun onInitView(binding: ViewDataBinding, view: View) {
         homeBinding = binding as FragmentHomeBinding
-        mainActivity = requireActivity() as MainActivity
-        mainActivity.setBottomStyle(1)
         showTab()
-
         homeViewModel.fragmentHome = this@HomeFragment
         homeBinding.homeViewModel = homeViewModel
+
+        homeBinding.tvHomeLocation.apply {
+            val add = homeViewModel.getCurrentAddress()
+            text = add
+            mLog(add!!)
+        }
+
 
         hitHomeApi()
 
@@ -51,7 +55,6 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
     private fun setAdapters() {
         homeBinding.apply {
             rvRecommendationItems.apply {
-                itemAnimator = DefaultItemAnimator()
                 layoutManager =
                     LinearLayoutManager(
                         baseActivity.baseContext,
@@ -65,7 +68,6 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
                 )
             }
             rvRecentlyAddedHome.apply {
-                itemAnimator = DefaultItemAnimator()
                 layoutManager =
                     LinearLayoutManager(
                         baseActivity.baseContext,
@@ -79,7 +81,6 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
                 )
             }
             homeBinding.rvNearByLocationItems.apply {
-                itemAnimator = DefaultItemAnimator()
                 layoutManager =
                     LinearLayoutManager(
                         baseActivity.baseContext,
@@ -93,7 +94,6 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
                         this@HomeFragment
                     )
             }
-
         }
 
     }
@@ -103,9 +103,9 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
             showErrorMessage(requireActivity(), NO_INTERNET_AVAILABLE)
             return
         }
-
         homeViewModel.hitHomePageApi()
         homeViewModel.getHomeResponse().observe(requireActivity(), homeResponseObserver)
+
     }
 
     private val homeResponseObserver: Observer<ApiResponse<HomeResponse>> by lazy {

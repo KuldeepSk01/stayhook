@@ -8,6 +8,8 @@ import com.stayhook.model.request.UserRequest
 import com.stayhook.model.response.OTPResponse
 import com.stayhook.model.response.UserResponse
 import com.stayhook.network.ApiResponse
+import com.stayhook.util.Constants
+import com.stayhook.util.mLog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -63,8 +65,12 @@ class VerificationRepo : BaseRepository() {
             }
 
             override fun onFailure(call: Call<OTPResponse>, t: Throwable) {
-                Log.d("LoginRepo", "onFailure: ${t.message}")
-                responseLive.postValue(ApiResponse.error(t))
+                if (t.message.equals("Software caused connection abort")) {
+                    responseLive.postValue(ApiResponse.error(Throwable(Constants.NetworkConstant.CONNECTION_LOST)))
+                } else {
+                    mLog("onFailure: ${t.message}")
+                    responseLive.postValue(ApiResponse.error(t))
+                }
             }
 
         })

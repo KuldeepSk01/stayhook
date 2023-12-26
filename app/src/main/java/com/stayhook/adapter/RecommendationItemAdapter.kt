@@ -11,6 +11,7 @@ import com.stayhook.R
 import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.databinding.ItemRecommendatationLayoutBinding
 import com.stayhook.model.response.home.RecommendData
+import com.stayhook.util.mLog
 
 class RecommendationItemAdapter(
     private val list: MutableList<RecommendData>,
@@ -44,6 +45,15 @@ class RecommendationItemAdapter(
                     .into(ivRItem)
                 tvRItemName.text = it.property_type
                 tvRItemApartment.text = it.property_name
+                mLog("Reccommendation item Loction ${String.format(
+                    "%s%s%s%s%s%s",
+                    it.street,
+                    it.city,
+                    it.state,
+                    it.area,
+                    it.pincode,
+                    it.country
+                )} ")
                 tvRItemLocation.text = String.format(
                     "%s%s%s%s%s%s",
                     it.street,
@@ -60,7 +70,7 @@ class RecommendationItemAdapter(
                 )
                 tvRatingRItem.text = it.rating.toString()
             }
-            cvRItem.setOnClickListener {
+            ivRItem.setOnClickListener {
                 listener.onCLickItems(model)
             }
         }

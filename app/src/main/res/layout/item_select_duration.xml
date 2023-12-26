@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/clearsans_bold"
+                    android:fontFamily="@font/sp_pro_display_bold"
                     android:text="0%"
                     android:textColor="@color/heading_text_color" />
             </RelativeLayout>
@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/clearsans_bold"
+                    android:fontFamily="@font/sp_pro_display_bold"
                     android:text="@string/_1_month_s_rent_text"
                     android:textColor="@color/heading_text_color" />
             </RelativeLayout>
@@ -116,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/clearsans_bold"
+                    android:fontFamily="@font/sp_pro_display_bold"
                     android:text="After 6 months"
                     android:textColor="@color/heading_text_color" />
             </RelativeLayout>
@@ -141,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/clearsans_bold"
+                    android:fontFamily="@font/sp_pro_display_bold"
                     android:text="@string/after_36_months_text"
                     android:textColor="@color/heading_text_color" />
             </RelativeLayout>
@@ -166,7 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:fontFamily="@font/clearsans_bold"
+                    android:fontFamily="@font/sp_pro_display_bold"
                     android:text="@string/after_36_months_text"
                     android:textColor="@color/heading_text_color" />
             </RelativeLayout>

@@ -57,6 +57,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
+                        android:paddingBottom="@dimen/_5sdp"
                         android:layout_height="wrap_content">
 
                         <CalendarView
@@ -84,7 +85,7 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/otp_box_background"
+                    android:background="@drawable/otp_box_outline_drawable"
                     android:padding="@dimen/_15sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -95,10 +96,10 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:fontFamily="@font/clearsans_bold"
+                        android:fontFamily="@font/sp_pro_display_bold"
                         android:gravity="center"
                         android:text="@string/move_in_date"
-                        android:textColor="@color/grey"
+                        android:textColor="@color/default_color"
                         android:textSize="@dimen/_10sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -109,9 +110,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:fontFamily="@font/clearsans_medium"
+                        android:fontFamily="@font/sp_pro_display_medium"
                         android:gravity="center"
-                        android:text="@string/april_23_2023_text"
                         android:textColor="@color/primary_color"
                         android:textSize="@dimen/_10sdp"
                         app:layout_constraintBottom_toBottomOf="parent"

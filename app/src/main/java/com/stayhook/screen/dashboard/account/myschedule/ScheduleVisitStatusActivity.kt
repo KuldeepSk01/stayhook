@@ -71,28 +71,40 @@ class ScheduleVisitStatusActivity : BaseActivity() {
                 when(it.status){
                     "Agreement"->{
                         clAgreementLayout.visibility = View.VISIBLE
+                        clVisitLayout.visibility=View.VISIBLE
+                        clTokenCollectedLayout.visibility=View.VISIBLE
+
                         tvAgreementStatus.text = data.status
                         tvRemarkAgreement.text = data.remark
                         tvCreatedTimeAgreement.text = data.created_at
-                        Glide.with(this@ScheduleVisitStatusActivity).load(data.agreement).into(ivAgreement)
-                        Glide.with(this@ScheduleVisitStatusActivity).load(data.police_verification).into(ivPoliceVerification)
-                        Glide.with(this@ScheduleVisitStatusActivity).load(data.signatured_agreement).into(ivSignAgreement)
+                        Glide.with(this@ScheduleVisitStatusActivity).load(data.agreement).placeholder(R.drawable.default_image).into(ivAgreement)
+                        Glide.with(this@ScheduleVisitStatusActivity).load(data.police_verification).placeholder(R.drawable.default_image).into(ivPoliceVerification)
+                        Glide.with(this@ScheduleVisitStatusActivity).load(data.signatured_agreement).placeholder(R.drawable.default_image).into(ivSignAgreement)
 
                     }
                     "Visits"->{
-                        tvVisitName.text = data.fieldPerson
+                        clAgreementLayout.visibility = View.GONE
                         clVisitLayout.visibility=View.VISIBLE
-                        tvVisitDate.text= data.created_at
-                        tvVisitTime.text = data.visitTime
+                        clTokenCollectedLayout.visibility=View.VISIBLE
+
                         tvVisitStatus.text = data.status
-                        tvRemarkVisit.text = data.remark
+                        tvRemarkVisitFieldName.text = data.fieldPerson
+                        tvVisitDate.text= data.visitDate
+                        tvVisitTime.text = data.visitTime
+                        tvRemarkVisitName.text = data.remark
 
                     }
                     else->{
+
+                        clAgreementLayout.visibility = View.GONE
+                        clVisitLayout.visibility=View.GONE
+
                         clTokenCollectedLayout.visibility=View.VISIBLE
                         tvTokenCollectedStatus.text = data.status
+
                         tvCreatedTimeTC.text = data.created_at
-                        tvRemarkTC.text = data.remark
+                        tvRemarkStatusTC.text = data.remark
+
                     }
                 }
 

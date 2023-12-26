@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.res.ResourcesCompat
@@ -33,6 +34,7 @@ import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment.RoomActivity
 import com.stayhook.screen.dashboard.home.recommondationdetail.schedulevisit.ScheduleVisitActivity
 import com.stayhook.screen.dashboard.home.recommondationdetail.writeareview.WriteAReviewActivity
+import com.stayhook.screen.dashboard.message.MessageFragment
 import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs.showErrorMessage
 import com.stayhook.util.mLog
@@ -49,20 +51,26 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
     private var roomList = mutableListOf<PropertyRoom>()
     private lateinit var propertyId: String
     private lateinit var mGoogleMap: GoogleMap
+    private var isChatOpen : Boolean = false
 
 
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewInit(binding: ViewDataBinding?) {
         rdBinding = binding as FragmentRecommendationDetailBinding
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         propertyId = mPref[Constants.DefaultConstants.SELECT_PROPERTY_ID, ""]!!
 
-       /* locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if (setLocationPermission(verifyMe2Activity)) {
-            gpsInit()
-        }else{
-            mToast("Please enable location permission.")
-        }*/
+        /* locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+         if (setLocationPermission(verifyMe2Activity)) {
+             gpsInit()
+         }else{
+             mToast("Please enable location permission.")
+         }*/
 
         mViewModel.hitPropertyDetail(propertyId)
         mViewModel.getPropertyDetailResponse()
@@ -80,10 +88,17 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
             }
 
 
-          /*  val searchMap =  supportFragmentManager.findFragmentById(R.id.searchMapRD) as SupportMapFragment
-            searchMap.getMapAsync(this@RecommendationDetailActivity)
-*/
 
+            /*  val searchMap =  supportFragmentManager.findFragmentById(R.id.searchMapRD) as SupportMapFragment
+              searchMap.getMapAsync(this@RecommendationDetailActivity)
+  */
+
+            ivSHManagerChatBtn.setOnClickListener {
+                isChatOpen = true
+                clRdLayout.visibility = View.GONE
+                clRdChatLayout.visibility = View.VISIBLE
+                replaceFragment(R.id.flRdChat,MessageFragment())
+            }
             tvRDScheduleList.setOnClickListener {
                 val b  = Bundle()
                 b.putSerializable("propertyDetail",propertyDetail)
@@ -91,7 +106,7 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
 
             }
             tvViewMoreBtn.setOnClickListener {
-                binding.rvFeaturesAmenity.apply {
+                rvFeaturesAmenity.apply {
                     layoutParams.width = LayoutParams.MATCH_PARENT
                     layoutParams.height = LayoutParams.MATCH_PARENT
                 }
@@ -99,6 +114,7 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
                 tvViewMoreBtn.visibility = View.GONE
             }
             tvReviewsWriteAReview.setOnClickListener {
+                val b = Bundle()
                 launchActivity(WriteAReviewActivity::class.java)
             }
 
@@ -173,7 +189,6 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
                         this@RecommendationDetailActivity
                     )
                 }
-
                 wvMap.settings.javaScriptEnabled = true
                 wvMap.webViewClient = WebViewClient()
                 try {
@@ -181,9 +196,11 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
                     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.0478030975714!2d77.37883717549848!3d28.568327225699832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef5e4bee0711%3A0xae2422de42cff45!2sSILICON%20CITY%2C%20Sector%2076%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1702626638694!5m2!1sen!2sin",
                         "UTF-8"
                     )
+                    val i = 0
                     val iframe =
                         "<iframe src=$encodedUrl width=100% height=100% frameborder=0 style=border:0</iframe>"
                     wvMap.loadData(iframe, "text/html", "utf-8")
+
 
                 } catch (e: UnsupportedEncodingException) {
                     e.printStackTrace()
@@ -196,6 +213,15 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
                 tvDetailApartmentType.text = it.property_name
                 tvDetailPageRatings.text = String.format("%s %s",it.rating.toString(),"(${it.total_review.toString()} Reviews)")
                 tvDetailRoomType.text = it.property_type
+                mLog("Reccommendation Detail Loction ${String.format(
+                    "%s%s%s%s%s%s",
+                    it.street,
+                    it.city,
+                    it.state,
+                    it.area,
+                    it.pincode,
+                    it.country
+                )} ")
                 tvLocationDescription.text = String.format(
                     "%s%s%s%s%s%s",
                     it.street,
@@ -265,6 +291,7 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
     }
 
 
+
 /*
     fun getIframeData(encodedUr:String):String{
         try {
@@ -283,6 +310,18 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
 
     }
 */
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (isChatOpen){
+            rdBinding.clRdLayout.visibility = View.VISIBLE
+            rdBinding.clRdChatLayout.visibility = View.GONE
+        }else{
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+    }
 
 }
 

@@ -6,6 +6,7 @@ import com.stayhook.base.BaseRepository
 import com.stayhook.base.BaseResponse
 import com.stayhook.model.response.MyProfileResponse
 import com.stayhook.network.ApiResponse
+import com.stayhook.util.Constants
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,9 +35,12 @@ class AccountRepo:BaseRepository() {
             }
 
             override fun onFailure(call: Call<BaseResponse<MyProfileResponse>>, t: Throwable) {
-                Log.d("LoginRepo", "onFailure: ${t.message}")
-                Log.d("LoginRepo", "onFailure: ${t.stackTrace}")
-                responseLive.postValue(ApiResponse.error(t))
+                if (t.message.equals("Software caused connection abort")) {
+                    responseLive.postValue(ApiResponse.error(Throwable(Constants.NetworkConstant.CONNECTION_LOST)))
+                } else {
+                    Log.d("AccountRepo", "onFailure: ${t.message}")
+                    responseLive.postValue(ApiResponse.error(t))
+                }
             }
 
         })
