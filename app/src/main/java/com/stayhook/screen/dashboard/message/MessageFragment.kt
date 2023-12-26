@@ -22,7 +22,6 @@ import com.stayhook.util.IMAGE_4
 
 class MessageFragment : BaseFragment(), OnMessageClickListener {
     private lateinit var mBinding: FragmentMessageBinding
-    private lateinit var mainActivity: MainActivity
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_message
@@ -31,8 +30,6 @@ class MessageFragment : BaseFragment(), OnMessageClickListener {
     override fun onInitView(binding: ViewDataBinding, view: View) {
         mBinding = binding as FragmentMessageBinding
         showTab()
-        mainActivity= requireActivity() as MainActivity
-        mainActivity.setBottomStyle(4)
         mBinding.apply {
             toolBarMessage.apply {
                 ivToolBarBack.visibility = View.INVISIBLE
