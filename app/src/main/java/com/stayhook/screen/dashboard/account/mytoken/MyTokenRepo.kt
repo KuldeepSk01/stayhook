@@ -1,23 +1,22 @@
-package com.stayhook.screen.dashboard.account.myschedule
+package com.stayhook.screen.dashboard.account.mytoken
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.stayhook.base.BaseRepository
 import com.stayhook.base.CollectionBaseResponse
-import com.stayhook.base.ErrorResponse
 import com.stayhook.model.response.TokenCollectedResponse
 import com.stayhook.network.ApiResponse
-import com.stayhook.preference.reflection.ReflectionUtil
 import com.stayhook.util.Constants
+import com.stayhook.util.mLog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MyScheduledVisitRepo : BaseRepository() {
-    fun executeScheduledToken(status:String,
+class MyTokenRepo : BaseRepository() {
+    fun executeTokenCollected(
         responseLiveData: MutableLiveData<ApiResponse<CollectionBaseResponse<TokenCollectedResponse>>>
     ) {
-        val call = apiService.getScheduledToken(status)
+        val call = apiService.getTokenCollected()
         responseLiveData.postValue(ApiResponse.loading())
         call.enqueue(object : Callback<CollectionBaseResponse<TokenCollectedResponse>> {
             override fun onResponse(
@@ -28,11 +27,10 @@ class MyScheduledVisitRepo : BaseRepository() {
                     if (response.body()?.success!!) {
                         responseLiveData.postValue(ApiResponse.success(response.body()!!))
                     } else {
-                        responseLiveData.postValue(ApiResponse.error(Throwable(reflectionUtil.parseJson(response.body().toString(),ErrorResponse::class.java).message)))
+                        responseLiveData.postValue(ApiResponse.error(Throwable(response.body()?.message)))
                     }
                 } catch (e: Exception) {
-                    responseLiveData.postValue(ApiResponse.error(e))
-                    Log.d("ScheduleVisitRepo", "onResponse: error")
+                    Log.d("RecommendationRepo", "onResponse: error")
                 }
             }
 
@@ -43,7 +41,7 @@ class MyScheduledVisitRepo : BaseRepository() {
                 if (t.message.equals("Software caused connection abort")) {
                     responseLiveData.postValue(ApiResponse.error(Throwable(Constants.NetworkConstant.CONNECTION_LOST)))
                 } else {
-                    Log.d("ScheduleVisitRepo", "onFailure: ${t.message}")
+                    mLog("onFailure: ${t.message}")
                     responseLiveData.postValue(ApiResponse.error(t))
                 }
             }

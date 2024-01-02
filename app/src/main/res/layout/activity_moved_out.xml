@@ -301,41 +301,43 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.appcompat.widget.AppCompatCheckBox
-                        android:id="@+id/ceckCB"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/cbMoveOut"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:text="@string/i_hereby_confirm_i_am_moving_out_from_the_property_you_agree_to_our"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/movedOutCl" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/terms"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginTop="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:text="@string/i_hereby_confirm_i_am_moving_out_from_the_property_you_agree_to_our"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:text="@string/error_term_condition"
+                        android:textColor="@color/red_color"
                         android:textSize="@dimen/_9sdp"
-                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/ceckCB"
-                        app:layout_constraintTop_toBottomOf="@id/movedOutCl" />
+                        app:layout_constraintTop_toBottomOf="@+id/cbMoveOut"
+                        />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:text="@string/terms_and_conditions"
-                        android:visibility="gone"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/terms"
-                        app:layout_constraintTop_toBottomOf="@id/movedOutCl" />
+<!--                    <androidx.appcompat.widget.AppCompatTextView-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="@dimen/_5sdp"-->
+<!--                        android:layout_marginTop="@dimen/_10sdp"-->
+<!--                        android:layout_marginEnd="@dimen/_10sdp"-->
+<!--                        android:text="@string/terms_and_conditions"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toEndOf="@id/terms"-->
+<!--                        app:layout_constraintTop_toBottomOf="@id/movedOutCl" />-->
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/moveOutBtn"
@@ -343,18 +345,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        style="@style/defaultBtnStyle"
                         android:background="@drawable/light_red_bg"
                         android:backgroundTint="@color/red_color"
-                        android:fontFamily="@font/sp_pro_display_regular"
                         android:gravity="center"
-                        android:padding="@dimen/_8sdp"
                         android:text="@string/yes_move_out"
                         android:textColor="@color/red_color"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ceckCB" />
+                        app:layout_constraintTop_toBottomOf="@id/terms" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@ import com.stayhook.R
 import com.stayhook.databinding.ItemSelectRoomLayoutBinding
 import com.stayhook.interfaces.OnRoomClickListener
 import com.stayhook.model.response.getpopertydetail.PropertyRoom
+import com.stayhook.util.mLog
 
 class SelectRoomAdapter(
     private val list: MutableList<PropertyRoom>,
@@ -36,6 +37,14 @@ class SelectRoomAdapter(
     override fun onBindViewHolder(holder: SRVM, position: Int) {
         val model = list[position]
         holder.b.apply {
+            if (itemPosition == position) {
+                rlSelectRoom.background =ResourcesCompat.getDrawable(context.resources,R.drawable.selected_box_drawable,null)
+            } else {
+                rlSelectRoom.background = ResourcesCompat.getDrawable(context.resources,R.drawable.otp_box_outline_drawable,null)
+            }
+            tvAvailability.visibility=View.VISIBLE
+            rlPriceRoom.visibility=View.VISIBLE
+
             if (model.roomType == "Common Room") {
                 tvAvailability.visibility=View.GONE
                 rlPriceRoom.visibility=View.GONE
@@ -44,6 +53,7 @@ class SelectRoomAdapter(
                 tv1XAttachedSR.text = String.format("%s,%s", model.kitchen, model.bathroom)
                 tvPrivacyRoomSR.text = model.roomPrivacy.toString()
             }else{
+
                 when (model.availabele) {
                     context.getString(R.string.yes_text) -> {
                         tvAvailability.apply {
@@ -65,12 +75,6 @@ class SelectRoomAdapter(
 
                 }
 
-                if (itemPosition == position) {
-                    rlSelectRoom.background =ResourcesCompat.getDrawable(context.resources,R.drawable.selected_box_drawable,null)
-                } else {
-                    rlSelectRoom.background = ResourcesCompat.getDrawable(context.resources,R.drawable.otp_box_outline_drawable,null)
-                }
-
                 if (roomOrBed == context.getString(R.string.room_select)) {
                     tvRoomsTypeSR.text = model.roomType.toString()
                     //  tvAvailability.visibility=View.GONE
@@ -87,8 +91,8 @@ class SelectRoomAdapter(
 
                 rlSelectRoom.setOnClickListener {
                     itemPosition = position
-                    notifyDataSetChanged()
                     listener.onRoomClick(model)
+                    notifyDataSetChanged()
                 }
             }
 

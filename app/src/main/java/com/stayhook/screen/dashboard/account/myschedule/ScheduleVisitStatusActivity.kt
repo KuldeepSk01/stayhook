@@ -4,8 +4,10 @@ import android.util.Log
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.stayhook.R
+import com.stayhook.adapter.TokenStatusAdapter
 import com.stayhook.base.BaseActivity
 import com.stayhook.base.BaseResponse
 import com.stayhook.databinding.ActivityScheduleVisitStatusBinding
@@ -46,9 +48,10 @@ class ScheduleVisitStatusActivity : BaseActivity() {
 
                 ApiResponse.Status.SUCCESS -> {
                     hideProgress()
-                    it.data?.data?.history?.forEach {
-                        setTrackStatus(it)
-                    }
+                    setStatusList(it.data?.data?.history as MutableList<History>)
+//                    it.data?.data?.history?.forEach {
+//                        //setTrackStatus(it)
+//                    }
 
 
 
@@ -65,14 +68,21 @@ class ScheduleVisitStatusActivity : BaseActivity() {
         }
     }
 
+    private fun setStatusList(history: MutableList<History>?) {
+        sBinding.rvtokenStatus.apply {
+            layoutManager = LinearLayoutManager(this@ScheduleVisitStatusActivity,LinearLayoutManager.VERTICAL,true)
+            adapter = TokenStatusAdapter(history!!,this@ScheduleVisitStatusActivity)
+        }
+    }
+
     private fun setTrackStatus(data: History) {
-        sBinding.apply {
+        /*     sBinding.apply {
             data.let {
                 when(it.status){
                     "Agreement"->{
                         clAgreementLayout.visibility = View.VISIBLE
-                        clVisitLayout.visibility=View.VISIBLE
-                        clTokenCollectedLayout.visibility=View.VISIBLE
+                        //clVisitLayout.visibility=View.VISIBLE
+                        //clTokenCollectedLayout.visibility=View.VISIBLE
 
                         tvAgreementStatus.text = data.status
                         tvRemarkAgreement.text = data.remark
@@ -83,9 +93,9 @@ class ScheduleVisitStatusActivity : BaseActivity() {
 
                     }
                     "Visits"->{
-                        clAgreementLayout.visibility = View.GONE
+                        //clAgreementLayout.visibility = View.GONE
                         clVisitLayout.visibility=View.VISIBLE
-                        clTokenCollectedLayout.visibility=View.VISIBLE
+                        //clTokenCollectedLayout.visibility=View.VISIBLE
 
                         tvVisitStatus.text = data.status
                         tvRemarkVisitFieldName.text = data.fieldPerson
@@ -96,8 +106,8 @@ class ScheduleVisitStatusActivity : BaseActivity() {
                     }
                     else->{
 
-                        clAgreementLayout.visibility = View.GONE
-                        clVisitLayout.visibility=View.GONE
+                        //clAgreementLayout.visibility = View.GONE
+                        //clVisitLayout.visibility=View.GONE
 
                         clTokenCollectedLayout.visibility=View.VISIBLE
                         tvTokenCollectedStatus.text = data.status
@@ -111,5 +121,6 @@ class ScheduleVisitStatusActivity : BaseActivity() {
             }
         }
 
+    }*/
     }
 }

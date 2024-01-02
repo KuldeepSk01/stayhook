@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.content.res.ResourcesCompat
@@ -35,14 +34,12 @@ import com.stayhook.model.request.GetPropertyRequest
 import com.stayhook.model.response.getproperty.GetPropertyBaseResponse
 import com.stayhook.model.response.home.RecommendData
 import com.stayhook.network.ApiResponse
-import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailActivity
 import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs
 import org.koin.core.component.inject
 import java.text.NumberFormat
 import java.util.Currency
-import kotlin.math.min
 
 
 class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
@@ -52,14 +49,14 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
     private val mViewMode: SearchFilterViewModel by inject()
     private val propertySet = mutableSetOf<RecommendData>()
     private var propertyList = mutableListOf<RecommendData>()
-    private var currentItemCount :Int = 0
-    private var totalItemCount : Int = 0
-    private var pageNumber:Int = 1
+    private var currentItemCount: Int = 0
+    private var totalItemCount: Int = 0
+    private var pageNumber: Int = 1
 
-    private var minPrice:Int?=null
-    private var maxPrice:Int?=null
-    private var searchLocation:String?=null
-    private var propertyType:String?=null
+    private var minPrice: Int? = null
+    private var maxPrice: Int? = null
+    private var searchLocation: String? = null
+    private var propertyType: String? = null
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_search
@@ -74,22 +71,22 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
         pageNumber = 1
         totalItemCount = 0
         currentItemCount = 0
-        getAllList(pageNumber,null,null,null,null)
+        getAllList(pageNumber, null, null, null, null)
 
         sBinding.apply {
             ivSearchFilterBtn.setOnClickListener {
                 openBottomSheet()
-              /*  replaceFragment(
-                    R.id.flMainContainer,
-                    SearchFilterFragment(),
-                    SearchFragment::javaClass.name
-                )
-                hideTab()*/
+                /*  replaceFragment(
+                      R.id.flMainContainer,
+                      SearchFilterFragment(),
+                      SearchFragment::javaClass.name
+                  )
+                  hideTab()*/
             }
 
             tvLoadMoreBtn.setOnClickListener {
                 pageNumber++
-                getAllList(pageNumber,searchLocation,minPrice,maxPrice,propertyType)
+                getAllList(pageNumber, searchLocation, minPrice, maxPrice, propertyType)
             }
 
             val searchMap =
@@ -122,11 +119,11 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
             // for ActivityCompat#requestPermissions for more details.
             return
         }
-        mGoogleMap.isMyLocationEnabled=true
+        mGoogleMap.isMyLocationEnabled = true
         val lat = mPref[Constants.PreferenceConstant.LATITUDE, 0F]?.toDouble()
         val lng = mPref[Constants.PreferenceConstant.LONGITUDE, 0F]?.toDouble()
-        Log.d("TAG","$lat $lng")
-        val latlng = LatLng(lat!!,lng!!)
+        Log.d("TAG", "$lat $lng")
+        val latlng = LatLng(lat!!, lng!!)
         mGoogleMap.animateCamera(
             CameraUpdateFactory.newLatLngZoom(
                 latlng,
@@ -138,9 +135,9 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
     private fun getAllList(
         pageNumber: Int,
         searchLocation: String? = null,
-        minPrice: Int?=null,
-        maxPrice: Int?=null,
-        property: String?=null
+        minPrice: Int? = null,
+        maxPrice: Int? = null,
+        property: String? = null
     ) {
         val req = GetPropertyRequest().apply {
             page = pageNumber
@@ -155,31 +152,32 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
     }
 
 
-
     private val propertyResponseObserver: Observer<ApiResponse<GetPropertyBaseResponse>> by lazy {
         Observer {
             when (it.status) {
                 ApiResponse.Status.LOADING -> {
                     showProgress()
                 }
+
                 ApiResponse.Status.SUCCESS -> {
                     hideProgress()
                     propertyList.clear()
                     totalItemCount = it.data?.count!!
-                    val list  = it.data.data as MutableList<RecommendData>
+                    val list = it.data.data as MutableList<RecommendData>
 
-                    if (list.isEmpty()){
+                    if (list.isEmpty()) {
                         sBinding.rlNoDataFound.visibility = View.VISIBLE
                         sBinding.rvSearchFragment.visibility = View.GONE
-                    }else{
+                    } else {
                         sBinding.rlNoDataFound.visibility = View.GONE
                         sBinding.rvSearchFragment.visibility = View.VISIBLE
                         setList(list)
                     }
                 }
+
                 ApiResponse.Status.ERROR -> {
                     hideProgress()
-                    CustomDialogs.showErrorMessage(requireActivity(),it.error?.message.toString())
+                    CustomDialogs.showErrorMessage(requireActivity(), it.error?.message.toString())
                 }
             }
         }
@@ -226,11 +224,14 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
     override fun onEditorAction(p0: TextView?, actionId: Int, p2: KeyEvent?): Boolean {
         if (actionId == EditorInfo.IME_ACTION_DONE) {
             val search = sBinding.etSearchS.text.toString()
-            if (search.isEmpty()){
+            if (search.isEmpty()) {
                 searchLocation = null
-                CustomDialogs.showErrorMessage(requireActivity(),getString(R.string.error_empty_search_location))
-            }else{
-                Log.d("TAG","search $search")
+                CustomDialogs.showErrorMessage(
+                    requireActivity(),
+                    getString(R.string.error_empty_search_location)
+                )
+            } else {
+                Log.d("TAG", "search $search")
                 searchLocation = search
                 pageNumber = 1
                 currentItemCount = 0
@@ -244,9 +245,14 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
     }
 
 
-    private fun openBottomSheet(){
+    private fun openBottomSheet() {
         val dialog = BottomSheetDialog(requireContext())
-        val filterLayoutBiding = DataBindingUtil.inflate<FragmentSearchFilterBinding>(LayoutInflater.from(requireContext()),R.layout.fragment_search_filter,null,false)
+        val filterLayoutBiding = DataBindingUtil.inflate<FragmentSearchFilterBinding>(
+            LayoutInflater.from(requireContext()),
+            R.layout.fragment_search_filter,
+            null,
+            false
+        )
         filterLayoutBiding.apply {
             rangeSliderPrice.apply {
                 valueTo = 100000.0F
@@ -266,12 +272,24 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
 
 
                 this.addOnChangeListener(object : RangeSlider.OnChangeListener {
-                    override fun onValueChange(slider: RangeSlider, value: Float, fromUser: Boolean) {
+                    override fun onValueChange(
+                        slider: RangeSlider,
+                        value: Float,
+                        fromUser: Boolean
+                    ) {
                         minPrice = slider.values[0].toInt()
                         maxPrice = slider.values[1].toInt()
-                        tvMinPrice.text = String.format("%s %d",getString(R.string.indian_currency_symbol),slider.values[0].toInt())
-                        tvMaxPrice.text = String.format("%s %d",getString(R.string.indian_currency_symbol),slider.values[1].toInt())
-                       // Log.d("TAG","current value $value  from ${slider.valueFrom} to ${slider.valueTo} and values ${slider.values}")
+                        tvMinPrice.text = String.format(
+                            "%s %d",
+                            getString(R.string.indian_currency_symbol),
+                            slider.values[0].toInt()
+                        )
+                        tvMaxPrice.text = String.format(
+                            "%s %d",
+                            getString(R.string.indian_currency_symbol),
+                            slider.values[1].toInt()
+                        )
+                        // Log.d("TAG","current value $value  from ${slider.valueFrom} to ${slider.valueTo} and values ${slider.values}")
                     }
 
                 })
@@ -292,22 +310,25 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
                 propertySet.clear()
                 searchLocation = etSearchFilter.text.toString()
                 getAllList(pageNumber, searchLocation, minPrice, maxPrice, propertyType)
-               // Toast.makeText(requireContext(),"values ${rangeSliderPrice.values}", Toast.LENGTH_SHORT).show()
-                Log.d("TAG","min price ${rangeSliderPrice.valueFrom} max price ${rangeSliderPrice.valueTo} and values ${rangeSliderPrice.values}" +
-                        "propertyType $propertyType location word $searchLocation")
+                // Toast.makeText(requireContext(),"values ${rangeSliderPrice.values}", Toast.LENGTH_SHORT).show()
+                Log.d(
+                    "TAG",
+                    "min price ${rangeSliderPrice.valueFrom} max price ${rangeSliderPrice.valueTo} and values ${rangeSliderPrice.values}" +
+                            "propertyType $propertyType location word $searchLocation"
+                )
                 dialog.dismiss()
             }
             llcFilterHouse.setOnClickListener {
                 propertyType = getString(R.string.house)
-                setBackGround(it as LinearLayoutCompat,filterLayoutBiding)
+                setBackGround(it as LinearLayoutCompat, filterLayoutBiding)
             }
             llcFilterPrivateRoom.setOnClickListener {
                 propertyType = getString(R.string.private_room)
-                setBackGround(it as LinearLayoutCompat,filterLayoutBiding)
+                setBackGround(it as LinearLayoutCompat, filterLayoutBiding)
             }
             llcFilterSharedRoom.setOnClickListener {
                 propertyType = getString(R.string.shared_room)
-                setBackGround(it as LinearLayoutCompat,filterLayoutBiding)
+                setBackGround(it as LinearLayoutCompat, filterLayoutBiding)
             }
 
         }
@@ -319,7 +340,10 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
         dialog.show()
     }
 
-    private fun setBackGround(llc: LinearLayoutCompat,bindingSearchFilter:FragmentSearchFilterBinding) {
+    private fun setBackGround(
+        llc: LinearLayoutCompat,
+        bindingSearchFilter: FragmentSearchFilterBinding
+    ) {
         bindingSearchFilter.apply {
             llcFilterHouse.background = null
             llcFilterPrivateRoom.background = null

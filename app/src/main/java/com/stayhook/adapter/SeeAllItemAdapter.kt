@@ -10,15 +10,23 @@ import com.bumptech.glide.Glide
 import com.stayhook.R
 import com.stayhook.adapter.interfaces.OnItemsClickListener
 import com.stayhook.databinding.ItemSeeAllLayoutBinding
-import com.stayhook.model.Recommendation
 import com.stayhook.model.response.home.RecommendData
 
-class SeeAllItemAdapter(val list: MutableList<RecommendData>,val context : Context,private val listener:OnItemsClickListener):RecyclerView.Adapter<SeeAllItemAdapter.SeeAllItemVM>() {
-inner class SeeAllItemVM(val b : ItemSeeAllLayoutBinding):ViewHolder(b.root)
+class SeeAllItemAdapter(
+    val list: MutableList<RecommendData>,
+    val context: Context,
+    private val listener: OnItemsClickListener
+) : RecyclerView.Adapter<SeeAllItemAdapter.SeeAllItemVM>() {
+    inner class SeeAllItemVM(val b: ItemSeeAllLayoutBinding) : ViewHolder(b.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeeAllItemVM {
         return SeeAllItemVM(
-            DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.item_see_all_layout,parent,false)
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.item_see_all_layout,
+                parent,
+                false
+            )
         )
     }
 
@@ -30,8 +38,9 @@ inner class SeeAllItemVM(val b : ItemSeeAllLayoutBinding):ViewHolder(b.root)
         val model = list[position]
         holder.b.apply {
             model.let {
-                Glide.with(context).load(it.property_image).placeholder(R.drawable.default_image).into(ivSeeAllItem)
-                tvSealAllItemTitle.text =it.property_name
+                Glide.with(context).load(it.property_image).placeholder(R.drawable.default_image)
+                    .into(ivSeeAllItem)
+                tvSealAllItemTitle.text = it.property_name
                 tvSeeAllItemLocation.text = String.format(
                     "%s%s%s%s%s%s",
                     it.street,
@@ -41,7 +50,11 @@ inner class SeeAllItemVM(val b : ItemSeeAllLayoutBinding):ViewHolder(b.root)
                     it.pincode,
                     it.country
                 )
-                tvSeeAllItemCost.text = String.format("%s %d",context.getString(R.string.indian_currency_symbol),it.price)
+                tvSeeAllItemCost.text = String.format(
+                    "%s %d",
+                    context.getString(R.string.indian_currency_symbol),
+                    it.price
+                )
                 tvSeeAllItemPerGender.text = it.gender_type
 
             }

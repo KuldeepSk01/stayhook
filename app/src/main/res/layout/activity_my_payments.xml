@@ -47,9 +47,9 @@
                         android:id="@+id/llMyPayment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:background="@drawable/otp_box_background"
-                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:padding="@dimen/_5sdp"
                         >
 

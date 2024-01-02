@@ -63,7 +63,6 @@ class MyPaymentsActivity : BaseActivity(), OnPaymentListener {
         mViewModel.hitMyPayment(tv1.text.toString(), "")
         mViewModel.paymentsResponse.observe(this@MyPaymentsActivity, mObserver)
 
-
     }
 
     private val mObserver: Observer<ApiResponse<CollectionBaseResponse<MyPaymentsResponse>>> by lazy {
@@ -119,7 +118,7 @@ class MyPaymentsActivity : BaseActivity(), OnPaymentListener {
     }
 
     override fun onPayClickListener(model: MyPaymentsResponse) {
-        Toast.makeText(this@MyPaymentsActivity, "working...", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@MyPaymentsActivity, "working on it...", Toast.LENGTH_SHORT).show()
     }
 
 

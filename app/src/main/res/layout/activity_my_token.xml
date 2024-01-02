@@ -10,8 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.dashboard.account.myScheduledVisit.MyScheduledVisitActivity">
-
+        tools:context=".screen.dashboard.account.mytoken.MyTokenActivity">
         <androidx.core.widget.NestedScrollView
             android:id="@+id/svRegister"
             android:layout_width="match_parent"
@@ -26,23 +25,24 @@
                 android:layout_height="match_parent">
 
                 <RelativeLayout
-                    android:id="@+id/rlToolBarMyScheduledVisit"
+                    android:id="@+id/rlToolBarMyToken"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                     <include
-                        android:id="@+id/toolBarMyScheduledVisit"
+                        android:id="@+id/toolBarMyToken"
                         layout="@layout/custom_toolbar_layout" />
                 </RelativeLayout>
 
+<!--
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/llMyScheduledVisit"
+                    android:id="@+id/llMyToken"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/rlToolBarMyScheduledVisit"
+                    android:layout_below="@+id/rlToolBarMyToken"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:padding="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
+                    android:padding="@dimen/_5sdp"
                     android:background="@drawable/otp_box_background"
                     >
 
@@ -55,7 +55,6 @@
                         android:fontFamily="@font/sp_pro_display_bold"
                         android:gravity="center"
                         android:padding="@dimen/_12sdp"
-                        android:background="@drawable/select_white_bg"
                         android:text="@string/title_current" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -68,7 +67,6 @@
                         android:gravity="center"
                         android:padding="@dimen/_12sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:background="@drawable/otp_box_background"
                         android:text="@string/title_past" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -81,9 +79,9 @@
                         android:gravity="center"
                         android:padding="@dimen/_12sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:background="@drawable/otp_box_background"
                         android:text="@string/title_upcoming" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
+-->
 
                 <RelativeLayout
                     android:id="@+id/rlNoDataFound"
@@ -91,7 +89,7 @@
                     android:layout_height="match_parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_below="@+id/llMyScheduledVisit"
+                    android:layout_below="@+id/rlToolBarMyToken"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     >
@@ -109,18 +107,16 @@
                         android:text="@string/no_data_found"/>
                 </RelativeLayout>
 
-
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvMyScheduledVisit"
+                    android:id="@+id/rvMyToken"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/llMyScheduledVisit"
+                    android:layout_below="@+id/rlToolBarMyToken"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:clipToPadding="true"
-                    android:paddingBottom="@dimen/_50sdp"
-                    />
+                    android:paddingBottom="@dimen/_50sdp"                    />
 
             </RelativeLayout>
 

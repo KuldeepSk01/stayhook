@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.stayhook.R
-import com.stayhook.adapter.interfaces.OnItemsClickListener
+import com.stayhook.adapter.interfaces.RecommendationAdapterListener
 import com.stayhook.databinding.ItemRecentlyAddedLayoutBinding
 import com.stayhook.model.response.home.RecommendData
 
 class RecentlyAddedItemAdapter(
     val list: MutableList<RecommendData>,
     val context: Context,
-    private val listener: OnItemsClickListener
+    private val listener: RecommendationAdapterListener
 ) :
     RecyclerView.Adapter<RecentlyAddedItemAdapter.NearbyLVM>() {
     inner class NearbyLVM(val b: ItemRecentlyAddedLayoutBinding) : ViewHolder(b.root)
@@ -35,29 +35,30 @@ class RecentlyAddedItemAdapter(
     override fun onBindViewHolder(holder: NearbyLVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-           model.let {
-               Glide.with(context).load(it.property_image).placeholder(R.drawable.default_image).into(ivRAItem)
-               tvRAItemTitle.text = it.property_type
-               tvRAItemLocation.text = String.format(
-                   "%s%s%s%s%s%s",
-                   it.street,
-                   it.city,
-                   it.state,
-                   it.area,
-                   it.pincode,
-                   it.country
-               )
-               tvRAItemApartmentType.text = it.property_name
-               tvRAItemCost.text = String.format(
-                   "%s %d",
-                   context.getString(R.string.indian_currency_symbol),
-                   it.price
-               )
-               tvRARatingItem.text = it.rating.toString()
+            model.let {
+                Glide.with(context).load(it.property_image).placeholder(R.drawable.default_image)
+                    .into(ivRAItem)
+                tvRAItemTitle.text = it.property_type
+                tvRAItemLocation.text = String.format(
+                    "%s%s%s%s%s%s",
+                    it.street,
+                    it.city,
+                    it.state,
+                    it.area,
+                    it.pincode,
+                    it.country
+                )
+                tvRAItemApartmentType.text = it.property_name
+                tvRAItemCost.text = String.format(
+                    "%s %d",
+                    context.getString(R.string.indian_currency_symbol),
+                    it.price
+                )
+                tvRARatingItem.text = it.rating.toString()
 
-           }
+            }
             clItemRecentAdded.setOnClickListener {
-                listener.onCLickItems(model)
+                listener.onClickItems(model)
             }
         }
     }

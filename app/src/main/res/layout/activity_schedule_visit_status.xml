@@ -24,7 +24,14 @@
                 android:id="@+id/toolBarMyScheduledVisitStatus"
                 layout="@layout/custom_toolbar_layout" />
         </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rvtokenStatus"
+            app:layout_constraintTop_toBottomOf="@+id/rlToolBarMyScheduledVisitStatus"
+            tools:listitem="@layout/layout_token_token_collected"/>
 
+<!--
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +41,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rlToolBarMyScheduledVisitStatus">
 
-            <!--
+            &lt;!&ndash;
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/clScheduleVisit"
                             android:layout_width="match_parent"
@@ -212,7 +219,7 @@
                                    app:layout_constraintTop_toBottomOf="@id/monthTV" />
                &ndash;&gt;
                         </androidx.constraintlayout.widget.ConstraintLayout>
-            -->
+            &ndash;&gt;
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -245,7 +252,6 @@
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/clTokenCollectedLayout"
                                 android:layout_width="match_parent"
-                                android:visibility="gone"
                                 android:layout_height="wrap_content">
 
                                 <androidx.appcompat.widget.AppCompatImageView
@@ -342,8 +348,9 @@
                                 android:id="@+id/clVisitLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
                                 android:layout_below="@+id/clTokenCollectedLayout"
-                                android:visibility="gone">
+                                >
 
                                 <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/tvVisitTikImg"
@@ -530,6 +537,7 @@
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/clAgreementLayout"
                                 android:layout_width="match_parent"
+                                android:visibility="gone"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/clVisitLayout"
                                 >
@@ -745,7 +753,7 @@
                         </RelativeLayout>
 
 
-                        <!--
+                        &lt;!&ndash;
                                                 <androidx.constraintlayout.widget.ConstraintLayout
                                                     android:id="@+id/moveCL"
                                                     android:layout_width="match_parent"
@@ -1457,7 +1465,7 @@
 
 
                                                 </androidx.constraintlayout.widget.ConstraintLayout>
-                        -->
+                        &ndash;&gt;
 
 
                     </androidx.cardview.widget.CardView>
@@ -1466,6 +1474,7 @@
 
 
         </RelativeLayout>
+-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

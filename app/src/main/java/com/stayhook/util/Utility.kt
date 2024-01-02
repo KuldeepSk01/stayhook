@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import java.io.File
 import java.io.FileOutputStream
@@ -32,6 +33,9 @@ object Utility {
 
 fun mLog(msg:String){
     Log.d("StayHook",msg)
+}
+fun mToast(context:Context,msg:String){
+    Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
 }
 
 inline fun <reified T : Serializable> Bundle.serializable(key: String): T? = when {
@@ -76,7 +80,23 @@ fun getSelectedDateForApi(date:String): String {
     c.time = nDate!!
     val sdf1 = SimpleDateFormat("yyyy-MM-dd")
     return sdf1.format(c.time)
+}
 
+fun setMonthYearDateFormat(date:String): String {
+    val sdf = SimpleDateFormat("yyyy-MM")
+    val nDate =  sdf.parse(date)
+    val c = Calendar.getInstance()
+    c.time = nDate!!
+    val sdf1 = SimpleDateFormat("MMM,yyyy")
+    return sdf1.format(c.time)
+}
+fun setDateFormat(date:String): String {
+    val sdf = SimpleDateFormat("yyyy-MM-dd")
+    val nDate =  sdf.parse(date)
+    val c = Calendar.getInstance()
+    c.time = nDate!!
+    val sdf1 = SimpleDateFormat("MMM dd,yyyy")
+    return sdf1.format(c.time)
 }
 
 fun getCurrentDate(): String {

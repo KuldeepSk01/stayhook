@@ -17,20 +17,17 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/_5sdp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvRAItem"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivRAItem"
+                app:shapeAppearance="@style/CornerCut"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_80sdp"
-                app:cardCornerRadius="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/default_image"
+                android:scaleType="centerCrop"
+                />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ivRAItem"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/app_back_ground_img" />
-            </androidx.cardview.widget.CardView>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -38,8 +35,8 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toEndOf="@+id/cvRAItem"
-                app:layout_constraintTop_toTopOf="@+id/cvRAItem">
+                app:layout_constraintStart_toEndOf="@+id/ivRAItem"
+                app:layout_constraintTop_toTopOf="@+id/ivRAItem">
 
                <!-- <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRAItemTitle"
@@ -52,9 +49,9 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRAItemApartmentType"
-                    style="@style/defaultTextSizeStyle"
-                    android:textSize="@dimen/_12sdp"
+                    style="@style/headingTextSizeStyle1"
                     android:layout_width="wrap_content"
+                    android:textSize="@dimen/_12ssp"
                     android:textColor="@color/light_black"
                     android:layout_height="wrap_content"
                     android:text="@string/big_hall" />
@@ -117,10 +114,11 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tvRAFavItem"
-                android:layout_width="@dimen/_10sdp"
-                android:layout_height="@dimen/_10sdp"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:src="@drawable/ic_fav"
                 android:elevation="@dimen/_10sdp"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
 

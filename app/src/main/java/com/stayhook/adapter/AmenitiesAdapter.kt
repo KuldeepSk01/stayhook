@@ -29,7 +29,7 @@ class AmenitiesAdapter(val list: MutableList<PropertyInventory>, val context: Co
     override fun onBindViewHolder(holder: AmenitiesAdapterVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            Glide.with(context).load(model.image).into(ivItemAmenitiesCategory)
+            Glide.with(context).load(model.image).placeholder(R.drawable.ac).into(ivItemAmenitiesCategory)
             tvItemAmenitiesCategory.text = model.inventory_sub_category
         }
     }

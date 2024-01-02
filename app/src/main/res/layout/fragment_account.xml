@@ -196,6 +196,54 @@
 
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clMyTokenProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:onClick="@{()->aFragment.onClickMyToken()}"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_zero">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/myToken"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/sp_pro_display_regular"
+                                android:gravity="center"
+                                android:text="@string/my_token"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/nextIVToken"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:src="@drawable/ic_right_arrow"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:id="@+id/view_myToken"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="#F3F4F4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clMyTokenProfile" />
+
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/clMyBookingProfile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -203,7 +251,7 @@
                             android:onClick="@{()->aFragment.onClickMyBooking()}"
                             android:padding="@dimen/_10sdp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/view_zero">
+                            app:layout_constraintTop_toBottomOf="@id/view_myToken">
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/myBook"

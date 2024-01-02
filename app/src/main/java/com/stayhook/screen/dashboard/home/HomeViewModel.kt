@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.stayhook.R
 import com.stayhook.base.BaseViewModel
+import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.model.response.home.HomeResponse
 import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.home.privateroom.PrivateRoomActivity
@@ -17,6 +18,7 @@ import java.util.Locale
 class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
 
     private val homeResponse = MutableLiveData<ApiResponse<HomeResponse>>()
+    private val addFavoritePropertyResponse = MutableLiveData<ApiResponse<SuccessErrorResponse>>()
     lateinit var fragmentHome: HomeFragment
     fun hitHomePageApi() {
         homeRepo.executeHomePageAPi(homeResponse)
@@ -116,6 +118,16 @@ class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
 
 
         return address
+    }
+
+
+
+    fun hitAddFavoritePropertyApi(propertyId:String) {
+        homeRepo.executeAddFavoriteProperty(propertyId,addFavoritePropertyResponse)
+    }
+
+    fun getAddFavoritePropertyResponse(): MutableLiveData<ApiResponse<SuccessErrorResponse>> {
+        return addFavoritePropertyResponse
     }
 
 }

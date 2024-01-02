@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clVisitLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clTokenCollectedLayout">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/tvVisitTikImg"
+            android:layout_width="@dimen/_13sdp"
+            android:layout_height="@dimen/_13sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_payment_successful"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvVisitStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:fontFamily="@font/sp_pro_display_medium"
+            android:text="@string/tenant_schedule_visit_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintStart_toEndOf="@id/tvVisitTikImg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clVisit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/gray_box_outline_drawable"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/sucessLineSV"
+            app:layout_constraintTop_toBottomOf="@+id/tvVisitStatus">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRemarkVisitFieldName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/sp_pro_display_medium"
+                android:gravity="center"
+                android:text="@string/remark"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llVisitName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/sp_pro_display_medium"
+                android:gravity="center"
+                android:text="@string/sk_boss"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRemarkVisitFieldName">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvRemarkVisit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/sp_pro_display_medium"
+                    android:gravity="center"
+                    android:text="@string/remark"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvVisitName" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvRemarkVisitName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/sp_pro_display_medium"
+                    android:gravity="center"
+                    android:text="@string/sk_boss"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRemarkStatusVisit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:fontFamily="@font/sp_pro_display_regular"
+                android:gravity="center"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/rs_8000_paid"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/llVisitName" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvVisitDateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableStart="@drawable/ic_calender"
+                android:drawablePadding="@dimen/_5sdp"
+                android:fontFamily="@font/sp_pro_display_medium"
+                android:gravity="center"
+                android:text="@string/select_date"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRemarkStatusVisit" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvVisitDate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:fontFamily="@font/sp_pro_display_regular"
+                android:gravity="center"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/april_23_2023_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvVisitDateText" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:drawableStart="@drawable/ic_clock"
+                android:drawablePadding="@dimen/_5sdp"
+                android:fontFamily="@font/sp_pro_display_medium"
+                android:gravity="center"
+                android:text="@string/select_time"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvVisitDateText" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvVisitTime"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:fontFamily="@font/sp_pro_display_regular"
+                android:gravity="center"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/_10_am_11_am_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/time" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/sucessLineSV"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="0dp"
+            android:background="@color/green_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvVisitTikImg"
+            app:layout_constraintStart_toStartOf="@+id/tvVisitTikImg"
+            app:layout_constraintTop_toBottomOf="@id/tvVisitTikImg" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

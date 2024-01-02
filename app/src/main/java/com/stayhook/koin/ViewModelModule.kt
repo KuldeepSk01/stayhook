@@ -10,6 +10,7 @@ import com.stayhook.screen.dashboard.account.mybooking.MyBookingViewModel
 import com.stayhook.screen.dashboard.account.mypayment.MyPaymentViewModel
 import com.stayhook.screen.dashboard.account.myschedule.MyScheduleVisitStatusViewModel
 import com.stayhook.screen.dashboard.account.myschedule.MyScheduleVisitViewModel
+import com.stayhook.screen.dashboard.account.mytoken.MyTokenViewModel
 import com.stayhook.screen.dashboard.home.HomeViewModel
 import com.stayhook.screen.dashboard.home.SeeAllItemViewModel
 import com.stayhook.screen.dashboard.home.privateroom.PrivateRoomViewModel
@@ -45,6 +46,7 @@ val viewModelModule = module {
     single { BedsViewModel(get()) }
     single { PaymentViewModel(get()) }
     single { MyBookingViewModel(get()) }
+    single { MyTokenViewModel(get()) }
     single { MyScheduleVisitViewModel(get()) }
     single { MyPaymentViewModel(get()) }
     single { MyScheduleVisitStatusViewModel(get()) }

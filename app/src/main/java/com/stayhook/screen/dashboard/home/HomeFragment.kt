@@ -3,28 +3,28 @@ package com.stayhook.screen.dashboard.home
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.stayhook.R
 import com.stayhook.adapter.NearbyLocationItemAdapter
 import com.stayhook.adapter.RecentlyAddedItemAdapter
 import com.stayhook.adapter.RecommendationItemAdapter
-import com.stayhook.adapter.interfaces.OnItemsClickListener
+import com.stayhook.adapter.interfaces.RecommendationAdapterListener
 import com.stayhook.base.BaseFragment
 import com.stayhook.databinding.FragmentHomeBinding
+import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.model.response.home.HomeResponse
 import com.stayhook.model.response.home.RecommendData
 import com.stayhook.network.ApiResponse
-import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDetailActivity
 import com.stayhook.util.Constants
 import com.stayhook.util.Constants.NetworkConstant.Companion.NO_INTERNET_AVAILABLE
 import com.stayhook.util.CustomDialogs.showErrorMessage
 import com.stayhook.util.Utility.isConnectionAvailable
 import com.stayhook.util.mLog
+import com.stayhook.util.mToast
 import org.koin.core.component.inject
 
-class HomeFragment : BaseFragment(), OnItemsClickListener {
+class HomeFragment : BaseFragment(), RecommendationAdapterListener {
 
     private val homeViewModel: HomeViewModel by inject()
     private var recommendationList = mutableListOf<RecommendData>()
@@ -131,9 +131,36 @@ class HomeFragment : BaseFragment(), OnItemsClickListener {
         }
     }
 
-    override fun onCLickItems(model: RecommendData) {
+
+    override fun onClickItems(model: RecommendData) {
         mPref.put(Constants.DefaultConstants.SELECT_PROPERTY_ID, model.id.toString())
         launchActivity(RecommendationDetailActivity::class.java)
     }
+
+    override fun addFavoriteItem(model: RecommendData) {
+        homeViewModel.hitAddFavoritePropertyApi(model.id.toString())
+        homeViewModel.getAddFavoritePropertyResponse().observe(requireActivity(),addFavoriteResponseObserver)
+    }
+
+    private val addFavoriteResponseObserver: Observer<ApiResponse<SuccessErrorResponse>> by lazy {
+        Observer {
+            when (it.status) {
+                ApiResponse.Status.LOADING -> {
+                    showProgress()
+                }
+
+                ApiResponse.Status.SUCCESS -> {
+                    hitHomeApi()
+                    mToast(requireContext(), it.data?.message.toString())
+                }
+
+                ApiResponse.Status.ERROR -> {
+                    hideProgress()
+                    mToast(requireContext(), it.error?.message.toString())
+                }
+            }
+        }
+    }
+
 
 }

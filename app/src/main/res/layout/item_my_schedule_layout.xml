@@ -20,7 +20,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 app:shapeAppearance="@style/CornerCut"
-                android:id="@+id/ivItemMyBooking"
+                android:id="@+id/ivItemMyScheduleVisit"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_130sdp"
                 android:scaleType="centerCrop"
@@ -35,75 +35,74 @@
                 android:layout_margin="@dimen/_5sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivItemMyBooking">
+                app:layout_constraintTop_toBottomOf="@+id/ivItemMyScheduleVisit">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvMyBookingApartmentType"
+                    android:id="@+id/tvMyScheduleVisitApartmentType"
                     style="@style/headingTextSizeStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/mighty_cinco_family_text" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvMyBookingLocation"
+                    android:id="@+id/tvMyScheduleVisitLocation"
                     style="@style/defaultTextSizeStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_below="@+id/tvMyBookingApartmentType"
+                    android:layout_below="@+id/tvMyScheduleVisitApartmentType"
                     android:drawableStart="@drawable/ic_map_pin_gray"
                     android:drawablePadding="@dimen/_5sdp"
                     android:text="@string/noida_india_text" />
 
-               <!-- <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvMyBookingCurrentStatusTXT"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMyScheduleVisitCurrentStatusTXT"
                     style="@style/defaultTextSizeStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvMyBookingLocation"
+                    android:layout_below="@+id/tvMyScheduleVisitLocation"
                     android:drawablePadding="@dimen/_5sdp"
-                    android:text="@string/current_status" />-->
+                    android:text="@string/current_status" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvMyBookingCurrentStatus"
+                    android:id="@+id/tvMyScheduleVisitCurrentStatus"
                     style="@style/defaultTextSizeStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvMyBookingLocation"
+                    android:layout_below="@+id/tvMyScheduleVisitLocation"
+                    android:layout_toEndOf="@+id/tvMyScheduleVisitCurrentStatusTXT"
                     android:drawablePadding="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/move_in_aug_11_2023"
-                    android:fontFamily="@font/sp_pro_display_medium"
-                    android:textColor="@color/online_status_color" />
+                    android:text="@string/token_collected"
+                    android:textColor="@color/green_color" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvMyBookingReqMoveOutStatus"
-                    style="@style/defaultTextSizeStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvMyBookingCurrentStatus"
-                    android:drawablePadding="@dimen/_5sdp"
-
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/move_out_request"
-                    android:textSize="@dimen/_8ssp"
-                    android:fontFamily="@font/sp_pro_display_regular"
-                    android:textColor="@color/gray1" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvBookingMoveOutBtn"
+                <RelativeLayout
+                    android:id="@+id/rlViewStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/light_red_bg"
-                    android:textColor="@color/red_color"
-                    android:fontFamily="@font/sp_pro_display_bold"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_5sdp"
-                    android:padding="@dimen/_8sdp"
-                    android:text="@string/move_out"
-                    android:layout_below="@id/tvMyBookingReqMoveOutStatus" />
+                    android:layout_below="@id/tvMyScheduleVisitCurrentStatusTXT"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp">
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvMyScheduleVisitViewStatus"
+                        style="@style/defaultTextSizeStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/view_status"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/_10ssp"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvMyScheduleVisitArrow"
+                        style="@style/defaultTextSizeStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_right_arrow"
+                        android:drawablePadding="@dimen/_5sdp" />
+
+                </RelativeLayout>
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

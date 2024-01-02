@@ -16,7 +16,7 @@ object Constants {
         const val LONGITUDE = "LONGITUDE"
         const val AUTHORIZATION = "Authorization"
         const val USER_DETAIL = "USER_DETAIL"
-        const val API_TIMEOUT = 6000L
+        const val API_TIMEOUT = 60000L
         fun updateUserDetail(response: UserResponse) {
             val updateResponse = UserResponse().apply {
                 id = response.id
@@ -50,7 +50,9 @@ object Constants {
             const val getPropertyBedApi = "getRoomBed"
             const val tokenCollected = "tokenCollected"
             const val getTokenCollected = "getTokenCollected"
+            const val getMyBooking = "getMyBooking"
             const val getScheduledToken = "getScheduleToken"
+            const val requestMoveout = "requestMoveout"
             const val getScheduledDetailToken = "getScheduleTokenDetails"
             const val scheduleVisit = "scheduleVisit"
             const val myPayments = "myPayment"

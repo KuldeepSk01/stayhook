@@ -20,6 +20,7 @@ import com.stayhook.screen.dashboard.account.mybooking.MyBookingActivity
 import com.stayhook.screen.dashboard.account.mypayment.MyPaymentsActivity
 import com.stayhook.screen.dashboard.account.myschedule.MyScheduledVisitActivity
 import com.stayhook.screen.dashboard.account.myticket.MyTicketActivity
+import com.stayhook.screen.dashboard.account.mytoken.MyTokenActivity
 import com.stayhook.screen.login.LoginActivity
 import com.stayhook.util.CustomDialogs
 import org.koin.core.component.inject
@@ -38,7 +39,7 @@ class AccountFragment : BaseFragment() {
         accountBinding.aFragment = this@AccountFragment
         accountBinding.apply {
             toolbarProfile.apply {
-                ivToolBarBack.visibility = View.GONE
+                ivToolBarBack.visibility = View.INVISIBLE
                 tvToolBarTitle.text = getString(R.string.profile)
             }
         }
@@ -56,6 +57,10 @@ class AccountFragment : BaseFragment() {
 
     fun onClickMyBooking() {
         launchActivity(MyBookingActivity::class.java)
+    }
+
+    fun onClickMyToken() {
+        launchActivity(MyTokenActivity::class.java)
     }
 
     fun onClickMyPayment() {

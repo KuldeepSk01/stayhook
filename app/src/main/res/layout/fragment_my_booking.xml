@@ -35,62 +35,88 @@
                         layout="@layout/custom_toolbar_layout" />
                 </RelativeLayout>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/llMyBooking"
+                <RelativeLayout
+                    android:id="@+id/rlNoDataFound"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_below="@+id/rlToolBarMyBooking"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:background="@drawable/otp_box_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     >
-
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/animation_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_300sdp"
+                        app:lottie_fileName="nodata.json"
+                        />
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvCurrentMB"
-                        style="@style/defaultTextSizeStyle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/sp_pro_display_bold"
-                        android:gravity="center"
-                        android:padding="@dimen/_12sdp"
-                        android:text="@string/title_current" />
+                        android:gravity="center_horizontal"
+                        android:layout_below="@id/animation_view"
+                        android:text="@string/no_data_found"/>
+                </RelativeLayout>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvPastMB"
-                        style="@style/defaultTextSizeStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/sp_pro_display_bold"
-                        android:gravity="center"
-                        android:padding="@dimen/_12sdp"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:text="@string/title_past" />
+                <!--
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:id="@+id/llMyBooking"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/rlToolBarMyBooking"
+                                    android:layout_marginStart="@dimen/_15sdp"
+                                    android:layout_marginEnd="@dimen/_15sdp"
+                                    android:padding="@dimen/_5sdp"
+                                    android:background="@drawable/otp_box_background"
+                                    >
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvUpcomingMB"
-                        style="@style/defaultTextSizeStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/sp_pro_display_bold"
-                        android:gravity="center"
-                        android:padding="@dimen/_12sdp"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:text="@string/title_upcoming" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tvCurrentMB"
+                                        style="@style/defaultTextSizeStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/sp_pro_display_bold"
+                                        android:gravity="center"
+                                        android:padding="@dimen/_12sdp"
+                                        android:text="@string/title_current" />
 
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tvPastMB"
+                                        style="@style/defaultTextSizeStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/sp_pro_display_bold"
+                                        android:gravity="center"
+                                        android:padding="@dimen/_12sdp"
+                                        android:layout_marginStart="@dimen/_5sdp"
+                                        android:text="@string/title_past" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tvUpcomingMB"
+                                        style="@style/defaultTextSizeStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/sp_pro_display_bold"
+                                        android:gravity="center"
+                                        android:padding="@dimen/_12sdp"
+                                        android:layout_marginStart="@dimen/_5sdp"
+                                        android:text="@string/title_upcoming" />
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+                -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvMyBooking"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/llMyBooking"
+                    android:layout_below="@+id/rlToolBarMyBooking"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    tools:listitem="@layout/item_my_booking_layout"
+                    android:clipToPadding="true"
+                    android:paddingBottom="@dimen/_50sdp"
                     />
 
 

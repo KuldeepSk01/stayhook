@@ -3,10 +3,12 @@ package com.stayhook.network
 import com.stayhook.base.BaseResponse
 import com.stayhook.base.CollectionBaseResponse
 import com.stayhook.model.request.GetPropertyRequest
+import com.stayhook.model.request.MoveOutBookingRequest
 import com.stayhook.model.request.PropertyRoomRequest
 import com.stayhook.model.request.ScheduleAVisitRequest
 import com.stayhook.model.request.UserRequest
 import com.stayhook.model.request.WriteReviewRequest
+import com.stayhook.model.response.MyBookingResponse
 import com.stayhook.model.response.MyPaymentsResponse
 import com.stayhook.model.response.MyProfileResponse
 import com.stayhook.model.response.OTPResponse
@@ -24,6 +26,8 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
@@ -65,8 +69,17 @@ interface ApiService {
     @POST(Constants.NetworkConstant.getTokenCollected)
     fun getTokenCollected(): Call<CollectionBaseResponse<TokenCollectedResponse>>
 
+
+    @POST(Constants.NetworkConstant.getMyBooking)
+    fun getMyBooking(): Call<CollectionBaseResponse<MyBookingResponse>>
+
+    @POST(Constants.NetworkConstant.requestMoveout)
+    fun requestMoveOutBooking(@Body req: MoveOutBookingRequest): Call<CollectionBaseResponse<SuccessErrorResponse>>
+
+
+    @FormUrlEncoded
     @POST(Constants.NetworkConstant.getScheduledToken)
-    fun getScheduledToken(): Call<CollectionBaseResponse<TokenCollectedResponse>>
+    fun getScheduledToken(@Field("time_status") status:String): Call<CollectionBaseResponse<TokenCollectedResponse>>
 
     @POST(Constants.NetworkConstant.getScheduledDetailToken)
     fun getScheduledDetailToken(@Query("id") tokenId:String): Call<BaseResponse<TokenCollectedResponse>>
@@ -119,6 +132,9 @@ interface ApiService {
 
     @POST(Constants.NetworkConstant.addReview)
     fun addReview(@Body request: WriteReviewRequest): Call<SuccessErrorResponse>
+    @POST(Constants.NetworkConstant.addRemoveFavorite)
+    fun addORRemoveFavorite(@Query("property_id") propertyId:String): Call<SuccessErrorResponse>
+
 
 
 

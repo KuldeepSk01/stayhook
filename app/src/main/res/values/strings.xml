@@ -409,12 +409,12 @@
         <item>45000</item>
     </string-array>
 
-<!--    slider range -->
+    <!--    slider range -->
     <array name="slider_values">
         <item>0.0</item>
         <item>10.0</item>
     </array>
-<!--    slider range-->
+    <!--    slider range-->
 
 
     <!--validation keys-->
@@ -458,4 +458,7 @@
     <string name="error_empty_search_location">Please enter you location!</string>
     <string name="enter_your_location">Enter your location..</string>
     <string name="search_location">Search location...</string>
+    <string name="my_token">My Token</string>
+    <string name="error_term_condition">Please accepted Term and Condition!</string>
+    <string name="move_out_request">Move-Out Request</string>
 </resources>

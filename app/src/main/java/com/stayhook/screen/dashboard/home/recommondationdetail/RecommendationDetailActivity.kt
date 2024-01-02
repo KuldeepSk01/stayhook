@@ -7,7 +7,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebViewClient
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.res.ResourcesCompat
@@ -41,6 +40,7 @@ import com.stayhook.util.mLog
 import org.koin.core.component.inject
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
+import java.text.DecimalFormat
 
 
 class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
@@ -74,7 +74,7 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
 
         mViewModel.hitPropertyDetail(propertyId)
         mViewModel.getPropertyDetailResponse()
-            .observe(this@RecommendationDetailActivity, propertyDetailReponseObserver)
+            .observe(this@RecommendationDetailActivity, propertyDetailResponseObserver)
 
         rdBinding.apply {
             toolbarRD.apply {
@@ -150,7 +150,7 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
-    private val propertyDetailReponseObserver: Observer<ApiResponse<BaseResponse<GetPropertyDetail>>> by lazy {
+    private val propertyDetailResponseObserver: Observer<ApiResponse<BaseResponse<GetPropertyDetail>>> by lazy {
         Observer {
             when (it.status) {
                 ApiResponse.Status.LOADING -> {
@@ -207,13 +207,18 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
                 }
 
 
+                if (it.is_wishlist==0){
+                    toolbarRD.ivToolBarRightIcon.background  = ResourcesCompat.getDrawable(resources,R.drawable.iv_fav_with_gray_bg ,null)
+                }else{
+                    toolbarRD.ivToolBarRightIcon.background  = ResourcesCompat.getDrawable(resources,R.drawable.ic_fav,null)
+                }
                 indicatorRD.setViewPager(viewPagerRD)
                 inventorylist = it.property_inventory as MutableList<PropertyInventory>
                 roomList = it.property_room as MutableList<PropertyRoom>
                 tvDetailApartmentType.text = it.property_name
-                tvDetailPageRatings.text = String.format("%s %s",it.rating.toString(),"(${it.total_review.toString()} Reviews)")
+                tvDetailPageRatings.text = String.format("%s %s",DecimalFormat("#.#").format(it.rating).toString(),"(${it.total_review.toString()} Reviews)")
                 tvDetailRoomType.text = it.property_type
-                mLog("Reccommendation Detail Loction ${String.format(
+                mLog("Reccommendation Detail Location ${String.format(
                     "%s%s%s%s%s%s",
                     it.street,
                     it.city,

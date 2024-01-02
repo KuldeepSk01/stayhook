@@ -39,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_120sdp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/app_back_ground_img"
+                    android:src="@drawable/default_image"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,8 +81,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_5sdp"
+                    android:textSize="@dimen/_13ssp"
                     android:text="@string/big_hall"
                     style="@style/headingTextSizeStyle1"
                     app:layout_constraintStart_toStartOf="parent"
@@ -95,9 +96,11 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:fontFamily="@font/sp_pro_display_regular"
                     android:gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:drawableStart="@drawable/ic_map_pin_gray"
                     android:text="@string/address_detail"
-                    android:textColor="@color/grey"
-                    style="defa"
+                    android:drawablePadding="@dimen/_3sdp"
+                    style="@style/defaultTextSizeStyle"
 
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvApartmentItemMyPayment" />
@@ -109,49 +112,65 @@
                     style="@style/defaultTextSizeStyle"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/sp_pro_display_medium"
                     android:gravity="center"
                     android:text="@string/rent_for_jan_2022_text"
                     android:textColor="#ED0303"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvLocationItemPayment" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/amountTV"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:fontFamily="@font/sp_pro_display_bold"
-                    android:gravity="center"
-                    android:text="@string/amount"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp"
-                    app:layout_constraintEnd_toStartOf="@id/monthTV"
-                    app:layout_constraintTop_toBottomOf="@id/tvLocationItemPayment" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/monthTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:fontFamily="@font/sp_pro_display_regular"
-                    android:gravity="center"
-                    android:text="@string/month"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_8sdp"
+                    android:id="@+id/clPaymentAmountItem"
+                    android:layout_marginTop="@dimen/_5sdp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvLocationItemPayment" />
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tvLocationItemPayment"
+                    >
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/amountTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:fontFamily="@font/sp_pro_display_bold"
+                        android:gravity="center"
+                        android:text="@string/amount"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/monthTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:fontFamily="@font/sp_pro_display_regular"
+                        android:gravity="center"
+                        android:text="@string/month"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_8sdp"
+                        app:layout_constraintStart_toEndOf="@+id/amountTV"
+                        app:layout_constraintTop_toTopOf="parent"
+                       />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvPaymentPriceBtn"
-                    android:background="@drawable/btn_background"
-                    android:padding="@dimen/_10sdp"
+                    style="@style/defaultBtnStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/pay_25_000"
+                    android:textSize="@dimen/_10ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="center"
                     app:layout_constraintStart_toStartOf="parent"
@@ -159,8 +178,7 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:textColor="@color/white"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:fontFamily="@font/sp_pro_display_bold"
-                    app:layout_constraintTop_toBottomOf="@id/monthTV" />
+                    app:layout_constraintTop_toBottomOf="@id/clPaymentAmountItem" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

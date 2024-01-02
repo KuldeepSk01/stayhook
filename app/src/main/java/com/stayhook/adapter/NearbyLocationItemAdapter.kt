@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.stayhook.R
-import com.stayhook.adapter.interfaces.OnItemsClickListener
+import com.stayhook.adapter.interfaces.RecommendationAdapterListener
 import com.stayhook.databinding.ItemNearbyLocationLayoutBinding
 import com.stayhook.model.response.home.RecommendData
 
 class NearbyLocationItemAdapter(
     val list: MutableList<RecommendData>,
     val context: Context,
-    private val listener: OnItemsClickListener
+    private val listener: RecommendationAdapterListener
 ) :
     RecyclerView.Adapter<NearbyLocationItemAdapter.NearbyLVM>() {
     inner class NearbyLVM(val b: ItemNearbyLocationLayoutBinding) : ViewHolder(b.root)
@@ -35,21 +35,22 @@ class NearbyLocationItemAdapter(
     override fun onBindViewHolder(holder: NearbyLVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-           model.let {
-               holder.b.tvItemNearbyLocation.text = String.format(
-                   "%s%s%s%s%s%s",
-                   it.street,
-                   it.city,
-                   it.state,
-                   it.area,
-                   it.pincode,
-                   it.country
-               )
-               Glide.with(context).load(it.property_image).placeholder(R.drawable.default_image).into(ivItemNearbyLocation)
+            model.let {
+                holder.b.tvItemNearbyLocation.text = String.format(
+                    "%s%s%s%s%s%s",
+                    it.street,
+                    it.city,
+                    it.state,
+                    it.area,
+                    it.pincode,
+                    it.country
+                )
+                Glide.with(context).load(it.property_image).placeholder(R.drawable.default_image)
+                    .into(ivItemNearbyLocation)
 
-           }
+            }
             rlItemSearchNearByLocation.setOnClickListener {
-                listener.onCLickItems(model)
+                listener.onClickItems(model)
             }
         }
     }
