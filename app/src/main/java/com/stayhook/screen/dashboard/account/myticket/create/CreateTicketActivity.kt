@@ -26,7 +26,7 @@ class CreateTicketActivity : BaseActivity() {
                 CustomDialogs.showCustomSuccessDialog(this@CreateTicketActivity,
                     getString(R.string.ticket_created_successfully_text),
                     getString(R.string.ticket_created_successfully_text),
-                    getString(R.string.new_ticket_text),
+                    getString(R.string.title_okay),
                     object : CustomDialogs.CustomDialogsListener {
                         override fun onComplete(d: Dialog) {
                             d.dismiss()

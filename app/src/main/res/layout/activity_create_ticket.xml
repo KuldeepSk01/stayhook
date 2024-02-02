@@ -49,19 +49,20 @@
                         android:fontFamily="@font/sp_pro_display_bold"
 
                         android:gravity="center"
-                        android:text="@string/title"
+                        android:text="@string/select_tenant"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/etTitleCreateTicket"
                         style="@style/defaultEditTextStyle1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:hint="@string/title"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:drawableEnd="@drawable/ic_down_arrow"
+                        android:hint="@string/assigned"
                         android:singleLine="true"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/sqft" />
@@ -74,21 +75,105 @@
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/sp_pro_display_bold"
                         android:gravity="center"
-                        android:text="@string/description"
+                        android:text="@string/select_property"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/etTitleCreateTicket" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/etDescriptionCreateTicket"
                         style="@style/defaultEditTextStyle1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/desc_text"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:drawableEnd="@drawable/ic_down_arrow"
+                        android:hint="@string/assigned"
                         android:singleLine="true"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/desc" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvIssueType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/sp_pro_display_bold"
+                        android:gravity="center"
+                        android:text="@string/issue_type"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/etDescriptionCreateTicket" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/etIssueType"
+                        style="@style/defaultEditTextStyle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:drawableEnd="@drawable/ic_down_arrow"
+                        android:hint="@string/assigned"
+                        android:singleLine="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIssueType" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvIssue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/sp_pro_display_bold"
+                        android:gravity="center"
+                        android:text="@string/issue"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/etIssueType" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etIssue"
+                        style="@style/defaultEditTextStyle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:hint="@string/issue"
+                        android:singleLine="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIssue" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvIssueDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/sp_pro_display_bold"
+                        android:gravity="center"
+                        android:text="@string/issue_detail"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/etIssue" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etIssueDetail"
+                        style="@style/defaultEditTextStyle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:hint="@string/detail"
+                        android:lines="5"
+                        android:gravity="top"
+                        android:inputType="textMultiLine"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIssueDetail" />
+
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvUploadCreateTicket"
@@ -102,7 +187,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/etDescriptionCreateTicket" />
+                        app:layout_constraintTop_toBottomOf="@id/etIssueDetail" />
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -150,27 +235,26 @@
         </androidx.core.widget.NestedScrollView>
 
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/app_box_background"
+            android:padding="@dimen/_15sdp"
+            app:cardElevation="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/app_box_background"
-                    android:padding="@dimen/_15sdp"
-                    app:cardElevation="@dimen/_20sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/btnNewTicket"
-                        style="@style/defaultBtnStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:gravity="center"
-                        android:text="@string/create_ticket" />
-                </androidx.cardview.widget.CardView>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnNewTicket"
+                style="@style/defaultBtnStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:gravity="center"
+                android:text="@string/create_ticket" />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

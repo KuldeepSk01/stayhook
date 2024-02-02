@@ -687,59 +687,85 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/seperator2"
+                                android:layout_marginTop="@dimen/_10sdp"
                                 android:text="@string/reviews" />
 
                             <RelativeLayout
                                 android:id="@+id/rlReviewsLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvReviews"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:background="@drawable/gray_box_outline_drawable"
-                                android:padding="@dimen/_10sdp">
+                                android:layout_below="@+id/tvReviews">
 
                                 <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/ivReviewsProfile"
-                                    android:layout_width="@dimen/_50sdp"
-                                    android:layout_height="@dimen/_50sdp"
-                                    android:src="@drawable/avatar_profile" />
+                                    android:id="@+id/ivBackReviewBtn"
+                                    android:layout_width="@dimen/_25sdp"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:elevation="@dimen/_5sdp"
+                                    android:src="@drawable/ic_back_black"
 
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/tvReviewsTitle"
-                                    style="@style/headingTextSizeStyle1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_toEndOf="@+id/ivReviewsProfile"
-                                    android:text="@string/marlis_choe_text" />
+                                    />
 
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/tvReviewsRatings"
-                                    style="@style/defaultTextSizeStyle"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tvReviewsTitle"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_toEndOf="@+id/ivReviewsProfile"
-                                    android:text="@string/_10_may_2000_text" />
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivNextReviewBtn"
+                                    android:layout_width="@dimen/_25sdp"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:elevation="@dimen/_5sdp"
+                                    android:src="@drawable/ic_next_black" />
 
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/tvReviewsGB"
-                                    android:layout_width="wrap_content"
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rvPropertyReviews"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tvReviewsRatings"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_toEndOf="@+id/ivReviewsProfile"
-                                    android:text="@string/good_budget_text" />
+                                    android:clipToPadding="true"
+                                    tools:itemCount="1"
+                                    tools:listitem="@layout/item_review_layout" />
 
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/tvReviewsDiscription"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tvReviewsGB"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_toEndOf="@+id/ivReviewsProfile"
-                                    android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry" />
+                                <!--       <androidx.appcompat.widget.AppCompatImageView
+                                           android:id="@+id/ivReviewsProfile"
+                                           android:layout_width="@dimen/_50sdp"
+                                           android:layout_height="@dimen/_50sdp"
+                                           android:src="@drawable/avatar_profile" />
+
+                                       <androidx.appcompat.widget.AppCompatTextView
+                                           android:id="@+id/tvReviewsTitle"
+                                           style="@style/headingTextSizeStyle1"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_marginStart="@dimen/_10sdp"
+                                           android:layout_toEndOf="@+id/ivReviewsProfile"
+                                           android:text="@string/marlis_choe_text" />
+
+                                       <androidx.appcompat.widget.AppCompatTextView
+                                           android:id="@+id/tvReviewsRatings"
+                                           style="@style/defaultTextSizeStyle"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_below="@+id/tvReviewsTitle"
+                                           android:layout_marginStart="@dimen/_10sdp"
+                                           android:layout_toEndOf="@+id/ivReviewsProfile"
+                                           android:text="@string/_10_may_2000_text" />
+
+                                       <androidx.appcompat.widget.AppCompatTextView
+                                           android:id="@+id/tvReviewsGB"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_below="@+id/tvReviewsRatings"
+                                           android:layout_marginStart="@dimen/_10sdp"
+                                           android:layout_toEndOf="@+id/ivReviewsProfile"
+                                           android:text="@string/good_budget_text" />
+
+                                       <androidx.appcompat.widget.AppCompatTextView
+                                           android:id="@+id/tvReviewsDiscription"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_below="@+id/tvReviewsGB"
+                                           android:layout_marginStart="@dimen/_10sdp"
+                                           android:layout_toEndOf="@+id/ivReviewsProfile"
+                                           android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry" />-->
                             </RelativeLayout>
 
                             <!--                        <androidx.appcompat.widget.AppCompatTextView
@@ -794,9 +820,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clRdChatLayout"
-            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
             <FrameLayout
                 android:id="@+id/flRdChat"

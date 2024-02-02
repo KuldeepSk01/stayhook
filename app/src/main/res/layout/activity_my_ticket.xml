@@ -7,124 +7,184 @@
 
     </data>
 
+
+    <!--  <androidx.core.widget.NestedScrollView
+          android:id="@+id/svRegister"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:fillViewport="true"
+          android:scrollIndicators="none"
+          android:scrollbars="none">-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".screen.dashboard.account.myticket.MyTicketActivity">
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/svRegister"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:scrollIndicators="none"
-            android:scrollbars="none">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".screen.dashboard.account.myticket.MyTicketActivity">
-
-                <RelativeLayout
-                    android:id="@+id/rlToolbarMyTicket"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <include
-                        android:id="@+id/toolbarMyTicket"
-                        layout="@layout/custom_toolbar_layout" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rlRecyclerViewMyTicket"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/rlToolbarMyTicket">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvMyTickets"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clipToPadding="true"
-                        android:paddingBottom="@dimen/_100sdp"
-                        tools:listitem="@layout/item_my_tickets_layout" />
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:id="@+id/rlNoTickets"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_10sdp"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rlToolbarMyTicket">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ivInfoCT"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_info_bg" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvInfoCT"
-                        style="@style/headingTextSizeStyle2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/ivInfoCT"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:text="@string/no_tickets_text" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvInfoDescCT"
-                        style="@style/headingTextSizeStyle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvInfoCT"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:gravity="center"
-                        android:text="@string/create_new_ticket_by_clicking_on_new_ticket_button_below" />
-
-                </RelativeLayout>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvBtnNewTicket"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rlToolbarMyTicket"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/app_box_background"
-            android:padding="@dimen/_15sdp"
-            app:cardElevation="@dimen/_20sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBackBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back_arrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/btnNewTicket"
-                style="@style/defaultBtnStyle"
-                android:layout_width="match_parent"
+                android:id="@+id/tvTicketTitle"
+                style="@style/headingTextSizeStyle1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/my_ticket_text"
+                app:layout_constraintBottom_toBottomOf="@+id/ivBackBtn"
+                app:layout_constraintEnd_toStartOf="@+id/tvAddTicketBtn"
+                app:layout_constraintStart_toEndOf="@+id/ivBackBtn"
+                app:layout_constraintTop_toTopOf="@+id/ivBackBtn" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAddTicketBtn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:drawableStart="@drawable/ic_add"
+                android:drawablePadding="@dimen/_5sdp"
                 android:gravity="center"
-                android:text="@string/new_ticket_text" />
-        </androidx.cardview.widget.CardView>
+                android:text="@string/add_ticket"
+                app:layout_constraintBottom_toBottomOf="@+id/ivBackBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivBackBtn" />
+
+            <!--  <include
+                  android:id="@+id/toolbarMyTicket"
+                  layout="@layout/custom_toolbar_layout" />-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutMyTicket"
+            app:layout_constraintTop_toBottomOf="@+id/rlToolbarMyTicket"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            >
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open"
+                />
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/in_process"
+                />
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/closed"
+                />
+        </com.google.android.material.tabs.TabLayout>
+
+        <!-- <androidx.appcompat.widget.AppCompatTextView
+             android:id="@+id/btnNewTicket"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="@dimen/_5sdp"
+             android:layout_marginBottom="@dimen/_10sdp"
+             android:gravity="center"
+             android:drawableStart="@drawable/ic_add"
+             android:text="@string/add_ticket"
+             android:drawablePadding="@dimen/_5sdp"
+             app:layout_constraintTop_toBottomOf="@+id/rlToolbarMyTicket"
+             app:layout_constraintEnd_toEndOf="parent"
+             />
+-->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/svRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollIndicators="none"
+            android:layout_marginTop="@dimen/_10sdp"
+
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayoutMyTicket">
+
+            <RelativeLayout
+                android:id="@+id/rlRecyclerViewMyTicket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMyTickets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="true"
+                    tools:itemCount="1"
+                    android:paddingBottom="@dimen/_100sdp"
+                    tools:listitem="@layout/item_my_tickets_layout" />
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <RelativeLayout
+            android:id="@+id/rlNoTickets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rlToolbarMyTicket">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivInfoCT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_info_bg" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvInfoCT"
+                style="@style/headingTextSizeStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivInfoCT"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/no_tickets_text" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvInfoDescCT"
+                style="@style/headingTextSizeStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvInfoCT"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:gravity="center"
+                android:text="@string/create_new_ticket_by_clicking_on_new_ticket_button_below" />
+
+        </RelativeLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

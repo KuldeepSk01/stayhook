@@ -30,6 +30,8 @@ data class GetPropertyDetail(
     val property_name: String,
     @SerializedName("property_room")
     val property_room: List<PropertyRoom>,
+    @SerializedName("property_review")
+    val propertyReview: List<PropertyReview>,
     @SerializedName("property_type")
     val property_type: String,
     @SerializedName("property_type_id")

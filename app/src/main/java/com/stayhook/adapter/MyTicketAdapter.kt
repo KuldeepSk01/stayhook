@@ -29,9 +29,19 @@ class MyTicketAdapter(val list: MutableList<Ticket>, val context: Context,privat
     override fun onBindViewHolder(holder: MyTicketVM, position: Int) {
         val model = list[position]
         holder.b.apply {
-            tvItemTicketStatus.text = "${model.id} - Open"
-            tvItemTicketTitle.text = model.ticketTitle
-            tvItemTicketDescription.text = model.ticketDescription
+            tvItemTicketProperty.text = model.property
+            tvItemTicketTenantName.text = model.tenantName
+            tvItemTicketTenantType.text  = model.issue
+            tvItemTicketTenantIssueType.text = model.issueType
+            tvItemTicketTenantIssueDetail.text = model.issueDetail
+            when(model.status){
+                "Open"->{
+
+                }
+                "In Process"->{}
+                "closed"->{}
+            }
+
             clItemTicket.setOnClickListener {
                 listener.onTicketClick(model)
             }

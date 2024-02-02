@@ -14,6 +14,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -21,6 +22,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.stayhook.R
 import com.stayhook.adapter.AmenitiesAdapter
 import com.stayhook.adapter.RecommendationDetailAdapter
+import com.stayhook.adapter.ReviewsAdapter
 import com.stayhook.adapter.interfaces.AdapterRoomTypes
 import com.stayhook.base.BaseActivity
 import com.stayhook.base.BaseResponse
@@ -28,6 +30,7 @@ import com.stayhook.databinding.FragmentRecommendationDetailBinding
 import com.stayhook.model.response.getpopertydetail.GetPropertyDetail
 import com.stayhook.model.response.getpopertydetail.PropertyImage
 import com.stayhook.model.response.getpopertydetail.PropertyInventory
+import com.stayhook.model.response.getpopertydetail.PropertyReview
 import com.stayhook.model.response.getpopertydetail.PropertyRoom
 import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.home.recommondationdetail.bookapartment.RoomActivity
@@ -48,22 +51,29 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
     private val mViewModel: RecommendationViewModel by inject()
     private lateinit var propertyDetail: GetPropertyDetail
     private var inventorylist = mutableListOf<PropertyInventory>()
+    private var propertyReviewList = mutableListOf<PropertyReview>()
     private var roomList = mutableListOf<PropertyRoom>()
+    lateinit var reviewAdapter: ReviewsAdapter
+
+
     private lateinit var propertyId: String
     private lateinit var mGoogleMap: GoogleMap
-    private var isChatOpen : Boolean = false
+    private var isChatOpen: Boolean = false
 
+   private var itemCount: Int = 0
 
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewInit(binding: ViewDataBinding?) {
         rdBinding = binding as FragmentRecommendationDetailBinding
 
+
     }
 
     override fun onResume() {
         super.onResume()
         propertyId = mPref[Constants.DefaultConstants.SELECT_PROPERTY_ID, ""]!!
+        reviewAdapter = ReviewsAdapter(propertyReviewList, this@RecommendationDetailActivity)
 
         /* locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
          if (setLocationPermission(verifyMe2Activity)) {
@@ -71,6 +81,22 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
          }else{
              mToast("Please enable location permission.")
          }*/
+
+            rdBinding.ivBackReviewBtn.setOnClickListener {
+                if (itemCount != 0) {
+                    mLog("Back count $itemCount")
+                    itemCount--
+                    rdBinding.rvPropertyReviews.smoothScrollToPosition(itemCount)
+                }
+            }
+        rdBinding.ivNextReviewBtn.setOnClickListener {
+            if (itemCount != propertyReviewList.size) {
+                mLog("Next count $itemCount")
+                itemCount++
+                rdBinding.rvPropertyReviews.smoothScrollToPosition(itemCount)
+            }
+        }
+
 
         mViewModel.hitPropertyDetail(propertyId)
         mViewModel.getPropertyDetailResponse()
@@ -88,7 +114,6 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
             }
 
 
-
             /*  val searchMap =  supportFragmentManager.findFragmentById(R.id.searchMapRD) as SupportMapFragment
               searchMap.getMapAsync(this@RecommendationDetailActivity)
   */
@@ -97,12 +122,12 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
                 isChatOpen = true
                 clRdLayout.visibility = View.GONE
                 clRdChatLayout.visibility = View.VISIBLE
-                replaceFragment(R.id.flRdChat,MessageFragment())
+                replaceFragment(R.id.flRdChat, MessageFragment())
             }
             tvRDScheduleList.setOnClickListener {
-                val b  = Bundle()
-                b.putSerializable("propertyDetail",propertyDetail)
-                launchActivity(ScheduleVisitActivity::class.java,"bundleDetail",b)
+                val b = Bundle()
+                b.putSerializable("propertyDetail", propertyDetail)
+                launchActivity(ScheduleVisitActivity::class.java, "bundleDetail", b)
 
             }
             tvViewMoreBtn.setOnClickListener {
@@ -120,9 +145,9 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
 
 
             btnBookDetail.setOnClickListener {
-                val b  = Bundle()
-                b.putSerializable("propertyDetail",propertyDetail)
-                launchActivity(RoomActivity::class.java,"bundleDetail",b)
+                val b = Bundle()
+                b.putSerializable("propertyDetail", propertyDetail)
+                launchActivity(RoomActivity::class.java, "bundleDetail", b)
             }
 
         }
@@ -177,13 +202,16 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
     private fun setDetail(getPropertyDetail: GetPropertyDetail) {
         rdBinding.apply {
             getPropertyDetail.let {
-                mPref.put(Constants.DefaultConstants.SELECT_PROPERTY_ID,it.id.toString())
+                mPref.put(Constants.DefaultConstants.SELECT_PROPERTY_ID, it.id.toString())
                 mLog("Property map ${it.property_map}")
 
-                if (it.property_images.isEmpty()){
+                if (it.property_images.isEmpty()) {
                     mLog("Property images is empty")
-                    viewPagerRD.adapter= RecommendationDetailAdapter(getDefaultPropertyImages(),this@RecommendationDetailActivity)
-                }else{
+                    viewPagerRD.adapter = RecommendationDetailAdapter(
+                        getDefaultPropertyImages(),
+                        this@RecommendationDetailActivity
+                    )
+                } else {
                     viewPagerRD.adapter = RecommendationDetailAdapter(
                         it.property_images as MutableList<PropertyImage>,
                         this@RecommendationDetailActivity
@@ -192,8 +220,8 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
                 wvMap.settings.javaScriptEnabled = true
                 wvMap.webViewClient = WebViewClient()
                 try {
-                    val  encodedUrl = URLEncoder.encode(
-                    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.0478030975714!2d77.37883717549848!3d28.568327225699832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef5e4bee0711%3A0xae2422de42cff45!2sSILICON%20CITY%2C%20Sector%2076%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1702626638694!5m2!1sen!2sin",
+                    val encodedUrl = URLEncoder.encode(
+                        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.0478030975714!2d77.37883717549848!3d28.568327225699832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef5e4bee0711%3A0xae2422de42cff45!2sSILICON%20CITY%2C%20Sector%2076%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1702626638694!5m2!1sen!2sin",
                         "UTF-8"
                     )
                     val i = 0
@@ -207,26 +235,32 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
                 }
 
 
-                if (it.is_wishlist==0){
-                    toolbarRD.ivToolBarRightIcon.background  = ResourcesCompat.getDrawable(resources,R.drawable.iv_fav_with_gray_bg ,null)
-                }else{
-                    toolbarRD.ivToolBarRightIcon.background  = ResourcesCompat.getDrawable(resources,R.drawable.ic_fav,null)
+                if (it.is_wishlist == 0) {
+                    toolbarRD.ivToolBarRightIcon.background =
+                        ResourcesCompat.getDrawable(resources, R.drawable.iv_fav_with_gray_bg, null)
+                } else {
+                    toolbarRD.ivToolBarRightIcon.background =
+                        ResourcesCompat.getDrawable(resources, R.drawable.ic_fav, null)
                 }
                 indicatorRD.setViewPager(viewPagerRD)
                 inventorylist = it.property_inventory as MutableList<PropertyInventory>
                 roomList = it.property_room as MutableList<PropertyRoom>
                 tvDetailApartmentType.text = it.property_name
-                tvDetailPageRatings.text = String.format("%s %s",DecimalFormat("#.#").format(it.rating).toString(),"(${it.total_review.toString()} Reviews)")
+                tvDetailPageRatings.text = String.format(
+                    "%s %s",
+                    DecimalFormat("#.#").format(it.rating).toString(),
+                    "(${it.total_review.toString()} Reviews)"
+                )
                 tvDetailRoomType.text = it.property_type
-                mLog("Reccommendation Detail Location ${String.format(
-                    "%s%s%s%s%s%s",
-                    it.street,
-                    it.city,
-                    it.state,
-                    it.area,
-                    it.pincode,
-                    it.country
-                )} ")
+                /* mLog("Reccommendation Detail Location ${String.format(
+                     "%s%s%s%s%s%s",
+                     it.street,
+                     it.city,
+                     it.state,
+                     it.area,
+                     it.pincode,
+                     it.country
+                 )} ")*/
                 tvLocationDescription.text = String.format(
                     "%s%s%s%s%s%s",
                     it.street,
@@ -236,24 +270,53 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
                     it.pincode,
                     it.country
                 )
-                tvBeds.text = String.format("%d %s",it.total_bed,"Bed")
-                tvBath.text = String.format("%d %s",it.total_bath,"Bath")
-                tvSqrft.text = String.format("%s",it.total_area)
+                tvBeds.text = String.format("%d %s", it.total_bed, "Bed")
+                tvBath.text = String.format("%d %s", it.total_bath, "Bath")
+                tvSqrft.text = String.format("%s", it.total_area)
                 tvAboutRD.text = it.about
-               // tvRItemCostDetail.text = "$${it.price}"
+                // tvRItemCostDetail.text = "$${it.price}"
                 setInventoryAdapterWithSpanCount(4, inventorylist)
                 setRoomTypeAdapter(roomList)
+
+                propertyReviewList.clear()
+                propertyReviewList = it.propertyReview as MutableList<PropertyReview>
+                setReviews(propertyReviewList)
             }
 
 
         }
     }
 
+    private fun setReviews(propertyReview: MutableList<PropertyReview>) {
+        rdBinding.apply {
+            if (propertyReview.isEmpty()){
+                rdBinding.ivBackReviewBtn.visibility = View.GONE
+                rdBinding.ivNextReviewBtn.visibility = View.GONE
+            }else{
+                rdBinding.ivBackReviewBtn.visibility = View.VISIBLE
+                rdBinding.ivNextReviewBtn.visibility = View.VISIBLE
+            }
+
+            tvReviews.text =
+                String.format("%s %s", getString(R.string.reviews), "(${propertyReview.size})")
+            rvPropertyReviews.apply {
+                layoutManager = LinearLayoutManager(
+                    this@RecommendationDetailActivity,
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                adapter = ReviewsAdapter(propertyReview, this@RecommendationDetailActivity)
+            }
+
+        }
+
+    }
+
     private fun getDefaultPropertyImages(): MutableList<PropertyImage> {
         val list = mutableListOf<PropertyImage>()
-        list.add(PropertyImage(1,""))
-        list.add(PropertyImage(2,""))
-        list.add(PropertyImage(3,""))
+        list.add(PropertyImage(1, ""))
+        list.add(PropertyImage(2, ""))
+        list.add(PropertyImage(3, ""))
         return list
     }
 
@@ -281,11 +344,11 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
         ) {
             return
         }
-        mGoogleMap.isMyLocationEnabled=true
+        mGoogleMap.isMyLocationEnabled = true
         val lat = mPref[Constants.PreferenceConstant.LATITUDE, 0F]?.toDouble()
         val lng = mPref[Constants.PreferenceConstant.LONGITUDE, 0F]?.toDouble()
         mLog("Recommendation Detail lat $lat lng $lng")
-        val latlng = LatLng(lat!!,lng!!)
+        val latlng = LatLng(lat!!, lng!!)
         mGoogleMap.animateCamera(
             CameraUpdateFactory.newLatLngZoom(
                 latlng,
@@ -296,33 +359,32 @@ class RecommendationDetailActivity : BaseActivity(), OnMapReadyCallback {
     }
 
 
+    /*
+        fun getIframeData(encodedUr:String):String{
+            try {
+    //            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.0836982119276!2d77.33584365068658!3d28.597265792340774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce503813db205%3A0xccf2296ef740c90!2sKarol&#39;s%20Salon!5e0!3m2!1sen!2sin!4v1598944640412!5m2!1sen!2sin"
+               val  encodedUrl = URLEncoder.encode(
+                    "$encodedUr",
+                    "UTF-8"
+                )
+            } catch (e: UnsupportedEncodingException) {
+                e.printStackTrace()
+            }
 
-/*
-    fun getIframeData(encodedUr:String):String{
-        try {
-//            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.0836982119276!2d77.33584365068658!3d28.597265792340774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce503813db205%3A0xccf2296ef740c90!2sKarol&#39;s%20Salon!5e0!3m2!1sen!2sin!4v1598944640412!5m2!1sen!2sin"
-           val  encodedUrl = URLEncoder.encode(
-                "$encodedUr",
-                "UTF-8"
-            )
-        } catch (e: UnsupportedEncodingException) {
-            e.printStackTrace()
+            val iframe =
+                "<iframe src=$encodedUrl width=100% height=100% frameborder=0 style=border:0</iframe>"
+            return iframe
+
         }
-
-        val iframe =
-            "<iframe src=$encodedUrl width=100% height=100% frameborder=0 style=border:0</iframe>"
-        return iframe
-
-    }
-*/
+    */
 
 
     override fun onBackPressed() {
         super.onBackPressed()
-        if (isChatOpen){
+        if (isChatOpen) {
             rdBinding.clRdLayout.visibility = View.VISIBLE
             rdBinding.clRdChatLayout.visibility = View.GONE
-        }else{
+        } else {
             onBackPressedDispatcher.onBackPressed()
         }
 

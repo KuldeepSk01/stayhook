@@ -7,15 +7,16 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
+        android:layout_margin="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clItemTicket"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp"
             android:padding="@dimen/_10sdp"
             android:background="@drawable/otp_box_background"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,45 +24,157 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvItemTicketStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                style="@style/headingTextSizeStyle2"
-                android:text="@string/_61690_open_text"
-                android:textSize="@dimen/_14sdp"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivItemTicketImg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:src="@drawable/default_image"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                android:scaleType="centerCrop"
+                app:shapeAppearance="@style/CornerCut"/>
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvItemTicketTitle"
+                android:id="@+id/tvItemTicketProperty"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_3sdp"
                 android:gravity="center"
                 style="@style/headingTextSizeStyle1"
-                android:text="@string/maintainance_issue_text"
+                android:text="@string/greater_noida_sector_4_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvItemTicketStatus" />
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@+id/ivItemTicketImg" />
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvItemTicketDescription"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llc1ItemTicket"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/sp_pro_display_medium"
-                android:gravity="start"
-                android:text="@string/amet_minim_mollit_non_deserunt_ullamco_est_sit_aliqua_dolor_do_amet_sint_velit_officia_consequat_duis_enim_velit_mollit_exercitation_veniam_consequat_sunt_nostrud_amet_text"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp"
+                android:gravity="center"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvItemTicketTitle" />
+                app:layout_constraintTop_toBottomOf="@id/tvItemTicketProperty" >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    style="@style/headingTextSizeStyle1"
+                    android:text="@string/tenant"
+                    android:layout_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivItemTicketImg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvItemTicketTenantName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    style="@style/defaultTextSizeStyle"
+                    android:text="@string/gajjendra_singh"
+                    android:layout_weight="1"
+                    android:textColor="@color/gray2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivItemTicketImg" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llc2ItemTicket"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llc1ItemTicket" >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    style="@style/headingTextSizeStyle1"
+                    android:text="@string/type"
+                    android:layout_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivItemTicketImg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvItemTicketTenantType"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    style="@style/defaultTextSizeStyle"
+                    android:text="@string/wooden"
+                    android:layout_weight="1"
+                    android:textColor="@color/gray2"
+                     />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llc3ItemTicket"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llc2ItemTicket" >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    style="@style/headingTextSizeStyle1"
+                    android:text="@string/issue_type"
+                    android:layout_weight="1"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvItemTicketTenantIssueType"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    style="@style/defaultTextSizeStyle"
+                    android:text="@string/general"
+                    android:layout_weight="1"
+                    android:textColor="@color/gray2"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llc4ItemTicket"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llc3ItemTicket" >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    style="@style/headingTextSizeStyle1"
+                    android:text="@string/issue_detail"
+                    android:layout_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivItemTicketImg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvItemTicketTenantIssueDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    style="@style/defaultTextSizeStyle"
+                    android:text="@string/need_the_flooring_to_be_maintained"
+                    android:layout_weight="1"
+                    android:textColor="@color/gray2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivItemTicketImg" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

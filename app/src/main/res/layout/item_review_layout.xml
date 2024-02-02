@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rlReviewsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/gray_box_outline_drawable"
+            android:padding="@dimen/_10sdp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivReviewsProfile"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:scaleType="centerCrop"
+                app:shapeAppearance="@style/CornerCut"
+                android:src="@drawable/default_image" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReviewsName"
+                style="@style/headingTextSizeStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ivReviewsProfile"
+                android:text="@string/marlis_choe_text" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReviewsRatings"
+                style="@style/defaultTextSizeStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvReviewsName"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ivReviewsProfile"
+                android:text="@string/two_star" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReviewsDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvReviewsName"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/tvReviewsRatings"
+                android:text="@string/april_23_2023_text" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReviewsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvReviewsRatings"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ivReviewsProfile"
+                android:text="@string/good_budget_text" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReviewsDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvReviewsTitle"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ivReviewsProfile"
+                android:text="@string/property_review_message" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <!--   <com.google.android.material.imageview.ShapeableImageView
+           android:id="@+id/ivOnboardingItem"
+           android:layout_width="@dimen/_100sdp"
+           android:layout_height="@dimen/_100sdp"
+           android:scaleType="centerCrop"
+           app:shapeAppearance="@style/CornerCut"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           android:src="@drawable/default_image"
+           app:layout_constraintTop_toTopOf="parent" />-->
+</layout>
