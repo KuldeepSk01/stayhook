@@ -8,6 +8,7 @@ import com.stayhook.screen.dashboard.account.mybooking.MyBookingRepo
 import com.stayhook.screen.dashboard.account.mypayment.MyPaymentRepo
 import com.stayhook.screen.dashboard.account.myschedule.MyScheduledVisitRepo
 import com.stayhook.screen.dashboard.account.myschedule.MyScheduledVisitStatusRepo
+import com.stayhook.screen.dashboard.account.myticket.create.CreateTicketRepo
 import com.stayhook.screen.dashboard.account.mytoken.MyTokenRepo
 import com.stayhook.screen.dashboard.home.HomeRepository
 import com.stayhook.screen.dashboard.home.SeeAllItemRepo
@@ -52,6 +53,8 @@ val repositoryModule = module {
     single { EditProfileRepo() }
     single { KYCRepo() }
     single { WriteReviewRepo() }
+
+    single { CreateTicketRepo() }
 
 
 }

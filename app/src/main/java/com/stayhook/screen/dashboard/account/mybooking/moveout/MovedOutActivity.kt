@@ -16,10 +16,9 @@ import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.account.mybooking.MyBookingViewModel
 import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs
+import com.stayhook.util.formatDate
 import com.stayhook.util.getCurrentDate
-import com.stayhook.util.getSelectedDateForApi
 import com.stayhook.util.mLog
-import com.stayhook.util.mToast
 import com.stayhook.util.selectDateFormat
 import com.stayhook.util.serializable
 import org.koin.core.component.inject
@@ -61,9 +60,10 @@ class MovedOutActivity : BaseActivity() {
 
 
             moveOutBtn.setOnClickListener {
-                val moveInDate = getSelectedDateForApi(moveInTV.text.toString())
+
+                val moveInDate = formatDate(moveInTV.text.toString(), "dd MMM yyyy", "yyyy-MM-dd")
                 mLog("movie in date $moveIn")
-                if (cbMoveOut.isChecked){
+                if (cbMoveOut.isChecked) {
                     terms.visibility = View.GONE
                     val req = MoveOutBookingRequest().apply {
                         leadId = myBookingData.id
@@ -71,8 +71,9 @@ class MovedOutActivity : BaseActivity() {
                         moveoutDate = moveInDate
                     }
                     mViewModel.hitMoveOutBookingApi(req)
-                    mViewModel.getMoveOutBookingResponse().observe(this@MovedOutActivity, moveOutBookingResponseObserver)
-                }else{
+                    mViewModel.getMoveOutBookingResponse()
+                        .observe(this@MovedOutActivity, moveOutBookingResponseObserver)
+                } else {
                     terms.visibility = View.VISIBLE
                 }
             }
@@ -89,16 +90,16 @@ class MovedOutActivity : BaseActivity() {
 
                 ApiResponse.Status.SUCCESS -> {
                     hideProgress()
-                        CustomDialogs.showCustomSuccessDialog(this@MovedOutActivity,
-                       getString(R.string.payment_you_have_successfully_text),
-                       getString(R.string.payment_our_representative_text),
-                       getString(R.string.title_okay),
-                       object : CustomDialogs.CustomDialogsListener {
-                           override fun onComplete(d: Dialog) {
-                               d.dismiss()
-                               finish()
-                           }
-                       }).show()
+                    CustomDialogs.showCustomSuccessDialog(this@MovedOutActivity,
+                        getString(R.string.payment_you_have_successfully_text),
+                        getString(R.string.payment_our_representative_text),
+                        getString(R.string.title_okay),
+                        object : CustomDialogs.CustomDialogsListener {
+                            override fun onComplete(d: Dialog) {
+                                d.dismiss()
+                                finish()
+                            }
+                        }).show()
 
                 }
 

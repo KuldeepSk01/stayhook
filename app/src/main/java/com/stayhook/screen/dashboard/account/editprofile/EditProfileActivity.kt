@@ -1,8 +1,14 @@
 package com.stayhook.screen.dashboard.account.editprofile
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
+import android.provider.MediaStore
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,11 +25,16 @@ import com.stayhook.util.CustomDialogs.showErrorMessage
 import com.stayhook.util.OnDropDownListener
 import com.stayhook.util.dropDownPopup
 import com.stayhook.util.getRealPathFromURI
+import com.stayhook.util.mLog
+import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.koin.core.component.inject
 import java.io.File
+import java.security.Permissions
+import java.text.SimpleDateFormat
+import java.util.Date
 
 
 class EditProfileActivity : BaseActivity() {
@@ -46,7 +57,28 @@ class EditProfileActivity : BaseActivity() {
                 }
                 tvToolBarTitle.text = getString(R.string.edit_profile)
             }
+
+
             ivEditProfileImg.setOnClickListener {
+               /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    val gallery = Intent(MediaStore.ACTION_PICK_IMAGES)
+                    Log.d("MyTag", "setInitialSetup: PERMISSION_GRANTED 13")
+                    imageSelectActivityLauncher.launch(gallery)
+                } else {
+                    val permit = Permissions.verifyStoragePermissions(this@EditProfileActivity)
+                    if (permit != PackageManager.PERMISSION_GRANTED)
+                    else {
+                        //   val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+                        val gallery =
+                            Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+                        Log.d(
+                            "MyTag",
+                            "setInitialSetup: PERMISSION_GRANTED" + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
+                        )
+                        imageSelectActivityLauncher.launch(gallery)
+                    }
+                }*/
+
                 imageContract.launch("image/*")
             }
 
@@ -140,7 +172,31 @@ class EditProfileActivity : BaseActivity() {
             }
         }
     }
-   
+
+
+    private val imageSelectActivityLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            try {
+                if (it.resultCode== RESULT_OK && it.data!=null){
+                    imageUri = it?.data!!.data
+                    pBinding.ivEditProfileImg.setImageURI(imageUri)
+                    Log.d("EditProfile", "onInitView: Uri $imageUri")
+
+                }
+                else{
+                    mLog("Nothing Selected...")
+                }
+
+
+
+
+
+            } catch (e: Exception) {
+                Log.d("EditProfile", "Select File Error: $e")
+            }
+            Log.d("MyTAG", "selected image uri ${it.data} ")
+
+        }
 
 
 }

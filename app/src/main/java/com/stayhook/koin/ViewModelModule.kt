@@ -10,6 +10,7 @@ import com.stayhook.screen.dashboard.account.mybooking.MyBookingViewModel
 import com.stayhook.screen.dashboard.account.mypayment.MyPaymentViewModel
 import com.stayhook.screen.dashboard.account.myschedule.MyScheduleVisitStatusViewModel
 import com.stayhook.screen.dashboard.account.myschedule.MyScheduleVisitViewModel
+import com.stayhook.screen.dashboard.account.myticket.create.CreateTicketViewModel
 import com.stayhook.screen.dashboard.account.mytoken.MyTokenViewModel
 import com.stayhook.screen.dashboard.home.HomeViewModel
 import com.stayhook.screen.dashboard.home.SeeAllItemViewModel
@@ -55,4 +56,6 @@ val viewModelModule = module {
     single { EditProfileViewModel(get()) }
     single { KYCViewModel(get()) }
     single { WriteReviewViewModel(get()) }
+
+    single { CreateTicketViewModel(get()) }
 }

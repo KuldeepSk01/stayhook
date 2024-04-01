@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.widget.TimePicker
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
@@ -18,6 +19,7 @@ import com.stayhook.R
 import com.stayhook.databinding.CustomDialogSuccessLayoutBinding
 import com.stayhook.databinding.DailogProgressLayoutBinding
 import com.stayhook.databinding.DateDialougeLayoutBinding
+import com.stayhook.databinding.TimeDialougeLayoutBinding
 
 
 object CustomDialogs {
@@ -110,6 +112,34 @@ object CustomDialogs {
     }
 
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun showPickerDateDialog(context: Context, listener: OnShowDateDialogListener) {
+        val dialog = Dialog(context)
+        val b = DataBindingUtil.inflate<DateDialougeLayoutBinding>(
+            LayoutInflater.from(context),
+            R.layout.date_dialouge_layout,
+            null,
+            false
+        )
+        b.calenderViewDialog.minDate = System.currentTimeMillis()-1000
+        b.calenderViewDialog.setOnDateChangedListener { datePicker_, i, i2, i3 ->
+            listener.onSelectDate(selectDateFormat(i3, i2, i))
+            dialog.dismiss()
+        }
+
+
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+
+        dialog.setContentView(b.root)
+        dialog.create()
+        dialog.show()
+    }
+
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun showDateDialog(context: Context, listener: OnShowDateDialogListener) {
         val dialog = Dialog(context)
@@ -135,8 +165,38 @@ object CustomDialogs {
         dialog.show()
     }
 
+    fun showTimePickerDialog(context: Context, listener: OnTimePickerDialogListener) {
+        val dialog = Dialog(context)
+        val b = DataBindingUtil.inflate<TimeDialougeLayoutBinding>(
+            LayoutInflater.from(context),
+            R.layout.time_dialouge_layout,
+            null,
+            false
+        )
+        b.calenderViewDialog.setIs24HourView(true)
+        b.calenderViewDialog.setOnTimeChangedListener(object : TimePicker.OnTimeChangedListener {
+            override fun onTimeChanged(p0: TimePicker?, p1: Int, p2: Int) {
+                listener.onSelectTime(getTimeFormat(p1,p2))
+             //   dialog.dismiss()
+            }
+
+        })
+
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+        dialog.setContentView(b.root)
+        dialog.create()
+        dialog.show()
+    }
+
+
     interface OnShowDateDialogListener {
         fun onSelectDate(date: String)
+    }
+
+    interface OnTimePickerDialogListener {
+        fun onSelectTime(time: String)
     }
 
 }

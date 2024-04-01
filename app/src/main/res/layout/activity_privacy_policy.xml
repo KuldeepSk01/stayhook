@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:scrollIndicators="none"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".screen.dashboard.account.privacypolicy.PrivacyPolicyActivity">
+            <RelativeLayout
+                android:id="@+id/rlToolbarPrivacyPolicy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include
+                    android:id="@+id/toolbarPrivacyPolicy"
+                    layout="@layout/custom_toolbar_layout" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/rlToolbarPrivacyPolicy"
+                style="@style/headingTextSizeStyle1"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:gravity="start"
+                android:lineSpacingExtra="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</layout>

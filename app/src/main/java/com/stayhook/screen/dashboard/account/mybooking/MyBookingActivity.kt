@@ -3,6 +3,8 @@ package com.stayhook.screen.dashboard.account.mybooking
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.ViewDataBinding
@@ -41,10 +43,28 @@ class MyBookingActivity : BaseActivity(), MyBookingAdapter.OnMyBookingListener {
             toolBarMyBooking.apply {
                 tvToolBarTitle.text = getString(R.string.my_booking)
                 ivToolBarBack.setOnClickListener {
-                    onBackPressedDispatcher.onBackPressed()
+                    //onBackPressedDispatcher.onBackPressed()
+                    if (mPref.get(Constants.PreferenceConstant.IS_BACK_PRESS_TRUE,0)==1){
+                        onBackPressedDispatcher.onBackPressed()
+                    }else{
+                        launchActivity(MainActivity::class.java)
+                        finish()
+                    }
                 }
 
             }
+            /*onBackPressedDispatcher.addCallback(this@MyBookingActivity, object : OnBackPressedCallback(true){
+                override fun handleOnBackPressed() {
+                    onBackPressedDispatcher.onBackPressed()
+                    *//*if (mPref.get(Constants.PreferenceConstant.IS_BACK_PRESS_TRUE,0)==1){
+                        onBackPressedDispatcher.onBackPressed()
+                    }else{
+                        launchActivity(MainActivity::class.java)
+                        finish()
+                    }*//*
+                }
+
+            })*/
 
             /*  tvCurrentMB.setOnClickListener {
                   setBackGround(it as AppCompatTextView)
@@ -109,10 +129,15 @@ class MyBookingActivity : BaseActivity(), MyBookingAdapter.OnMyBookingListener {
         tv1.background = ResourcesCompat.getDrawable(resources, R.drawable.select_white_bg, null)
     }
 
+
     override fun onBackPressed() {
         super.onBackPressed()
-        launchActivity(MainActivity::class.java)
-        finish()
+        if (mPref.get(Constants.PreferenceConstant.IS_BACK_PRESS_TRUE,0)==1){
+            onBackPressedDispatcher.onBackPressed()
+        }else{
+            launchActivity(MainActivity::class.java)
+            finish()
+        }
     }
 
     override fun onMoveOutBooking(model: MyBookingResponse) {

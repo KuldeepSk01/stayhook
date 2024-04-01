@@ -106,6 +106,8 @@ dependencies {
 
     //for lotties animation
     implementation ("com.airbnb.android:lottie:3.4.0")
+    //for zoom image
+    implementation ("com.github.MikeOrtiz:TouchImageView:1.4.1")
 
 
 }

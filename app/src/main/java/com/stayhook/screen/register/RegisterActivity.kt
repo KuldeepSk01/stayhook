@@ -1,5 +1,6 @@
 package com.stayhook.screen.register
 
+import android.widget.Toast
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import com.stayhook.R
@@ -13,7 +14,10 @@ import com.stayhook.screen.verification.VerificationActivity
 import com.stayhook.util.Constants.NetworkConstant.Companion.NO_INTERNET_AVAILABLE
 import com.stayhook.util.CustomDialogs
 import com.stayhook.util.CustomDialogs.showErrorMessage
+import com.stayhook.util.Utility
 import com.stayhook.util.Utility.isConnectionAvailable
+import com.stayhook.util.mLog
+import com.stayhook.util.mToast
 import com.stayhook.validation.ValidationResult
 import com.stayhook.validation.ValidationState
 import org.koin.core.component.inject
@@ -55,6 +59,8 @@ class RegisterActivity : BaseActivity() {
 
                 ApiResponse.Status.SUCCESS -> {
                     hideProgress()
+                    mLog("RegisterActivity login data message ${it.data?.message}")
+                    mToast(this@RegisterActivity,it.data?.otp.toString())
                     launchActivity(VerificationActivity::class.java, "MobileNo", it.data?.mobile!!)
                 }
 
@@ -82,7 +88,7 @@ class RegisterActivity : BaseActivity() {
                     rBinding.etMobileOnRegister.requestFocus()
                 }
                 ValidationResult.SUCCESS->{
-                    if (!isConnectionAvailable()) {
+                    if (!Utility.isNetworkAvailable(this@RegisterActivity)) {
                         showErrorMessage(this@RegisterActivity, NO_INTERNET_AVAILABLE)
                     }else{
                         val request = UserRequest().apply {

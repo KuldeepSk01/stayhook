@@ -476,9 +476,9 @@
     <string name="detail">Detail</string>
     <string name="issue">Issue</string>
     <string name="open">Open</string>
-    <string name="in_process">In Process</string>
+    <string name="in_process">In-process</string>
     <string name="closed">Closed</string>
-    <string name="schedule_a_meet">schedule a meet</string>
+    <string name="schedule_a_meet">Schedule a meet</string>
     <string name="comment">Comment</string>
     <string name="zero_star">☆☆☆☆☆</string>
     <string name="one_star">⭐☆☆☆☆</string>
@@ -487,4 +487,20 @@
     <string name="four_star">⭐⭐⭐⭐☆</string>
     <string name="five_star">⭐⭐⭐⭐⭐</string>
     <string name="property_review_message">Property review message</string>
+    <string name="write_your_comment">Write your comment...</string>
+    <string name="plumber">Plumber</string>
+    <string name="electrician">Electrician</string>
+    <string name="property">Property</string>
+    <string name="complain_category">Complain Category</string>
+    <string name="terms_and_condition_1">1. Do not complain if the there is no actual problem</string>
+    <string name="terms_and_condition_2">2. Track your complain status in complain section of your support tab in App</string>
+    <string name="terms_and_condition_3">3. Do not make more than 3 complains in a day</string>
+    <string name="terms_and_condition_4">4. Please coordinate with assigned Stayhook team member only for any issues or problem</string>
+    <string name="terms_and_condition_5">5. Do not make any offer, personal connect or contact exchange with incoming professional, vendor or labour.</string>
+    <string name="terms_and_condition_6">6. Do not pay any amount is its not logged in your App.</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="refund_policy">Refund Policy</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="cancellation_policy">Cancellation Policy</string>
+    <string name="select_category">Select Category</string>
 </resources>

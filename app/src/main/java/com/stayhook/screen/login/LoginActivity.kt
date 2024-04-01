@@ -18,6 +18,7 @@ import com.stayhook.util.CustomDialogs.showErrorMessage
 import com.stayhook.util.Utility
 import com.stayhook.util.Utility.isConnectionAvailable
 import com.stayhook.util.mLog
+import com.stayhook.util.mToast
 import com.stayhook.validation.ValidationResult
 import com.stayhook.validation.ValidationState
 import org.koin.core.component.inject
@@ -60,8 +61,7 @@ class LoginActivity : BaseActivity() {
                     hideProgress()
 
                     mLog("LoginActivity login data message ${it.data?.message}")
-                    Toast.makeText(this, it.data?.otp.toString(), Toast.LENGTH_LONG)
-                        .show()
+                    mToast(this@LoginActivity,it.data?.otp.toString())
                     launchActivity(VerificationActivity::class.java, "MobileNo", mobileNo)
                     finish()
 
@@ -89,7 +89,7 @@ class LoginActivity : BaseActivity() {
                 }
 
                 ValidationResult.SUCCESS -> {
-                    if (!Utility.isConnectionAvailable()) {
+                    if (!Utility.isNetworkAvailable(this@LoginActivity)) {
                         showErrorMessage(
                             this@LoginActivity,
                             Constants.NetworkConstant.NO_INTERNET_AVAILABLE

@@ -58,7 +58,7 @@ class SelectBedActivity : BaseActivity(), OnRoomClickListener, SelectBedAdapter.
             }
 
             btnSelectBed.setOnClickListener {
-                if (!Utility.isConnectionAvailable()){
+                if (!Utility.isNetworkAvailable(this@SelectBedActivity)){
                     showErrorMessage(this@SelectBedActivity,
                         Constants.NetworkConstant.NO_INTERNET_AVAILABLE
                     )

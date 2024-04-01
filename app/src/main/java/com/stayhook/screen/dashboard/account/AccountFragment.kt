@@ -1,5 +1,6 @@
 package com.stayhook.screen.dashboard.account
 
+import android.os.Bundle
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.ViewDataBinding
@@ -9,6 +10,7 @@ import com.stayhook.R
 import com.stayhook.base.BaseFragment
 import com.stayhook.base.BaseResponse
 import com.stayhook.databinding.FragmentAccountBinding
+import com.stayhook.model.StringContentsModel
 import com.stayhook.model.response.MyProfileResponse
 import com.stayhook.network.ApiResponse
 import com.stayhook.screen.dashboard.MainActivity
@@ -21,7 +23,9 @@ import com.stayhook.screen.dashboard.account.mypayment.MyPaymentsActivity
 import com.stayhook.screen.dashboard.account.myschedule.MyScheduledVisitActivity
 import com.stayhook.screen.dashboard.account.myticket.MyTicketActivity
 import com.stayhook.screen.dashboard.account.mytoken.MyTokenActivity
+import com.stayhook.screen.dashboard.account.privacypolicy.PrivacyPolicyActivity
 import com.stayhook.screen.login.LoginActivity
+import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs
 import org.koin.core.component.inject
 
@@ -56,6 +60,7 @@ class AccountFragment : BaseFragment() {
     }
 
     fun onClickMyBooking() {
+        mPref.put(Constants.PreferenceConstant.IS_BACK_PRESS_TRUE,1)
         launchActivity(MyBookingActivity::class.java)
     }
 
@@ -80,10 +85,7 @@ class AccountFragment : BaseFragment() {
     fun onClickResolveProblemTicket() {
 
         launchActivity(MyTicketActivity::class.java)
-       /* replaceFragment(
-            R.id.flMainContainer, MyTicketFragment(), AccountFragment().javaClass.simpleName
-        )
-        hideTab()*/
+
 
     }
 
@@ -95,7 +97,68 @@ class AccountFragment : BaseFragment() {
     }
 
     fun onClickTermCondition() {
-        // hideTab()
+        val model= StringContentsModel().apply {
+            title = Constants.StringContents.PRIVACY_POLICY
+            desc = Constants.StringContents.PRIVACY_POLICY_DESC
+        }
+        val b = Bundle()
+        b.putSerializable(Constants.DefaultConstants.MODEL_DETAIL,model)
+        launchActivity(PrivacyPolicyActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
+
+    }
+
+    fun onClickPrivacyPolicy() {
+        val model= StringContentsModel().apply {
+            title = Constants.StringContents.PRIVACY_POLICY
+            desc = Constants.StringContents.PRIVACY_POLICY_DESC
+        }
+        val b = Bundle()
+        b.putSerializable(Constants.DefaultConstants.MODEL_DETAIL,model)
+        launchActivity(PrivacyPolicyActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
+
+    }
+
+
+    fun onClickRefundPolicy() {
+        val model= StringContentsModel().apply {
+            title = Constants.StringContents.REFUND_POLICY
+            desc = Constants.StringContents.REFUND_POLICY_DESC
+        }
+        val b = Bundle()
+        b.putSerializable(Constants.DefaultConstants.MODEL_DETAIL,model)
+        launchActivity(PrivacyPolicyActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
+
+    }
+
+    fun onClickCancellationPolicy() {
+        val model= StringContentsModel().apply {
+            title = Constants.StringContents.CANCELLATION_POLICY
+            desc = Constants.StringContents.CANCELLATION_POLICY_DESC
+        }
+        val b = Bundle()
+        b.putSerializable(Constants.DefaultConstants.MODEL_DETAIL,model)
+        launchActivity(PrivacyPolicyActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
+
+    }
+    fun onClickAboutUs(){
+        val model= StringContentsModel().apply {
+            title = Constants.StringContents.ABOUT_US
+            desc = Constants.StringContents.ABOUT_US_DESC
+        }
+        val b = Bundle()
+        b.putSerializable(Constants.DefaultConstants.MODEL_DETAIL,model)
+        launchActivity(PrivacyPolicyActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
+
+    }
+
+    fun onClickDisclaimer(){
+        val model= StringContentsModel().apply {
+            title = Constants.StringContents.DISCLAIMER
+            desc = Constants.StringContents.DISCLAIMER_DESC
+        }
+        val b = Bundle()
+        b.putSerializable(Constants.DefaultConstants.MODEL_DETAIL,model)
+        launchActivity(PrivacyPolicyActivity::class.java,Constants.DefaultConstants.BUNDLE,b)
 
     }
 

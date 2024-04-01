@@ -15,6 +15,8 @@ import com.stayhook.application.StayHookApplication
 import com.stayhook.base.BaseViewModel
 import com.stayhook.permissions.MyPermissions
 import com.stayhook.util.Constants
+import com.stayhook.util.Utility.isConnectionAvailable
+import com.stayhook.util.Utility.isNetworkAvailable
 import com.stayhook.util.mLog
 
 class MainViewModel(private val context: StayHookApplication) : BaseViewModel() {
@@ -33,8 +35,12 @@ class MainViewModel(private val context: StayHookApplication) : BaseViewModel() 
         ).withListener(object : MultiplePermissionsListener {
             override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
                 if (p0?.areAllPermissionsGranted()!!) {
-                    mLog("Permission grated")
-                    gpsInit()
+                    if (isNetworkAvailable(context)){
+                        mLog("Permission grated")
+                        gpsInit()
+                    }else{
+                        mLog("Connection not available")
+                    }
                 } else {
                     mLog("Permission not grated")
                 }

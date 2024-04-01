@@ -22,6 +22,7 @@ import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs
 import com.stayhook.util.CustomDialogs.showErrorMessage
 import com.stayhook.util.Utility
+import com.stayhook.util.Utility.isNetworkAvailable
 import com.stayhook.util.serializable
 import org.koin.core.component.inject
 
@@ -60,7 +61,7 @@ class RoomActivity : BaseActivity(), OnRoomClickListener,LifecycleOwner {
             }
 
             btnSelectRoom.setOnClickListener {
-                if (!Utility.isConnectionAvailable()) {
+                if (!isNetworkAvailable(this@RoomActivity)) {
                     CustomDialogs.showErrorMessage(
                         this@RoomActivity, Constants.NetworkConstant.NO_INTERNET_AVAILABLE
                     )

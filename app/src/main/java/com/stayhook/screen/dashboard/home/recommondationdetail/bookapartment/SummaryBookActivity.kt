@@ -23,6 +23,7 @@ class SummaryBookActivity : BaseActivity() {
 
     private val paymentVM: PaymentViewModel by inject()
     private lateinit var sbBinding: ActivitySummaryBookBinding
+    private var isDialogOpen = false
     private val paymentActivity: PaymentActivity by lazy {
         PaymentActivity()
     }
@@ -59,7 +60,7 @@ class SummaryBookActivity : BaseActivity() {
                     token
                 )
                 setOnClickListener {
-                    if (!Utility.isConnectionAvailable()){
+                    if (!Utility.isNetworkAvailable(this@SummaryBookActivity)) {
                         CustomDialogs.showErrorMessage(
                             this@SummaryBookActivity,
                             Constants.NetworkConstant.NO_INTERNET_AVAILABLE
@@ -69,7 +70,7 @@ class SummaryBookActivity : BaseActivity() {
 
                     val request = PropertyRoomRequest().apply {
                         propertyRoom.let {
-                            if (it.roomId==null){
+                            if (it.roomId == null) {
                                 propertyId = it.propertyId
                                 roomId = it.id.toString()
                                 roomRent = it.price.toString()
@@ -77,7 +78,7 @@ class SummaryBookActivity : BaseActivity() {
                                 availabilityDate = it.availabilityDate
                                 roomType = it.roomTypeId.toString()
 
-                            }else{
+                            } else {
                                 bedId = it.id.toString()
                                 propertyId = it.propertyId
                                 roomId = it.roomId
@@ -114,7 +115,6 @@ class SummaryBookActivity : BaseActivity() {
 
                 ApiResponse.Status.SUCCESS -> {
                     hideProgress()
-
                     CustomDialogs.showCustomSuccessDialog(
                         this@SummaryBookActivity,
                         getString(R.string.booking_complete_text),
@@ -122,13 +122,13 @@ class SummaryBookActivity : BaseActivity() {
                         getString(R.string.my_booking),
                         object : CustomDialogs.CustomDialogsListener {
                             override fun onComplete(d: Dialog) {
+                                mPref.put(Constants.PreferenceConstant.IS_BACK_PRESS_TRUE, 0)
                                 launchActivity(MyBookingActivity::class.java)
                                 finish()
                                 d.dismiss()
-
                             }
-
                         }).show()
+
                 }
 
                 ApiResponse.Status.ERROR -> {

@@ -8,11 +8,14 @@ import com.stayhook.base.BaseViewModel
 import com.stayhook.model.response.SuccessErrorResponse
 import com.stayhook.model.response.home.HomeResponse
 import com.stayhook.network.ApiResponse
+import com.stayhook.network.NetworkConnectionManager
 import com.stayhook.screen.dashboard.home.privateroom.PrivateRoomActivity
 import com.stayhook.screen.dashboard.home.sharedroom.SharedRoomActivity
 import com.stayhook.screen.notification.NotificationFragment
 import com.stayhook.util.Constants
+import com.stayhook.util.Utility.isConnectionAvailable
 import com.stayhook.util.mLog
+import com.stayhook.util.mToast
 import java.util.Locale
 
 class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
@@ -85,9 +88,11 @@ class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
 
 
     fun getCurrentAddress(): String? {
+
         val lat = mPref[Constants.PreferenceConstant.LATITUDE, 0f]?.toDouble()
         val lng = mPref[Constants.PreferenceConstant.LONGITUDE, 0f]?.toDouble()
         var address: String? = null
+
         if (lat != 0.0 && lng != 0.0) {
             mLog("user current address $lat $lng")
 
@@ -98,7 +103,7 @@ class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
                 1
             ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
 
-           val addressLine =
+            val addressLine =
                 addresses!![0].getAddressLine(1) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
             mLog("user current complete address line $addressLine")
 
@@ -114,9 +119,6 @@ class HomeViewModel(private val homeRepo: HomeRepository) : BaseViewModel() {
             mLog("user current null address $lat $lng")
             address = ""
         }
-
-
-
         return address
     }
 

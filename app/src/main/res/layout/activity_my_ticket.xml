@@ -55,12 +55,12 @@
                 android:id="@+id/tvAddTicketBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:drawableStart="@drawable/ic_add"
                 android:drawablePadding="@dimen/_5sdp"
                 android:gravity="center"
+                android:layout_margin="@dimen/_5sdp"
                 android:text="@string/add_ticket"
+                style="@style/defaultBtnStyle"
                 app:layout_constraintBottom_toBottomOf="@+id/ivBackBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ivBackBtn" />
@@ -77,7 +77,11 @@
             android:layout_width="match_parent"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_height="wrap_content"
+            app:tabTextAppearance="@style/UnSelectedTabStyle"
+            app:tabSelectedTextAppearance="@style/SelectedTabStyle"
+            app:tabIndicatorColor="@color/primary_color"
             app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/_15ssp"
             app:layout_constraintEnd_toStartOf="parent"
             >
             <com.google.android.material.tabs.TabItem
@@ -118,7 +122,6 @@
             android:fillViewport="true"
             android:scrollIndicators="none"
             android:layout_marginTop="@dimen/_10sdp"
-
             android:scrollbars="none"
             app:layout_constraintTop_toBottomOf="@+id/tabLayoutMyTicket">
 
@@ -126,6 +129,7 @@
                 android:id="@+id/rlRecyclerViewMyTicket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_50sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp">
 
@@ -134,8 +138,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="true"
-                    tools:itemCount="1"
                     android:paddingBottom="@dimen/_100sdp"
+                    app:layout_constraintBaseline_toBottomOf="parent"
                     tools:listitem="@layout/item_my_tickets_layout" />
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>

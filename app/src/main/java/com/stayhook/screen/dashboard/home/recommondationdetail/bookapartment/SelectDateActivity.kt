@@ -12,9 +12,8 @@ import com.stayhook.model.response.getpopertydetail.PropertyRoom
 import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs
 import com.stayhook.util.Utility
+import com.stayhook.util.formatDate
 import com.stayhook.util.getCurrentDate
-import com.stayhook.util.getDateFormat
-import com.stayhook.util.getSelectedDateForApi
 import com.stayhook.util.selectDateFormat
 import com.stayhook.util.serializable
 
@@ -39,7 +38,7 @@ class SelectDateActivity : BaseActivity() {
                 tvToolBarTitle.text = getString(R.string.move_in_date)
             }
 
-            calenderViewSD.minDate = System.currentTimeMillis()-1000
+            calenderViewSD.minDate = System.currentTimeMillis() - 1000
             calenderViewSD.setOnDateChangeListener(object : OnDateChangeListener {
                 override fun onSelectedDayChange(p0: CalendarView, p1: Int, p2: Int, p3: Int) {
                     val year = p1
@@ -52,7 +51,7 @@ class SelectDateActivity : BaseActivity() {
 
 
             btnSelectMoveInDate.setOnClickListener {
-                if (!Utility.isConnectionAvailable()){
+                if (!Utility.isNetworkAvailable(this@SelectDateActivity)) {
                     CustomDialogs.showErrorMessage(
                         this@SelectDateActivity,
                         Constants.NetworkConstant.NO_INTERNET_AVAILABLE
@@ -60,7 +59,9 @@ class SelectDateActivity : BaseActivity() {
                     return@setOnClickListener
                 }
 
-                propertyRoom.availabilityDate = getSelectedDateForApi(moveInTV.text.toString())
+                propertyRoom.availabilityDate =
+                    formatDate(moveInTV.text.toString(), "dd MMM yyyy", "yyyy-MM-dd")
+                //   getSelectedDateForApi()
                 //propertyRoom.availabilityDate = moveInDate
                 val b = Bundle()
                 b.putSerializable("tokenRequest", propertyRoom)

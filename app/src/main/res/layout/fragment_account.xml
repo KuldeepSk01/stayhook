@@ -242,7 +242,6 @@
                             app:layout_constraintTop_toBottomOf="@id/clMyTokenProfile" />
 
 
-
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/clMyBookingProfile"
                             android:layout_width="match_parent"
@@ -418,50 +417,6 @@
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <View
-                            android:id="@+id/view_four"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_1sdp"
-                            android:background="#F3F4F4"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/clDownloadDocument" />
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/clTicketsProfile"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="@{()->aFragment.onClickResolveProblemTicket()}"
-                            android:padding="@dimen/_10sdp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/view_four">
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/ticket"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="@dimen/_5sdp"
-                                android:fontFamily="@font/sp_pro_display_regular"
-                                android:gravity="center"
-                                android:text="@string/resolve_problem_via_tickets_text"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/nextIV5"
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:layout_marginEnd="@dimen/_5sdp"
-                                android:src="@drawable/ic_right_arrow"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <View
                             android:id="@+id/view_five"
@@ -470,7 +425,7 @@
                             android:background="#F3F4F4"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/clTicketsProfile" />
+                            app:layout_constraintTop_toBottomOf="@id/clDownloadDocument" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/clAddSettingProfile"
@@ -555,15 +510,70 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/view_six" />
 
+
+                        <View
+                            android:id="@+id/view_four"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="#F3F4F4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/support" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clTicketsProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->aFragment.onClickResolveProblemTicket()}"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_four">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/ticket"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/sp_pro_display_regular"
+                                android:gravity="center"
+                                android:text="@string/resolve_problem_via_tickets_text"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/nextIV5"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:src="@drawable/ic_right_arrow"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:id="@+id/view_support"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="#F3F4F4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clTicketsProfile" />
+
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/clHelpCenterProfile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
                             android:onClick="@{()->aFragment.onClickHelpCenter()}"
                             android:padding="@dimen/_10sdp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/support">
+                            app:layout_constraintTop_toBottomOf="@id/view_support">
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/help"
@@ -592,7 +602,7 @@
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <View
+                        <!--<View
                             android:id="@+id/view_seven"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_1sdp"
@@ -605,7 +615,6 @@
                             android:id="@+id/clTermsProfile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
                             android:onClick="@{()->aFragment.onClickTermCondition()}"
                             android:padding="@dimen/_10sdp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -637,6 +646,226 @@
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
+-->
+
+                        <View
+                            android:id="@+id/view_privacyPolicy"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="#F3F4F4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clHelpCenterProfile" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clPrivacyPolicyProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->aFragment.onClickPrivacyPolicy()}"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_privacyPolicy">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvPrivacyPolicy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/sp_pro_display_regular"
+                                android:gravity="center"
+                                android:text="@string/privacy_policy"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:src="@drawable/ic_right_arrow"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <View
+                            android:id="@+id/view_refundPolicy"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="#F3F4F4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clPrivacyPolicyProfile" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clRefundPolicyProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->aFragment.onClickRefundPolicy()}"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_refundPolicy">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/sp_pro_display_regular"
+                                android:gravity="center"
+                                android:text="@string/refund_policy"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:src="@drawable/ic_right_arrow"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:id="@+id/view_disclaimerPolicy"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="#F3F4F4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clRefundPolicyProfile" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clDisclaimerProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->aFragment.onClickDisclaimer()}"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_disclaimerPolicy">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/sp_pro_display_regular"
+                                android:gravity="center"
+                                android:text="@string/disclaimer"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:src="@drawable/ic_right_arrow"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <View
+                            android:id="@+id/view_cancellationPolicy"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="#F3F4F4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clDisclaimerProfile" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clCancellationPolicyProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->aFragment.onClickCancellationPolicy()}"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_cancellationPolicy">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/sp_pro_display_regular"
+                                android:gravity="center"
+                                android:text="@string/cancellation_policy"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:src="@drawable/ic_right_arrow"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <View
+                            android:id="@+id/view_aboutUs"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="#F3F4F4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clCancellationPolicyProfile" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clAboutProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->aFragment.onClickAboutUs()}"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_aboutUs">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:fontFamily="@font/sp_pro_display_regular"
+                                android:gravity="center"
+                                android:text="@string/about_us"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:src="@drawable/ic_right_arrow"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                         <View
@@ -646,13 +875,12 @@
                             android:background="#F3F4F4"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/clTermsProfile" />
+                            app:layout_constraintTop_toBottomOf="@id/clAboutProfile" />
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/clLogoutProfile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
                             android:onClick="@{()->aFragment.onClickLogout()}"
                             android:padding="@dimen/_10sdp"
                             app:layout_constraintStart_toStartOf="parent"

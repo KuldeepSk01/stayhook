@@ -4,6 +4,8 @@ import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
 import com.stayhook.R
 import com.stayhook.adapter.NearbyLocationItemAdapter
 import com.stayhook.adapter.RecentlyAddedItemAdapter
@@ -19,10 +21,10 @@ import com.stayhook.screen.dashboard.home.recommondationdetail.RecommendationDet
 import com.stayhook.util.Constants
 import com.stayhook.util.Constants.NetworkConstant.Companion.NO_INTERNET_AVAILABLE
 import com.stayhook.util.CustomDialogs.showErrorMessage
-import com.stayhook.util.Utility.isConnectionAvailable
-import com.stayhook.util.mLog
+import com.stayhook.util.Utility.isNetworkAvailable
 import com.stayhook.util.mToast
 import org.koin.core.component.inject
+
 
 class HomeFragment : BaseFragment(), RecommendationAdapterListener {
 
@@ -31,6 +33,8 @@ class HomeFragment : BaseFragment(), RecommendationAdapterListener {
     private var recentlyAddedDataList = mutableListOf<RecommendData>()
     private var nearbyDataList = mutableListOf<RecommendData>()
     private lateinit var homeBinding: FragmentHomeBinding
+    private lateinit var mGoogleMap: GoogleMap
+
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
     }
@@ -41,11 +45,29 @@ class HomeFragment : BaseFragment(), RecommendationAdapterListener {
         homeViewModel.fragmentHome = this@HomeFragment
         homeBinding.homeViewModel = homeViewModel
 
+        val searchMap =
+            childFragmentManager.findFragmentById(R.id.homeMap) as SupportMapFragment
+        //searchMap.getMapAsync(this@HomeFragment)
+
         homeBinding.tvHomeLocation.apply {
-            val add = homeViewModel.getCurrentAddress()
-            text = add
-            mLog(add!!)
+            if (!isNetworkAvailable(requireContext())) {
+                mToast(requireContext(), NO_INTERNET_AVAILABLE)
+            } else {
+                text = homeViewModel.getCurrentAddress()
+                //mLog("Address $lat")
+            }
         }
+
+        //  if (mGoogleMap!=null)
+        /*mGoogleMap.setOnMyLocationChangeListener(OnMyLocationChangeListener { arg0 ->
+
+
+            mGoogleMap.addMarker(
+                MarkerOptions().position(
+                    LatLng(arg0.latitude, arg0.longitude)
+                ).title("It's Me!")
+            )
+        })*/
 
 
         hitHomeApi()
@@ -99,7 +121,7 @@ class HomeFragment : BaseFragment(), RecommendationAdapterListener {
     }
 
     private fun hitHomeApi() {
-        if (!isConnectionAvailable()) {
+        if (!isNetworkAvailable(requireContext())) {
             showErrorMessage(requireActivity(), NO_INTERNET_AVAILABLE)
             return
         }
@@ -139,7 +161,8 @@ class HomeFragment : BaseFragment(), RecommendationAdapterListener {
 
     override fun addFavoriteItem(model: RecommendData) {
         homeViewModel.hitAddFavoritePropertyApi(model.id.toString())
-        homeViewModel.getAddFavoritePropertyResponse().observe(requireActivity(),addFavoriteResponseObserver)
+        homeViewModel.getAddFavoritePropertyResponse()
+            .observe(requireActivity(), addFavoriteResponseObserver)
     }
 
     private val addFavoriteResponseObserver: Observer<ApiResponse<SuccessErrorResponse>> by lazy {
@@ -161,6 +184,84 @@ class HomeFragment : BaseFragment(), RecommendationAdapterListener {
             }
         }
     }
+
+    /*
+        override fun onMapReady(p0: GoogleMap) {
+            mGoogleMap = p0
+            if (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return
+            }
+            mGoogleMap.isMyLocationEnabled = true
+
+            mGoogleMap.setOnMyLocationClickListener {
+                val lat = it.latitude
+                val lng = it.longitude
+                Log.d("TAG", "$lat $lng")
+                val latlng = LatLng(lat!!, lng!!)
+                homeBinding.tvHomeLocation.apply {
+                    mLog("Connection ${isConnectionAvailable()}")
+                    if (isConnectionAvailable()){
+                        mToast(requireContext(),NO_INTERNET_AVAILABLE)
+                    }else{
+                        getCurrentAddress(lat,lng)
+                        //mLog("Address $lat")
+                    }
+                }
+
+
+                mGoogleMap.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        latlng,
+                        12.0f
+                    )
+                )
+            }
+
+
+
+
+        }
+    */
+
+    /*
+        fun getCurrentAddress( lat:Double,lng:Double) {
+
+            var address: String? = null
+            if (lat != 0.0 && lng != 0.0) {
+                mLog("user current address $lat $lng")
+                val geocoder = Geocoder(requireContext(), Locale.getDefault())
+                val addresses = geocoder.getFromLocation(
+                    lat!!,
+                    lng!!,
+                    1
+                ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+                val addressLine =
+                    addresses!![0].getAddressLine(1) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                mLog("user current complete address line $addressLine")
+                val city = addresses[0].locality
+                val state = addresses[0].adminArea
+                val country = addresses[0].countryName
+                val postalCode = addresses[0].postalCode
+                val knownName = addresses[0].featureName
+                address =  String.format("%s,%s",city,country)
+                homeBinding.tvLocationHome.text = address
+            }
+        }
+    */
 
 
 }

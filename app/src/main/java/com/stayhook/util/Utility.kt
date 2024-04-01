@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
+import android.graphics.Bitmap
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -13,13 +15,17 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.PopupMenu
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+//import androidx.fragment.app.Fragment
 import java.io.File
 import java.io.FileOutputStream
+import java.io.IOException
 import java.io.InputStream
 import java.io.Serializable
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 object Utility {
 
@@ -27,6 +33,18 @@ object Utility {
     fun isConnectionAvailable() = isConnect
     fun setConnection(isAvailable: Boolean) {
         isConnect = isAvailable
+    }
+
+
+    fun isNetworkAvailable(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo = connectivityManager.activeNetworkInfo
+        return if (activeNetworkInfo != null && activeNetworkInfo.isConnected) {
+            true
+        } else {
+            false
+        }
     }
 
 }
@@ -65,23 +83,19 @@ fun View.hideKeyboard() {
 }
 
 
+fun getCurrentTimeFormat(): String {
+    val sdf = SimpleDateFormat("HH:mm a")
+    val mTime: Calendar = Calendar.getInstance()
+    return sdf.format(mTime.time)
+}
 fun getTimeFormat(hh: Int, mm: Int): String {
-    val sdf = SimpleDateFormat("hh:mm")
+    val sdf = SimpleDateFormat("HH:mm a")
     val mTime: Calendar = Calendar.getInstance()
     mTime.set(Calendar.HOUR, hh)
     mTime.set(Calendar.MINUTE, mm)
+    mTime.set(Calendar.MINUTE, mm)
     return sdf.format(mTime.time)
 }
-
-fun getSelectedDateForApi(date:String): String {
-    val sdf = SimpleDateFormat("MMM dd,yyyy")
-   val nDate =  sdf.parse(date)
-    val c = Calendar.getInstance()
-    c.time = nDate!!
-    val sdf1 = SimpleDateFormat("yyyy-MM-dd")
-    return sdf1.format(c.time)
-}
-
 fun setMonthYearDateFormat(date:String): String {
     val sdf = SimpleDateFormat("yyyy-MM")
     val nDate =  sdf.parse(date)
@@ -100,7 +114,7 @@ fun setDateFormat(date:String): String {
 }
 
 fun getCurrentDate(): String {
-    val sdf = SimpleDateFormat("MMM dd,yyyy")
+    val sdf = SimpleDateFormat("dd MMM yyyy")
     val currentDate = Calendar.getInstance().time
     return sdf.format(currentDate)
 }
@@ -117,7 +131,7 @@ fun getDateFormat(day: Int, month: Int, year: Int): String {
 
 fun selectDateFormat(day: Int, month: Int, year: Int): String {
     //  val sdf = SimpleDateFormat("EEE dd MMM yyyy")
-    val sdf = SimpleDateFormat("MMM dd,yyyy")
+    val sdf = SimpleDateFormat("dd MMM yyyy")
     val mTime: Calendar = Calendar.getInstance()
     mTime.set(Calendar.DAY_OF_MONTH, day)
     mTime.set(Calendar.MONTH, month)
@@ -126,6 +140,7 @@ fun selectDateFormat(day: Int, month: Int, year: Int): String {
 }
 
 
+/*
 fun removeAllFragmentsFromFragment(fragment: Fragment) {
     val fm = fragment.requireActivity().supportFragmentManager
     for (i in 0 until fm.backStackEntryCount) {
@@ -133,6 +148,7 @@ fun removeAllFragmentsFromFragment(fragment: Fragment) {
     }
     // onBackPress()
 }
+*/
 
 
 fun getRealPathFromURI(uri: Uri, activity: Activity): String? {
@@ -181,6 +197,60 @@ fun dropDownPopup(
     return popup
 }
 
+private fun compressImageFilePath(bm: Bitmap, context: Context): String {
+    val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+    val file = File(context.filesDir, timeStamp + ".png")
+    if (file.exists()) {
+        file.delete()
+    }
+    try {
+        file.createNewFile()
+    } catch (e: IOException) {
+        e.printStackTrace()
+    }
+    var fos: FileOutputStream? = null
+    try {
+        fos = FileOutputStream(file)
+        bm.compress(Bitmap.CompressFormat.JPEG, 50, fos)
 
+    } catch (e: Exception) {
+        e.printStackTrace()
+    } finally {
+        try {
+            assert(fos != null)
+            fos!!.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+    return file.path
+}
+
+
+
+@Throws(ParseException::class)
+fun formatDate(date: String, initDateFormat: String, endDateFormat: String): String {
+    return if (date.isNotEmpty()) {
+        val initDate = SimpleDateFormat(initDateFormat, Locale.getDefault()).parse(date)
+        val formatter = SimpleDateFormat(endDateFormat, Locale.getDefault())
+        formatter.format(initDate)
+    } else {
+        ""
+    }
+}
+
+/*
+@Throws(ParseException::class)
+fun commonFormatDate(date: String, initDateFormat: String="dd MMM yyyy", endDateFormat: String="yyyy-mm-dd"): String {
+    return if (date.isNotEmpty()) {
+        val initDate = SimpleDateFormat(initDateFormat, Locale.getDefault()).parse(date)
+        val formatter = SimpleDateFormat(endDateFormat, Locale.getDefault())
+        formatter.format(initDate)
+    } else {
+        ""
+    }
+}
+
+*/
 
 

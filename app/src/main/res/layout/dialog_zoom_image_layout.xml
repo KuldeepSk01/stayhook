@@ -49,70 +49,37 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:fontFamily="@font/sp_pro_display_bold"
                     android:gravity="start"
-                    android:text="@string/schedule_a_meet"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_15sdp"
+                    style="@style/headingTextSizeStyle1"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintEnd_toStartOf="@+id/ivCrossBtn"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvSelectDate"
-                    style="@style/defaultEditTextStyle"
+                <com.ortiz.touchview.TouchImageView
+                    android:id="@+id/ivZoomImage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:hint="@string/select_date"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:drawableEnd="@drawable/ic_calender"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvDialogTitle" />
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    app:shapeAppearance="@style/CornerCut"
+                    android:src="@drawable/default_image"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDialogTitle"
+                    android:layout_height="@dimen/_400sdp"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvSelectTime"
-                    style="@style/defaultEditTextStyle"
+                <!--<com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivZoomImage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:hint="@string/select_time"
-                    android:drawableEnd="@drawable/ic_clock"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvSelectDate" />
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    app:shapeAppearance="@style/CornerCut"
+                    android:src="@drawable/default_image"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDialogTitle"
+                    android:layout_height="wrap_content"/>
+-->
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/etDescription"
-                    style="@style/defaultEditTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:lines="8"
-                    android:hint="@string/description"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvSelectTime" />
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvScheduleDialogBtn"
-                    style="@style/defaultBtnStyle1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
-                    android:gravity="center"
-                    android:text="@string/submit_text"
-                    android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/etDescription" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

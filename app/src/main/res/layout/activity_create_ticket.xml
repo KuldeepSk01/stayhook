@@ -49,7 +49,7 @@
                         android:fontFamily="@font/sp_pro_display_bold"
 
                         android:gravity="center"
-                        android:text="@string/select_tenant"
+                        android:text="@string/tenant"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:drawableEnd="@drawable/ic_down_arrow"
                         android:hint="@string/assigned"
                         android:singleLine="true"
                         app:layout_constraintStart_toStartOf="parent"
@@ -75,20 +74,20 @@
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/sp_pro_display_bold"
                         android:gravity="center"
-                        android:text="@string/select_property"
+                        android:text="@string/property"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/etTitleCreateTicket" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/etDescriptionCreateTicket"
+                        android:id="@+id/etPropertyTypeCreateTicket"
                         style="@style/defaultEditTextStyle1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:drawableEnd="@drawable/ic_down_arrow"
-                        android:hint="@string/assigned"
+                        android:hint="@string/select_property"
                         android:singleLine="true"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/desc" />
@@ -102,49 +101,50 @@
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/sp_pro_display_bold"
                         android:gravity="center"
-                        android:text="@string/issue_type"
+                        android:text="@string/complain_category"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/etDescriptionCreateTicket" />
+                        app:layout_constraintTop_toBottomOf="@id/etPropertyTypeCreateTicket" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/etIssueType"
+                        android:id="@+id/etComplainType"
                         style="@style/defaultEditTextStyle1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:drawableEnd="@drawable/ic_down_arrow"
-                        android:hint="@string/assigned"
+                        android:hint="@string/select_category"
                         android:singleLine="true"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvIssueType" />
 
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvIssue"
+                        android:id="@+id/tvIssueTypeTV"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/sp_pro_display_bold"
                         android:gravity="center"
-                        android:text="@string/issue"
+                        android:text="@string/issue_type"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/etIssueType" />
+                        app:layout_constraintTop_toBottomOf="@id/etComplainType" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/etIssue"
                         style="@style/defaultEditTextStyle1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:drawableEnd="@drawable/ic_down_arrow"
                         android:hint="@string/issue"
                         android:singleLine="true"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvIssue" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvIssueTypeTV" />
 
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -167,10 +167,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:hint="@string/detail"
-                        android:lines="5"
                         android:gravity="top"
+                        android:hint="@string/detail"
                         android:inputType="textMultiLine"
+                        android:lines="5"
+                        android:maxLength="150"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvIssueDetail" />
 
@@ -191,11 +192,13 @@
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clAddedTicketImages"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_15sdp"
+                        android:layout_marginBottom="@dimen/_50sdp"
                         android:background="@drawable/gray_box_outline_drawable"
                         android:padding="@dimen/_10sdp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -212,7 +215,6 @@
                             android:text="@string/click_the_upload_icon_to_capture_or_select_text"
                             android:textColor="@color/grey"
                             android:textSize="@dimen/_10sdp"
-                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -226,7 +228,94 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
 
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvTicketImages"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/upload1"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/item_ticket_images_layout" />
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_100sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/clAddedTicketImages">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTermCondition"
+                            style="@style/headingTextSizeStyle1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/terms_and_condition_text" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTC1"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvTermCondition"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/terms_and_condition_1" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTC2"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvTC1"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/terms_and_condition_2" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTC3"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvTC2"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/terms_and_condition_3" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTC4"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvTC3"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/terms_and_condition_4" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTC5"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvTC4"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/terms_and_condition_5" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTC6"
+                            style="@style/defaultTextSizeStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvTC5"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/terms_and_condition_6" />
+
+
+                    </RelativeLayout>
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

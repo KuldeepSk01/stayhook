@@ -22,8 +22,8 @@ import com.stayhook.screen.dashboard.MainActivity
 import com.stayhook.util.Constants
 import com.stayhook.util.CustomDialogs
 import com.stayhook.util.Utility
+import com.stayhook.util.formatDate
 import com.stayhook.util.getCurrentDate
-import com.stayhook.util.getSelectedDateForApi
 import com.stayhook.util.mLog
 import com.stayhook.util.selectDateFormat
 import com.stayhook.util.serializable
@@ -57,7 +57,8 @@ class ScheduleVisitActivity : BaseActivity() {
                 }
                 tvToolBarTitle.text = getString(R.string.schedule_visit)
             }
-            calenderView.minDate = System.currentTimeMillis() - 1000  // from this we can't select previous date
+            calenderView.minDate =
+                System.currentTimeMillis() - 1000  // from this we can't select previous date
             calenderView.setOnDateChangeListener { p0, p1, p2, p3 ->
                 val year = p1    //
                 val month = p2   //
@@ -163,7 +164,7 @@ class ScheduleVisitActivity : BaseActivity() {
                     }
 
                     ValidationResult.SUCCESS -> {
-                        if (!Utility.isConnectionAvailable()) {
+                        if (!Utility.isNetworkAvailable(this@ScheduleVisitActivity)) {
                             CustomDialogs.showErrorMessage(
                                 this@ScheduleVisitActivity,
                                 Constants.NetworkConstant.NO_INTERNET_AVAILABLE
@@ -178,17 +179,22 @@ class ScheduleVisitActivity : BaseActivity() {
                             mobileNo = userMobileNumberET.text.toString()
                             fullName = usernameET.text.toString()
                             message = userMessageET.text.toString()
-                            availabilityDate = getSelectedDateForApi(tvAvailableDate.text.toString())
+                            // availabilityDate = getSelectedDateForApi(tvAvailableDate.text.toString())
+                            availabilityDate = formatDate(
+                                tvAvailableDate.text.toString(),
+                                "dd MMM yyyy",
+                                "yyyy-MM-dd"
+                            )
                             availabilityTime = tvTimePickerScheduleVisit.text.toString()
-                        /*String.format(
-                                "%s %s", tvTimePickerScheduleVisit.text.toString(), amPm
-                           )*/
+                            /*String.format(
+                                    "%s %s", tvTimePickerScheduleVisit.text.toString(), amPm
+                               )*/
                         }
                         Log.d("TAG", "schedule request $request: ")
 
-                         mViewModel.hitScheduleVisit(request)
-                         mViewModel.getScheduleVisitResponse()
-                             .observe(this@ScheduleVisitActivity, scheduledResponseObserver)
+                        mViewModel.hitScheduleVisit(request)
+                        mViewModel.getScheduleVisitResponse()
+                            .observe(this@ScheduleVisitActivity, scheduledResponseObserver)
 
                     }
 
@@ -209,7 +215,11 @@ class ScheduleVisitActivity : BaseActivity() {
                 ApiResponse.Status.SUCCESS -> {
                     hideProgress()
                     mLog("success fully visit")
-                    Toast.makeText(this@ScheduleVisitActivity,"Visit Confirm successfully. ",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@ScheduleVisitActivity,
+                        "Visit Confirm successfully. ",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     launchActivity(MainActivity::class.java)
                     finish()
                 }
@@ -228,22 +238,22 @@ class ScheduleVisitActivity : BaseActivity() {
 
     private fun getScheduledPickTimeList(): MutableList<StateCityResponse> {
         val list = mutableListOf<StateCityResponse>()
-        list.add(StateCityResponse(1,"07 AM - 08 AM"))
-        list.add(StateCityResponse(1,"08 AM - 09 AM"))
-        list.add(StateCityResponse(1,"09 AM - 10 AM"))
-        list.add(StateCityResponse(1,"10 AM - 11 AM"))
-        list.add(StateCityResponse(1,"11 AM - 12 PM"))
-        list.add(StateCityResponse(1,"12 PM - 01 PM"))
-        list.add(StateCityResponse(1,"01 PM - 02 PM"))
-        list.add(StateCityResponse(1,"02 PM - 03 PM"))
-        list.add(StateCityResponse(1,"03 PM - 04 PM"))
-        list.add(StateCityResponse(1,"04 PM - 05 PM"))
-        list.add(StateCityResponse(1,"05 PM - 06 PM"))
-        list.add(StateCityResponse(1,"06 PM - 07 PM"))
-        list.add(StateCityResponse(1,"07 PM - 08 PM"))
-        list.add(StateCityResponse(1,"08 PM - 09 PM"))
-        list.add(StateCityResponse(1,"09 PM - 10 PM"))
-        list.add(StateCityResponse(1,"10 PM - 11 PM"))
+        list.add(StateCityResponse(1, "07 AM - 08 AM"))
+        list.add(StateCityResponse(1, "08 AM - 09 AM"))
+        list.add(StateCityResponse(1, "09 AM - 10 AM"))
+        list.add(StateCityResponse(1, "10 AM - 11 AM"))
+        list.add(StateCityResponse(1, "11 AM - 12 PM"))
+        list.add(StateCityResponse(1, "12 PM - 01 PM"))
+        list.add(StateCityResponse(1, "01 PM - 02 PM"))
+        list.add(StateCityResponse(1, "02 PM - 03 PM"))
+        list.add(StateCityResponse(1, "03 PM - 04 PM"))
+        list.add(StateCityResponse(1, "04 PM - 05 PM"))
+        list.add(StateCityResponse(1, "05 PM - 06 PM"))
+        list.add(StateCityResponse(1, "06 PM - 07 PM"))
+        list.add(StateCityResponse(1, "07 PM - 08 PM"))
+        list.add(StateCityResponse(1, "08 PM - 09 PM"))
+        list.add(StateCityResponse(1, "09 PM - 10 PM"))
+        list.add(StateCityResponse(1, "10 PM - 11 PM"))
         return list
     }
 

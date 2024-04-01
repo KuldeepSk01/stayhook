@@ -2,6 +2,7 @@ package com.stayhook.network
 
 import com.stayhook.base.BaseResponse
 import com.stayhook.base.CollectionBaseResponse
+import com.stayhook.model.request.AddTicketScheduleMeetRequest
 import com.stayhook.model.request.GetPropertyRequest
 import com.stayhook.model.request.MoveOutBookingRequest
 import com.stayhook.model.request.PropertyRoomRequest
@@ -14,13 +15,14 @@ import com.stayhook.model.response.MyProfileResponse
 import com.stayhook.model.response.OTPResponse
 import com.stayhook.model.response.StateCityResponse
 import com.stayhook.model.response.SuccessErrorResponse
+import com.stayhook.model.response.TicketDetailResponse
+import com.stayhook.model.response.TicketResponse
 import com.stayhook.model.response.TokenCollectedResponse
 import com.stayhook.model.response.UserResponse
 import com.stayhook.model.response.getpopertydetail.GetPropertyDetail
 import com.stayhook.model.response.getpopertydetail.PropertyRoom
 import com.stayhook.model.response.getproperty.GetPropertyBaseResponse
 import com.stayhook.model.response.home.HomeResponse
-import com.stayhook.model.response.scheduletokendetail.ScheduleTokenDetailResponse
 import com.stayhook.util.Constants
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -47,11 +49,11 @@ interface ApiService {
     @POST(Constants.NetworkConstant.homeApi)
     fun homePage(): Call<HomeResponse>
 
-   /* @POST(Constants.NetworkConstant.getPropertyApi)
-    fun getProperty(@Query("page") page:String): Call<GetPropertyBaseResponse>
-*/
+    /* @POST(Constants.NetworkConstant.getPropertyApi)
+     fun getProperty(@Query("page") page:String): Call<GetPropertyBaseResponse>
+ */
     @POST(Constants.NetworkConstant.getPropertyApi)
-    fun getProperty(@Body body:GetPropertyRequest): Call<GetPropertyBaseResponse>
+    fun getProperty(@Body body: GetPropertyRequest): Call<GetPropertyBaseResponse>
 
 
     @POST(Constants.NetworkConstant.getPropertyDetailApi)
@@ -61,7 +63,10 @@ interface ApiService {
     fun getPropertyRoom(@Query("property_id") propertyDetail: String): Call<CollectionBaseResponse<PropertyRoom>>
 
     @POST(Constants.NetworkConstant.getPropertyBedApi)
-    fun getPropertyBed(@Query("property_id") propertyDetail: String,@Query("room_id") roomId:String): Call<CollectionBaseResponse<PropertyRoom>>
+    fun getPropertyBed(
+        @Query("property_id") propertyDetail: String,
+        @Query("room_id") roomId: String
+    ): Call<CollectionBaseResponse<PropertyRoom>>
 
     @POST(Constants.NetworkConstant.tokenCollected)
     fun tokenCollected(@Body request: PropertyRoomRequest): Call<SuccessErrorResponse>
@@ -79,16 +84,19 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST(Constants.NetworkConstant.getScheduledToken)
-    fun getScheduledToken(@Field("time_status") status:String): Call<CollectionBaseResponse<TokenCollectedResponse>>
+    fun getScheduledToken(@Field("time_status") status: String): Call<CollectionBaseResponse<TokenCollectedResponse>>
 
     @POST(Constants.NetworkConstant.getScheduledDetailToken)
-    fun getScheduledDetailToken(@Query("id") tokenId:String): Call<BaseResponse<TokenCollectedResponse>>
+    fun getScheduledDetailToken(@Query("id") tokenId: String): Call<BaseResponse<TokenCollectedResponse>>
 
     @POST(Constants.NetworkConstant.scheduleVisit)
     fun scheduleAVisit(@Body request: ScheduleAVisitRequest): Call<SuccessErrorResponse>
 
     @POST(Constants.NetworkConstant.myPayments)
-    fun myPayments(@Query("type") type:String,@Query("page") page:String): Call<CollectionBaseResponse<MyPaymentsResponse>>
+    fun myPayments(
+        @Query("type") type: String,
+        @Query("page") page: String
+    ): Call<CollectionBaseResponse<MyPaymentsResponse>>
 
 
     @POST(Constants.NetworkConstant.myProfileApi)
@@ -123,19 +131,76 @@ interface ApiService {
     ): Call<SuccessErrorResponse>
 
     @POST(Constants.NetworkConstant.getStateApi)
-    fun getStates(@Query("country_id") countryId:String): Call<CollectionBaseResponse<StateCityResponse>>
+    fun getStates(@Query("country_id") countryId: String): Call<CollectionBaseResponse<StateCityResponse>>
 
     @POST(Constants.NetworkConstant.getCityApi)
-    fun getCity(@Query("state_id") stateId:String): Call<CollectionBaseResponse<StateCityResponse>>
-
+    fun getCity(@Query("state_id") stateId: String): Call<CollectionBaseResponse<StateCityResponse>>
 
 
     @POST(Constants.NetworkConstant.addReview)
     fun addReview(@Body request: WriteReviewRequest): Call<SuccessErrorResponse>
+
     @POST(Constants.NetworkConstant.addRemoveFavorite)
-    fun addORRemoveFavorite(@Query("property_id") propertyId:String): Call<SuccessErrorResponse>
+    fun addORRemoveFavorite(@Query("property_id") propertyId: String): Call<SuccessErrorResponse>
+
+    @POST(Constants.NetworkConstant.getIssueType)
+    fun getIssueType(): Call<CollectionBaseResponse<StateCityResponse>>
+
+    @POST(Constants.NetworkConstant.getIssueSubType)
+    fun getIssuesSubType(@Query("issue_type") issueType: Int): Call<CollectionBaseResponse<StateCityResponse>>
+
+    @POST(Constants.NetworkConstant.getTicketProperty)
+    fun getTicketProperty(): Call<CollectionBaseResponse<StateCityResponse>>
+
+    @FormUrlEncoded
+    @POST(Constants.NetworkConstant.myTicket)
+    fun getMyTickets(@Field("status") status: String): Call<CollectionBaseResponse<TicketResponse>>
 
 
+    /*  @Multipart
+      @POST(Constants.NetworkConstant.createTicket)
+      fun createTickets(
+          @Query("property_id") propertyId: Int,
+          @Query("issue_type") issueType: Int,
+          @Query("issue") issue: Int,
+          @Query("issue_details") issueDetail: String,
+          @Query ("upload_document[]") imagesList: List<String>,
 
+      ): Call<SuccessErrorResponse>*/
+
+
+    @Multipart
+    @POST(Constants.NetworkConstant.createTicket)
+    fun createTickets(
+        @Part("property_id") propertyId: RequestBody,
+        @Part("issue_type") issueType: RequestBody,
+        @Part("issue") issue: RequestBody,
+        @Part("issue_details") issueDetail: RequestBody,
+        @Part uploadList: Array<MultipartBody.Part?>?,
+    ): Call<SuccessErrorResponse>
+
+    @POST(Constants.NetworkConstant.getTicketDetails)
+    fun getTicketDetail(@Query("ticket_id") ticketId: Int): Call<BaseResponse<TicketDetailResponse>>
+
+    @POST(Constants.NetworkConstant.addTicketComment)
+    fun addTicketComment(
+        @Query("ticket_id") ticketId: Int,
+        @Query("comment") comment: String
+    ): Call<SuccessErrorResponse>
+
+    /*@FormUrlEncoded
+    @POST(Constants.NetworkConstant.getTicketDetails)
+    fun addTicketScheduleMeet(
+        @Field("ticket_id") ticketId:Int,
+        @Field("meeting_date") meetingDate:String,
+        @Field("meeting_time") meetingTime:String,
+        @Field("comment") comment: String,
+    ): Call<SuccessErrorResponse>*/
+
+
+    @POST(Constants.NetworkConstant.addTicketMeeting)
+    fun addTicketScheduleMeet(
+        @Body req: AddTicketScheduleMeetRequest
+    ): Call<SuccessErrorResponse>
 
 }

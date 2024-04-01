@@ -100,8 +100,6 @@ class SearchFragment : BaseFragment(), OnMapReadyCallback, OnItemsClickListener,
 
     override fun onMapReady(p0: GoogleMap) {
         mGoogleMap = p0
-
-        mGoogleMap = p0
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
