@@ -91,8 +91,7 @@ fun getCurrentTimeFormat(): String {
 fun getTimeFormat(hh: Int, mm: Int): String {
     val sdf = SimpleDateFormat("HH:mm a")
     val mTime: Calendar = Calendar.getInstance()
-    mTime.set(Calendar.HOUR, hh)
-    mTime.set(Calendar.MINUTE, mm)
+    mTime.set(Calendar.HOUR_OF_DAY, hh)
     mTime.set(Calendar.MINUTE, mm)
     return sdf.format(mTime.time)
 }
